@@ -1,6 +1,5 @@
 .p-button-icon{
     font-family: primeicons;
-    /* margin-left: 15px; */
     color: rgb(61, 79, 233);
     cursor: pointer;
     font-style: normal;
@@ -18,4 +17,4 @@
 }
 #PopupWindow { 
     overflow-y:scroll;
-    height:385px;  }
+    height:470px;  }
