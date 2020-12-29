@@ -8,7 +8,7 @@ import { PrimeNGConfig } from 'primeng/api';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {TabMenuModule} from 'primeng/tabmenu';
 import {MenubarModule} from 'primeng/menubar';
-import {NavBarComponent} from './nav-bar/nav-bar.component'
+import {NavBarComponent} from './Components/Nav-bar/nav-bar.component'
 import { RouterModule, Routes } from '@angular/router';
 import {TableModule} from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
@@ -30,7 +30,7 @@ import {MultiSelectModule} from 'primeng/multiselect';
 import {ContextMenuModule} from 'primeng/contextmenu';
 import {DialogModule} from 'primeng/dialog';
 import {ProgressBarModule} from 'primeng/progressbar';
-import {SignupComponent} from './signup/signup.component';
+import {SignupComponent} from './Components/Signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
@@ -58,7 +58,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatMenuModule } from '@angular/material/menu';
-import{SideNavComponent} from '../app/side-nav/side-nav.component'
+import{ SideNavComponent } from './Components/Side-nav/side-nav.component'
 import { CommonModule, registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 
@@ -78,13 +78,13 @@ import { from } from 'rxjs';
 import 'zone.js/dist/zone';
 import "core-js/proposals/reflect-metadata";
 import 'core-js/es/array';
-import { HomeComponent } from './home/home.component';
-import { AboutComponent } from './about/about.component';
+import { HomeComponent } from './Components/Home/home.component';
 import { AllProjectsComponent } from './Components/Projects/all-projects/all-projects.component';
 import { CreateProjectComponent } from './Components/Projects/create-project/create-project.component';
 import { CategoryComponent } from './Components/Request/Categories/category/category.component';
-import { ClientsComponent } from './Components/clients/clients.component';
-// import { SubCategoryComponent } from './Components/Request/Categories/sub-category/sub-category.component';
+import { ClientsComponent } from './Components/Clients/clients.component';
+import { CreateRequesteComponent } from './Components/Request/create-requeste/create-requeste.component';
+
 
 registerLocaleData(en);
 
@@ -96,11 +96,11 @@ registerLocaleData(en);
     NavBarComponent,
     HomeComponent,
     SideNavComponent,
-    AboutComponent,
     AllProjectsComponent,
     CreateProjectComponent,
     CategoryComponent,
     ClientsComponent,
+    CreateRequesteComponent,
     // SubCategoryComponent
   ],
   imports: [
