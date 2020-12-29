@@ -17,4 +17,7 @@ export class ClientService {
   GetAllClients(): Observable <client[]>{
     return this.httpClient.get<client[]> (`${environment.clients}`,this.httpHeader) ;
   }
+  inserClient(client:client): Observable <any>{
+    return this.httpClient.post<any> (`${environment.clients}`,client,this.httpHeader) ;
+  }
 }

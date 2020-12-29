@@ -19,150 +19,152 @@
     </ng-template>
 </p-toast>
 <div class="card">
-    <p-button icon="pi pi-external-link" label="Add Project" routerLink="createProject" class="create"></p-button>
+    <div class="row">
+        <div class="col-9" style="margin-left: 20px;">
+            <h3>All Project</h3>
+        </div>
+        <div class="col-2" style="margin-left: 6%;">
+            <p-button icon="pi pi-external-link" label="Add Project" routerLink="createProject" class="create">
+            </p-button>
+        </div>
 
+    </div>
     <!-- Basic Data -->
-    <p-tabView styleClass="tabview-custom">
+    <ng-template pTemplate="header">
+        <i class="pi pi-fw pi-home"></i>
+        <span style="margin-left: 10px;">Basic Data</span>
+    </ng-template>
 
-        <p-tabPanel>
+    <div class="card" id="PopupWindow">
+        <p-table #dt1 [value]="projects" dataKey="id" [rows]="5" [paginator]="true" stateStorage="session"
+            stateKey="statedemo-session">
             <ng-template pTemplate="header">
-                <i class="pi pi-fw pi-home"></i>
-                <span style="margin-left: 10px;">Basic Data</span>
-            </ng-template>
+                <tr>
+                    <!-- <th pSortableColumn="code" >Project Code  <p-sortIcon field="code"></p-sortIcon></th> -->
+                    <th pSortableColumn="projectName" style="font-size: 12px;">Project Name <p-sortIcon
+                            field="projectName"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="type" style="font-size: 12px;">Project Type <p-sortIcon field="type">
+                        </p-sortIcon>
+                    </th>
+                    <th pSortableColumn="organizationName" style="font-size: 12px;">Organization<p-sortIcon
+                            field="organizationName"></p-sortIcon>
+                    </th>
+                    <th pSortableColumn="projectCode" style="font-size: 12px;">project Code<p-sortIcon
+                            field="projectCode"></p-sortIcon>
+                    </th>
 
-            <div class="card" id="PopupWindow">
-                <p-table #dt1 [value]="projects" dataKey="id" [rows]="5" [paginator]="true" stateStorage="session"
-                    stateKey="statedemo-session">
-                    <ng-template pTemplate="header">
-                        <tr>
-                            <!-- <th pSortableColumn="code" >Project Code  <p-sortIcon field="code"></p-sortIcon></th> -->
-                            <th pSortableColumn="projectName" style="font-size: 12px;">Project Name <p-sortIcon
-                                    field="projectName"></p-sortIcon>
-                            </th>
-                            <th pSortableColumn="type" style="font-size: 12px;">Project Type <p-sortIcon field="type">
-                                </p-sortIcon>
-                            </th>
-                            <th pSortableColumn="organizationName" style="font-size: 12px;">Organization<p-sortIcon
-                                    field="organizationName"></p-sortIcon>
-                            </th>
-                            <th pSortableColumn="projectCode" style="font-size: 12px;">project Code<p-sortIcon
-                                    field="projectCode"></p-sortIcon>
-                            </th>
-
-                            <th pSortableColumn="startDate" style="font-size: 12px;">Start Date <p-sortIcon
-                                    field="startDate"></p-sortIcon>
-                            </th>
-                            <th pSortableColumn="endtDate" style="font-size: 12px;">End Date <p-sortIcon
-                                    field="endtDate"></p-sortIcon>
-                            </th>
-                            <th>Operations</th>
+                    <th pSortableColumn="startDate" style="font-size: 12px;">Start Date <p-sortIcon field="startDate">
+                        </p-sortIcon>
+                    </th>
+                    <th pSortableColumn="endtDate" style="font-size: 12px;">End Date <p-sortIcon field="endtDate">
+                        </p-sortIcon>
+                    </th>
+                    <th>Operations</th>
 
 
 
-                        </tr>
-                        <tr>
-                            <!-- <th>
+                </tr>
+                <tr>
+                    <!-- <th>
                             <input pInputText type="text" (input)="dt1.filter($event.target.value, 'code', 'contains')" [value]="dt1.filters['code']?.value" placeholder="Search by Code" class="p-column-filter">
                         </th> -->
-                            <th>
-                                <input pInputText type="text" style="width: 100%;"
-                                    (input)="dt1.filter($event.target.value, 'projectName', 'contains')"
-                                    [value]="dt1.filters['projectName']?.value" placeholder="Search by ProjectName"
-                                    class="p-column-filter">
-                            </th>
-                            <th>
-                                <input pInputText type="text" style="width: 100%;"
-                                    (input)="dt1.filter($event.target.value, 'type', 'contains')"
-                                    [value]="dt1.filters['type']?.value" placeholder="Search by type"
-                                    class="p-column-filter">
-                            </th>
-                            <th>
-                                <input pInputText type="text" style="width: 100%;"
-                                    (input)="dt1.filter($event.target.value, 'organizationName', 'contains')"
-                                    [value]="dt1.filters['organizationName']?.value"
-                                    placeholder="Search by organizationName" class="p-column-filter">
-                            </th>
-                            <th>
-                                <input pInputText type="text" style="width: 100%;"
-                                    (input)="dt1.filter($event.target.value, 'projectCode', 'contains')"
-                                    [value]="dt1.filters['projectCode']?.value" placeholder="Search by projectCode"
-                                    class="p-column-filter">
-                            </th>
+                    <th>
+                        <input pInputText type="text" style="width: 100%;"
+                            (input)="dt1.filter($event.target.value, 'projectName', 'contains')"
+                            [value]="dt1.filters['projectName']?.value" placeholder="Search by ProjectName"
+                            class="p-column-filter">
+                    </th>
+                    <th>
+                        <input pInputText type="text" style="width: 100%;"
+                            (input)="dt1.filter($event.target.value, 'type', 'contains')"
+                            [value]="dt1.filters['type']?.value" placeholder="Search by type" class="p-column-filter">
+                    </th>
+                    <th>
+                        <input pInputText type="text" style="width: 100%;"
+                            (input)="dt1.filter($event.target.value, 'organizationName', 'contains')"
+                            [value]="dt1.filters['organizationName']?.value" placeholder="Search by organizationName"
+                            class="p-column-filter">
+                    </th>
+                    <th>
+                        <input pInputText type="text" style="width: 100%;"
+                            (input)="dt1.filter($event.target.value, 'projectCode', 'contains')"
+                            [value]="dt1.filters['projectCode']?.value" placeholder="Search by projectCode"
+                            class="p-column-filter">
+                    </th>
 
-                            <th>
-                                <input pInputText type="text" style="width: 100%;"
-                                    (input)="dt1.filter($event.target.value, 'startDate', 'contains')"
-                                    [value]="dt1.filters['startDate']?.value" placeholder="Search by startDate"
-                                    class="p-column-filter">
-                            </th>
-                            <th>
-                                <input pInputText type="text" style="width: 100%;"
-                                    (input)="dt1.filter($event.target.value, 'startDate', 'contains')"
-                                    [value]="dt1.filters['startDate']?.value" placeholder="Search by startDate"
-                                    class="p-column-filter">
-                            </th>
-                            <th></th>
-                        </tr>
-                    </ng-template>
-                    <ng-template pTemplate="body" let-project>
-                        <tr [pSelectableRow]="project">
-                            <td>
-                                <span class="p-column-title"></span>
-                                {{project.projectName}}
-                            </td>
-                            <!-- <td>
+                    <th>
+                        <input pInputText type="text" style="width: 100%;"
+                            (input)="dt1.filter($event.target.value, 'startDate', 'contains')"
+                            [value]="dt1.filters['startDate']?.value" placeholder="Search by startDate"
+                            class="p-column-filter">
+                    </th>
+                    <th>
+                        <input pInputText type="text" style="width: 100%;"
+                            (input)="dt1.filter($event.target.value, 'startDate', 'contains')"
+                            [value]="dt1.filters['startDate']?.value" placeholder="Search by startDate"
+                            class="p-column-filter">
+                    </th>
+                    <th></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-project>
+                <tr [pSelectableRow]="project">
+                    <td>
+                        <span class="p-column-title"></span>
+                        {{project.projectName}}
+                    </td>
+                    <!-- <td>
                             <span class="p-column-title"></span>
                             <span class="image-text">{{project.projectCode}}</span>
                         </td> -->
-                            <td>
-                                <span class="p-column-title"></span>
-                                <!-- <img [alt]="customer.representative.name" src="assets/showcase/images/demo/avatar/{{customer.representative.image}}" width="32" style="vertical-align: middle" /> -->
-                                <span class="image-text">{{project.projectTypeName}}</span>
-                            </td>
-                            <td>
-                                <span class="p-column-title"></span>
-                                <span
-                                    [class]="'customer-badge type-' + project.type">{{project.organizationName}}</span>
-                            </td>
-                            <td>
-                                <span class="p-column-title"></span>
-                                <span
-                                    [class]="'customer-badge type-' + project.projectCode">{{project.projectCode}}</span>
-                            </td>
-                            <!-- <td>
+                    <td>
+                        <span class="p-column-title"></span>
+                        <!-- <img [alt]="customer.representative.name" src="assets/showcase/images/demo/avatar/{{customer.representative.image}}" width="32" style="vertical-align: middle" /> -->
+                        <span class="image-text">{{project.projectTypeName}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title"></span>
+                        <span [class]="'customer-badge type-' + project.type">{{project.organizationName}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title"></span>
+                        <span [class]="'customer-badge type-' + project.projectCode">{{project.projectCode}}</span>
+                    </td>
+                    <!-- <td>
                             <span class="p-column-title"></span>
                             <span [class]="'customer-badge type-' + project.cost">{{project.cost}}</span>
                         </td> -->
-                            <td>
-                                <span class="p-column-title"></span>
-                                <span
-                                    [class]="'customer-badge type-' + project.actualStartDate">{{project.actualStartDate}}</span>
-                            </td>
-                            <td>
-                                <span class="p-column-title"></span>
-                                <span
-                                    [class]="'customer-badge type-' + project.actualEndDate">{{project.actualEndDate}}</span>
-                            </td>
-                            <td>
-                                <span class="p-button-icon pi pi-pencil" aria-hidden="true"
-                                    (click)="showMaximizableDialog(project.id)"></span>
-                                    <span class="p-button-icon pi pi-times" (click)="confirm(project.id)" aria-hidden="true"></span>                            </td>
-                        </tr>
-                        <!-- <p-dialog class="data" header={{project.projectName}} [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"
+                    <td>
+                        <span class="p-column-title"></span>
+                        <span
+                            [class]="'customer-badge type-' + project.actualStartDate">{{project.actualStartDate}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title"></span>
+                        <span [class]="'customer-badge type-' + project.actualEndDate">{{project.actualEndDate}}</span>
+                    </td>
+                    <td>
+                        <span class="p-button-icon pi pi-pencil" aria-hidden="true"
+                            (click)="showMaximizableDialog(project.id)"></span>
+                        <span class="p-button-icon pi pi-times" (click)="confirm(project.id)" aria-hidden="true"></span>
+                    </td>
+                </tr>
+                <!-- <p-dialog class="data" header={{project.projectName}} [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"
                         [baseZIndex]="10000" [draggable]="false" [resizable]="false">
                 
                       
                     </p-dialog> -->
 
-                    </ng-template>
-                    <ng-template pTemplate="emptymessage">
-                        <tr>
-                            <td colspan="4">No Projects found.</td>
-                        </tr>
-                    </ng-template>
-                </p-table>
-                <!-- <p-button (click)="showModalDialog()" icon="pi pi-external-link" label="Show"></p-button> -->
-                <!-- <p-dialog header="Header" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="4">No Projects found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+        <!-- <p-button (click)="showModalDialog()" icon="pi pi-external-link" label="Show"></p-button> -->
+        <!-- <p-dialog header="Header" [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"
                     [baseZIndex]="10000" [draggable]="false" [resizable]="false">
                     <p></p>
                     <ng-template pTemplate="footer">
@@ -170,8 +172,8 @@
                         </p-button>
                     </ng-template>
                 </p-dialog> -->
-                <!-- <p-button (click)="showMaximizableDialog()" icon="pi pi-external-link" label="Show"></p-button> -->
-                <!-- <p-dialog header="Show Project Data" [(visible)]="displayMaximizable" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true" [baseZIndex]="10000"
+        <!-- <p-button (click)="showMaximizableDialog()" icon="pi pi-external-link" label="Show"></p-button> -->
+        <!-- <p-dialog header="Show Project Data" [(visible)]="displayMaximizable" [modal]="true" [style]="{width: '50vw'}" [maximizable]="true" [baseZIndex]="10000"
     [draggable]="false" [resizable]="false">
     <p-table [value]="projects" >
                         
@@ -205,83 +207,82 @@
             <p-button icon="pi pi-check" (click)="displayMaximizable=false" label="Ok" styleClass="p-button-text"></p-button>
         </ng-template>
 </p-dialog> -->
-                <p-dialog id="PopupWindow" header="Show Project Data" [(visible)]="displayMaximizable" [modal]="true"
-                    [style]="{width: '50vw'}" [maximizable]="true" [baseZIndex]="10000" [draggable]="false"
-                    [resizable]="false">
-                    <form>
-                        <div class="row">
-                          <div class="col">
-                              <label>Project Name</label>
-                            <input type="text" class="form-control" placeholder="{{project1.projectName}}" readonly>
-                          </div>
-                          <div class="col">
-                            <label>Project Code</label>
-                            <input type="text" class="form-control" placeholder="{{project1.projectCode}}" readonly>
-                          </div>
-                        </div>
-                        <div class="row">
-                            <div class="col">
-                                <label>Project Cost</label>
-                              <input type="text" class="form-control" placeholder="{{project1.cost}}" readonly>
-                            </div>
-                            <div class="col">
-                              <label>client Mobile</label>
-                              <input type="text" class="form-control" placeholder="{{project1.clientMobile}}" readonly>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col">
-                                <label>projectType Name</label>
-                              <input type="text" class="form-control" placeholder="{{project1.projectTypeName}}" readonly>
-                            </div>
-                            <div class="col">
-                              <label>organization Name</label>
-                              <input type="text" class="form-control" placeholder="{{project1.organizationName}}" readonly>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col">
-                                <label>project Period</label>
-                              <input type="text" class="form-control" placeholder="{{project1.projectPeriod}}" readonly>
-                            </div>
-                            <div class="col">
-                              <label>description</label>
-                              <input type="text" class="form-control" placeholder="{{project1.description}}" readonly>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col">
-                                <label>plannded Start Date</label>
-                              <input type="text" class="form-control" placeholder="{{project1.planndedStartDate}}" readonly>
-                            </div>
-                            <div class="col">
-                              <label>actual Start Date</label>
-                              <input type="text" class="form-control" placeholder="{{project1.actualStartDate}}" readonly>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col">
-                                <label>plannded End Date</label>
-                              <input type="text" class="form-control" placeholder="{{project1.planndedEndDate}}" readonly>
-                            </div>
-                            <div class="col">
-                              <label>actual End Date</label>
-                              <input type="text" class="form-control" placeholder="{{project1.actualEndDate}}" readonly>
-                            </div>
-                          </div>
-                          <div class="row">
-                            <div class="col">
-                                <label>plannded End Date</label>
-                              <input type="text" class="form-control" placeholder="{{project1.planndedEndDate}}" readonly>
-                            </div>
-                            <div class="col">
-                              <label>actual End Date</label>
-                              <input type="text" class="form-control" placeholder="{{project1.actualEndDate}}" readonly>
-                            </div>
-                          </div>
-                      </form>
+        <p-dialog id="PopupWindow" header="Show Project Data" [(visible)]="displayMaximizable" [modal]="true"
+            [style]="{width: '50vw'}" [maximizable]="true" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+            <form>
+                <div class="row">
+                    <div class="col">
+                        <label>Project Name</label>
+                        <input type="text" class="form-control" placeholder="{{project1.projectName}}" readonly>
+                    </div>
+                    <div class="col">
+                        <label>Project Code</label>
+                        <input type="text" class="form-control" placeholder="{{project1.projectCode}}" readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>Project Cost</label>
+                        <input type="text" class="form-control" placeholder="{{project1.cost}}" readonly>
+                    </div>
+                    <div class="col">
+                        <label>client Mobile</label>
+                        <input type="text" class="form-control" placeholder="{{project1.clientMobile}}" readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>projectType Name</label>
+                        <input type="text" class="form-control" placeholder="{{project1.projectTypeName}}" readonly>
+                    </div>
+                    <div class="col">
+                        <label>organization Name</label>
+                        <input type="text" class="form-control" placeholder="{{project1.organizationName}}" readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>project Period</label>
+                        <input type="text" class="form-control" placeholder="{{project1.projectPeriod}}" readonly>
+                    </div>
+                    <div class="col">
+                        <label>description</label>
+                        <input type="text" class="form-control" placeholder="{{project1.description}}" readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>plannded Start Date</label>
+                        <input type="text" class="form-control" placeholder="{{project1.planndedStartDate}}" readonly>
+                    </div>
+                    <div class="col">
+                        <label>actual Start Date</label>
+                        <input type="text" class="form-control" placeholder="{{project1.actualStartDate}}" readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>plannded End Date</label>
+                        <input type="text" class="form-control" placeholder="{{project1.planndedEndDate}}" readonly>
+                    </div>
+                    <div class="col">
+                        <label>actual End Date</label>
+                        <input type="text" class="form-control" placeholder="{{project1.actualEndDate}}" readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label>plannded End Date</label>
+                        <input type="text" class="form-control" placeholder="{{project1.planndedEndDate}}" readonly>
+                    </div>
+                    <div class="col">
+                        <label>actual End Date</label>
+                        <input type="text" class="form-control" placeholder="{{project1.actualEndDate}}" readonly>
+                    </div>
+                </div>
+            </form>
 
-                    <!-- <table>
+            <!-- <table>
                        
                            
                             
@@ -308,63 +309,10 @@
                         </tr>
                     </table> -->
 
-                    <ng-template pTemplate="footer">
-                        <p-button icon="pi pi-check" (click)="displayMaximizable=false" label="Ok"
-                            styleClass="p-button-text"></p-button>
-                    </ng-template>
-                </p-dialog>
-            </div>
-
-
-
-
-        </p-tabPanel>
-        <p-tabPanel>
-            <ng-template pTemplate="header">
-                <i class="pi pi-user-minus"></i>
-                <span style="margin-left: 10px;">Stackholders</span>
+            <ng-template pTemplate="footer">
+                <p-button icon="pi pi-check" (click)="displayMaximizable=false" label="Ok" styleClass="p-button-text">
+                </p-button>
             </ng-template>
-           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-                laborum.</p> 
-        </p-tabPanel>
-        <p-tabPanel header="Header II">
-            <ng-template pTemplate="header">
-                <i class="pi pi-align-center"></i>
-                <span style="margin-left: 10px;">MileStones</span>
-            </ng-template>
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
-                rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur
-                aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
-                voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.</p>
-        </p-tabPanel>
-        <p-tabPanel header="Header II">
-            <ng-template pTemplate="header">
-                <i class="pi pi-users"></i>
-                <span style="margin-left: 10px;">Teams</span>
-            </ng-template>
-            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam
-                rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
-                architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur
-                aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
-                voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.</p>
-        </p-tabPanel>
-        <p-tabPanel header="Header III">
-            <ng-template pTemplate="header">
-                <i class="pi pi-file"></i>
-                <span style="margin-left: 10px;">Documents</span>
-                <!-- <i class="pi pi-cog"></i> -->
-            </ng-template>
-            <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
-                atque corrupti quos dolores et quas molestias excepturi sint occaecati
-                cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et
-                dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
-                Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.</p>
-        </p-tabPanel>
-    </p-tabView>
-
+        </p-dialog>
+    </div>
 </div>

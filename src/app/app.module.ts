@@ -82,6 +82,9 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { AllProjectsComponent } from './Components/Projects/all-projects/all-projects.component';
 import { CreateProjectComponent } from './Components/Projects/create-project/create-project.component';
+import { CategoryComponent } from './Components/Request/Categories/category/category.component';
+import { ClientsComponent } from './Components/clients/clients.component';
+// import { SubCategoryComponent } from './Components/Request/Categories/sub-category/sub-category.component';
 
 registerLocaleData(en);
 
@@ -95,7 +98,10 @@ registerLocaleData(en);
     SideNavComponent,
     AboutComponent,
     AllProjectsComponent,
-    CreateProjectComponent
+    CreateProjectComponent,
+    CategoryComponent,
+    ClientsComponent,
+    // SubCategoryComponent
   ],
   imports: [
     BrowserModule,

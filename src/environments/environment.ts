@@ -13,6 +13,8 @@ export const environment = {
   clients: 'http://localhost:50653/api/Clients',
   employees: 'http://localhost:50653/api/Employees/',
   department: 'http://localhost:50653/api/Departments/',
+  requestSubCategory: 'http://localhost:50653/api/RequestSubCategory/',
+  requestCategory: 'http://localhost:50653/api/RequestCategory/',
   projectPositions: 'http://localhost:50653/api/ProjectPositions/',
   getDepartmentByEmpID:'http://localhost:50653/api/Departments/GetDepartmentByEmployeeId/',
   projectTypes:'http://localhost:50653/api/ProjectTypes',
