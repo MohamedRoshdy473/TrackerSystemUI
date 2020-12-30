@@ -19,7 +19,7 @@ export class RequestSubCategoryService {
   GetAllSubCategorys(): Observable<requestSubCategory[]> {
     return this.httpClient.get<requestSubCategory[]>(`${environment.requestSubCategory}`, this.httpHeader);
   }
-  inserSubCategory(requestSubCategory:requestSubCategory): Observable <any>{
-    return this.httpClient.post<any> (`${environment.requestSubCategory}`,requestSubCategory,this.httpHeader) ;
+  inserSubCategory(requestSubCategory: requestSubCategory): Observable<any> {
+    return this.httpClient.post<any>(`${environment.requestSubCategory}`, requestSubCategory, this.httpHeader);
   }
 }

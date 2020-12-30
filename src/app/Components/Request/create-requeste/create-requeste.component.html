@@ -1,0 +1,64 @@
+    <div style="margin-left: 25px;">
+
+<div class="row">
+    <div class="p-field col-md-3">
+        <label for="Project Name" class="labelMarginRight">RequestName Name</label><br>
+        <input minlength="3" type="text" [(ngModel)]="requestObj.requestName" pInputText id="name" required autofocus />
+    </div>
+    <div class="p-field col-md-3">
+        <div class="p-field col-md-3">
+            <label for="Project Code" class="labelMarginRight">RequestCode</label><br>
+            <input type="text" [(ngModel)]="requestObj.requestCode" pInputText id="Code" required autofocus />
+        </div>
+    </div>
+    <div class="p-field col-md-3">
+        <label for="Project Type" class="labelMarginRight">Project Name</label><br>
+        <p-dropdown [options]="lstProjects" [(ngModel)]="requestObj.projectId" placeholder="Select Project Name"
+            optionLabel="projectName" optionValue="id">
+        </p-dropdown>
+    </div>
+</div><br>
+<div class="row">
+
+
+
+</div> <br>
+<div class="row">
+    <div class="col">
+        <label for="Project Type" class="labelMarginRight">Request Type</label><br>
+        <p-dropdown [options]="lstReqTypies" [(ngModel)]="requestObj.requestTypeId" placeholder="Select Request Type"
+            optionLabel="typeName" optionValue="id">
+        </p-dropdown>
+    </div>
+    <div class="col">
+        <label for="Project Type" class="labelMarginRight">Request Sub Category</label><br>
+        <p-dropdown [options]="lstReqSubCategories" [(ngModel)]="requestObj.requestSubCategoryId"
+            placeholder="Select Sub Category" optionLabel="subCategoryName" optionValue="id">
+        </p-dropdown>
+    </div>
+    <div class="col">
+        <label for="Project Type" class="labelMarginRight">Request Periority</label><br>
+        <p-dropdown [options]="lstReqPeriorities" [(ngModel)]="requestObj.requestPeriorityId"
+            placeholder="Select Request Periority" optionLabel="periorty" optionValue="id">
+        </p-dropdown>
+    </div>
+
+</div><br>
+<div class="row">
+    <div class="p-field col-md-3">
+        <label for="Project Type" class="labelMarginRight">Request Status</label><br>
+        <p-dropdown [options]="lstReqStatus" [(ngModel)]="requestObj.requestStatusId"
+            placeholder="Select Request Status" optionLabel="status" optionValue="id">
+        </p-dropdown>
+    </div>
+    <div class="p-field col-md-9">
+        <label for="description">Description</label><br>
+        <textarea id="description" [(ngModel)]="requestObj.description" pInputTextarea required rows="3"
+            cols="63"></textarea>
+    </div>
+
+    <div class="col-md-2" style="margin-top: 7%;margin-left: 28%;"> <button pButton type="button" (click)="AddRequest()"
+            icon="pi pi-check" label="Submit" class="p-button-raised "></button>
+    </div>
+</div>
+</div>
