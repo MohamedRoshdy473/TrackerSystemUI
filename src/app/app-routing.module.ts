@@ -15,17 +15,18 @@ import { CategoryComponent } from './Components/Request/Categories/category/cate
 import { ClientsComponent } from './Components/Clients/clients.component';
 import { CreateRequesteComponent } from './Components/Request/create-requeste/create-requeste.component';
 import { DepartmentComponent } from './Components/Department/department.component';
+import { ChangePaswwordComponent } from './Components/change-paswword/change-paswword.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login'},
   { path: 'login', component:  SignupComponent},
+  { path: 'changePassword', component:  ChangePaswwordComponent},
   { path: 'home', component: HomeComponent ,children:[
     { path: 'tabs', component:  AllProjectsComponent},
     { path: 'Category', component:  CategoryComponent},
     { path: 'client', component:  ClientsComponent},
     { path: 'department', component:  DepartmentComponent},
-    { path: 'Requests', component:  CreateProjectComponent},
-
+    { path: 'Requests', component:  CreateRequesteComponent},
     { path: 'tabs/createProject', component:  CreateProjectComponent},
     { path: 'tabs/updateproject/:id', component:  UpdateProjectComponent},
 

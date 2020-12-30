@@ -11,9 +11,6 @@ import { requestSubCategory } from 'src/Shared/Models/requestSubCategory';
 import { requestStatus } from 'src/Shared/Models/requestStatus';
 import { requestType } from 'src/Shared/Models/requestType';
 import { project } from 'src/Shared/Models/project';
-import { time, timeStamp } from 'console';
-
-
 @Component({
   selector: 'app-create-requeste',
   templateUrl: './create-requeste.component.html',
@@ -82,7 +79,7 @@ export class CreateRequesteComponent implements OnInit {
       this.requestObj = {
         description:'',requestTypeName:'',requestTypeId:0,requestSubCategoryName:'',requestSubCategoryId:0,
         id:0,requestStatusId:0,requestPeriorityId:0,requestName:'',requestCode:'',projectName:'',projectId:0,
-        requestPeriority:'',requestStatus:'',RequestDate:new Date(),requestTime:new time()
+        requestPeriority:'',requestStatus:'',RequestDate:new Date(),requestTime:''
       }
     })
   }

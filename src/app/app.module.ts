@@ -81,12 +81,12 @@ import 'core-js/es/array';
 import { HomeComponent } from './Components/Home/home.component';
 import { AllProjectsComponent } from './Components/Projects/all-projects/all-projects.component';
 import { CreateProjectComponent } from './Components/Projects/create-project/create-project.component';
-
 import { UpdateProjectComponent } from './Components/Projects/update-project/update-project.component';
 import { CategoryComponent } from './Components/Request/Categories/category/category.component';
 import { ClientsComponent } from './Components/Clients/clients.component';
-import { CreateRequesteComponent } from './Components/Request/create-requeste/create-requeste.component';
 import { DepartmentComponent } from './Components/Department/department.component';
+import { CreateRequesteComponent } from './Components/Request/create-requeste/create-requeste.component';
+import { ChangePaswwordComponent } from './Components/change-paswword/change-paswword.component';
 
 
 
@@ -105,9 +105,9 @@ registerLocaleData(en);
     UpdateProjectComponent,
     CategoryComponent,
     ClientsComponent,
-    CreateProjectComponent,
+    CreateRequesteComponent,
     DepartmentComponent,
-
+   ChangePaswwordComponent
   ],
   imports: [
     BrowserModule,
@@ -115,7 +115,6 @@ registerLocaleData(en);
     SliderModule,
     TabMenuModule,
     BrowserAnimationsModule,
-    FormsModule,
     TreeModule,
     InputTextareaModule,
     MatTooltipModule,

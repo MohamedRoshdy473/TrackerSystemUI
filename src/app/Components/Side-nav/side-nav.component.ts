@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-// import { AuthService } from '../../Shared/Services/auth.service';
+ import { AuthService } from 'src/Shared/Services/auth.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Directionality } from '@angular/cdk/bidi';
 
@@ -14,7 +14,7 @@ export class SideNavComponent implements OnInit {
   show: boolean;
   direction = 'ltr';
 
-  constructor( public translate: TranslateService, public dir: Directionality) {
+  constructor(private AuthService: AuthService, public translate: TranslateService, public dir: Directionality) {
     this.show = true;
     // console.log(dir.value);
     // this.direction = 'rtl';
@@ -32,7 +32,7 @@ export class SideNavComponent implements OnInit {
 
   }
   logout() {
-    // this.AuthService.logout();
+    this.AuthService.logout();
   }
   isAdmin() {
     // this.show == this.show;
