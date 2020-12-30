@@ -81,15 +81,14 @@ import 'core-js/es/array';
 import { HomeComponent } from './Components/Home/home.component';
 import { AllProjectsComponent } from './Components/Projects/all-projects/all-projects.component';
 import { CreateProjectComponent } from './Components/Projects/create-project/create-project.component';
-<<<<<<< Updated upstream
+
 import { UpdateProjectComponent } from './Components/Projects/update-project/update-project.component';
-=======
 import { CategoryComponent } from './Components/Request/Categories/category/category.component';
 import { ClientsComponent } from './Components/Clients/clients.component';
 import { CreateRequesteComponent } from './Components/Request/create-requeste/create-requeste.component';
 import { DepartmentComponent } from './Components/Department/department.component';
 
->>>>>>> Stashed changes
+
 
 registerLocaleData(en);
 
@@ -103,15 +102,12 @@ registerLocaleData(en);
     SideNavComponent,
     AllProjectsComponent,
     CreateProjectComponent,
-<<<<<<< Updated upstream
-    UpdateProjectComponent
-=======
+    UpdateProjectComponent,
     CategoryComponent,
     ClientsComponent,
-    CreateRequesteComponent,
+    CreateProjectComponent,
     DepartmentComponent,
-    // SubCategoryComponent
->>>>>>> Stashed changes
+
   ],
   imports: [
     BrowserModule,
