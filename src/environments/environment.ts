@@ -22,10 +22,14 @@ export const environment = {
   projectPositions: 'http://localhost:50653/api/ProjectPositions/',
   getDepartmentByEmpID:'http://localhost:50653/api/Departments/GetDepartmentByEmployeeId/',
   projectTypes:'http://localhost:50653/api/ProjectTypes',
+<<<<<<< Updated upstream
 
 GetAllMilestonsByProjectId:'http://localhost:50653/api/MileStones/GetMileStonesByProjectId/',
 GetAllTeamsByProjectId:'http://localhost:50653/api/ProjectTeam/GetProjectTeamsByProjectId/',
 GetAllDocumentByProjectId:'http://localhost:50653/api/ProjectDocument/GetProjectDocumentsByProjectId/',
+=======
+  User:'http://localhost:50653/api',
+>>>>>>> Stashed changes
   postProjectDocumentByProjectID:'http://localhost:50653/api/ProjectDocument/SaveDocument',
   uploadFile:'http://localhost:50653/api/ProjectDocument/uploadfile/',
 deletestakeholder:'http://localhost:50653/api/Stackeholders/',

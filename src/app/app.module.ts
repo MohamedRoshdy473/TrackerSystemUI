@@ -85,10 +85,20 @@ import { CreateProjectComponent } from './Components/Projects/create-project/cre
 import { UpdateProjectComponent } from './Components/Projects/update-project/update-project.component';
 =======
 import { CategoryComponent } from './Components/Request/Categories/category/category.component';
+<<<<<<< Updated upstream
 import { ClientsComponent } from './Components/Clients/clients.component';
 import { CreateRequesteComponent } from './Components/Request/create-requeste/create-requeste.component';
 import { DepartmentComponent } from './Components/Department/department.component';
 
+>>>>>>> Stashed changes
+=======
+import { ClientsComponent } from './Components/clients/clients.component';
+import { AllUsersComponent } from './Components/all-users/all-users.component';
+import { AddEmployeeComponent } from './Components/employee/add-employee/add-employee.component';
+import { EditEmployeeComponent } from './Components/employee/edit-employee/edit-employee.component';
+import { DisplayAllEmployeesComponent } from './Components/employee/display-all-employees/display-all-employees.component';
+import { ChangePaswwordComponent } from './Components/change-paswword/change-paswword.component';
+// import { SubCategoryComponent } from './Components/Request/Categories/sub-category/sub-category.component';
 >>>>>>> Stashed changes
 
 registerLocaleData(en);
@@ -108,8 +118,16 @@ registerLocaleData(en);
 =======
     CategoryComponent,
     ClientsComponent,
+<<<<<<< Updated upstream
     CreateRequesteComponent,
     DepartmentComponent,
+=======
+    AllUsersComponent,
+    AddEmployeeComponent,
+    EditEmployeeComponent,
+    DisplayAllEmployeesComponent,
+    ChangePaswwordComponent,
+>>>>>>> Stashed changes
     // SubCategoryComponent
 >>>>>>> Stashed changes
   ],

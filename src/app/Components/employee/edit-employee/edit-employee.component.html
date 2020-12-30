@@ -1,0 +1,116 @@
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+<p-toast></p-toast>
+<p-toast position="top-left" key="tl"></p-toast>
+<p-toast position="top-center" key="tc"></p-toast>
+<p-toast position="bottom-center" key="bc"></p-toast>
+
+<p-toast position="bottom-center" key="c" (onClose)="onReject()" [baseZIndex]="5000">
+    <ng-template let-message pTemplate="message">
+        <div class="p-flex p-flex-column" style="flex: 1">
+            <div class="p-text-center">
+                <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+                <h4>{{message.summary}}</h4>
+                <p>{{message.detail}}</p>
+            </div>
+            <div class="p-grid p-fluid">
+                <div class="p-col-6">
+                    <button type="button" pButton (click)="onConfirm()" label="Yes" class="p-button-success"></button>
+                </div>
+                <div class="p-col-6">
+                    <button type="button" pButton (click)="onReject()" label="No" class="p-button-secondary"></button>
+                </div>
+            </div>
+        </div>
+    </ng-template>
+</p-toast>
+<div class="container">
+    <form #frm="ngForm" (ngSubmit)="update()">
+        <div class="form-row">
+            <div class="col-md-6">
+                <label for="name">Employee Name</label>
+                <input type="text" #EmpName="ngModel" [class.is-invalid]="EmpName.invalid && EmpName.touched"
+                    [class.is-valid]="EmpName.valid" [(ngModel)]="Employee.employeeName" required minlength="3" name="employeeName"
+                    id="EmpName" class="form-control" placeholder="Employee Name" aria-describedby="helpId">
+            </div>
+            <div class="col-md-6">
+                <label for="Position">Position</label>
+                <input type="text" #position="ngModel" [class.is-invalid]="position.invalid && position.touched"
+                    [class.is-valid]="position.valid" [(ngModel)]="Employee.position" required minlength="3" name="position"
+                    id="positions" class="form-control" placeholder="Position" aria-describedby="helpId">
+            </div>
+        </div>
+        <br>
+        <div class="form-row">
+            <div class="col-md-6">
+                <label for="Code">Employee Code</label>
+                <input type="text" #Code="ngModel" [class.is-invalid]="Code.invalid && Code.touched"
+                    [class.is-valid]="Code.valid" [(ngModel)]="Employee.employeeCode" required minlength="3" name="Code"
+                    id="Codes" class="form-control" placeholder="Code" aria-describedby="helpId">
+            </div>
+            <div class="col-md-6">
+                <label for="Address">Address</label>
+                <input type="text" #EmpAddress="ngModel" [class.is-invalid]="EmpAddress.invalid && EmpAddress.touched"
+                    [class.is-valid]="EmpAddress.valid" [(ngModel)]="Employee.address" required minlength="3"
+                    name="EmpAddress" id="EmpName" class="form-control" placeholder="Address"
+                    aria-describedby="helpId">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="Address">Department Name</label>
+                <select [(ngModel)]="Employee.departmentId" name="sel2" class="form-control">
+                    <option value="" selected disabled hidden>Department</option>
+                    <option *ngFor="let item of Departments" value="{{item.id}}">{{item.name}}</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="gender">Gender</label>
+                <select name="gender" [(ngModel)]="Employee.gender" class="form-control">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="MaritalStatus">Marital Status</label>
+                <select name="Mstatus" [(ngModel)]="Employee.maritalStatus" class="form-control">
+                    <option value="Single">Single</option>
+                    <option value="married">Married</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="Email">Email</label>
+                <input type="text" class="form-control" name="email" [(ngModel)]="Employee.email"
+                    placeholder="Email">
+            </div>
+            <div class="col-md-3">
+                <label for="Phone">Phone</label>
+                <input mask="88888" class="form-control" type="text" name="phone" [(ngModel)]="Employee.phone"
+                    placeholder="Phone">
+            </div>
+            <div class="col-md-3">
+                <label for="Mobile">Mobile</label>
+                <input mask="99999" class="form-control" type="text" name="mobile" [(ngModel)]="Employee.mobile"
+                    placeholder="Mobile">
+            </div>
+        </div>
+        <br>
+        <label for="Upload">Upload Image</label><br>
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+            </div>
+            <div class="custom-file">
+                <input accept="image/*" (change)="onFileSelected($event.target.files)" type="file"
+                    class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                <label class="custom-file-label" for="inputGroupFile01" >Choose file</label>
+            </div>
+        </div>
+        <br>
+        <button id="Add" type="submit" [disabled]="frm.invalid" class="btn btn-primary">Update</button>
+    </form>
+</div>
+<br>
