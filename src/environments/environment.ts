@@ -12,16 +12,24 @@ export const environment = {
   organizations: 'http://localhost:50653/api/Organizations',
   clients: 'http://localhost:50653/api/Clients',
   employees: 'http://localhost:50653/api/Employees/',
+  requests: 'http://localhost:50653/api/Request/',
+  requestStatus: 'http://localhost:50653/api/RequestStatus/',
+  requestTypes: 'http://localhost:50653/api/ProjectTypes/',
+  requestPeriorities: 'http://localhost:50653/api/RequestPeriorities/',
   department: 'http://localhost:50653/api/Departments/',
   requestSubCategory: 'http://localhost:50653/api/RequestSubCategory/',
   requestCategory: 'http://localhost:50653/api/RequestCategory/',
   projectPositions: 'http://localhost:50653/api/ProjectPositions/',
   getDepartmentByEmpID:'http://localhost:50653/api/Departments/GetDepartmentByEmployeeId/',
   projectTypes:'http://localhost:50653/api/ProjectTypes',
+<<<<<<< Updated upstream
 
 GetAllMilestonsByProjectId:'http://localhost:50653/api/MileStones/GetMileStonesByProjectId/',
 GetAllTeamsByProjectId:'http://localhost:50653/api/ProjectTeam/GetProjectTeamsByProjectId/',
 GetAllDocumentByProjectId:'http://localhost:50653/api/ProjectDocument/GetProjectDocumentsByProjectId/',
+=======
+  User:'http://localhost:50653/api',
+>>>>>>> Stashed changes
   postProjectDocumentByProjectID:'http://localhost:50653/api/ProjectDocument/SaveDocument',
   uploadFile:'http://localhost:50653/api/ProjectDocument/uploadfile/',
 deletestakeholder:'http://localhost:50653/api/Stackeholders/',

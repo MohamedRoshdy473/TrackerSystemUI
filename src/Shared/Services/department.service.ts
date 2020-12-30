@@ -23,5 +23,9 @@ export class DepartmentService {
   {
     return this.httpClient.get<department>(`${environment.getDepartmentByEmpID}${empID}`,this.httpHeader) ;
   }
+  inserDepartment(dep:department): Observable <any>{
+    return this.httpClient.post<any> (`${environment.department}`,dep,this.httpHeader) ;
+  }
+  
 
 }
