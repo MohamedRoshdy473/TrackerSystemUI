@@ -107,7 +107,7 @@ export class AllProjectsComponent implements OnInit {
   //   this.router.navigate(['updateproject']);
   // }
   DisplayToEditProject(Projectid: number) {
-
+this.ngOnInit()
     this.route.navigate(['./tabs/updateproject']);
     console.log(Projectid)
     this.projects.forEach(element => {
