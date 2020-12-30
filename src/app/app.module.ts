@@ -87,6 +87,10 @@ import { ClientsComponent } from './Components/Clients/clients.component';
 import { DepartmentComponent } from './Components/Department/department.component';
 import { CreateRequesteComponent } from './Components/Request/create-requeste/create-requeste.component';
 import { ChangePaswwordComponent } from './Components/change-paswword/change-paswword.component';
+import { AddEmployeeComponent } from './Components/employee/add-employee/add-employee.component';
+import { EditEmployeeComponent } from './Components/employee/edit-employee/edit-employee.component';
+import { DisplayAllEmployeesComponent } from './Components/employee/display-all-employees/display-all-employees.component';
+import { AllUsersComponent } from './Components/all-users/all-users.component';
 
 
 
@@ -107,7 +111,11 @@ registerLocaleData(en);
     ClientsComponent,
     CreateRequesteComponent,
     DepartmentComponent,
-   ChangePaswwordComponent
+   ChangePaswwordComponent,
+   AddEmployeeComponent,
+   EditEmployeeComponent,
+   DisplayAllEmployeesComponent,
+   AllUsersComponent
   ],
   imports: [
     BrowserModule,
