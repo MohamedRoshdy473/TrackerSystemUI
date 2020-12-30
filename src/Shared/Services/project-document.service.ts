@@ -36,5 +36,13 @@ export class ProjectDocumentService {
 
     return this.httpClient.post(`${environment.uploadFile}`,formData,this.httpHeader)
   }
-  
+  GetAllDocumentsByProjectID(ProjectID:Number): Observable <ProjectDocuments[]>{
+    return this.httpClient.get<ProjectDocuments[]> (`${environment.GetAllDocumentByProjectId}${ProjectID}`,this.httpHeader) ;
+  }
+  updatedocumentbyprojectid(documents:ProjectDocuments[]):Observable<ProjectDocuments[]>{
+    return this.httpClient.put<ProjectDocuments[]>(`${environment.updatedocumectsbyprojectid}`,documents,this.httpHeader);
+  }
+  deletedocument(id:number):Observable<any>{ 
+    return this.httpClient.delete<any>(`${environment.deletedocument}${id}`,this.httpHeader);
+  }
 }

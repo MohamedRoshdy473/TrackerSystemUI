@@ -2,8 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, MenuItem, MessageService } from 'primeng/api';
 import { project } from '../../../../Shared/Models/project'
 import { ProjectService } from '../../../../Shared/Services/project.service'
-import {StackholdersService} from '../../../../Shared/Services/stackholders.service'
-import {stackholder} from '../../../../Shared/Models/stackeholder'
+import { StackholdersService } from '../../../../Shared/Services/stackholders.service'
+import { MilestoneService } from '../../../../Shared/Services/milestone.service'
+import { ProjectTeamService } from '../../../../Shared/Services/project-team.service'
+import { ProjectDocumentService } from '../../../../Shared/Services/project-document.service'
+import { stackholder } from '../../../../Shared/Models/stackeholder'
+import { mileStone } from '../../../../Shared/Models/mileStone'
+import { projectTeam } from '../../../../Shared/Models/projectTeam'
+import { ProjectDocuments } from '../../../../Shared/Models/ProjectDocuments'
+import {Router, RouterLink} from '@angular/router';
 @Component({
   selector: 'app-all-projects',
   templateUrl: './all-projects.component.html',
@@ -12,13 +19,23 @@ import {stackholder} from '../../../../Shared/Models/stackeholder'
 export class AllProjectsComponent implements OnInit {
 
   projects: project[]
-  project1: project
-  stackholders:stackholder[]
+  project1: project = new project()
+  project2: project
+  stackholders: stackholder[]
+  mileStones: mileStone[]
+  teams: projectTeam[]
+  documents: ProjectDocuments[]
   displayModal: boolean;
   displayModal2: boolean;
   displayMaximizable: boolean;
-
-  constructor(private messageService:MessageService,private confirmationService:ConfirmationService,private projectService: ProjectService ,private stackholderService: StackholdersService) { }
+  displayEdit: boolean;
+  id: any;
+  constructor(private route:Router,private projectteamservice: ProjectTeamService, 
+    private projectdocumentsservice: ProjectDocumentService, 
+    private messageService: MessageService, private confirmationService: ConfirmationService, 
+    private milestoneservice: MilestoneService, private projectService: ProjectService, 
+    private stackholderService: StackholdersService,
+    private router: Router) { }
 
   ngOnInit() {
     // this.projects = []
@@ -26,10 +43,19 @@ export class AllProjectsComponent implements OnInit {
       this.projects = projects
       console.log(this.projects)
     })
+
     this.project1 = {
-      actualEndDate: new Date(), id: 0, organizationId: 0, projectPeriod: 0,clientMobile:'',clientName:'',organizationName:'',projectTypeName:'',
-      planndedEndDate: new Date(), planndedStartDate: new Date(), projectCode: '',listOfStackholders:[],projectTypeId:0,
+      actualEndDate: new Date(), listOfdocuments: [], listofprojectteam: [], id: 0, organizationId: 0, projectPeriod: 0, clientMobile: '', clientName: '', organizationName: '', projectTypeName: '',
+      planndedEndDate: new Date(), planndedStartDate: new Date(), projectCode: '', listOfStackholders: [], listOfmilestones: [], projectTypeId: 0,
       projectName: '', actualStartDate: new Date(), clientId: 0, cost: 0, description: '', employeeId: 0
+    }
+    this.projectObj = {
+      actualEndDate: new Date(), listOfdocuments: [], listofprojectteam: [], id: 0, organizationId: 0, projectPeriod: 0, clientMobile: '', clientName: '', organizationName: '', projectTypeName: '',
+      planndedEndDate: new Date(), planndedStartDate: new Date(), projectCode: '', listOfStackholders: [], listOfmilestones: [], projectTypeId: 0,
+      projectName: '', actualStartDate: new Date(), clientId: 0, cost: 0, description: '', employeeId: 0
+    }
+    this.stake={
+      id:0,stackeholderName:'',mobile:'',projectId:0,rank:'',description:''
     }
   }
   showAllProjectDetails(projectID: number) {
@@ -47,16 +73,91 @@ export class AllProjectsComponent implements OnInit {
         this.project1 = element
         console.log(this.project1)
       }
-      this.stackholderService.GetAllStackholdersByProjectID(Projectid).subscribe(e=>{
+      this.stackholderService.GetAllStackholdersByProjectID(Projectid).subscribe(e => {
         this.stackholders = e
-      console.log("e",e)
+        // console.log("e",e)
 
-      this.project1.listOfStackholders = this.stackholders
-      console.log("stackholders",this.stackholders)
+        this.project1.listOfStackholders = this.stackholders
+        // console.log("stackholders",this.stackholders)
       })
+
+      //milestone
+      this.milestoneservice.GetAllMileStonesByProjectID(Projectid).subscribe(m => {
+        this.mileStones = m;
+        this.project1.listOfmilestones = this.mileStones;
+        //console.log("milestones",this.mileStones)
+      }), err => console.log(err)
+
+      this.projectteamservice.GetAllTeamsByProjectID(Projectid).subscribe(t => {
+        this.teams = t;
+        this.project1.listofprojectteam = this.teams;
+      }), err => console.log(err)
+
+      this.projectdocumentsservice.GetAllDocumentsByProjectID(Projectid).subscribe(d => {
+        this.documents = d;
+        this.project1.listOfdocuments = this.documents;
+      }), err => console.log(err)
+
     });
     this.displayMaximizable = true;
   }
+  stake:any
+  // getprojId(id:number){
+  //   RouterLink
+  //   this.router.navigate(['updateproject']);
+  // }
+  DisplayToEditProject(Projectid: number) {
+
+    this.route.navigate(['./tabs/updateproject']);
+    console.log(Projectid)
+    this.projects.forEach(element => {
+      if (element.id == Projectid) {
+        this.project1 = element
+        console.log(this.project1)
+      }
+      this.projectService.getProjectById(this.project1.id).subscribe(res => {
+        this.projectObj = res;
+      })
+
+      this.stackholderService.GetAllStackholdersByProjectID(Projectid).subscribe(e => {
+        this.stackholders = e
+        this.projectObj.listOfStackholders=e
+        this.stake=e
+        console.log("stakeee",this.stake)
+        // console.log("e",e)
+
+        this.project1.listOfStackholders = this.stackholders
+        // console.log("stackholders",this.stackholders)
+      })
+      //milestone
+      this.milestoneservice.GetAllMileStonesByProjectID(Projectid).subscribe(m => {
+        this.mileStones = m;
+        this.project1.listOfmilestones = this.mileStones;
+        this.projectObj.listOfmilestones=m
+
+        //console.log("milestones",this.mileStones)
+      }), err => console.log(err)
+
+      this.projectteamservice.GetAllTeamsByProjectID(Projectid).subscribe(t => {
+        this.teams = t;
+        this.project1.listofprojectteam = this.teams;
+        this.projectObj.listofprojectteam=t
+        console.log(  this.projectObj.listofprojectteam)
+      }), err => console.log(err)
+
+      this.projectdocumentsservice.GetAllDocumentsByProjectID(Projectid).subscribe(d => {
+        this.documents = d;
+        this.project1.listOfdocuments = this.documents;
+        this.projectObj.listOfdocuments=d;
+      }), err => console.log(err)
+
+    });
+    this.displayEdit = true;
+  }
+  
+  projectObj: any;
+  
+
   confirm(id) {
     console.log(id)
     this.confirmationService.confirm({
@@ -65,7 +166,7 @@ export class AllProjectsComponent implements OnInit {
         console.log(id)
         this.projectService.DeleteProject(id).subscribe(
           data => {
-            console.log(id,data)
+            console.log(id, data)
             this.ngOnInit(),
               this.messageService.add({ severity: 'info', summary: 'Record Deleted!', detail: 'Record Deleted!' });
           }
@@ -100,12 +201,15 @@ export class AllProjectsComponent implements OnInit {
   showBottomCenter() {
     this.messageService.add({ key: 'bc', severity: 'info', summary: 'Info', detail: 'Message Content' });
   }
+  
 
   showConfirm() {
     this.messageService.clear();
     this.messageService.add({ key: 'c', sticky: true, severity: 'warn', summary: 'Are you sure?', detail: 'Confirm to proceed' });
   }
-
+  hello(e){
+    console.log(e)
+  }
   showMultiple() {
     this.messageService.addAll([
       { severity: 'info', summary: 'Message 1', detail: 'Message Content' },

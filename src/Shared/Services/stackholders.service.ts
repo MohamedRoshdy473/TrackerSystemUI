@@ -25,4 +25,10 @@ insertListOfStackholders(stackholders:stackholder[]): Observable <any >{
 
   return this.httpClient.post<any> (`${environment.postListOfStackholders}`,stackholders,this.httpHeader) ;
 }
+updatestakeholdersbyprojectid(holders:stackholder[]):Observable<stackholder[]>{
+  return this.httpClient.put<stackholder[]>(`${environment.updatestakeholdersbyprojectid}`,holders,this.httpHeader);
+}
+deletestakeholder(id:number):Observable<any>{ 
+  return this.httpClient.delete<any>(`${environment.deletestakeholder}${id}`,this.httpHeader);
+}
 }

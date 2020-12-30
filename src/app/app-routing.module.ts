@@ -7,6 +7,7 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { AboutComponent } from './about/about.component';
 import {AllProjectsComponent} from '../app/Components/Projects/all-projects/all-projects.component'
 import {CreateProjectComponent} from '../app/Components/Projects/create-project/create-project.component'
+import {UpdateProjectComponent} from '../app/Components/Projects/update-project/update-project.component'
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login'},
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent ,children:[
     { path: 'tabs', component:  AllProjectsComponent},
     { path: 'tabs/createProject', component:  CreateProjectComponent},
+    { path: 'tabs/updateproject/:id', component:  UpdateProjectComponent},
 
 ]}
 ];

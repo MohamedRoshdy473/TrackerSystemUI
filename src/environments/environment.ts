@@ -17,12 +17,21 @@ export const environment = {
   getDepartmentByEmpID:'http://localhost:50653/api/Departments/GetDepartmentByEmployeeId/',
   projectTypes:'http://localhost:50653/api/ProjectTypes',
 
-
+GetAllMilestonsByProjectId:'http://localhost:50653/api/MileStones/GetMileStonesByProjectId/',
+GetAllTeamsByProjectId:'http://localhost:50653/api/ProjectTeam/GetProjectTeamsByProjectId/',
+GetAllDocumentByProjectId:'http://localhost:50653/api/ProjectDocument/GetProjectDocumentsByProjectId/',
   postProjectDocumentByProjectID:'http://localhost:50653/api/ProjectDocument/SaveDocument',
   uploadFile:'http://localhost:50653/api/ProjectDocument/uploadfile/',
-
-
-
+deletestakeholder:'http://localhost:50653/api/Stackeholders/',
+deletemilestone:' http://localhost:50653/api/MileStones/',
+deleteteam:'http://localhost:50653/api/ProjectTeam/',
+deletedocument:'http://localhost:50653/api/ProjectDocument/',
+updatestakeholdersbyprojectid:'http://localhost:50653/api/Stackeholders/updatestakehodersByProjectId/1',
+updateteamsbyprojectid:'http://localhost:50653/api/ProjectTeam/updateteamsByProjectId/1',
+updatemilestonebyprojectid:'http://localhost:50653/api/MileStones/PutmilestonesDTOByProjectId/1',
+updatedocumectsbyprojectid:'http://localhost:50653/api/ProjectDocument/PutDocumentsDTOByProjectId/',
+updateProject:'http://localhost:50653/api/Project/',
+GetProjectById:'http://localhost:50653/api/Project/',
 
 
   production: false

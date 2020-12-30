@@ -82,6 +82,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { AllProjectsComponent } from './Components/Projects/all-projects/all-projects.component';
 import { CreateProjectComponent } from './Components/Projects/create-project/create-project.component';
+import { UpdateProjectComponent } from './Components/Projects/update-project/update-project.component';
 
 registerLocaleData(en);
 
@@ -95,7 +96,8 @@ registerLocaleData(en);
     SideNavComponent,
     AboutComponent,
     AllProjectsComponent,
-    CreateProjectComponent
+    CreateProjectComponent,
+    UpdateProjectComponent
   ],
   imports: [
     BrowserModule,

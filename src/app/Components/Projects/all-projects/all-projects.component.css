@@ -15,6 +15,10 @@
     cursor: pointer;
     color: rgb(255, 0, 0);
 }
-#PopupWindow { 
+.PopupWindow { 
     overflow-y:scroll;
     height:460px;  }
+    #PopupWindow1 { 
+        overflow-y:scroll;
+        height:460px;  }
+        

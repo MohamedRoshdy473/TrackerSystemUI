@@ -27,4 +27,10 @@ export class ProjectService {
   DeleteProject(id:number) {
     return this.httpClient.delete(`${environment.project}/`+id, this.httpHeader);
   }
+  updateProject(id:number,project:project):Observable<project>{
+    return this.httpClient.put<project>(`${environment.updateProject}${id}`,project,this.httpHeader);
+  }
+  getProjectById(id:number):Observable<any>{
+    return this.httpClient.get<any>(`${environment.GetProjectById}${id}`,this.httpHeader);
+  }
 }

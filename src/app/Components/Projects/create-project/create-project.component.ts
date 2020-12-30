@@ -41,7 +41,6 @@ export class CreateProjectComponent implements OnInit {
   OrganizationObj: organization;
   stackholderInLst: stackholder
   lstOfStackholder: stackholder[]
-  lstOfMilestones: mileStone[]
   lstOfProjectTeams: projectTeam[]
   ProjectTeam: projectTeam
   departments: department[]
@@ -49,6 +48,8 @@ export class CreateProjectComponent implements OnInit {
   lstOfprojectPosition: projectPosition[]
   projectPosition: projectPosition
   milestonInLst: mileStone
+  lstOfMilestones: mileStone[]
+
   lstEmployees: employee[];
   employeeObj: employee;
   lstProjectTypes: projectType[];
@@ -72,9 +73,9 @@ export class CreateProjectComponent implements OnInit {
     this.lstOfStackholder = []
     this.lstOfMilestones = []
     this.lstoddocproj=[]
+    this.lstOfProjectTeams = []
 
     this.lstOfprojectPosition = []
-    this.lstOfProjectTeams = []
     this.docproject={
       Description:'',documentName:'',DocumentFile:'',id:0,projectId:0
     }

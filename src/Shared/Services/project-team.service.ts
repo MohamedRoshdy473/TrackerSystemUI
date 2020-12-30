@@ -20,4 +20,13 @@ export class ProjectTeamService {
   GetAllProjectTeams(): Observable<projectTeam[]> {
     return this.httpClient.get<projectTeam[]>(`${environment.ProjectTeams}`, this.httpHeader);
   }
+  GetAllTeamsByProjectID(ProjectID:Number): Observable <projectTeam[]>{
+    return this.httpClient.get<projectTeam[]> (`${environment.GetAllTeamsByProjectId}${ProjectID}`,this.httpHeader) ;
+  }
+  updateteambyprojectid(team:projectTeam[]):Observable<projectTeam[]>{
+    return this.httpClient.put<projectTeam[]>(`${environment.updateteamsbyprojectid}`,team,this.httpHeader);
+  }
+  deleteteam(id:number):Observable<any>{ 
+    return this.httpClient.delete<any>(`${environment.deleteteam}${id}`,this.httpHeader);
+  }
 }
