@@ -29,10 +29,11 @@ export class SignupComponent implements OnInit {
     this.loginSer.login(this.email, this.password)
       .subscribe(
         res => {
-          console.log(res)
+          console.log("res is ",res)
           localStorage.setItem("token", res["token"])
           localStorage.setItem("roles", res["roles"])
-          // localStorage.setItem("pharmacyLoggedInID", res["pharmacyLoggedInID"])
+          localStorage.setItem("userName", res['userName']);
+          localStorage.setItem("id", res['id']);     
           this.role = localStorage.getItem("roles")
           console.log(localStorage.getItem("token"))
           if (this.role == 'SuperAdmin') {
