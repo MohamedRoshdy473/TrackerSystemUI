@@ -24,7 +24,7 @@ const routes: Routes = [
     { path: 'Category', component:  CategoryComponent},
     { path: 'client', component:  ClientsComponent},
     { path: 'department', component:  DepartmentComponent},
-    { path: 'Requests', component:  CreateProjectComponent},
+    { path: 'Requests', component:  CreateRequesteComponent},
 
     { path: 'tabs/createProject', component:  CreateProjectComponent},
     { path: 'tabs/updateproject/:id', component:  UpdateProjectComponent},
