@@ -19,13 +19,33 @@ export class AuthService {
     localStorage.removeItem('token');
     this.router.navigate(['login']);
   }
+  IsSuperAdmin()
+  {
+    return localStorage.getItem('roles') == 'SuperAdmin';
+  }
   IsAdmin()
   {
     return localStorage.getItem('roles') == 'Admin';
   }
-  IsUser()
+  IsPMO()
   {
-    return localStorage.getItem('roles') == 'User';
+    return localStorage.getItem('roles') == 'PMO';
+  }
+  IsPM()
+  {
+    return localStorage.getItem('roles') == 'PM';
+  }
+  IsTL()
+  {
+    return localStorage.getItem('roles') == 'TL';
+  }
+  IsEmployee()
+  {
+    return localStorage.getItem('roles') == 'Employee';
+  }
+  IsClient()
+  {
+    return localStorage.getItem('roles') == 'Client';
   }
   changPassword(NewPassword:string)
   {

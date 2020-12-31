@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { employee } from 'src/Shared/Models/employee';
 import { EmployeeService } from 'src/Shared/Services/employee.service'
+import { AuthService } from 'src/Shared/Services/auth.service';
 
 @Component({
     selector: 'app-display-all-employees',
@@ -22,13 +23,13 @@ export class DisplayAllEmployeesComponent implements OnInit {
     //Employees: any;
 
     Employee: any;
-
+role:any;
     selectedProducts: employee[];
 
     submitted: boolean;
     representatives: { name: string; image: string; }[];
 
-    constructor(private EmployeeService: EmployeeService, private router: Router,
+    constructor(private EmployeeService: EmployeeService, private router: Router,private authservice:AuthService,
         private confirmationService: ConfirmationService, private messageService: MessageService) {
         this.Employee = {
             Address: '', Email: '', position: ''
@@ -53,9 +54,9 @@ export class DisplayAllEmployeesComponent implements OnInit {
                 this.loading = false;
             },
             (err) => { console.log(err) },
-
         );
-    }
+        this.role= localStorage.getItem('roles');
+        }
 
     onActivityChange(event) {
         const value = event.target.value;

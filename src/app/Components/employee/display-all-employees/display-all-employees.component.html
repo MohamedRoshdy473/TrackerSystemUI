@@ -112,10 +112,10 @@
                 <div  class="row">
                     <button (click)="showBasicDialog(employee.id)" class="btn btn-success c-btn">
                         <i class="p-button-icon pi pi-compass" aria-hidden="true"></i></button>
-                    <button [routerLink]="['/home/editEmployee',employee.id]" class="btn btn-primary c-btn">
+                    <button *ngIf='role=="SuperAdmin"' [routerLink]="['/home/editEmployee',employee.id]" class="btn btn-primary c-btn">
                         <i class="p-button-icon pi pi-pencil" aria-hidden="true"></i></button>
 
-                    <button (click)="confirm(employee.id)" style="display: flex;" class="btn btn-danger c-btn">
+                    <button *ngIf='role=="SuperAdmin"' (click)="confirm(employee.id)" style="display: flex;" class="btn btn-danger c-btn">
                         <i class="p-button-icon pi pi-times" aria-hidden="true"></i></button>
                 </div>
             </td>
