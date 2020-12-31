@@ -15,27 +15,20 @@ import { CategoryComponent } from './Components/Request/Categories/category/cate
 import { ClientsComponent } from './Components/Clients/clients.component';
 import { CreateRequesteComponent } from './Components/Request/create-requeste/create-requeste.component';
 import { DepartmentComponent } from './Components/Department/department.component';
-import { ChangePaswwordComponent } from './Components/change-paswword/change-paswword.component';
-import { DisplayAllEmployeesComponent } from './Components/employee/display-all-employees/display-all-employees.component';
-import { AllUsersComponent } from './Components/all-users/all-users.component';
-import { AddEmployeeComponent } from './Components/employee/add-employee/add-employee.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login'},
   { path: 'login', component:  SignupComponent},
-  { path: 'changePassword', component:  ChangePaswwordComponent},
   { path: 'home', component: HomeComponent ,children:[
     { path: 'tabs', component:  AllProjectsComponent},
     { path: 'Category', component:  CategoryComponent},
     { path: 'client', component:  ClientsComponent},
     { path: 'department', component:  DepartmentComponent},
     { path: 'Requests', component:  CreateRequesteComponent},
+
     { path: 'tabs/createProject', component:  CreateProjectComponent},
     { path: 'tabs/updateproject/:id', component:  UpdateProjectComponent},
-    {path:'AllUsers',component:AllUsersComponent},
-    { path: 'employee', component:DisplayAllEmployeesComponent},
-    { path: 'addemployee', component:AddEmployeeComponent },
-    { path: 'editEmployee/:empId', component:AddEmployeeComponent },
+
 ]}
 ];
 
