@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { department } from "../../../Shared/Models/department";
-import { DepartmentService } from "../../../Shared/Services/department.service";
+import { department } from "../../../../Shared/Models/department";
+import { DepartmentService } from "../../../../Shared/Services/department.service";
 @Component({
   selector: 'app-department',
   templateUrl: './department.component.html',

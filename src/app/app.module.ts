@@ -30,7 +30,6 @@ import {MultiSelectModule} from 'primeng/multiselect';
 import {ContextMenuModule} from 'primeng/contextmenu';
 import {DialogModule} from 'primeng/dialog';
 import {ProgressBarModule} from 'primeng/progressbar';
-import {SignupComponent} from './Components/Signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
@@ -84,13 +83,14 @@ import { CreateProjectComponent } from './Components/Projects/create-project/cre
 import { UpdateProjectComponent } from './Components/Projects/update-project/update-project.component';
 import { CategoryComponent } from './Components/Request/Categories/category/category.component';
 import { ClientsComponent } from './Components/Clients/clients.component';
-import { DepartmentComponent } from './Components/Department/department.component';
+import { DepartmentComponent } from './Components/DepartmentComponents/Department/department.component';
 import { CreateRequesteComponent } from './Components/Request/create-requeste/create-requeste.component';
 import { ChangePaswwordComponent } from './Components/change-paswword/change-paswword.component';
 import { AddEmployeeComponent } from './Components/employee/add-employee/add-employee.component';
 import { EditEmployeeComponent } from './Components/employee/edit-employee/edit-employee.component';
 import { DisplayAllEmployeesComponent } from './Components/employee/display-all-employees/display-all-employees.component';
 import { AllUsersComponent } from './Components/all-users/all-users.component';
+import { SignupComponent } from './Components/Signup/signup.component';
 
 
 
