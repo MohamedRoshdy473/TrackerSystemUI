@@ -3,25 +3,27 @@
 <div class="row">
     <div class="p-field col-md-3">
         <label for="Project Name" class="labelMarginRight">RequestName Name</label><br>
-        <input minlength="3" type="text" [(ngModel)]="requestObj.requestName" pInputText id="name" required autofocus />
+        <input minlength="3" placeholder="Enter Request Name" type="text" [(ngModel)]="requestObj.requestName" pInputText id="name" required autofocus />
     </div>
     <div class="p-field col-md-3">
         <div class="p-field col-md-3">
             <label for="Project Code" class="labelMarginRight">RequestCode</label><br>
-            <input type="text" [(ngModel)]="requestObj.requestCode" pInputText id="Code" required autofocus />
+            <input type="text" placeholder="RequestCode" [(ngModel)]="requestObj.requestCode" pInputText id="Code" required autofocus />
         </div>
     </div>
     <div class="p-field col-md-3">
-        <label for="Project Type" class="labelMarginRight">Project Name</label><br>
-        <p-dropdown [options]="lstProjects" [(ngModel)]="requestObj.projectId" placeholder="Select Project Name"
-            optionLabel="projectName" optionValue="id">
-        </p-dropdown>
+        <label for="Request Date" class="labelMarginRight">Request Date</label><br>
+        <p-calendar [(ngModel)]="requestObj.requestDate" dateFormat="dd/mm/yy"></p-calendar>
+        <small class="p-invalid"></small>
     </div>
-</div><br>
+    <div class="p-field col-md-3">
+        <label for="Request Date" class="labelMarginRight">Request Time</label><br>
+
+        <p-calendar [(ngModel)]="requestObj.requestTime" [timeOnly]="true" inputId="timeonly"></p-calendar>
+    </div>
+
+</div>
 <div class="row">
-
-
-
 </div> <br>
 <div class="row">
     <div class="col">
@@ -30,7 +32,7 @@
             optionLabel="typeName" optionValue="id">
         </p-dropdown>
     </div>
-    <div class="col">
+    <div class="col" style="margin-left: 21px;">
         <label for="Project Type" class="labelMarginRight">Request Sub Category</label><br>
         <p-dropdown [options]="lstReqSubCategories" [(ngModel)]="requestObj.requestSubCategoryId"
             placeholder="Select Sub Category" optionLabel="subCategoryName" optionValue="id">
@@ -42,13 +44,25 @@
             placeholder="Select Request Periority" optionLabel="periorty" optionValue="id">
         </p-dropdown>
     </div>
-
-</div><br>
-<div class="row">
     <div class="p-field col-md-3">
         <label for="Project Type" class="labelMarginRight">Request Status</label><br>
         <p-dropdown [options]="lstReqStatus" [(ngModel)]="requestObj.requestStatusId"
             placeholder="Select Request Status" optionLabel="status" optionValue="id">
+        </p-dropdown>
+    </div>
+
+</div><br>
+<div class="row">
+    <!-- <div class="p-field col-md-3">
+        <label for="Project Type" class="labelMarginRight">Request Mode</label><br>
+        <p-dropdown [options]="lstRequestMode" [(ngModel)]="requestObj.requestModeId"
+            placeholder="Select Request Mode" optionLabel="status" optionValue="id">
+        </p-dropdown>
+    </div> -->
+    <div class="p-field col-md-3">
+        <label for="Project Type" class="labelMarginRight">Project Name</label><br>
+        <p-dropdown [options]="lstProjects" [(ngModel)]="requestObj.projectId" placeholder="Select Project Name"
+            optionLabel="projectName" optionValue="id">
         </p-dropdown>
     </div>
     <div class="p-field col-md-9">

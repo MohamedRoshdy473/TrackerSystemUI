@@ -11,6 +11,10 @@ import { requestSubCategory } from 'src/Shared/Models/requestSubCategory';
 import { requestStatus } from 'src/Shared/Models/requestStatus';
 import { requestType } from 'src/Shared/Models/requestType';
 import { project } from 'src/Shared/Models/project';
+import { asset } from 'src/Shared/Models/asset';
+import { requestMode } from 'src/Shared/Models/requestMode';
+import { AssetService } from 'src/Shared/Services/asset.service';
+import { RequestModeService } from 'src/Shared/Services/request-mode.service';
 @Component({
   selector: 'app-create-requeste',
   templateUrl: './create-requeste.component.html',
@@ -20,6 +24,10 @@ export class CreateRequesteComponent implements OnInit {
   
   lstReqests:request[]
   requestObj:request
+  lstReqAssets:asset[]
+  reqAsset:asset
+  lstRequestMode:requestMode[]
+  requestMode:requestMode
   lstReqTypies:requestType[]
   lstReqPeriorities:requestPeriority[]
   lstReqStatus:requestStatus[]
@@ -29,10 +37,10 @@ export class CreateRequesteComponent implements OnInit {
     private reqPeriorityService:RequestPeriorityService,
     private reqStatusService:RequestStatusService,
     private reqTypeService:RequestTypeService,
+    private ReqAssetService:AssetService,
+    private ReqModeService:RequestModeService,
     private projectService:ProjectService,
     private ReqSubCatService:RequestSubCategoryService,
-
-
     ) { }
 
   ngOnInit(): void {
@@ -45,9 +53,15 @@ export class CreateRequesteComponent implements OnInit {
     this.requestObj = {
       id:0,projectId:0,projectName:'',requestCode:'',
       requestName:'',requestPeriority:'',requestPeriorityId:0,
-      requestStatus:'',requestStatusId:0,requestTime:'',RequestDate:new Date(),
+      requestStatus:'',requestStatusId:0,requestTime:new Date().getHours() + ':' + new Date().getMinutes(),requestDate:new Date(),
       requestSubCategoryId:0,requestSubCategoryName:'',
-      requestTypeId:0,requestTypeName:'',description:''
+      requestTypeId:0,requestTypeName:'',description:'',requestModeId:0
+    }
+    this.reqAsset = {
+      assetCode:'',assetName:'',id:0
+    }
+    this.requestMode= {
+      Mode:'',id:0
     }
     this.reqStatusService.GetAllRequestStatus().subscribe(e=>{
       this.lstReqStatus = e
@@ -71,6 +85,12 @@ export class CreateRequesteComponent implements OnInit {
     this.ReqSubCatService.GetAllSubCategorys().subscribe(e=>{
       this.lstReqSubCategories = e
     })
+    // this.ReqAssetService.GetAllAssets().subscribe(e=>{
+    //   this.lstReqAssets = e
+    // })
+    // this.ReqModeService.GetAllRequetsMode().subscribe(e=>{
+    //   this.lstRequestMode=e
+    // })
   }
   AddRequest(){
     console.log(this.requestObj)
@@ -79,7 +99,7 @@ export class CreateRequesteComponent implements OnInit {
       this.requestObj = {
         description:'',requestTypeName:'',requestTypeId:0,requestSubCategoryName:'',requestSubCategoryId:0,
         id:0,requestStatusId:0,requestPeriorityId:0,requestName:'',requestCode:'',projectName:'',projectId:0,
-        requestPeriority:'',requestStatus:'',RequestDate:new Date(),requestTime:''
+        requestPeriority:'',requestStatus:'', requestDate:new Date(),requestTime:'',requestModeId:0
       }
     })
   }

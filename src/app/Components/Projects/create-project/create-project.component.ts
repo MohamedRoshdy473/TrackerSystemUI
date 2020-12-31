@@ -139,7 +139,6 @@ export class CreateProjectComponent implements OnInit {
 
         console.log(this.projectID)
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Record Added' });
-        // this.router.navigate(['home/tabs']);
       },
       err => console.log(err),
     );

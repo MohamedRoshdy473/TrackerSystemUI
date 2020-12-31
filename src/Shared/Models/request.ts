@@ -10,7 +10,8 @@ export class request {
     projectName:string
     // projectManager:string
     requestTime:any
-    RequestDate:Date
+    requestDate:Date
+    requestModeId:number
     requestStatusId:number
     requestStatus:string
     requestPeriorityId:number

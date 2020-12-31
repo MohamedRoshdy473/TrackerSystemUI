@@ -206,24 +206,25 @@ this.employeeService.GetAllEmployees().subscribe(
   delStakeHolders(id:number){
     this.stackholderService.deletestakeholder(id).subscribe(res=>{
 console.log(res)
+this.ngOnInit()
     })
     console.log("id",id)
   }
   delMile(id:number){
     this.milestoneservice.deletemilestone(id).subscribe(res=>{
-
+this.ngOnInit()
     })
   }
   delteam(id:number){
  
 this.projectteamservice.deleteteam(id).subscribe(res=>{
-
+this.ngOnInit()
 })
   }
   delDocument(id:number){
     console.log(id)
     this.projectdocumentsservice.deletedocument(id).subscribe(res=>{
-
+this.ngOnInit()
     })
   }
 

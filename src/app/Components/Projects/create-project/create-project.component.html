@@ -301,12 +301,6 @@
                     </div>
                 </div>
                 <div class="col">
-                    <!-- <div class="p-col-12 p-md-4 dropdown">
-                        <select [(ngModel)]="employeeObj.id" name="id" class="form-control">emp
-                            <option hidden [value]="" selected>select Employee Name </option>
-                            <option *ngFor="let the of lstEmployees" value="{{the.id}}">{{the.employeeName}}</option>
-                        </select>
-                    </div> -->
                     <div class="col">
                         <label class="labelstyle">Select Position Name</label>
                         <select [(ngModel)]="ProjectTeam.projectPositionId" name="id" class="form-control">emp
@@ -391,9 +385,7 @@
                             <input type="text" pInputText placeholder="Document Name"
                             [(ngModel)]="docproject.documentName">
                         </div>
-                    </div>
-                  
-                   
+                    </div>       
                     <div class="p-col-12 p-md-4">
                         <div>
                             <textarea pInputTextarea placeholder="Description" style="width: 100%;"
