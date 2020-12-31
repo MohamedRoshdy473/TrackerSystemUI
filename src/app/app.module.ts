@@ -91,7 +91,7 @@ import { AddEmployeeComponent } from './Components/employee/add-employee/add-emp
 import { EditEmployeeComponent } from './Components/employee/edit-employee/edit-employee.component';
 import { DisplayAllEmployeesComponent } from './Components/employee/display-all-employees/display-all-employees.component';
 import { AllUsersComponent } from './Components/all-users/all-users.component';
-
+import { AllClientRequestsComponent } from "./Components/Request/All-client-requests/all-client-requests.component";
 
 
 registerLocaleData(en);
@@ -115,7 +115,8 @@ registerLocaleData(en);
    AddEmployeeComponent,
    EditEmployeeComponent,
    DisplayAllEmployeesComponent,
-   AllUsersComponent
+   AllUsersComponent,
+   AllClientRequestsComponent
   ],
   imports: [
     BrowserModule,
