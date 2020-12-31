@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { department } from "../../../../Shared/Models/department";
 import { DepartmentService } from "../../../../Shared/Services/department.service";
 @Component({
@@ -10,7 +11,7 @@ export class DepartmentComponent implements OnInit {
 
   lstDepts:department[]
   departmentObj:department
-  constructor(private depatService:DepartmentService) { }
+  constructor(private router: Router,private depatService:DepartmentService) { }
 
   ngOnInit(): void {
     this.departmentObj = {
@@ -22,7 +23,8 @@ export class DepartmentComponent implements OnInit {
   }
   SaveDepToDB(){
     this.depatService.inserDepartment(this.departmentObj).subscribe(e=>{
-      console.log(this.departmentObj)
+      console.log(this.departmentObj),this.router.navigate(['home/DisplayDepartments']);
+
     })
   }
 }

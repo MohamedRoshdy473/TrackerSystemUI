@@ -20,6 +20,8 @@ import { DisplayAllEmployeesComponent } from './Components/employee/display-all-
 import { AddEmployeeComponent } from './Components/employee/add-employee/add-employee.component';
 import { EditEmployeeComponent } from './Components/employee/edit-employee/edit-employee.component';
 import { SignupComponent } from './Components/Signup/signup.component';
+import { DisplayDepartmentsComponent } from './Components/DepartmentComponents/display-departments/display-departments.component';
+import { EditDepartmentComponent } from './Components/DepartmentComponents/edit-department/edit-department.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login'},
@@ -30,6 +32,8 @@ const routes: Routes = [
     { path: 'Category', component:  CategoryComponent},
     { path: 'client', component:  ClientsComponent},
     { path: 'department', component:  DepartmentComponent},
+    { path: 'DisplayDepartments', component:  DisplayDepartmentsComponent},
+    { path: 'editDepartment/:id', component:  EditDepartmentComponent},
     { path: 'Requests', component:  CreateRequesteComponent},
     { path: 'tabs/createProject', component:  CreateProjectComponent},
     { path: 'tabs/updateproject/:id', component:  UpdateProjectComponent},
