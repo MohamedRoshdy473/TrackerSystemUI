@@ -23,6 +23,7 @@ export const environment = {
   getDepartmentByEmpID: 'http://localhost:50653/api/Departments/GetDepartmentByEmployeeId/',
   projectTypes: 'http://localhost:50653/api/ProjectTypes',
   asset: 'http://localhost:50653/api/Assets',
+  GetAllRequestByClientId: 'http://localhost:50653/api/Request/GetAllRequestByClientId/',
   reqMode:'http://localhost:50653/api/RequestModes/',
   GetAllMilestonsByProjectId: 'http://localhost:50653/api/MileStones/GetMileStonesByProjectId/',
   GetAllTeamsByProjectId: 'http://localhost:50653/api/ProjectTeam/GetProjectTeamsByProjectId/',

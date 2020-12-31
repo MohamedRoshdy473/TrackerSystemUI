@@ -28,5 +28,8 @@ inserRequest(req:request): Observable <any>{
 insertListOfrequests(requests:request[]): Observable <any >{
   return this.httpClient.post<any> (`${environment.requests}`,requests,this.httpHeader) ;
 }
+GetRequestsByClientId(clientID:Number):Observable<any>{
+  return this.httpClient.get<request[]>(`${environment.GetAllRequestByClientId}${clientID}`,this.httpHeader);
+}
 
 }
