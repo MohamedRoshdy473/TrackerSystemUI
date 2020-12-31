@@ -7,10 +7,12 @@ export class request {
     requestSubCategoryId:number
     requestSubCategoryName:string
     projectId:number
+    clientId:number
     projectName:string
     // projectManager:string
     requestTime:any
     requestDate:Date
+    assetId:number
     requestModeId:number
     requestStatusId:number
     requestStatus:string

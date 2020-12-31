@@ -29,7 +29,7 @@
     <div class="col">
         <label for="Project Type" class="labelMarginRight">Request Type</label><br>
         <p-dropdown [options]="lstReqTypies" [(ngModel)]="requestObj.requestTypeId" placeholder="Select Request Type"
-            optionLabel="typeName" optionValue="id">
+            optionLabel="requestTypeName" optionValue="id">
         </p-dropdown>
     </div>
     <div class="col" style="margin-left: 21px;">
@@ -53,18 +53,44 @@
 
 </div><br>
 <div class="row">
-    <!-- <div class="p-field col-md-3">
+    <div class="p-field col-md-3">
         <label for="Project Type" class="labelMarginRight">Request Mode</label><br>
         <p-dropdown [options]="lstRequestMode" [(ngModel)]="requestObj.requestModeId"
-            placeholder="Select Request Mode" optionLabel="status" optionValue="id">
-        </p-dropdown>
-    </div> -->
-    <div class="p-field col-md-3">
-        <label for="Project Type" class="labelMarginRight">Project Name</label><br>
-        <p-dropdown [options]="lstProjects" [(ngModel)]="requestObj.projectId" placeholder="Select Project Name"
-            optionLabel="projectName" optionValue="id">
+            placeholder="Select Request Mode" optionLabel="mode" optionValue="id">
         </p-dropdown>
     </div>
+    <div class="p-field col-md-3">
+        <label for="Project Type" class="labelMarginRight">Request Asset</label><br>
+        <p-dropdown [options]="lstReqAssets" [(ngModel)]="requestObj.assetId"
+            placeholder="Select Request Asset" optionLabel="assetName" optionValue="id">
+        </p-dropdown>
+    </div>
+    <div class="p-field col-md-3">
+        <label for="Project Type" class="labelMarginRight">Project Name</label><br>
+        <!-- <p-dropdown [options]="lstProjects" [(ngModel)]="requestObj.projectId" (change)="ClientOnChange(requestObj.projectId)" placeholder="Select Project Name"
+            optionLabel="projectName" optionValue="id">
+        </p-dropdown> -->
+        <select (change)="onChange($event.target.value)" name="projectName" [(ngModel)]="requestObj.projectId" class="form-control col-md-6" >
+            <option value="" selected disabled hidden><span >project Name</span></option>
+            <option *ngFor="let item of lstProjects" value="{{item.id}}"  >{{item.projectName}}</option>
+        </select>
+    </div>
+    <div class="p-field col-md-3">
+        <label for="clientName" class="labelMarginRight">Client Name</label><br>
+        <!-- <p-dropdown [options]="lstProjects" [(ngModel)]="requestObj.projectId" (change)="ClientOnChange(requestObj.projectId)" placeholder="Select Project Name"
+            optionLabel="projectName" optionValue="id">
+        </p-dropdown> -->
+        <select name="clientName" class="form-control col-md-6" [(ngModel)]="requestObj.clientId">
+            <option value="" selected disabled hidden><span >client Name</span></option>
+            <option *ngFor="let item of lstclients" value="{{item.id}}" name="client" >{{item.clientName}}</option>
+        </select>
+    </div>
+
+ 
+    <!-- <div class="p-field col-md-3">
+        <label for="Project Type" class="labelMarginRight">{{clientObj.clientName}}</label><br>
+    </div> -->
+
     <div class="p-field col-md-9">
         <label for="description">Description</label><br>
         <textarea id="description" [(ngModel)]="requestObj.description" pInputTextarea required rows="3"

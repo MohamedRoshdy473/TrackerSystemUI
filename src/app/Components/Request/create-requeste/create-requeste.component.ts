@@ -15,6 +15,7 @@ import { asset } from 'src/Shared/Models/asset';
 import { requestMode } from 'src/Shared/Models/requestMode';
 import { AssetService } from 'src/Shared/Services/asset.service';
 import { RequestModeService } from 'src/Shared/Services/request-mode.service';
+import { client } from 'src/Shared/Models/client';
 @Component({
   selector: 'app-create-requeste',
   templateUrl: './create-requeste.component.html',
@@ -33,6 +34,7 @@ export class CreateRequesteComponent implements OnInit {
   lstReqStatus:requestStatus[]
   lstReqSubCategories:requestSubCategory[]
   lstProjects:project[]
+  lstclients:client[]
   constructor(private reqService:RequestService,
     private reqPeriorityService:RequestPeriorityService,
     private reqStatusService:RequestStatusService,
@@ -54,7 +56,7 @@ export class CreateRequesteComponent implements OnInit {
       id:0,projectId:0,projectName:'',requestCode:'',
       requestName:'',requestPeriority:'',requestPeriorityId:0,
       requestStatus:'',requestStatusId:0,requestTime:new Date().getHours() + ':' + new Date().getMinutes(),requestDate:new Date(),
-      requestSubCategoryId:0,requestSubCategoryName:'',
+      requestSubCategoryId:0,requestSubCategoryName:'',assetId:0,clientId:0,
       requestTypeId:0,requestTypeName:'',description:'',requestModeId:0
     }
     this.reqAsset = {
@@ -85,23 +87,39 @@ export class CreateRequesteComponent implements OnInit {
     this.ReqSubCatService.GetAllSubCategorys().subscribe(e=>{
       this.lstReqSubCategories = e
     })
-    // this.ReqAssetService.GetAllAssets().subscribe(e=>{
-    //   this.lstReqAssets = e
-    // })
-    // this.ReqModeService.GetAllRequetsMode().subscribe(e=>{
-    //   this.lstRequestMode=e
-    // })
+    this.ReqAssetService.GetAllAssets().subscribe(e=>{
+      this.lstReqAssets = e
+      console.log(this.lstReqAssets)
+
+    })
+    this.ReqModeService.GetAllRequetsMode().subscribe(e=>{
+      this.lstRequestMode=e
+      console.log(this.lstRequestMode)
+    })
+
   }
   AddRequest(){
+    this.requestObj.projectId = Number(this.requestObj.projectId)
+    this.requestObj.clientId = Number(this.requestObj.clientId)
     console.log(this.requestObj)
     this.reqService.inserRequest(this.requestObj).subscribe(e=>{
       console.log(this.requestObj)
       this.requestObj = {
         description:'',requestTypeName:'',requestTypeId:0,requestSubCategoryName:'',requestSubCategoryId:0,
         id:0,requestStatusId:0,requestPeriorityId:0,requestName:'',requestCode:'',projectName:'',projectId:0,
-        requestPeriority:'',requestStatus:'', requestDate:new Date(),requestTime:'',requestModeId:0
+        requestPeriority:'',requestStatus:'', requestDate:new Date(),requestTime:'',requestModeId:0,assetId:0,clientId:0,
       }
     })
+  }
+  id:number
+  onChange(event){
+    //console.log(event)
+    this.id=event
+        this.projectService.GetProjectsByClientId(this.id).subscribe(e=>{
+     this.lstclients = e
+      console.log(e)
+    })
+
   }
 
 }

@@ -33,4 +33,7 @@ export class ProjectService {
   getProjectById(id:number):Observable<any>{
     return this.httpClient.get<any>(`${environment.GetProjectById}${id}`,this.httpHeader);
   }
+  GetProjectsByClientId(clientID:Number):Observable<any>{
+    return this.httpClient.get<any[]>(`${environment.GetProjectsByClientId}${clientID}`,this.httpHeader);
+  }
 }
