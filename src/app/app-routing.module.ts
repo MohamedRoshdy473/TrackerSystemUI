@@ -12,9 +12,9 @@ import {UpdateProjectComponent} from '../app/Components/Projects/update-project/
 // import { ClientsComponent } from './Components/Clients/clients.component';
 // import { DepartmentComponent } from './Components/Department/department.component';
 import { CategoryComponent } from './Components/Request/Categories/category/category.component';
-import { ClientsComponent } from './Components/Clients/clients.component';
+import { ClientsComponent } from './Components/ClientComponents/clients/clients.component';
 import { CreateRequesteComponent } from './Components/Request/create-requeste/create-requeste.component';
-import { DepartmentComponent } from './Components/Department/department.component';
+import { DepartmentComponent } from './Components/DepartmentComponents/Department/department.component';
 import { ChangePaswwordComponent } from './Components/change-paswword/change-paswword.component';
 import { AllUsersComponent } from './Components/all-users/all-users.component';
 import { DisplayAllEmployeesComponent } from './Components/employee/display-all-employees/display-all-employees.component';
