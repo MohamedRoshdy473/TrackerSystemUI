@@ -41,7 +41,8 @@ export const environment = {
   updatedocumectsbyprojectid: 'http://localhost:50653/api/ProjectDocument/PutDocumentsDTOByProjectId/',
   updateProject: 'http://localhost:50653/api/Project/',
   GetProjectById: 'http://localhost:50653/api/Project/',
-
+  uploadImage:'http://localhost:50653/api/UploadImage/uploadimage/',
+addRequstImages:'http://localhost:50653/api/RequestImages',
 
   production: false
 };
