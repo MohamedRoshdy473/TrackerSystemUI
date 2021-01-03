@@ -54,7 +54,7 @@ export class CreateRequesteComponent implements OnInit {
     this.lstReqSubCategories = []
     this.requestObj = {
       id:0,projectId:0,projectName:'',requestCode:'',
-      requestName:'',requestPeriority:'',requestPeriorityId:0,
+      requestName:'',requestPeriority:'',requestPeriorityId:0,clientName:'',
       requestStatus:'',requestStatusId:0,requestTime:new Date().getHours() + ':' + new Date().getMinutes(),requestDate:new Date(),
       requestSubCategoryId:0,requestSubCategoryName:'',assetId:0,clientId:0,
       requestTypeId:0,requestTypeName:'',description:'',requestModeId:0
@@ -106,7 +106,7 @@ export class CreateRequesteComponent implements OnInit {
       console.log(this.requestObj)
       this.requestObj = {
         description:'',requestTypeName:'',requestTypeId:0,requestSubCategoryName:'',requestSubCategoryId:0,
-        id:0,requestStatusId:0,requestPeriorityId:0,requestName:'',requestCode:'',projectName:'',projectId:0,
+        id:0,requestStatusId:0,requestPeriorityId:0,requestName:'',requestCode:'',projectName:'',projectId:0,clientName:'',
         requestPeriority:'',requestStatus:'', requestDate:new Date(),requestTime:'',requestModeId:0,assetId:0,clientId:0,
       }
     })
