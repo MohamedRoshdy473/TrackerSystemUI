@@ -1,0 +1,17 @@
+<div class="container">
+<agm-map [latitude]="lat" [longitude]="lng" [zoom]="15" style="height: 600px;" >
+    <agm-marker *ngFor="let m of lstOrganizationMarkers;let i = index; "
+                iconUrl={{curicon}}
+                [latitude]="m.lat" [longitude]="m.lng"
+                (mapClick)="placeMarker(m)">
+      <agm-info-window style="padding: 5px 5px;">
+        <div style="height: 50px; margin: 5px 5px; padding: 5px 5px; font-size: 12pt;">
+            {{m.location}} 
+            {{m.mobile}}
+            {{m.organizationCode}}
+            <button class="btn btn-warning" (click)="updateOrganization(m.id)">update</button>
+         </div>
+      </agm-info-window>
+    </agm-marker>
+  </agm-map>
+</div>

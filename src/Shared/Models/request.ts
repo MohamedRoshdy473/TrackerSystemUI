@@ -8,6 +8,7 @@ export class request {
     requestSubCategoryName:string
     projectId:number
     clientId:number
+    clientName:string
     projectName:string
     // projectManager:string
     requestTime:any

@@ -16,10 +16,6 @@ import { requestMode } from 'src/Shared/Models/requestMode';
 import { AssetService } from 'src/Shared/Services/asset.service';
 import { RequestModeService } from 'src/Shared/Services/request-mode.service';
 import { client } from 'src/Shared/Models/client';
-import { HttpClient, HttpEventType } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
-import { RequestImage } from 'src/Shared/Models/RequestImages';
-
 @Component({
   selector: 'app-create-requeste',
   templateUrl: './create-requeste.component.html',
@@ -29,7 +25,6 @@ export class CreateRequesteComponent implements OnInit {
   
   lstReqests:request[]
   requestObj:request
-  reqObj:any
   lstReqAssets:asset[]
   reqAsset:asset
   lstRequestMode:requestMode[]
@@ -40,11 +35,7 @@ export class CreateRequesteComponent implements OnInit {
   lstReqSubCategories:requestSubCategory[]
   lstProjects:project[]
   lstclients:client[]
-  lstRequestImages:RequestImage[]
-  reqImage:RequestImage
-
   constructor(private reqService:RequestService,
-    private httpClient : HttpClient,
     private reqPeriorityService:RequestPeriorityService,
     private reqStatusService:RequestStatusService,
     private reqTypeService:RequestTypeService,
@@ -60,21 +51,10 @@ export class CreateRequesteComponent implements OnInit {
     this.lstReqPeriorities= []
     this.lstReqTypies = []
     this.lstReqStatus = []
-    this.lstRequestImages=[]
     this.lstReqSubCategories = []
-    this.reqImage={
-      id:0,imageName:'',requestId:0
-    }
-    this.reqObj={
-      id:0,projectId:0,projectName:'',requestCode:'',
-      requestName:'',requestPeriority:'',requestPeriorityId:0,
-      requestStatus:'',requestStatusId:0,requestTime:new Date().getHours() + ':' + new Date().getMinutes(),requestDate:new Date(),
-      requestSubCategoryId:0,requestSubCategoryName:'',assetId:0,clientId:0,
-      requestTypeId:0,requestTypeName:'',description:'',requestModeId:0
-    }
     this.requestObj = {
       id:0,projectId:0,projectName:'',requestCode:'',
-      requestName:'',requestPeriority:'',requestPeriorityId:0,
+      requestName:'',requestPeriority:'',requestPeriorityId:0,clientName:'',
       requestStatus:'',requestStatusId:0,requestTime:new Date().getHours() + ':' + new Date().getMinutes(),requestDate:new Date(),
       requestSubCategoryId:0,requestSubCategoryName:'',assetId:0,clientId:0,
       requestTypeId:0,requestTypeName:'',description:'',requestModeId:0
@@ -118,17 +98,17 @@ export class CreateRequesteComponent implements OnInit {
     })
 
   }
-  reqId:any
   AddRequest(){
-    this.reqObj.projectId = Number(this.reqObj.projectId)
-    this.reqObj.clientId = Number(this.reqObj.clientId)
-    // console.log(this.requestObj)
-    this.reqService.inserRequest(this.reqObj).subscribe(e=>{
-      console.log(e)
-      this.reqId=e;
-    this.reqImage.requestId=this.reqId;
-
-    
+    this.requestObj.projectId = Number(this.requestObj.projectId)
+    this.requestObj.clientId = Number(this.requestObj.clientId)
+    console.log(this.requestObj)
+    this.reqService.inserRequest(this.requestObj).subscribe(e=>{
+      console.log(this.requestObj)
+      this.requestObj = {
+        description:'',requestTypeName:'',requestTypeId:0,requestSubCategoryName:'',requestSubCategoryId:0,
+        id:0,requestStatusId:0,requestPeriorityId:0,requestName:'',requestCode:'',projectName:'',projectId:0,clientName:'',
+        requestPeriority:'',requestStatus:'', requestDate:new Date(),requestTime:'',requestModeId:0,assetId:0,clientId:0,
+      }
     })
   }
   id:number
@@ -140,50 +120,6 @@ export class CreateRequesteComponent implements OnInit {
       console.log(e)
     })
 
-  
   }
-  public uploadFile = (files) => {
-    if (files.length === 0) {
-      return;
-    }
-    let fileToUpload = <File>files[0];
-    const formData = new FormData();
-    formData.append('file', fileToUpload, fileToUpload.name);
-    this.reqImage.imageName=fileToUpload.name;
-    console.log(fileToUpload.name)
- 
-    this.httpClient.post(environment.uploadImage, formData)
-      .subscribe(res => {
-     console.log(res)
-     alert('Uploaded Successfully.');
-
-  
-      
-      });
-      this.lstRequestImages.push(this.reqImage);
-    this.reqImage={
-      id:0,imageName:'',requestId:this.reqId
-    };
-  }
-  // Saveimagetolist(){
-  //   this.lstRequestImages.push(this.reqImage);
-  //   this.reqImage={
-  //     id:0,imageName:'',requestId:this.reqId
-  //   };
-  //   console.log(this.lstRequestImages);
-  //     }
-
-      SaveimageToDB() {
-
-        this.reqService.addListRequestImages(this.lstRequestImages).subscribe(e => {
-          console.log(e)
-          this.reqObj = {
-            description:'',requestTypeName:'',requestTypeId:0,requestSubCategoryName:'',requestSubCategoryId:0,
-            id:0,requestStatusId:0,requestPeriorityId:0,requestName:'',requestCode:'',projectName:'',projectId:0,
-            requestPeriority:'',requestStatus:'', requestDate:new Date(),requestTime:'',requestModeId:0,assetId:0,clientId:0,
-          }
-        })
-
-      }
 
 }

@@ -6,5 +6,8 @@ export class organization {
       phone :string
       address:string
       responsiblePerson:string
-      location :string
+      location :string;
+      lat:number;
+      lng:number;
+
 }

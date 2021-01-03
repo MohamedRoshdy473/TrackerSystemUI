@@ -11,6 +11,7 @@ export class AllClientRequestsComponent implements OnInit {
 
   lstRequests:request[]
   clientID:number
+  clientName:string
   constructor(private requestService:RequestService) { }
   ngOnInit(): void {
   this.clientID = Number(localStorage.getItem("id")) 
@@ -21,6 +22,9 @@ export class AllClientRequestsComponent implements OnInit {
     this.requestService.GetRequestsByClientId(this.clientID).subscribe(e=>{
       this.lstRequests = e
       console.log("reqs",this.lstRequests)
+      this.lstRequests.forEach(element => {
+        this.clientName = element.clientName
+      });
     })
   }
 
