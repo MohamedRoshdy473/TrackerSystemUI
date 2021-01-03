@@ -1,28 +1,30 @@
+<!-- Show all   Requests that belongs to specific client -->
 <p-table [value]="lstRequests">
     <ng-template pTemplate="caption">
         <div class="p-d-flex p-ai-center p-jc-between">
-            Client Requests
-            <p-button icon="pi pi-refresh"></p-button>
+           <span class="h3Header">Client Requests</span><span style="color: brown;">({{clientName}})</span>
         </div>
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
             <th>RequestName</th>
-            <!-- <th>Image</th> -->
             <th>projectName</th>
             <th>requestTime</th>
-            <!-- <th>Reviews</th>
-            <th>Status</th> -->
+            <th>Description</th> 
+            <th>RequestPeriority</th>
+            <th>RequestStatus</th>
+            <th>RequestType</th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-request>
         <tr>
             <td>{{request.requestName}}</td>
-            <!-- <td><img [src]="'assets/showcase/images/demo/product/' + product.image" [alt]="product.name" width="100" class="p-shadow-4" /></td> -->
             <td>{{request.projectName}}</td>
+            <td>{{request.requestTypeName}}</td>
             <td>{{request.requestTime}}</td>
-            <!-- <td><p-rating [ngModel]="product.rating" [readonly]="true" [cancel]="false"></p-rating></td>
-            <td><span [class]="'product-badge status-' + product.inventoryStatus.toLowerCase()">{{product.inventoryStatus}}</span></td> -->
+            <td>{{request.requestPeriority}}</td>
+            <td>{{request.requestStatus}}</td>
+            <td>{{request.description}}</td>
         </tr>
     </ng-template>
     <ng-template pTemplate="summary">
