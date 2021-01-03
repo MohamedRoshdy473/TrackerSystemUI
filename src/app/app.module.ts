@@ -95,6 +95,13 @@ import { AllClientRequestsComponent } from "./Components/Request/All-client-requ
 import { AgmCoreModule} from '@agm/core';
 import { AddOrganizationComponent } from './Components/Organization/add-organization/add-organization.component';
 import { ListOrganizationsComponent } from './Components/Organization/list-organizations/list-organizations.component';
+import { EditDepartmentComponent } from './Components/DepartmentComponents/edit-department/edit-department.component';
+import { ProjectTypeComponent } from './Components/ProjectTypeComponents/project-type/project-type.component';
+import { AddProjectTypeComponent } from './Components/ProjectTypeComponents/add-project-type/add-project-type.component';
+import { EditProjectTypeComponent } from './Components/ProjectTypeComponents/edit-project-type/edit-project-type.component';
+import { EditClientComponent } from './Components/ClientComponents/edit-client/edit-client.component';
+import { DisplayAllClientsComponent } from './Components/ClientComponents/display-all-clients/display-all-clients.component';
+import { DisplayDepartmentsComponent } from './Components/DepartmentComponents/display-departments/display-departments.component';
 
 registerLocaleData(en);
 
@@ -120,7 +127,14 @@ registerLocaleData(en);
    AllUsersComponent,
    AllClientRequestsComponent,
    AddOrganizationComponent,
-   ListOrganizationsComponent
+   ListOrganizationsComponent,
+   EditDepartmentComponent,
+   ProjectTypeComponent,
+   AddProjectTypeComponent,
+   EditProjectTypeComponent,
+   EditClientComponent,
+   DisplayAllClientsComponent,
+   DisplayDepartmentsComponent
   ],
   imports: [
     
