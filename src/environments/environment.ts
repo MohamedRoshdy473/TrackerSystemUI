@@ -10,7 +10,7 @@ export const environment = {
   postListOfMilestoness: 'http://localhost:50653/api/MileStones/',
   ProjectTeams: 'http://localhost:50653/api/ProjectTeam/',
   organizations: 'http://localhost:50653/api/Organizations',
-  clients: 'http://localhost:50653/api/Clients',
+  clients: 'http://localhost:50653/api/Clients/',
   employees: 'http://localhost:50653/api/Employees/',
   requests: 'http://localhost:50653/api/Request/',
   requestStatus: 'http://localhost:50653/api/RequestStatus/',
@@ -21,7 +21,7 @@ export const environment = {
   requestCategory: 'http://localhost:50653/api/RequestCategory/',
   projectPositions: 'http://localhost:50653/api/ProjectPositions/',
   getDepartmentByEmpID: 'http://localhost:50653/api/Departments/GetDepartmentByEmployeeId/',
-  projectTypes: 'http://localhost:50653/api/ProjectTypes',
+  projectTypes: 'http://localhost:50653/api/ProjectTypes/',
   asset: 'http://localhost:50653/api/Assets',
   GetAllRequestByClientId: 'http://localhost:50653/api/Request/GetAllRequestByClientId/',
   reqMode:'http://localhost:50653/api/RequestModes/',
@@ -42,7 +42,8 @@ export const environment = {
   updatedocumectsbyprojectid: 'http://localhost:50653/api/ProjectDocument/PutDocumentsDTOByProjectId/',
   updateProject: 'http://localhost:50653/api/Project/',
   GetProjectById: 'http://localhost:50653/api/Project/',
-
+  uploadImage:'http://localhost:50653/api/UploadImage/uploadimage/',
+addRequstImages:'http://localhost:50653/api/RequestImages',
 
   production: false
 };

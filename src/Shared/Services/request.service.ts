@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { request } from "../Models/request";
+import { RequestImage } from '../Models/RequestImages';
 
 @Injectable({
   providedIn: 'root'
@@ -21,8 +22,8 @@ GetAllRequests(): Observable <request[]>{
 // GetAllStackholdersByProjectID(ProjectID:Number): Observable <stackholder[]>{
 //   return this.httpClient.get<stackholder[]> (`${environment.GetAllStackholdersByProjectID}${ProjectID}`,this.httpHeader) ;
 // }
-inserRequest(req:request): Observable <any>{
-  return this.httpClient.post<any> (`${environment.requests}`,req,this.httpHeader) ;
+inserRequest(req): Observable <request>{
+  return this.httpClient.post<request> (`${environment.requests}`,req,this.httpHeader) ;
 }
 
 insertListOfrequests(requests:request[]): Observable <any >{
@@ -30,6 +31,10 @@ insertListOfrequests(requests:request[]): Observable <any >{
 }
 GetRequestsByClientId(clientID:Number):Observable<any>{
   return this.httpClient.get<request[]>(`${environment.GetAllRequestByClientId}${clientID}`,this.httpHeader);
+}
+
+addListRequestImages(images:RequestImage[]): Observable <RequestImage[] >{
+  return this.httpClient.post<RequestImage[]> (`${environment.addRequstImages}`,images,this.httpHeader) ;
 }
 
 }
