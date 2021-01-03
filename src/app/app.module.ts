@@ -85,12 +85,12 @@ import { UpdateProjectComponent } from './Components/Projects/update-project/upd
 import { CategoryComponent } from './Components/Request/Categories/category/category.component';
 import { ClientsComponent } from './Components/ClientComponents/clients/clients.component';
 import { DepartmentComponent } from './Components/DepartmentComponents/Department/department.component';
-import { CreateRequesteComponent } from './Components/Request/create-requeste/create-requeste.component';
+import { CreateRequesteComponent } from './Components/Request/Create-requeste/create-requeste.component';
 import { ChangePaswwordComponent } from './Components/change-paswword/change-paswword.component';
 import { AddEmployeeComponent } from './Components/employee/add-employee/add-employee.component';
 import { EditEmployeeComponent } from './Components/employee/edit-employee/edit-employee.component';
 import { DisplayAllEmployeesComponent } from './Components/employee/display-all-employees/display-all-employees.component';
-import { AllUsersComponent } from './Components/all-users/all-users.component';
+import { AllUsersComponent } from './Components/All-users/all-users.component';
 import { AllClientRequestsComponent } from "./Components/Request/All-client-requests/all-client-requests.component";
 import { AgmCoreModule} from '@agm/core';
 import { AddOrganizationComponent } from './Components/Organization/add-organization/add-organization.component';
