@@ -82,7 +82,7 @@ import { AllProjectsComponent } from './Components/Projects/all-projects/all-pro
 import { CreateProjectComponent } from './Components/Projects/create-project/create-project.component';
 import { UpdateProjectComponent } from './Components/Projects/update-project/update-project.component';
 import { CategoryComponent } from './Components/Request/Categories/category/category.component';
-import { ClientsComponent } from './Components/Clients/clients.component';
+import { ClientsComponent } from './Components/ClientComponents/clients/clients.component';
 import { DepartmentComponent } from './Components/DepartmentComponents/Department/department.component';
 import { CreateRequesteComponent } from './Components/Request/create-requeste/create-requeste.component';
 import { ChangePaswwordComponent } from './Components/change-paswword/change-paswword.component';
@@ -93,6 +93,11 @@ import { AllUsersComponent } from './Components/all-users/all-users.component';
 import { SignupComponent } from './Components/Signup/signup.component';
 import { DisplayDepartmentsComponent } from './Components/DepartmentComponents/display-departments/display-departments.component';
 import { EditDepartmentComponent } from './Components/DepartmentComponents/edit-department/edit-department.component';
+import { ProjectTypeComponent } from './Components/ProjectTypeComponents/project-type/project-type.component';
+import { AddProjectTypeComponent } from './Components/ProjectTypeComponents/add-project-type/add-project-type.component';
+import { EditProjectTypeComponent } from './Components/ProjectTypeComponents/edit-project-type/edit-project-type.component';
+import { EditClientComponent } from './Components/ClientComponents/edit-client/edit-client.component';
+import { DisplayAllClientsComponent } from './Components/ClientComponents/display-all-clients/display-all-clients.component';
 
 
 
@@ -119,7 +124,12 @@ registerLocaleData(en);
    DisplayAllEmployeesComponent,
    AllUsersComponent,
    DisplayDepartmentsComponent,
-   EditDepartmentComponent
+   EditDepartmentComponent,
+   ProjectTypeComponent,
+   AddProjectTypeComponent,
+   EditProjectTypeComponent,
+   EditClientComponent,
+   DisplayAllClientsComponent
   ],
   imports: [
     BrowserModule,

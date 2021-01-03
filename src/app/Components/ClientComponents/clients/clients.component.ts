@@ -1,9 +1,10 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { organization } from 'src/Shared/Models/organization';
-import { client } from "../../../Shared/Models/client";
-import { ClientService } from "../../../Shared/Services/client.service";
-import { OrganizationService } from "../../../Shared/Services/organization.service";
+import { client } from "../../../../Shared/Models/client";
+import { ClientService } from "../../../../Shared/Services/client.service";
+import { OrganizationService } from "../../../../Shared/Services/organization.service";
 
 @Component({
   selector: 'app-clients',
@@ -15,7 +16,7 @@ clients:client[]
 client:client
 organizations:organization[]
 organization:organization
-  constructor(private clientService:ClientService,private organizationService:OrganizationService) { }
+  constructor(private router: Router,private clientService:ClientService,private organizationService:OrganizationService) { }
 
   ngOnInit(): void {
     this.clients = []
@@ -35,7 +36,7 @@ organization:organization
   saveClientToDB(){
     this.client.organizationId = Number(this.client.organizationId)
     this.clientService.inserClient(this.client).subscribe(e=>{
-      console.log(e)
+      this.router.navigate(['home/DisplayAllClients']);
     })
   }
 }

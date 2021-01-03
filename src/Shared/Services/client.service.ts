@@ -20,4 +20,13 @@ export class ClientService {
   inserClient(client:client): Observable <any>{
     return this.httpClient.post<any> (`${environment.clients}`,client,this.httpHeader) ;
   }
+  GetclientByID(id: number): Observable<client> {
+    return this.httpClient.get<client>(`${environment.clients}${id}`, this.httpHeader);
+  }
+  Updateclient(id:Number,client:client):Observable<client>{
+    return this.httpClient.put<client>(`${environment.clients}`+ id,client,this.httpHeader);
+  }
+  Deleteclient(id:number):Observable<any>{ 
+    return this.httpClient.delete<any>(`${environment.clients}${id}`,this.httpHeader);
+  }
 }

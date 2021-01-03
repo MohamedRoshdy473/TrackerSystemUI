@@ -23,11 +23,11 @@
         </div>
     </ng-template>
 </p-toast>
-<h4 style="margin-left: 25px;">All Employees</h4>
-<p-table class="container card" #dt [value]="Employees" dataKey="id" [rows]="5" [showCurrentPageReport]="true"
+<h4 style="margin-left: 25px;">All Clients</h4>
+<p-table class="container card" #dt [value]="lstclients" dataKey="id" [rows]="5" [showCurrentPageReport]="true"
     [rowsPerPageOptions]="[5,10,50]" [loading]="loading" styleClass="p-datatable-customers" [paginator]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
-    [globalFilterFields]="['employeeName','position ','departmentName','phone','Email']">
+    [globalFilterFields]="['address','clientCode ','clientName','email','organizationName','phone']">
     <ng-template pTemplate="caption">
         <div class="row">
             <div class="table-header col-md-10">
@@ -40,38 +40,41 @@
                 </span>
             </div>
             <div class="col-md-2">
-                <button id="addEmpBtn" routerLink="/home/addemployee" class="btn btn-outline-primary btn-md btn-block">
+                <button id="addEmpBtn" routerLink="/home/client" class="btn btn-outline-primary btn-md btn-block">
                     <span class="pi pi-plus">Add</span> </button>
             </div>
         </div>
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
-            <th>Image</th>
-            <th>Employee Name</th>
-            <th>Employee position</th>
-            <th>Department Name</th>
+            <th>ClientName</th>
+            <th>ClientCode</th>
+            <th>OrganizationName</th>
+            <th>Address</th>
             <th>Phone</th>
             <th>Email</th>
+            <th>Gender</th>
             <th>Controls</th>
         </tr>
         <tr>
             <th>
-                <label></label>
-            </th>
-            <th>
                 <input pInputText style="width: 100%;" type="text"
-                    (input)="dt.filter($event.target.value, 'employeeName', 'startsWith')" placeholder='Name'
+                    (input)="dt.filter($event.target.value, 'clientName', 'startsWith')" placeholder='Name'
                     class="p-column-filter">
             </th>
             <th>
                 <input pInputText style="width: 100%;" type="text"
-                    (input)="dt.filter($event.target.value, 'position', 'startsWith')" placeholder='Code'
+                    (input)="dt.filter($event.target.value, 'clientCode', 'startsWith')" placeholder='Code'
                     class="p-column-filter">
             </th>
             <th>
                 <input pInputText type="text" style="width: 100%"
-                    (input)="dt.filter($event.target.value, 'departmentName', 'contains')" placeholder='Department'
+                    (input)="dt.filter($event.target.value, 'organizationName', 'contains')" placeholder='org.Name'
+                    class="p-column-filter">
+            </th>
+            <th>
+                <input pInputText type="text" style="width: 100%"
+                    (input)="dt.filter($event.target.value, 'address', 'contains')" placeholder='address'
                     class="p-column-filter">
             </th>
             <th>
@@ -84,43 +87,49 @@
                     (input)="dt.filter($event.target.value, 'email', 'startsWith')" placeholder="Email"
                     class="p-column-filter">
             </th>
+            <th>
+                <input pInputText style="width: 100%;" type="email"
+                    (input)="dt.filter($event.target.value, 'gender', 'startsWith')" placeholder="gender"
+                    class="p-column-filter">
+            </th>
 
         </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-employee>
+    <ng-template pTemplate="body" let-client>
         <tr>
             <td>
-                <img class="img-thumbnail" src="http://localhost:50653/api/employees/getImage/{{employee.photo }}"
-                    alt="" width="50%" height="50%">
+                {{client.clientName}}
             </td>
             <td>
-                {{employee.employeeName}}
+                {{client.clientCode}}
             </td>
             <td>
-                {{employee.position}}
+                {{client.organizationName}}
             </td>
             <td>
-                {{employee.departmentName}}
+                {{client.address}}
             </td>
             <td>
-                {{employee.phone}}
+                {{client.phone}}
             </td>
             <td>
-                {{employee.email}}
+                {{client.email}}
             </td>
             <td>
-                <span class="pi pi-compass" aria-hidden="true" (click)="showBasicDialog(employee.id)"></span>
-                &nbsp;
+                {{client.gender}}
+            </td>
+            <td>
+                <!-- <span class="pi pi-compass" aria-hidden="true" (click)="showBasicDialog(client.id)"></span>
+                &nbsp; -->
                 <span class="p-button-icon pi pi-pencil" aria-hidden="true"
-                    [routerLink]="['/home/editEmployee',employee.id]"></span>&nbsp;
-                <!-- (click)="DisplayToEditProject(project.id)" -->
-                <span class="p-button-icon pi pi-times" (click)="confirm(employee.id)" aria-hidden="true"></span>
+                    [routerLink]="['/home/editClient',client.id]"></span>&nbsp;
+                <span class="p-button-icon pi pi-times" (click)="confirm(client.id)" aria-hidden="true"></span>
             </td>
         </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">
         <tr>
-            <td colspan="6">No employees found.</td>
+            <td colspan="6">No clients found.</td>
         </tr>
         <tr>
 
@@ -130,35 +139,27 @@
 </p-table>
 
 
-<p-dialog header="Details" [(visible)]="displayBasic" [style]="{width: '70vw'}" [baseZIndex]="10000">
+<!-- <p-dialog header="Details" [(visible)]="displayBasic" [style]="{width: '70vw'}" [baseZIndex]="10000">
     <div class="row">
-        <div class="col-md-6 form-control"><span class="bold">Employee Name : </span>&nbsp;{{Employee.employeeName}}
+        <div class="col-md-6 form-control"><span class="bold">Client Name : </span>&nbsp;{{clientObj.clientName}}
+        </div>
+        <div class="col-md-6 form-control"><span class="bold">Department Name : </span>&nbsp;{{clientObj.clientCode}}
         </div>
         <br>
-        <div class="col-md-6 form-control"><span class="bold">Email : </span>&nbsp; {{Employee.email}}
+        <div class="col-md-6 form-control"><span class="bold">Email : </span>&nbsp; {{clientObj.email}}
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6 form-control"><span class="bold">Department Name : </span>&nbsp;{{Employee.departmentName}}
+        <div class="col-md-6 form-control"><span class="bold">Department Name : </span>&nbsp;{{clientObj.organizationName}}
         </div>
-        <div class="col-md-6 form-control"><span class="bold">Phone : </span>&nbsp;{{Employee.phone}}
+        <div class="col-md-6 form-control"><span class="bold">Phone : </span>&nbsp;{{clientObj.phone}}
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6 form-control"><span class="bold">Address : </span>&nbsp;{{Employee.address}}
-        </div>
-        <div class="col-md-6 form-control"><span class="bold">Gender : </span>&nbsp;{{Employee.gender}}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6 form-control"><span class="bold">Position : </span>&nbsp;{{Employee.position}}
-        </div>
-        <div class="col-md-6 form-control"><span class="bold">Marital Status : </span>&nbsp;{{Employee.maritalStatus}}
+        <div class="col-md-6 form-control"><span class="bold">Address : </span>&nbsp;{{clientObj.address}}
         </div>
     </div>
     <ng-template pTemplate="footer">
-        <p-button icon="pi pi-check" [routerLink]="['/editEmployee',Employee.id]" label="Update"
+        <p-button icon="pi pi-check" [routerLink]="['/editClient',clientObj.id]" label="Update"
             styleClass="p-button-text"></p-button>
         <p-button icon="pi pi-times" (click)="displayBasic=false" label="No"></p-button>
     </ng-template>
-</p-dialog>
+</p-dialog> -->

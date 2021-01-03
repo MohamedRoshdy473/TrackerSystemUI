@@ -22,7 +22,16 @@ export class ProjectTypeService {
   GetAllProjectTypes(): Observable<projectType[]> {
     return this.httpClient.get<projectType[]>(`${environment.projectTypes}`, this.httpHeader);
   }
-  // AddProjectType(projectType): Observable<project[]> {
-  //   return this.httpClient.post<project[]>(`${environment.project}`,project, this.httpHeader);
-  // }
+  AddprojectType(dep:projectType): Observable <any>{
+    return this.httpClient.post<any> (`${environment.projectTypes}`,dep,this.httpHeader) ;
+  }
+  GetprojectTypeByID(id: number): Observable<projectType> {
+    return this.httpClient.get<projectType>(`${environment.projectTypes}${id}`, this.httpHeader);
+  }
+  UpdateprojectType(id:Number,projectType:projectType):Observable<projectType>{
+    return this.httpClient.put<projectType>(`${environment.projectTypes}`+ id,projectType,this.httpHeader);
+  }
+  DeleteprojectType(id:number):Observable<any>{ 
+    return this.httpClient.delete<any>(`${environment.projectTypes}${id}`,this.httpHeader);
+  }
 }
