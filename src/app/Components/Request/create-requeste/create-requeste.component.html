@@ -1,158 +1,153 @@
-    <div style="margin-left: 25px;">
+<div style="margin-left: 25px;">
 
-<div class="row">
-    <div class="p-field col-md-3">
-        <label for="Project Name" class="labelMarginRight">RequestName Name</label><br>
-        <input minlength="3" placeholder="Enter Request Name" type="text" [(ngModel)]="reqObj.requestName" pInputText id="name" required autofocus />
-    </div>
-    <div class="p-field col-md-3">
+    <div class="row">
         <div class="p-field col-md-3">
-            <label for="Project Code" class="labelMarginRight">RequestCode</label><br>
-            <input type="text" placeholder="RequestCode" [(ngModel)]="reqObj.requestCode" pInputText id="Code" required autofocus />
+            <label for="Project Name" class="labelMarginRight">RequestName Name</label><br>
+            <input minlength="3" placeholder="Enter Request Name" type="text" [(ngModel)]="reqObj.requestName" pInputText id="name" required autofocus />
+        </div>
+        <div class="p-field col-md-3">
+            <div class="p-field col-md-3">
+                <label for="Project Code" class="labelMarginRight">RequestCode</label><br>
+                <input type="text" placeholder="RequestCode" [(ngModel)]="reqObj.requestCode" pInputText id="Code" required autofocus />
+            </div>
+        </div>
+        <div class="p-field col-md-3">
+            <label for="Request Date" class="labelMarginRight">Request Date</label><br>
+            <p-calendar [(ngModel)]="reqObj.requestDate" dateFormat="dd/mm/yy"></p-calendar>
+            <small class="p-invalid"></small>
+        </div>
+        <div class="p-field col-md-3">
+            <label for="Request Date" class="labelMarginRight">Request Time</label><br>
+    
+            <p-calendar [(ngModel)]="reqObj.requestTime" [timeOnly]="true" inputId="timeonly"></p-calendar>
+        </div>
+    
+    </div>
+    <div class="row">
+    </div> <br>
+    <div class="row">
+        <div class="col">
+            <label for="Project Type" class="labelMarginRight">Request Type</label><br>
+            <p-dropdown [options]="lstReqTypies" [(ngModel)]="reqObj.requestTypeId" placeholder="Select Request Type"
+                optionLabel="requestTypeName" optionValue="id">
+            </p-dropdown>
+        </div>
+        <div class="col" style="margin-left: 21px;">
+            <label for="Project Type" class="labelMarginRight">Request Sub Category</label><br>
+            <p-dropdown [options]="lstReqSubCategories" [(ngModel)]="reqObj.requestSubCategoryId"
+                placeholder="Select Sub Category" optionLabel="subCategoryName" optionValue="id">
+            </p-dropdown>
+        </div>
+        <div class="col">
+            <label for="Project Type" class="labelMarginRight">Request Periority</label><br>
+            <p-dropdown [options]="lstReqPeriorities" [(ngModel)]="reqObj.requestPeriorityId"
+                placeholder="Select Request Periority" optionLabel="periorty" optionValue="id">
+            </p-dropdown>
+        </div>
+        <div class="p-field col-md-3">
+            <label for="Project Type" class="labelMarginRight">Request Status</label><br>
+            <p-dropdown [options]="lstReqStatus" [(ngModel)]="reqObj.requestStatusId"
+                placeholder="Select Request Status" optionLabel="status" optionValue="id">
+            </p-dropdown>
+        </div>
+    
+    </div><br>
+    <div class="row">
+        <div class="p-field col-md-3">
+            <label for="Project Type" class="labelMarginRight">Request Mode</label><br>
+            <p-dropdown [options]="lstRequestMode" [(ngModel)]="reqObj.requestModeId"
+                placeholder="Select Request Mode" optionLabel="mode" optionValue="id">
+            </p-dropdown>
+        </div>
+        <div class="p-field col-md-3">
+            <label for="Project Type" class="labelMarginRight">Request Asset</label><br>
+            <p-dropdown [options]="lstReqAssets" [(ngModel)]="reqObj.assetId"
+                placeholder="Select Request Asset" optionLabel="assetName" optionValue="id">
+            </p-dropdown>
+        </div>
+        <div class="p-field col-md-3">
+            <label for="Project Type" class="labelMarginRight">Project Name</label><br>
+            <!-- <p-dropdown [options]="lstProjects" [(ngModel)]="reqObj.projectId" (change)="ClientOnChange(reqObj.projectId)" placeholder="Select Project Name"
+                optionLabel="projectName" optionValue="id">
+            </p-dropdown> -->
+            <select (change)="onChange($event.target.value)" name="projectName" [(ngModel)]="reqObj.projectId" class="form-control col-md-6" >
+                <option value="" selected disabled hidden><span >project Name</span></option>
+                <option *ngFor="let item of lstProjects" value="{{item.id}}"  >{{item.projectName}}</option>
+            </select>
+        </div>
+        <div class="p-field col-md-3">
+            <label for="clientName" class="labelMarginRight">Client Name</label><br>
+            <!-- <p-dropdown [options]="lstProjects" [(ngModel)]="reqObj.projectId" (change)="ClientOnChange(reqObj.projectId)" placeholder="Select Project Name"
+                optionLabel="projectName" optionValue="id">
+            </p-dropdown> -->
+            <select name="clientName" class="form-control col-md-6" [(ngModel)]="reqObj.clientId">
+                <option value="" selected disabled hidden><span >client Name</span></option>
+                <option *ngFor="let item of lstclients" value="{{item.id}}" name="client" >{{item.clientName}}</option>
+            </select>
+        </div>
+    
+     
+        <!-- <div class="p-field col-md-3">
+            <label for="Project Type" class="labelMarginRight">{{clientObj.clientName}}</label><br>
+        </div> -->
+    
+        <div class="p-field col-md-9">
+            <label for="description">Description</label><br>
+            <textarea id="description" [(ngModel)]="reqObj.description" pInputTextarea required rows="3"
+                cols="63"></textarea>
+        </div>
+        <div class="col-md-2" style="margin-top: 7%;margin-left: 28%;"> <button pButton type="button" (click)="AddRequest()"
+            icon="pi pi-check" label="Submit" class="p-button-raised "></button>
+    </div>
+     
+      
+    </div>
+    </div>
+    <br/>
+    <hr style="width:100%;text-align:left;margin-left:0">
+    <br/>
+    <br/>
+    
+    <div class="p-field col-md-9">
+        <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)"
+        style="display:none;">
+    <button type="button" class="btn btn-success" (click)="file.click()">Upload Request Images</button>
+    
+    </div>
+    <!-- 
+    <div class="p-field col-md-9">
+        <button class="btn btn-info" style="margin-top: 20px;float: right;"
+            (click)="Saveimagetolist()">Save To List</button>
+    </div> -->
+    <br/>
+    <br/>
+    <div class="p-field col-md-9">
+        <div class="col">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Request Image Name</th>
+           
+                    </tr>
+                </thead>
+                <tbody>
+    
+                    <tr *ngFor="let i of lstRequestImages">
+    
+                        <td>{{i.imageName}}</td>
+                    
+                    </tr>
+                    <tr>
+    
+                    </tr>
+                    <tr *ngIf="lstRequestImages.length == 0">
+                        <td colspan="4" style="color: rgb(102, 97, 23);">No images found.</td>
+                    </tr>
+                </tbody>
+    
+            </table>
+    
+            <button class="btn btn-warning" [disabled]="lstRequestImages.length == 0"
+                (click)="SaveimageToDB()">Add List</button>
         </div>
     </div>
-    <div class="p-field col-md-3">
-        <label for="Request Date" class="labelMarginRight">Request Date</label><br>
-        <p-calendar [(ngModel)]="reqObj.requestDate" dateFormat="dd/mm/yy"></p-calendar>
-        <small class="p-invalid"></small>
-    </div>
-    <div class="p-field col-md-3">
-        <label for="Request Date" class="labelMarginRight">Request Time</label><br>
-
-        <p-calendar [(ngModel)]="reqObj.requestTime" [timeOnly]="true" inputId="timeonly"></p-calendar>
-    </div>
-
-</div>
-<div class="row">
-</div> <br>
-<div class="row">
-    <div class="col">
-        <label for="Project Type" class="labelMarginRight">Request Type</label><br>
-        <p-dropdown [options]="lstReqTypies" [(ngModel)]="reqObj.requestTypeId" placeholder="Select Request Type"
-            optionLabel="requestTypeName" optionValue="id">
-        </p-dropdown>
-    </div>
-    <div class="col" style="margin-left: 21px;">
-        <label for="Project Type" class="labelMarginRight">Request Sub Category</label><br>
-        <p-dropdown [options]="lstReqSubCategories" [(ngModel)]="reqObj.requestSubCategoryId"
-            placeholder="Select Sub Category" optionLabel="subCategoryName" optionValue="id">
-        </p-dropdown>
-    </div>
-    <div class="col">
-        <label for="Project Type" class="labelMarginRight">Request Periority</label><br>
-        <p-dropdown [options]="lstReqPeriorities" [(ngModel)]="reqObj.requestPeriorityId"
-            placeholder="Select Request Periority" optionLabel="periorty" optionValue="id">
-        </p-dropdown>
-    </div>
-    <div class="p-field col-md-3">
-        <label for="Project Type" class="labelMarginRight">Request Status</label><br>
-        <p-dropdown [options]="lstReqStatus" [(ngModel)]="reqObj.requestStatusId"
-            placeholder="Select Request Status" optionLabel="status" optionValue="id">
-        </p-dropdown>
-    </div>
-
-</div><br>
-<div class="row">
-    <div class="p-field col-md-3">
-        <label for="Project Type" class="labelMarginRight">Request Mode</label><br>
-        <p-dropdown [options]="lstRequestMode" [(ngModel)]="reqObj.requestModeId"
-            placeholder="Select Request Mode" optionLabel="mode" optionValue="id">
-        </p-dropdown>
-    </div>
-    <div class="p-field col-md-3">
-        <label for="Project Type" class="labelMarginRight">Request Asset</label><br>
-        <p-dropdown [options]="lstReqAssets" [(ngModel)]="reqObj.assetId"
-            placeholder="Select Request Asset" optionLabel="assetName" optionValue="id">
-        </p-dropdown>
-    </div>
-    <div class="p-field col-md-3">
-        <label for="Project Type" class="labelMarginRight">Project Name</label><br>
-        <!-- <p-dropdown [options]="lstProjects" [(ngModel)]="reqObj.projectId" (change)="ClientOnChange(reqObj.projectId)" placeholder="Select Project Name"
-            optionLabel="projectName" optionValue="id">
-        </p-dropdown> -->
-        <select (change)="onChange($event.target.value)" name="projectName" [(ngModel)]="reqObj.projectId" class="form-control col-md-6" >
-            <option value="" selected disabled hidden><span >project Name</span></option>
-            <option *ngFor="let item of lstProjects" value="{{item.id}}"  >{{item.projectName}}</option>
-        </select>
-    </div>
-    <div class="p-field col-md-3">
-        <label for="clientName" class="labelMarginRight">Client Name</label><br>
-        <!-- <p-dropdown [options]="lstProjects" [(ngModel)]="reqObj.projectId" (change)="ClientOnChange(reqObj.projectId)" placeholder="Select Project Name"
-            optionLabel="projectName" optionValue="id">
-        </p-dropdown> -->
-        <select name="clientName" class="form-control col-md-6" [(ngModel)]="reqObj.clientId">
-            <option value="" selected disabled hidden><span >client Name</span></option>
-            <option *ngFor="let item of lstclients" value="{{item.id}}" name="client" >{{item.clientName}}</option>
-        </select>
-    </div>
-
- 
-    <!-- <div class="p-field col-md-3">
-        <label for="Project Type" class="labelMarginRight">{{clientObj.clientName}}</label><br>
-    </div> -->
-
-    <div class="p-field col-md-9">
-        <label for="description">Description</label><br>
-        <textarea id="description" [(ngModel)]="reqObj.description" pInputTextarea required rows="3"
-            cols="63"></textarea>
-    </div>
-    <div class="col-md-2" style="margin-top: 7%;margin-left: 28%;"> <button pButton type="button" (click)="AddRequest()"
-        icon="pi pi-check" label="Submit" class="p-button-raised "></button>
-</div>
- 
-  
-</div>
-</div>
-<br/>
-<hr style="width:100%;text-align:left;margin-left:0">
-<br/>
-<br/>
-
-<div class="p-field col-md-9">
-    <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)"
-    style="display:none;">
-<button type="button" class="btn btn-success" (click)="file.click()">Upload Request Images</button>
-
-</div>
-<!-- 
-<div class="p-field col-md-9">
-    <button class="btn btn-info" style="margin-top: 20px;float: right;"
-        (click)="Saveimagetolist()">Save To List</button>
-</div> -->
-<!-- 
-<div class="p-field col-md-9">
-    <button class="btn btn-info" style="margin-top: 20px;float: right;"
-        (click)="Saveimagetolist()">Save To List</button>
-</div> -->
-<br/>
-<br/>
-<div class="p-field col-md-9">
-    <div class="col">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Request Image Name</th>
-       
-                </tr>
-            </thead>
-            <tbody>
-
-                <tr *ngFor="let i of lstRequestImages">
-
-                    <td>{{i.imageName}}</td>
-                
-                </tr>
-                <tr>
-
-                </tr>
-                <tr *ngIf="lstRequestImages.length == 0">
-                    <td colspan="4" style="color: rgb(102, 97, 23);">No images found.</td>
-                </tr>
-            </tbody>
-
-        </table>
-
-        <button class="btn btn-warning" [disabled]="lstRequestImages.length == 0"
-            (click)="SaveimageToDB()">Add List</button>
-    </div>
-</div>
