@@ -30,7 +30,6 @@ import {MultiSelectModule} from 'primeng/multiselect';
 import {ContextMenuModule} from 'primeng/contextmenu';
 import {DialogModule} from 'primeng/dialog';
 import {ProgressBarModule} from 'primeng/progressbar';
-import {SignupComponent} from './Components/Signup/signup.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
@@ -83,14 +82,22 @@ import { AllProjectsComponent } from './Components/Projects/all-projects/all-pro
 import { CreateProjectComponent } from './Components/Projects/create-project/create-project.component';
 import { UpdateProjectComponent } from './Components/Projects/update-project/update-project.component';
 import { CategoryComponent } from './Components/Request/Categories/category/category.component';
-import { ClientsComponent } from './Components/Clients/clients.component';
-import { DepartmentComponent } from './Components/Department/department.component';
+import { ClientsComponent } from './Components/ClientComponents/clients/clients.component';
+import { DepartmentComponent } from './Components/DepartmentComponents/Department/department.component';
 import { CreateRequesteComponent } from './Components/Request/create-requeste/create-requeste.component';
 import { ChangePaswwordComponent } from './Components/change-paswword/change-paswword.component';
 import { AddEmployeeComponent } from './Components/employee/add-employee/add-employee.component';
 import { EditEmployeeComponent } from './Components/employee/edit-employee/edit-employee.component';
 import { DisplayAllEmployeesComponent } from './Components/employee/display-all-employees/display-all-employees.component';
 import { AllUsersComponent } from './Components/all-users/all-users.component';
+import { SignupComponent } from './Components/Signup/signup.component';
+import { DisplayDepartmentsComponent } from './Components/DepartmentComponents/display-departments/display-departments.component';
+import { EditDepartmentComponent } from './Components/DepartmentComponents/edit-department/edit-department.component';
+import { ProjectTypeComponent } from './Components/ProjectTypeComponents/project-type/project-type.component';
+import { AddProjectTypeComponent } from './Components/ProjectTypeComponents/add-project-type/add-project-type.component';
+import { EditProjectTypeComponent } from './Components/ProjectTypeComponents/edit-project-type/edit-project-type.component';
+import { EditClientComponent } from './Components/ClientComponents/edit-client/edit-client.component';
+import { DisplayAllClientsComponent } from './Components/ClientComponents/display-all-clients/display-all-clients.component';
 
 
 
@@ -115,7 +122,14 @@ registerLocaleData(en);
    AddEmployeeComponent,
    EditEmployeeComponent,
    DisplayAllEmployeesComponent,
-   AllUsersComponent
+   AllUsersComponent,
+   DisplayDepartmentsComponent,
+   EditDepartmentComponent,
+   ProjectTypeComponent,
+   AddProjectTypeComponent,
+   EditProjectTypeComponent,
+   EditClientComponent,
+   DisplayAllClientsComponent
   ],
   imports: [
     BrowserModule,

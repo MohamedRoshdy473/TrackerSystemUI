@@ -26,6 +26,14 @@ export class DepartmentService {
   inserDepartment(dep:department): Observable <any>{
     return this.httpClient.post<any> (`${environment.department}`,dep,this.httpHeader) ;
   }
-  
+  getDepartmentByID(id: number): Observable<department> {
+    return this.httpClient.get<department>(`${environment.department}${id}`, this.httpHeader);
+  }
+  updateDepartment(id:Number,department:department):Observable<department>{
+    return this.httpClient.put<department>(`${environment.department}`+ id,department,this.httpHeader);
+  }
+  deleteDepartment(id:number):Observable<any>{ 
+    return this.httpClient.delete<any>(`${environment.department}${id}`,this.httpHeader);
+  }
 
 }

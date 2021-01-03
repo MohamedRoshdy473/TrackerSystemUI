@@ -29,6 +29,9 @@ inserRequest(req): Observable <request>{
 insertListOfrequests(requests:request[]): Observable <any >{
   return this.httpClient.post<any> (`${environment.requests}`,requests,this.httpHeader) ;
 }
+GetRequestsByClientId(clientID:Number):Observable<any>{
+  return this.httpClient.get<request[]>(`${environment.GetAllRequestByClientId}${clientID}`,this.httpHeader);
+}
 
 addListRequestImages(images:RequestImage[]): Observable <RequestImage[] >{
   return this.httpClient.post<RequestImage[]> (`${environment.addRequstImages}`,images,this.httpHeader) ;
