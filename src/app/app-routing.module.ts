@@ -43,9 +43,9 @@ const routes: Routes = [
     { path: 'allClientReqts', component:AllClientRequestsComponent },
     { path: 'organization', component:AddOrganizationComponent },
     { path: 'organizations', component:ListOrganizationsComponent },
-    { path: 'editOrganization', component:EditOrganizationComponent },
+    { path: 'organization', component:AddOrganizationComponent },
+    { path: 'editOrganization/:id', component:EditOrganizationComponent },
     { path: 'editEmployee/:empId', component:EditEmployeeComponent },
-
 ]}
 ];
 

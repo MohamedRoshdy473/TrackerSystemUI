@@ -9,7 +9,7 @@ export const environment = {
   postListOfStackholders: 'http://localhost:50653/api/Stackeholders/',
   postListOfMilestoness: 'http://localhost:50653/api/MileStones/',
   ProjectTeams: 'http://localhost:50653/api/ProjectTeam/',
-  organizations: 'http://localhost:50653/api/Organizations',
+  organizations: 'http://localhost:50653/api/Organizations/',
   clients: 'http://localhost:50653/api/Clients/',
   employees: 'http://localhost:50653/api/Employees/',
   requests: 'http://localhost:50653/api/Request/',

@@ -3,9 +3,10 @@
     <agm-marker *ngFor="let m of lstOrganizationMarkers;let i = index; " [latitude]="m.lat"
       [longitude]="m.lng" (mapClick)="placeMarker(m)">
       <agm-info-window style="padding: 5px 5px;">
-        <div style="height: 50px; margin: 5px 5px; padding: 5px 5px; font-size: 12pt;">
-          {{m.location}}
-          {{m.mobile}}
+        <div style="margin: 5px 5px; padding: 5px 5px; font-size: 12pt;">
+          <div>{{m.organizationName}}</div>
+          <div>{{m.location}}</div>
+          <div>{{m.mobile}}</div>
           {{m.organizationCode}}
           <button class="btn btn-warning" (click)="updateOrganization(m.id)">update</button>
         </div>

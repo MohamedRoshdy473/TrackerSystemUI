@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { organization } from 'src/Shared/Models/organization';
 import { OrganizationService } from 'src/Shared/Services/organization.service';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-list-organizations',
@@ -47,7 +47,12 @@ export class ListOrganizationsComponent implements OnInit {
   }
   updateOrganization(id) {
     console.log(id)
-    this.route.navigate(['home/editOrganization'])
+    // let navigationExtras: NavigationExtras = {
+    //   queryParams: {
+    //       a: id               
+    //   },
+  // };
+    this.route.navigate(['home/editOrganization',id])
   }
 
 }
