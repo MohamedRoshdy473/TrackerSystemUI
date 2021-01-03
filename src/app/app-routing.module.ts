@@ -21,6 +21,8 @@ import { DisplayAllEmployeesComponent } from './Components/employee/display-all-
 import { AddEmployeeComponent } from './Components/employee/add-employee/add-employee.component';
 import { EditEmployeeComponent } from './Components/employee/edit-employee/edit-employee.component';
 import { AllClientRequestsComponent } from './Components/Request/All-client-requests/all-client-requests.component';
+import { AddOrganizationComponent } from './Components/Organization/add-organization/add-organization.component';
+import { ListOrganizationsComponent } from './Components/Organization/list-organizations/list-organizations.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login'},
@@ -38,6 +40,8 @@ const routes: Routes = [
     { path: 'employee', component:DisplayAllEmployeesComponent},
     { path: 'addemployee', component:AddEmployeeComponent },
     { path: 'allClientReqts', component:AllClientRequestsComponent },
+    { path: 'organization', component:AddOrganizationComponent },
+    { path: 'organizations', component:ListOrganizationsComponent },
     { path: 'editEmployee/:empId', component:EditEmployeeComponent },
 
 ]}

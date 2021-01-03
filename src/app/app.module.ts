@@ -92,7 +92,9 @@ import { EditEmployeeComponent } from './Components/employee/edit-employee/edit-
 import { DisplayAllEmployeesComponent } from './Components/employee/display-all-employees/display-all-employees.component';
 import { AllUsersComponent } from './Components/all-users/all-users.component';
 import { AllClientRequestsComponent } from "./Components/Request/All-client-requests/all-client-requests.component";
-
+import { AgmCoreModule} from '@agm/core';
+import { AddOrganizationComponent } from './Components/Organization/add-organization/add-organization.component';
+import { ListOrganizationsComponent } from './Components/Organization/list-organizations/list-organizations.component';
 
 registerLocaleData(en);
 
@@ -116,7 +118,9 @@ registerLocaleData(en);
    EditEmployeeComponent,
    DisplayAllEmployeesComponent,
    AllUsersComponent,
-   AllClientRequestsComponent
+   AllClientRequestsComponent,
+   AddOrganizationComponent,
+   ListOrganizationsComponent
   ],
   imports: [
     BrowserModule,
@@ -179,7 +183,9 @@ registerLocaleData(en);
     ReactiveFormsModule,
  
     // ConfirmationService,
-    
+    AgmCoreModule.forRoot({
+      libraries: ["places", "geometry"],
+      apiKey:'AIzaSyCxvNEG1CRZ0pzoriAujg07y101MbOkFrQ'}),
     RouterModule.forRoot([]),
     TranslateModule.forRoot({
       loader: {

@@ -16,4 +16,8 @@ export class OrganizationService {
   GetAllOrganizations(): Observable <organization[]>{
     return this.httpClient.get<organization[]> (`${environment.organizations}`,this.httpHeader) ;
   }
+
+  AddOrganization(orgObj): Observable<organization> {
+    return this.httpClient.post<organization>(`${environment.organizations}`,orgObj, this.httpHeader);
+  }
 }
