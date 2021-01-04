@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
@@ -14,7 +15,7 @@ import {TableModule} from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
 import { HttpClient, HttpClientModule } from '@angular/common/http';;
 import { MatIconModule } from '@angular/material/icon';
-import { FormBuilder, FormControl, FormGroup, FormsModule } from '@angular/forms';
+
 
 // import { HttpClientModule, HttpClient } from  '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
@@ -125,6 +126,8 @@ registerLocaleData(en);
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     DropdownModule,
     SliderModule,
     TabMenuModule,
@@ -180,8 +183,7 @@ registerLocaleData(en);
     ToastModule,
     TableModule,
     ButtonModule,
-    FormsModule,
-    ReactiveFormsModule,
+
  
     // ConfirmationService,
     AgmCoreModule.forRoot({

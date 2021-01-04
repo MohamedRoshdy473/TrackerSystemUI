@@ -11,3 +11,7 @@ export class organization {
       lng:number;
 
 }
+
+export class OrganizationVM {
+      organizationName: string;
+}
