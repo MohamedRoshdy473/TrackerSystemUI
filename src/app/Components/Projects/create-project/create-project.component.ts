@@ -23,11 +23,13 @@ import { MilestoneService } from "../../../../Shared/Services/milestone.service"
 import { projectPosition } from "../../../../Shared/Models/projectPosition";
 import { ProjectPositionService } from "../../../../Shared/Services/project-position.service";
 import { projectTeam } from "../../../../Shared/Models/projectTeam";
+import { CreateTeamVM, Team } from "../../../../Shared/Models/team";
 import { ProjectTeamService } from "../../../../Shared/Services/project-team.service";
 import { DepartmentService } from "../../../../Shared/Services/department.service";
 import { department } from "../../../../Shared/Models/department";
 import { ProjectDocuments } from 'src/Shared/Models/ProjectDocuments';
 import { environment } from 'src/environments/environment';
+import { analyzeAndValidateNgModules } from '@angular/compiler';
 
 @Component({
   selector: 'app-create-project',
@@ -42,7 +44,9 @@ export class CreateProjectComponent implements OnInit {
   stackholderInLst: stackholder
   lstOfStackholder: stackholder[]
   lstOfProjectTeams: projectTeam[]
+
   ProjectTeam: projectTeam
+  team:Team
   departments: department[]
   department: department
   lstOfprojectPosition: projectPosition[]
@@ -97,9 +101,13 @@ export class CreateProjectComponent implements OnInit {
       id: 0, name: ''
     }
     this.ProjectTeam = {
-      departmentId: 0,teamName:'', id: 0, projectName: '', departmentName: '',
+      TeamId:0,
+      departmentId: 0,id: 0, projectName: '', departmentName: '',
       employeeId: 0, employeeName: '',
       projectId: this.projectID, projectPositionId: 0, projectPositionName: ''
+    }
+    this.team={
+      Id:0,Name:''
     }
     this.organizationService.GetAllOrganizations().subscribe(
       res => { this.lstOrganizations = res },
@@ -215,42 +223,66 @@ export class CreateProjectComponent implements OnInit {
       });
   }
   teamname:any
+saveTeam(){
+  
+}
+tasneem:number;
+SaveToDB_ProjectTeams(){
+  var addTeamObj = new CreateTeamVM();
+  addTeamObj.name = this.team.Name;
+addTeamObj.projectTeams =  this.lstOfProjectTeams;
+
+  this.projectService.addTeam(addTeamObj).subscribe(e=>{
+    this.Idteam=e;
+    this.tasneem=this.Idteam;
+    // console.log("tasneem",this.tasneem)
+    // console.log("teamIdd",this.Idteam)
+
+    })
+    // this.ProjectTeam.departmentId = Number(this.ProjectTeam.departmentId)
+    // this.ProjectTeam.employeeId = Number(this.ProjectTeam.employeeId)
+    // this.ProjectTeam.projectPositionId = Number(this.ProjectTeam.projectPositionId)
+    // this.projectTeamService.insertListOfteams(this.lstOfProjectTeams).subscribe(e=>{
+    // }),err=>console.log(err)
+  
+ 
+}
   Savetolist_Teams() {
+   
     this.ProjectTeam.projectId = this.projectID
     this.ProjectTeam.departmentId = Number(this.ProjectTeam.departmentId)
     this.ProjectTeam.employeeId = Number(this.ProjectTeam.employeeId)
     this.ProjectTeam.projectPositionId = Number(this.ProjectTeam.projectPositionId)
+    //this.ProjectTeam.TeamId=Number(localStorage.getItem(this.Idteam));
     this.ProjectTeam.departmentName = this.department.name
 
     this.employeeService.getEmpByID(this.ProjectTeam.employeeId).subscribe(e => {
+
+
       this.ProjectTeam.employeeName = e.employeeName
       this.positionService.getPositionByID(this.ProjectTeam.projectPositionId).subscribe(e => {
         this.ProjectTeam.projectPositionName = e.positionName
-        console.log("pos anme", this.ProjectTeam.projectPositionName)
-        this.teamname=this.ProjectTeam.teamName;
-        console.log("team name",this.teamname)
-        console.log(this.ProjectTeam.employeeName)
+       this.teamname=this.team.Name;
+      // this.ProjectTeam.TeamId=Number(this.team.Id);
+      this.ProjectTeam.TeamId=29;
         this.lstOfProjectTeams.push(this.ProjectTeam);
         this.ProjectTeam = {
-          departmentId: 0,teamName:this.teamname, id: 0, departmentName: '', employeeName: '', projectPositionId: 0, projectPositionName: '', employeeId: 0
+          TeamId:0,
+          departmentId: 0, id: 0, departmentName: '', employeeName: '', projectPositionId: 0, projectPositionName: '', employeeId: 0
           , projectId: this.projectID, projectName: ''
         }
+
+        
       })
     })
 
     // console.log("projteam before show", this.ProjectTeam)
-
     // console.log("lst of teams", this.lstOfProjectTeams)
   }
-  SaveToDB_ProjectTeams(){
-    this.ProjectTeam.departmentId = Number(this.ProjectTeam.departmentId)
-    this.ProjectTeam.employeeId = Number(this.ProjectTeam.employeeId)
-    this.ProjectTeam.projectPositionId = Number(this.ProjectTeam.projectPositionId)
-    console.log("lst of teams before", this.lstOfProjectTeams)
-    this.projectTeamService.insertListOfteams(this.lstOfProjectTeams).subscribe(e=>{
-      console.log("lst of teams after", this.lstOfProjectTeams)
-    }),err=>console.log(err)
-  }
+
+  Idteam:any
+  teamObj:any;
+
   clickkk(){
     console.log("clickkkkkkkk")
   }
@@ -280,7 +312,7 @@ export class CreateProjectComponent implements OnInit {
   
       
       });
-  }
+  } 
   SaveDocuentToDB() {
 
     this.projectdocumentService.postProjectDocumentByProjectID(this.lstoddocproj).subscribe(e => {
