@@ -35,11 +35,11 @@ export class EditOrganizationComponent implements OnInit {
     // phone:'',location:'',mobile:'',organizationCode:'',responsiblePerson:''};
  
     // this.organizationObj = { address: '', id: 0, lat: 30.0634890000, lng: 31.2524870000, location: '', mobile: '', organizationCode: '', organizationName: '', phone: '', responsiblePerson: '' }
-    this.OrgId = this.activatedRoute.snapshot.params['id'];
-    this.organizationService.GetOrganizationByID(this.OrgId).subscribe(E => {
-      this.organizationObj = E
-      console.log(this.organizationObj)
-    })
+    // this.OrgId = this.activatedRoute.snapshot.params['id'];
+    // this.organizationService.GetOrganizationByID(this.OrgId).subscribe(E => {
+    //   this.organizationObj = E
+    //   console.log(this.organizationObj)
+    // })
   }
   mapClicked($event: MouseEvent) {
     let lat: number = $event.coords.lat;

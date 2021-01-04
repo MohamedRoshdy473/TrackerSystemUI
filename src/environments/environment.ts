@@ -47,6 +47,8 @@ export const environment = {
   addRequstImages: 'http://localhost:50653/api/RequestImages',
   RequestDescription: 'http://localhost:50653/api/Project/',
   assignedRequests: 'http://localhost:50653/api/AssignedRequests/',
+  getTeambyId:'http://localhost:50653/api/Teams/',
+  addteams:'http://localhost:50653/api/Teams/',
 
   production: false
 };
