@@ -97,6 +97,11 @@ import { AllClientRequestsComponent } from "./Components/Request/All-client-requ
 import { AgmCoreModule} from '@agm/core';
 import { AddOrganizationComponent } from './Components/Organization/add-organization/add-organization.component';
 import { ListOrganizationsComponent } from './Components/Organization/list-organizations/list-organizations.component';
+import {AllManagerRequestsComponent} from '../app/Components/Request/All-manager-requests/all-manager-requests.component'
+import { AssignRequestsComponent } from "./Components/Request/Assign-requests/assign-requests.component";
+
+
+
 
 registerLocaleData(en);
 
@@ -122,7 +127,9 @@ registerLocaleData(en);
    AllUsersComponent,
    AllClientRequestsComponent,
    AddOrganizationComponent,
-   ListOrganizationsComponent
+   ListOrganizationsComponent,
+   AllManagerRequestsComponent,
+   AssignRequestsComponent
   ],
   imports: [
     BrowserModule,
