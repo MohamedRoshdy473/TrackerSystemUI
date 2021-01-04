@@ -1,7 +1,8 @@
 export class projectTeam {
     id :number
     employeeId: number
-    teamName:string
+
+    TeamId:number
     employeeName :string
     projectName:string
     departmentId:number

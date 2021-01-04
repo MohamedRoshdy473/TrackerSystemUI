@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { project } from '../Models/project'
+import { CreateTeamVM, Team } from '../Models/team';
 
 
 @Injectable({
@@ -35,5 +36,18 @@ export class ProjectService {
   }
   GetProjectsByClientId(clientID:Number):Observable<any>{
     return this.httpClient.get<any[]>(`${environment.GetProjectsByClientId}${clientID}`,this.httpHeader);
+  }
+  // addTeam(team):Observable<Team>{
+  //   return this.httpClient.post<Team>(`${environment.addteams}`,team,this.httpHeader);
+  // }
+
+  addTeam(team):Observable<CreateTeamVM>{
+    return this.httpClient.post<CreateTeamVM>(`${environment.addteams}`,team,this.httpHeader);
+  }
+
+
+
+  getTeamByTeamId(id:number):Observable<any>{
+    return this.httpClient.get<any>(`${environment.getTeambyId}${id}`,this.httpHeader);
   }
 }
