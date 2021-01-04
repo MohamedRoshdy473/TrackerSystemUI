@@ -29,7 +29,4 @@ export class ProjectTeamService {
   deleteteam(id:number):Observable<any>{ 
     return this.httpClient.delete<any>(`${environment.deleteteam}${id}`,this.httpHeader);
   }
-  GetProjectTeamsByProjectPositionId(positionId:number){
-    return this.httpClient.get<projectTeam[]> (`${environment.GetProjectTeamsByProjectPositionId}${positionId}`,this.httpHeader) ;
-  }
 }

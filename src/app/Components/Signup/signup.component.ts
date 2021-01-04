@@ -41,7 +41,7 @@ export class SignupComponent implements OnInit {
             console.log(this.role)
           }
           else {
-            this.routee.navigate(['/home/tabs'])
+            this.routee.navigate(['/home/about'])
             console.log(this.role)
           }
         }

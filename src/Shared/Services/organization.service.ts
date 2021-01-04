@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import{ organization, OrganizationVM} from 'src/Shared/Models/organization'
+import{organization} from 'src/Shared/Models/organization'
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +16,8 @@ export class OrganizationService {
   GetAllOrganizations(): Observable <organization[]>{
     return this.httpClient.get<organization[]> (`${environment.organizations}`,this.httpHeader) ;
   }
-  GetOrganizationByID(id: number): Observable<OrganizationVM> {
-    return this.httpClient.get<OrganizationVM>(`${environment.organizations}${id}`, this.httpHeader);
+  GetOrganizationByID(id: number): Observable<organization> {
+    return this.httpClient.get<organization>(`${environment.organizations}${id}`, this.httpHeader);
   }
   AddOrganization(orgObj): Observable<organization> {
     return this.httpClient.post<organization>(`${environment.organizations}`,orgObj, this.httpHeader);
