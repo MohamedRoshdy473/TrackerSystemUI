@@ -16,7 +16,7 @@ export class RequestDescriptionService {
       'Accept': '*/*'
     })
   };
-  // AddRequestDescription(reqDescription): Observable<requestDescription> {
-  //   return this.httpClient.post<requestDescription>(`${environment.}`,project, this.httpHeader);
-  // }
+  AddRequestDescription(reqDescription): Observable<requestDescription> {
+    return this.httpClient.post<requestDescription>(`${environment.RequestDescription}`,reqDescription, this.httpHeader);
+  }
 }

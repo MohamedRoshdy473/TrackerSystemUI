@@ -84,7 +84,7 @@ export class UpdateProjectComponent implements OnInit {
   this.milestonInLst = {
     description: '', id: 0, endDate: new Date(), projectId: 0, startDate: new Date(), title: ''
   }
-  this.ProjectTeam = {TeamId:0,
+  this.ProjectTeam = {TeamId:0,teamName:'',
     departmentId: 0, id: 0, projectName: '', departmentName: '',
     employeeId: 0, employeeName: '',
     projectId: this.id, projectPositionId: 0, projectPositionName: ''
@@ -264,7 +264,7 @@ Savetolist_Teams() {
       console.log("team name",this.teamname)
       console.log(this.ProjectTeam.employeeName)
       this.lstOfProjectTeams.push(this.ProjectTeam);
-      this.ProjectTeam = {
+      this.ProjectTeam = {teamName:'',
         TeamId:0,
         departmentId: 0, id: 0, departmentName: '', employeeName: '', projectPositionId: 0, projectPositionName: '', employeeId: 0
         , projectId: this.id, projectName: ''

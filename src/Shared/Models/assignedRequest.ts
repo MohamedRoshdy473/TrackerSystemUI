@@ -1,6 +1,7 @@
 export class assignedRequests {
     id:number
     projectPositionId:number
+    employeeId:number
     projectTeamId:number
-    RequestId:number
+    requestId:number
 }
