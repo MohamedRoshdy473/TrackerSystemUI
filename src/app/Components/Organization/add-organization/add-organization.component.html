@@ -1,5 +1,25 @@
 <div class="container">
 <form #myForm="ngForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="organizationName">OrganizationName</label>
+    <input type="text" class="form-control" id="organizationName" [(ngModel)]="organizationObj.organizationName" name="organizationName">
+  </div>
+  <div class="form-group">
+    <label for="organizationCode">OrganizationCode</label>
+    <input type="text" class="form-control" id="OrganizationCode" [(ngModel)]="organizationObj.organizationCode" name="organizationCode">
+  </div>
+  <div class="form-group">
+    <label for="mobile">Mobile</label>
+    <input type="text" class="form-control" id="mobile" [(ngModel)]="organizationObj.mobile" name="mobile">
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone</label>
+    <input type="text" class="form-control" id="phone" [(ngModel)]="organizationObj.phone" name="phone">
+  </div>
+  <div class="form-group">
+    <label for="mobile">ResponsiblePerson</label>
+    <input type="text" class="form-control" id="responsiblePerson" [(ngModel)]="organizationObj.responsiblePerson" name="responsiblePerson">
+  </div>
     <div class="form-group">
       <label for="latitude">Latitude</label>
       <input type="text" class="form-control" [(ngModel)]="organizationObj.lat" id="latitude" name="latitude">
@@ -8,10 +28,13 @@
       <label for="longitude">Longitude</label>
       <input type="text" class="form-control" id="longitude" [(ngModel)]="organizationObj.lng" name="longitude">
     </div>
+  
+
     <div class="form-group">
       <label for="address">Address</label>
       <input type="text" class="form-control" id="address" [(ngModel)]="organizationObj.address" name="address">
     </div>
+  
   
      <div class="form-group">
       <agm-map  style="height: 500px;"

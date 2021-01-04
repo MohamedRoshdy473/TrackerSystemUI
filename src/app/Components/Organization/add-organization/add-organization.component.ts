@@ -22,7 +22,9 @@ export class AddOrganizationComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.organizationObj = {lat:30.0634890000,lng:31.2524870000,address:'',id:0,organizationName:'',phone:'',location:'',mobile:'',organizationCode:'',responsiblePerson:''};
+    this.organizationObj = {lat:30.0634890000,lng:31.2524870000,address:'',id:0,
+    organizationName:'',
+    phone:'',location:'',mobile:'',organizationCode:'',responsiblePerson:''};
  
   }
 
@@ -33,7 +35,6 @@ onSubmit()
     this.organizationObj.lat =Number(this.organizationObj.lat);
     this.organizationObj.lng =Number(this.organizationObj.lng);
     this.organizationService.AddOrganization(this.organizationObj).subscribe((item)=>{
-      
     });
 }
 
