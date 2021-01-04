@@ -30,9 +30,9 @@ export class EditOrganizationComponent implements OnInit {
 
   ngOnInit() {
     
-    this.organizationObj = {lat:30.0634890000,lng:31.2524870000,address:'',id:0,
-    organizationName:'',
-    phone:'',location:'',mobile:'',organizationCode:'',responsiblePerson:''};
+    // this.organizationObj = {lat:30.0634890000,lng:31.2524870000,address:'',id:0,
+    // organizationName:'',
+    // phone:'',location:'',mobile:'',organizationCode:'',responsiblePerson:''};
  
     // this.organizationObj = { address: '', id: 0, lat: 30.0634890000, lng: 31.2524870000, location: '', mobile: '', organizationCode: '', organizationName: '', phone: '', responsiblePerson: '' }
     this.OrgId = this.activatedRoute.snapshot.params['id'];
