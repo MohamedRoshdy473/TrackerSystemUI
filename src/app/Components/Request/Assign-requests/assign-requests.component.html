@@ -1,0 +1,29 @@
+<!-- <div class="row">
+    <span class="col-md-3" for="Email">Email</span>
+    <br>
+    <input #userEmail="ngModel" required type="text" [class.is-invalid]="userEmail.invalid && userEmail.touched"
+        minlength="3" [class.is-valid]="userEmail.valid" [(ngModel)]="NewUser.email" disabled name="Email"
+        class="col-md-6 form-control" inputId="Email">
+</div> -->
+
+ <div class="row">
+<!-- <div class="p-field col-md-3" (change)="getTeamsByPositionId(($event.target.value))">
+    <label for="Project position" class="labelMarginRight">Project Position Name</label><br>
+    <p-dropdown [options]="lstProjectPosition"  [(ngModel)]="assignedReqObj.projectPositionId"
+        placeholder="Select Project Position Name" optionLabel="positionName" optionValue="id">
+    </p-dropdown>
+</div> -->
+<div class="col">
+    <label class="labelstyle">Select Position Name</label>
+    <select [(ngModel)]="assignedReqObj.projectPositionId" name="sel2" class="form-control"
+    (change)="getTeamsByPositionId(($event.target.value))">
+        <option *ngFor="let th of lstProjectPosition" value="{{th.id}}">{{th.positionName}}</option>
+    </select>
+</div>
+<div class="p-field col-md-3">
+    <label for="Project team" class="labelMarginRight">Project Team Name</label><br>
+    <p-dropdown [options]="lstProjectTeam" [(ngModel)]="assignedReqObj.projectTeamId"
+        placeholder="Select Project team Name" optionLabel="projectName" optionValue="id">
+    </p-dropdown>
+</div>
+</div>

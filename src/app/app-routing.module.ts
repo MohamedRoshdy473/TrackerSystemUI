@@ -15,7 +15,7 @@ import { CategoryComponent } from './Components/Request/Categories/category/cate
 import { ClientsComponent } from './Components/ClientComponents/clients/clients.component';
 import { CreateRequesteComponent } from './Components/Request/Create-requeste/create-requeste.component';
 import { DepartmentComponent } from './Components/DepartmentComponents/Department/department.component';
-import { ChangePaswwordComponent } from './Components/change-paswword/change-paswword.component';
+import { ChangePaswwordComponent } from './Components/Change-paswword/change-paswword.component';
 import { AllUsersComponent } from './Components/All-users/all-users.component';
 import { DisplayAllEmployeesComponent } from './Components/employee/display-all-employees/display-all-employees.component';
 import { AddEmployeeComponent } from './Components/employee/add-employee/add-employee.component';
@@ -25,14 +25,7 @@ import { AddOrganizationComponent } from './Components/Organization/add-organiza
 import { ListOrganizationsComponent } from './Components/Organization/list-organizations/list-organizations.component';
 import { EditOrganizationComponent } from './Components/Organization/edit-organization/edit-organization.component';
 import { AllManagerRequestsComponent } from './Components/Request/All-manager-requests/all-manager-requests.component';
-import { DisplayAllClientsComponent } from './Components/ClientComponents/display-all-clients/display-all-clients.component';
-import { EditClientComponent } from './Components/ClientComponents/edit-client/edit-client.component';
-import { DisplayDepartmentsComponent } from './Components/DepartmentComponents/display-departments/display-departments.component';
-import { EditDepartmentComponent } from './Components/DepartmentComponents/edit-department/edit-department.component';
-import { ProjectTypeComponent } from './Components/ProjectTypeComponents/project-type/project-type.component';
-import { AddProjectTypeComponent } from './Components/ProjectTypeComponents/add-project-type/add-project-type.component';
-import { EditProjectTypeComponent } from './Components/ProjectTypeComponents/edit-project-type/edit-project-type.component';
-
+import { AssignRequestsComponent } from "../app/Components/Request/Assign-requests/assign-requests.component";
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login'},
   { path: 'changePassword', component:  ChangePaswwordComponent},
@@ -42,18 +35,12 @@ const routes: Routes = [
     { path: 'Category', component:  CategoryComponent},
     { path: 'client', component:  ClientsComponent},
     { path: 'department', component:  DepartmentComponent},
-    { path: 'DisplayAllClients', component:  DisplayAllClientsComponent},
-    { path: 'editClient/:id', component:  EditClientComponent},
-    { path: 'DisplayDepartments', component:  DisplayDepartmentsComponent},
-    { path: 'editDepartment/:id', component:  EditDepartmentComponent},
-    { path: 'ProjectTypes', component:  ProjectTypeComponent},
-    { path: 'AddProjectType', component:  AddProjectTypeComponent},
-    { path: 'editProjectType/:id', component:  EditProjectTypeComponent},
     { path: 'Requests', component:  CreateRequesteComponent},
-    { path: 'ManagerRequests', component:  AllManagerRequestsComponent},
     { path: 'tabs/createProject', component:  CreateProjectComponent},
     { path: 'tabs/updateproject/:id', component:  UpdateProjectComponent},
     {path:'AllUsers',component:AllUsersComponent},
+    {path:'AllManagersReq',component:AllManagerRequestsComponent},
+    {path:'assignReq/:reqId',component:AssignRequestsComponent},
     { path: 'employee', component:DisplayAllEmployeesComponent},
     { path: 'addemployee', component:AddEmployeeComponent },
     { path: 'allClientReqts', component:AllClientRequestsComponent },

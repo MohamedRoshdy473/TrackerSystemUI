@@ -72,8 +72,8 @@
     <ng-template pTemplate="body" let-request>
         <tr>
             <td>
-                <img class="img-thumbnail" src="http://localhost:50653/api/employees/getImage/{{request.photo }}"
-                    alt="" width="50%" height="50%">
+                <!-- <img class="img-thumbnail" src="http://localhost:50653/api/employees/getImage/{{request.photo }}"
+                    alt="" width="50%" height="50%"> -->
             </td>
             <td>
                 {{request.requestName}}
@@ -96,13 +96,13 @@
                 {{request.requestTypeName}}
             </td>
             <td>
-                <button class="btn btn-info">Assign</button>
+                <button class="btn btn-info" (click)="assignRequests(request.id)">Assign</button>
             </td>
         </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">
         <tr>
-            <td colspan="6">No employees found.</td>
+            <td colspan="6">No Requests found.</td>
         </tr>
         <tr>
 

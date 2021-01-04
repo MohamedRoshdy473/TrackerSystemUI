@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {AccordionModule} from 'primeng/accordion';     //accordion and accordion tab
@@ -14,7 +15,7 @@ import {TableModule} from 'primeng/table';
 import {ButtonModule} from 'primeng/button';
 import { HttpClient, HttpClientModule } from '@angular/common/http';;
 import { MatIconModule } from '@angular/material/icon';
-import { FormBuilder, FormControl, FormGroup, FormsModule } from '@angular/forms';
+
 
 // import { HttpClientModule, HttpClient } from  '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
@@ -87,7 +88,7 @@ import { CategoryComponent } from './Components/Request/Categories/category/cate
 import { ClientsComponent } from './Components/ClientComponents/clients/clients.component';
 import { DepartmentComponent } from './Components/DepartmentComponents/Department/department.component';
 import { CreateRequesteComponent } from './Components/Request/Create-requeste/create-requeste.component';
-import { ChangePaswwordComponent } from './Components/change-paswword/change-paswword.component';
+import { ChangePaswwordComponent } from './Components/Change-paswword/change-paswword.component';
 import { AddEmployeeComponent } from './Components/employee/add-employee/add-employee.component';
 import { EditEmployeeComponent } from './Components/employee/edit-employee/edit-employee.component';
 import { DisplayAllEmployeesComponent } from './Components/employee/display-all-employees/display-all-employees.component';
@@ -96,15 +97,10 @@ import { AllClientRequestsComponent } from "./Components/Request/All-client-requ
 import { AgmCoreModule} from '@agm/core';
 import { AddOrganizationComponent } from './Components/Organization/add-organization/add-organization.component';
 import { ListOrganizationsComponent } from './Components/Organization/list-organizations/list-organizations.component';
-import { AllManagerRequestsComponent } from './Components/Request/All-manager-requests/all-manager-requests.component';
-import { AssignRequestsComponent } from './Components/Request/Assign-requests/assign-requests.component';
-import { EditDepartmentComponent } from './Components/DepartmentComponents/edit-department/edit-department.component';
-import { AddProjectTypeComponent } from './Components/ProjectTypeComponents/add-project-type/add-project-type.component';
-import { ProjectTypeComponent } from './Components/ProjectTypeComponents/project-type/project-type.component';
-import { EditProjectTypeComponent } from './Components/ProjectTypeComponents/edit-project-type/edit-project-type.component';
-import { EditClientComponent } from './Components/ClientComponents/edit-client/edit-client.component';
-import { DisplayAllClientsComponent } from './Components/ClientComponents/display-all-clients/display-all-clients.component';
-import { DisplayDepartmentsComponent } from './Components/DepartmentComponents/display-departments/display-departments.component';
+import {AllManagerRequestsComponent} from '../app/Components/Request/All-manager-requests/all-manager-requests.component'
+import { AssignRequestsComponent } from "./Components/Request/Assign-requests/assign-requests.component";
+
+
 
 
 registerLocaleData(en);
@@ -133,18 +129,12 @@ registerLocaleData(en);
    AddOrganizationComponent,
    ListOrganizationsComponent,
    AllManagerRequestsComponent,
-   AssignRequestsComponent,
-   EditDepartmentComponent,
-   ProjectTypeComponent,
-   AddProjectTypeComponent,
-   EditProjectTypeComponent,
-   EditClientComponent,
-   DisplayAllClientsComponent,
-   DisplayDepartmentsComponent,
-
+   AssignRequestsComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     DropdownModule,
     SliderModule,
     TabMenuModule,
@@ -200,8 +190,7 @@ registerLocaleData(en);
     ToastModule,
     TableModule,
     ButtonModule,
-    FormsModule,
-    ReactiveFormsModule,
+
  
     // ConfirmationService,
     AgmCoreModule.forRoot({
