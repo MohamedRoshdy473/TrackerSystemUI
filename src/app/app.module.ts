@@ -88,7 +88,7 @@ import { CategoryComponent } from './Components/Request/Categories/category/cate
 import { ClientsComponent } from './Components/ClientComponents/clients/clients.component';
 import { DepartmentComponent } from './Components/DepartmentComponents/Department/department.component';
 import { CreateRequesteComponent } from './Components/Request/Create-requeste/create-requeste.component';
-import { ChangePaswwordComponent } from './Components/change-paswword/change-paswword.component';
+import { ChangePaswwordComponent } from './Components/Change-paswword/change-paswword.component';
 import { AddEmployeeComponent } from './Components/employee/add-employee/add-employee.component';
 import { EditEmployeeComponent } from './Components/employee/edit-employee/edit-employee.component';
 import { DisplayAllEmployeesComponent } from './Components/employee/display-all-employees/display-all-employees.component';
