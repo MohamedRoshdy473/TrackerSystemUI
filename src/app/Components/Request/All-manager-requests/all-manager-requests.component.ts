@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { request } from 'src/Shared/Models/request';
 import { RequestService } from 'src/Shared/Services/request.service';
 
@@ -9,21 +8,15 @@ import { RequestService } from 'src/Shared/Services/request.service';
   styleUrls: ['./all-manager-requests.component.css']
 })
 export class AllManagerRequestsComponent implements OnInit {
-  lstRequests: request[]
-  constructor(private requestService: RequestService,
-    private router:Router
-    ) { }
+lstRequests:request[]
+  constructor(private requestService:RequestService) { }
 
   ngOnInit(): void {
     this.lstRequests = []
-    this.requestService.GetAllRequests().subscribe(e => {
+    this.requestService.GetAllRequests().subscribe(e=>{
       this.lstRequests = e
       console.log(this.lstRequests)
     })
-  }
-  assignRequests(reqId: number) {
-    console.log(reqId)
-    this.router.navigate(['home/assignReq', reqId]);
   }
 
 }
