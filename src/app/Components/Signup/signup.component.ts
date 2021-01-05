@@ -30,6 +30,7 @@ export class SignupComponent implements OnInit {
     this.loginSer.login(this.email, this.password)
       .subscribe(
         res => {
+          localStorage.setItem("clientId", res["clientId"])
           console.log("res is ", res)
           localStorage.setItem("token", res["token"])
           localStorage.setItem("roles", res["roles"])

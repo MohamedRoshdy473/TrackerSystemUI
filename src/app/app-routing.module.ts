@@ -26,6 +26,7 @@ import { ListOrganizationsComponent } from './Components/Organization/list-organ
 import { EditOrganizationComponent } from './Components/Organization/edit-organization/edit-organization.component';
 import { AllManagerRequestsComponent } from './Components/Request/All-manager-requests/all-manager-requests.component';
 import { AssignRequestsComponent } from "../app/Components/Request/Assign-requests/assign-requests.component";
+import { DisplayAllClientsComponent } from './Components/ClientComponents/display-all-clients/display-all-clients.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login'},
   { path: 'changePassword', component:  ChangePaswwordComponent},
@@ -39,6 +40,7 @@ const routes: Routes = [
     { path: 'tabs/createProject', component:  CreateProjectComponent},
     { path: 'tabs/updateproject/:id', component:  UpdateProjectComponent},
     {path:'AllUsers',component:AllUsersComponent},
+    {path:'DisplayAllClients',component:DisplayAllClientsComponent},
     {path:'AllManagersReq',component:AllManagerRequestsComponent},
     {path:'assignReq/:reqId',component:AssignRequestsComponent},
     { path: 'employee', component:DisplayAllEmployeesComponent},
