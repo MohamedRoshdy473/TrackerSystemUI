@@ -9,6 +9,7 @@ export const environment = {
   postListOfStackholders: 'http://localhost:50653/api/Stackeholders/',
   postListOfMilestoness: 'http://localhost:50653/api/MileStones/',
   ProjectTeams: 'http://localhost:50653/api/ProjectTeam/',
+  GetProjectTeamsByProjectPositionId: 'http://localhost:50653/api/ProjectTeam/GetProjectTeamsByProjectPositionId/',
   organizations: 'http://localhost:50653/api/Organizations/',
   clients: 'http://localhost:50653/api/Clients/',
   employees: 'http://localhost:50653/api/Employees/',
@@ -24,7 +25,7 @@ export const environment = {
   projectTypes: 'http://localhost:50653/api/ProjectTypes/',
   asset: 'http://localhost:50653/api/Assets',
   GetAllRequestByClientId: 'http://localhost:50653/api/Request/GetAllRequestByClientId/',
-  reqMode:'http://localhost:50653/api/RequestModes/',
+  reqMode: 'http://localhost:50653/api/RequestModes/',
   GetAllMilestonsByProjectId: 'http://localhost:50653/api/MileStones/GetMileStonesByProjectId/',
   GetAllTeamsByProjectId: 'http://localhost:50653/api/ProjectTeam/GetProjectTeamsByProjectId/',
   GetAllDocumentByProjectId: 'http://localhost:50653/api/ProjectDocument/GetProjectDocumentsByProjectId/',
@@ -34,7 +35,7 @@ export const environment = {
   deletestakeholder: 'http://localhost:50653/api/Stackeholders/',
   deletemilestone: ' http://localhost:50653/api/MileStones/',
   deleteteam: 'http://localhost:50653/api/ProjectTeam/',
-  GetProjectsByClientId:'http://localhost:50653/api/project/GetClientByProjectId/',
+  GetProjectsByClientId: 'http://localhost:50653/api/project/GetClientByProjectId/',
   deletedocument: 'http://localhost:50653/api/ProjectDocument/',
   updatestakeholdersbyprojectid: 'http://localhost:50653/api/Stackeholders/updatestakehodersByProjectId/1',
   updateteamsbyprojectid: 'http://localhost:50653/api/ProjectTeam/updateteamsByProjectId/1',
@@ -42,10 +43,13 @@ export const environment = {
   updatedocumectsbyprojectid: 'http://localhost:50653/api/ProjectDocument/PutDocumentsDTOByProjectId/',
   updateProject: 'http://localhost:50653/api/Project/',
   GetProjectById: 'http://localhost:50653/api/Project/',
-  uploadImage:'http://localhost:50653/api/UploadImage/uploadimage/',
-addRequstImages:'http://localhost:50653/api/RequestImages',
-addteams:'http://localhost:50653/api/Teams/',
-getTeambyId:'http://localhost:50653/api/Teams/',
+  uploadImage: 'http://localhost:50653/api/UploadImage/uploadimage/',
+  addRequstImages: 'http://localhost:50653/api/RequestImages',
+  RequestDescription: 'http://localhost:50653/api/RequestDescription/',
+  assignedRequests: 'http://localhost:50653/api/AssignedRequests/',
+  getTeambyId:'http://localhost:50653/api/Teams/',
+  addteams:'http://localhost:50653/api/Teams/',
+
   production: false
 };
 
