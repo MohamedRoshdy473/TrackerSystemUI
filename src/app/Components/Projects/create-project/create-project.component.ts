@@ -235,16 +235,9 @@ addTeamObj.projectTeams =  this.lstOfProjectTeams;
   this.projectService.addTeam(addTeamObj).subscribe(e=>{
     this.Idteam=e;
     this.tasneem=this.Idteam;
-    // console.log("tasneem",this.tasneem)
-    // console.log("teamIdd",this.Idteam)
 
     })
-    // this.ProjectTeam.departmentId = Number(this.ProjectTeam.departmentId)
-    // this.ProjectTeam.employeeId = Number(this.ProjectTeam.employeeId)
-    // this.ProjectTeam.projectPositionId = Number(this.ProjectTeam.projectPositionId)
-    // this.projectTeamService.insertListOfteams(this.lstOfProjectTeams).subscribe(e=>{
-    // }),err=>console.log(err)
-  
+ 
  
 }
   Savetolist_Teams() {
