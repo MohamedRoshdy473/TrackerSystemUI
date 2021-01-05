@@ -47,23 +47,20 @@
  
     <div class="row">
         <div class="col">
-            <label>plannded Start Date</label>
-            <input type="text" class="form-control"  [(ngModel)]="projectObj.planndedStartDate" name="planndedStartDate" >
+            <label>Employee Name</label>
+            <input type="text" class="form-control"  [(ngModel)]="emploeeObj.employeeName" >
         </div>
         <div class="col">
             <label>actual Start Date</label>
             <input type="text" class="form-control"  [(ngModel)]="projectObj.actualStartDate" name="actualStartDate" >
         </div>
-        <div class="col">
-            <label>plannded End Date</label>
-            <input type="text" class="form-control"  [(ngModel)]="projectObj.planndedEndDate" name="planndedEndDate">
-        </div>
+      
         <div class="col">
             <label>actual End Date</label>
             <input type="text" class="form-control" [(ngModel)]="projectObj.actualEndDate" name="actualEndDate">
         </div>
     </div>
-   
+   <br/>
     <button pButton type="button"  label="Edit"  (click)="edit(project1.id)" class="p-button-warning"></button>
     
     <div class="row">
@@ -73,14 +70,15 @@
             <p-table [value]="projectObj.listOfStackholders">
                 <ng-template pTemplate="header">
                     <tr>
-                        <th style="color: #2674a8; font-size: 25px; font: bold;">StaheHolders Name</th>
-                       <th style="color: #2674a8; font-size: 25px; font: bold;">Remove</th>
+                        <th style="color: #2674a8; font-size: 20px; font: bold;">StaheHolders Name</th>
+                        <th ></th>
+
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-i>
                     <tr>
                         <td>{{i.stackeholderName}}</td>
-            <button pButton pRipple [label]="Delete" icon="pi pi-trash" class="p-button-danger" (click)="delStakeHolders(i.id)"></button>
+            <button pButton pRipple  icon="pi pi-trash" class="p-button-danger" (click)="delStakeHolders(i.id)"></button>
                        
                     </tr>
                     
@@ -180,14 +178,15 @@
             <p-table [value]=" projectObj.listOfmilestones">
                 <ng-template pTemplate="header">
                     <tr>
-                        <th style="color: #2674a8; font-size: 25px; font: bold;">Title Name</th>
-                       <th style="color: #2674a8; font-size: 25px; font: bold;">Remove</th>
+                        <th style="color: #2674a8; font-size: 20px; font: bold;">Title Name</th>
+                        <th ></th>
+
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-i>
                     <tr>
                         <td>{{i.title}}</td>
-            <button pButton pRipple [label]="Delete" icon="pi pi-trash" class="p-button-danger" (click)="delMile(i.id)"></button>
+            <button pButton pRipple icon="pi pi-trash" class="p-button-danger" (click)="delMile(i.id)"></button>
                        
                     </tr>
                 </ng-template>
@@ -293,29 +292,30 @@
                 <p-table [value]=" projectObj.listofprojectteam">
                     <ng-template pTemplate="header">
                         <tr>
-                            <th style="color: #2674a8; font-size: 25px; font: bold;">Team Name</th>
-                            <th style="color: #2674a8; font-size: 25px; font: bold;">Employee Name</th>
-                           <th style="color: #2674a8; font-size: 25px; font: bold;">Remove</th>
+                            <!-- <th style="color: #2674a8; font-size: 20px; font: bold;">Team Name</th> -->
+                            <th style="color: #2674a8; font-size: 20px; font: bold;">Employee Name</th>
+                            <th ></th>
+                          
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="body" let-i>
                         <tr>
-                            <td>{{i.teamName}}</td>
+                            <!-- <td>{{teamname}}</td> -->
                             <td>{{i.employeeName}}</td>
-                <button pButton pRipple [label]="Delete" icon="pi pi-trash" class="p-button-danger" (click)="delteam(i.id)"></button>
+                <button pButton pRipple  icon="pi pi-trash" class="p-button-danger" (click)="delteam(i.id)"></button>
                            
                         </tr>
                     </ng-template>
                 </p-table>
-                <p-button (click)="showteamDialog()" icon="pi pi-external-link" label="Show"></p-button>
+                <p-button (click)="showteamDialog()" icon="pi pi-external-link" label="Add Teams"></p-button>
 <p-dialog header="Header" [(visible)]="displayteam" [style]="{width: '50vw'}" [baseZIndex]="10000">
     <div class="row">
         <div class="p-col-12 p-md-4">
             <div class="p-inputgroup">
                 <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-                <input type="text" pInputText placeholder="Team Name"
-                >
-                <!-- [(ngModel)]="ProjectTeam.teamName"> -->
+                <input type="text" pInputText placeholder="Team Name" [(ngModel)]="team.Name">
+                
+            
             </div>
         </div>
         <div class="col">
@@ -402,14 +402,14 @@
                 <p-table [value]="  projectObj.listOfdocuments">
                     <ng-template pTemplate="header">
                         <tr>
-                            <th style="color: #2674a8; font-size: 25px; font: bold;">Document Name</th>
-                           <th style="color: #2674a8; font-size: 25px; font: bold;">Remove</th>
+                            <th style="color: #2674a8; font-size: 20px; font: bold;">Document Name</th>
+                           <th ></th>
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="body" let-i>
                         <tr>
                             <td>{{i.documentName}}</td>
-                <button pButton pRipple [label]="Delete" icon="pi pi-trash" class="p-button-danger" (click)="delDocument(i.id)"></button>
+                <button pButton pRipple icon="pi pi-trash" class="p-button-danger" (click)="delDocument(i.id)"></button>
                            
                         </tr>
                     </ng-template>

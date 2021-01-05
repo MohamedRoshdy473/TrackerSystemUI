@@ -4,6 +4,8 @@ import { HttpClient, HttpEventType } from '@angular/common/http';
 import { ConfirmationService, MenuItem, MessageService } from 'primeng/api';
 import { project } from '../../../../Shared/Models/project'
 import { ProjectService } from '../../../../Shared/Services/project.service'
+import { CreateTeamVM, Team } from "../../../../Shared/Models/team";
+
 import { StackholdersService } from '../../../../Shared/Services/stackholders.service'
 import { MilestoneService } from '../../../../Shared/Services/milestone.service'
 import { ProjectTeamService } from '../../../../Shared/Services/project-team.service'
@@ -58,6 +60,9 @@ export class UpdateProjectComponent implements OnInit {
   lstOfprojectPosition: projectPosition[]
   docproject:ProjectDocuments
   teamname:any
+  team:Team
+  emploeeObj:employee
+
 
   constructor( private positionService: ProjectPositionService,private employeeService: EmployeeService, private departmentService: DepartmentService,private route: ActivatedRoute,  private milestoneservice: MilestoneService, private projectService: ProjectService, 
     private stackholderService: StackholdersService,
@@ -74,6 +79,13 @@ export class UpdateProjectComponent implements OnInit {
    this.lstOfProjectTeams = []
    this.docproject={
     Description:'',documentName:'',DocumentFile:'',id:0,projectId:0
+  }
+  this.emploeeObj={
+    address:'',dateOfBirth:new Date(),departmentId:0,departmentName:'',email:'',employeeCode:''
+    ,employeeName:'',gender:'',hiringDateHiringDate:new Date(),id:0,maritalStatus:'',mobile:'',phone:'',photo:'',position:''
+  }
+  this.team={
+    Id:0,Name:''
   }
    this.department = {
     id: 0, name: ''
@@ -118,6 +130,11 @@ this.employeeService.GetAllEmployees().subscribe(
     this.projectService.getProjectById(this.id).subscribe(res => {
       this.projectObj = res;
       console.log(this.projectObj)
+      this.employeeService.getEmpByID(this.projectObj.employeeId).subscribe(res=>{
+        this.emploeeObj=res;
+        console.log("employee",this.emploeeObj.employeeName)
+
+      })
     })
 
     this.stackholderService.GetAllStackholdersByProjectID(this.id).subscribe(e => {
@@ -248,43 +265,54 @@ showteamDialog(){
 showdocDialog(){
   this.displaydoc=true
 }
-Savetolist_Teams() {
-  
-  this.ProjectTeam.departmentId = Number(this.ProjectTeam.departmentId)
-  this.ProjectTeam.employeeId = Number(this.ProjectTeam.employeeId)
-  this.ProjectTeam.projectPositionId = Number(this.ProjectTeam.projectPositionId)
-  this.ProjectTeam.departmentName = this.department.name
+  Savetolist_Teams() {
+   
+    this.ProjectTeam.projectId =Number( this.id)
+    this.ProjectTeam.departmentId = Number(this.ProjectTeam.departmentId)
+    this.ProjectTeam.employeeId = Number(this.ProjectTeam.employeeId)
+    this.ProjectTeam.projectPositionId = Number(this.ProjectTeam.projectPositionId)
+    //this.ProjectTeam.TeamId=Number(localStorage.getItem(this.Idteam));
+    this.ProjectTeam.departmentName = this.department.name
 
-  this.employeeService.getEmpByID(this.ProjectTeam.employeeId).subscribe(e => {
-    this.ProjectTeam.employeeName = e.employeeName
-    this.positionService.getPositionByID(this.ProjectTeam.projectPositionId).subscribe(e => {
-      this.ProjectTeam.projectPositionName = e.positionName
-      console.log("pos anme", this.ProjectTeam.projectPositionName)
-      //this.teamname=this.ProjectTeam.teamName;
-      console.log("team name",this.teamname)
-      console.log(this.ProjectTeam.employeeName)
-      this.lstOfProjectTeams.push(this.ProjectTeam);
-      this.ProjectTeam = {teamName:'',
-        TeamId:0,
-        departmentId: 0, id: 0, departmentName: '', employeeName: '', projectPositionId: 0, projectPositionName: '', employeeId: 0
-        , projectId: this.id, projectName: ''
-      }
+    this.employeeService.getEmpByID(this.ProjectTeam.employeeId).subscribe(e => {
+
+
+      this.ProjectTeam.employeeName = e.employeeName
+      this.positionService.getPositionByID(this.ProjectTeam.projectPositionId).subscribe(e => {
+        this.ProjectTeam.projectPositionName = e.positionName
+       this.teamname=this.team.Name;
+      // this.ProjectTeam.TeamId=Number(this.team.Id);
+      this.ProjectTeam.TeamId=29;
+        this.lstOfProjectTeams.push(this.ProjectTeam);
+        this.ProjectTeam = {
+          teamName:'',
+          TeamId:0,
+          departmentId: 0, id: 0, departmentName: '', employeeName: '', projectPositionId: 0, projectPositionName: '', employeeId: 0
+          , projectId: this.id, projectName: ''
+        }
+
+        
+      })
     })
-  })
 
-  // console.log("projteam before show", this.ProjectTeam)
+    // console.log("projteam before show", this.ProjectTeam)
+    // console.log("lst of teams", this.lstOfProjectTeams)
+  }
+Idteam:any
+tasneem:number;
 
-  // console.log("lst of teams", this.lstOfProjectTeams)
-}
 SaveToDB_ProjectTeams(){
-  this.ProjectTeam.departmentId = Number(this.ProjectTeam.departmentId)
-  this.ProjectTeam.employeeId = Number(this.ProjectTeam.employeeId)
-  this.ProjectTeam.projectPositionId = Number(this.ProjectTeam.projectPositionId)
-  console.log("lst of teams before", this.lstOfProjectTeams)
-  this.projectteamservice.insertListOfteams(this.lstOfProjectTeams).subscribe(e=>{
-    this.ngOnInit()
-    console.log("lst of teams after", this.lstOfProjectTeams)
-  }),err=>console.log(err)
+  var addTeamObj = new CreateTeamVM();
+  addTeamObj.name = this.team.Name;
+addTeamObj.projectTeams =  this.lstOfProjectTeams;
+
+  this.projectService.addTeam(addTeamObj).subscribe(e=>{
+    this.Idteam=e;
+    this.tasneem=this.Idteam;
+this.ngOnInit();
+    })
+ 
+ 
 }
 OnChangeEmpID(i: any) {
   console.log(i)
