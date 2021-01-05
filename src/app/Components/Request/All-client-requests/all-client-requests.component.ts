@@ -12,11 +12,8 @@ export class AllClientRequestsComponent implements OnInit {
   lstRequests:request[]
   clientID:number
   clientName:string
-  emailLoggedIn:string
   constructor(private requestService:RequestService) { }
   ngOnInit(): void {
-  this.emailLoggedIn=localStorage.getItem("email")
-
   this.clientID = Number(localStorage.getItem("LoginedUserId")) 
 
     console.log(this.clientID)  
