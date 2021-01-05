@@ -30,7 +30,11 @@
         <h5 style="margin-left: 3%;" >System Users</h5>
         <div class="col-md-2 ml-5">
             <button id="addEmpBtn" (click)="NewUserDialog()" class="btn btn-outline-primary btn-md btn-block">
-                <span class="pi pi-plus"></span> <span > Add</span> </button>
+                <span class="pi pi-plus"></span> <span >Add Employee</span> </button>
+        </div>
+        <div class="col-md-2 ml-5">
+            <button id="addEmpBtn" (click)="NewClientDialog()" class="btn btn-outline-primary btn-md btn-block">
+                <span class="pi pi-plus"></span> <span > Add Client</span> </button>
         </div>
     </div>
     <p-table [value]="users" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
@@ -148,6 +152,54 @@
             <p-button  type="submit" [disabled]="frm.invalid" icon="pi pi-check" label="" 
             styleClass="p-button-text"><span >Save</span></p-button>
             <p-button icon="pi pi-times" (click)="NewLeaveDialogbool=false"
+             label=""><span >NO</span></p-button>
+        </ng-template>
+
+    </p-dialog>
+    <p-dialog  header=" " [(visible)]="NewclientDialogbool" [style]="{width: '50vw'}" [baseZIndex]="10000">
+
+        <div class="row">
+            <span class="col-md-3" for="Client" >Client</span>
+            <select (change)="onChangeclient($event.target.value)" name="Client" class="form-control col-md-6" >Employee
+                <option value="" selected disabled hidden><span >Client Name</span></option>
+                <option *ngFor="let item of GetUnregisteredClients" value="{{item.id}}">{{item.clientName}}</option>
+            </select>
+        </div>
+        <br>
+        <div class="row">
+            <span class="col-md-3" for="Email" >Email</span>
+            <br>
+            <input #userEmail="ngModel" required type="text" 
+            [class.is-invalid]="userEmail.invalid && userEmail.touched" minlength="3"
+                [class.is-valid]="userEmail.valid" [(ngModel)]="NewUser.email" disabled 
+                name="Email" class="col-md-6 form-control"
+                inputId="Email">
+        </div>
+        <br>
+        <div class="row">
+            <span class="col-md-3" for="Password" >Password</span>
+            <br>
+            <input disabled value="P@ssw0rd" type="text" disabled name="Password" class="col-md-6 form-control"
+                inputId="Password">
+        </div>
+        <br>
+        <div class="row">
+            <span class="col-md-3" >Role</span>
+            <br>
+            <div class="p-field-radiobutton">
+                <div class="row">
+                    <input checked [(ngModel)]="NewUser.role" class="form-check-input" type="radio" name="exampleRadios"
+                     id="exampleRadios2" value="Client">
+                    <label class="form-check-label" for="exampleRadios2">
+                        Client
+                    </label>
+                </div>
+            </div>
+        </div>
+        <ng-template pTemplate="footer">
+            <p-button  type="submit" [disabled]="frm.invalid" icon="pi pi-check" label="" 
+            styleClass="p-button-text"><span >Save</span></p-button>
+            <p-button icon="pi pi-times" (click)="NewClientDialog=false"
              label=""><span >NO</span></p-button>
         </ng-template>
 

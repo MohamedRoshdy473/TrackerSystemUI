@@ -99,6 +99,8 @@ import { AddOrganizationComponent } from './Components/Organization/add-organiza
 import { ListOrganizationsComponent } from './Components/Organization/list-organizations/list-organizations.component';
 import {AllManagerRequestsComponent} from '../app/Components/Request/All-manager-requests/all-manager-requests.component'
 import { AssignRequestsComponent } from "./Components/Request/Assign-requests/assign-requests.component";
+import { DisplayAllClientsComponent } from './Components/ClientComponents/display-all-clients/display-all-clients.component';
+import { EditClientComponent } from './Components/ClientComponents/edit-client/edit-client.component';
 
 
 
@@ -118,6 +120,8 @@ registerLocaleData(en);
     UpdateProjectComponent,
     CategoryComponent,
     ClientsComponent,
+    DisplayAllClientsComponent,
+    EditClientComponent,
     CreateRequesteComponent,
     DepartmentComponent,
    ChangePaswwordComponent,

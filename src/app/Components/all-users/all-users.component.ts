@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { User } from 'src/Shared/Models/User';
+import { ClientService } from 'src/Shared/Services/client.service';
 import { EmployeeService } from 'src/Shared/Services/employee.service';
 import { UsersService } from 'src/Shared/Services/users.service';
 
@@ -13,17 +14,22 @@ export class AllUsersComponent implements OnInit {
 
   users:User[];
   GetUnregisteredUsers:any;
+  GetUnregisteredClients:any;
   NewUser:User;
   AllEmployees: any;
+  AllClients:any;
+  clientId:any;
   NewLeaveDialogbool:boolean;
+  NewclientDialogbool:boolean;
   displayBasic: boolean;
-  constructor(private userService:UsersService,private EmpService:EmployeeService,
+  constructor(private clientService:ClientService,private userService:UsersService,private EmpService:EmployeeService,
     private confirmationService: ConfirmationService,private messageService: MessageService
     ) { 
     this.NewUser={id:0,email:'',role:'User',userName:'',password:'P@ssw0rd'};
   }
 
   ngOnInit(): void {
+  this.clientId= localStorage.getItem('clientId');
     this.userService.getAllUsers().subscribe(
       data=>{
         this.users=data;
@@ -38,23 +44,46 @@ export class AllUsersComponent implements OnInit {
         },
         error=>console.log(error)
         );
+        this.clientService.GetAllClients().subscribe(
+          data=>{
+            this.AllClients=data;
+            console.log(data)
+          },
+          error=>console.log(error)
+          );
+
         this.userService.GetUnregisteredUsers().subscribe(
           data=>this.GetUnregisteredUsers=data,
+          error=>console.log(error)
+        )
+        
+        this.userService.GetUnregisteredUsersClient().subscribe(
+          data=>this.GetUnregisteredClients=data,
           error=>console.log(error)
         )
   }
 
   addNewUser()
   {
+    // if(this.clientrole=='Client')
+    // {
+    //   this.NewUser.role=this.clientrole
+    // }
     console.log(this.NewUser);
     this.userService.addUser(this.NewUser).subscribe(
       data=>this.ngOnInit()
     )
     this.NewLeaveDialogbool=false;
+    this.NewclientDialogbool=false;
   }
   NewUserDialog()
   {
     this.NewLeaveDialogbool=true;
+  }
+  NewClientDialog()
+  {
+    this.NewclientDialogbool=true;
+
   }
   onChange(event){
     this.AllEmployees.forEach(element => {
@@ -62,6 +91,16 @@ export class AllUsersComponent implements OnInit {
       {
         this.NewUser.email=element.email;
         this.NewUser.userName=element.employeeName;
+      }
+    });
+  }
+
+  onChangeclient(event){
+    this.AllClients.forEach(element => {
+      if(element.id==event)
+      {
+        this.NewUser.email=element.email;
+        this.NewUser.userName=element.clientName;
       }
     });
   }

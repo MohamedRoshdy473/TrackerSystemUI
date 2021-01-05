@@ -24,6 +24,10 @@ export class UsersService {
   {
     return this.httpClient.get<User[]>(`${environment.User}/users/GetUnregisteredUsers`,this.httpHeader);
   }
+  GetUnregisteredUsersClient():Observable<User[]>
+  {
+    return this.httpClient.get<User[]>(`${environment.User}/users/GetUnregisteredUsersClient`,this.httpHeader);
+  }
   addUser(NewUser:User)
   {
     return this.httpClient.post(`${environment.User}/Authenticate/register`,NewUser,this.httpHeader)
