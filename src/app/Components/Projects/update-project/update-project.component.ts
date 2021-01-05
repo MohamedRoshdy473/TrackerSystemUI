@@ -61,7 +61,7 @@ export class UpdateProjectComponent implements OnInit {
   docproject:ProjectDocuments
   teamname:any
   team:Team
-  emploeeObj:any
+  emploeeObj:employee
 
 
   constructor( private positionService: ProjectPositionService,private employeeService: EmployeeService, private departmentService: DepartmentService,private route: ActivatedRoute,  private milestoneservice: MilestoneService, private projectService: ProjectService, 
@@ -80,6 +80,10 @@ export class UpdateProjectComponent implements OnInit {
    this.docproject={
     Description:'',documentName:'',DocumentFile:'',id:0,projectId:0
   }
+  this.emploeeObj={
+    address:'',dateOfBirth:new Date(),departmentId:0,departmentName:'',email:'',employeeCode:''
+    ,employeeName:'',gender:'',hiringDateHiringDate:new Date(),id:0,maritalStatus:'',mobile:'',phone:'',photo:'',position:''
+  }
   this.team={
     Id:0,Name:''
   }
@@ -92,7 +96,7 @@ export class UpdateProjectComponent implements OnInit {
   this.milestonInLst = {
     description: '', id: 0, endDate: new Date(), projectId: 0, startDate: new Date(), title: ''
   }
-  this.ProjectTeam = {TeamId:0,
+  this.ProjectTeam = {TeamId:0,teamName:'',
     departmentId: 0, id: 0, projectName: '', departmentName: '',
     employeeId: 0, employeeName: '',
     projectId: this.id, projectPositionId: 0, projectPositionName: ''
@@ -281,6 +285,7 @@ showdocDialog(){
       this.ProjectTeam.TeamId=29;
         this.lstOfProjectTeams.push(this.ProjectTeam);
         this.ProjectTeam = {
+          teamName:'',
           TeamId:0,
           departmentId: 0, id: 0, departmentName: '', employeeName: '', projectPositionId: 0, projectPositionName: '', employeeId: 0
           , projectId: this.id, projectName: ''
