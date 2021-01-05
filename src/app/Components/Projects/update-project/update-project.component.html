@@ -71,13 +71,14 @@
                 <ng-template pTemplate="header">
                     <tr>
                         <th style="color: #2674a8; font-size: 20px; font: bold;">StaheHolders Name</th>
-                       <th style="color: #2674a8; font-size: 20px; font: bold;">Remove</th>
+                        <th ></th>
+
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-i>
                     <tr>
                         <td>{{i.stackeholderName}}</td>
-            <button pButton pRipple [label]="Delete" icon="pi pi-trash" class="p-button-danger" (click)="delStakeHolders(i.id)"></button>
+            <button pButton pRipple  icon="pi pi-trash" class="p-button-danger" (click)="delStakeHolders(i.id)"></button>
                        
                     </tr>
                     
@@ -178,13 +179,14 @@
                 <ng-template pTemplate="header">
                     <tr>
                         <th style="color: #2674a8; font-size: 20px; font: bold;">Title Name</th>
-                       <th style="color: #2674a8; font-size: 20px; font: bold;">Remove</th>
+                        <th ></th>
+
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-i>
                     <tr>
                         <td>{{i.title}}</td>
-            <button pButton pRipple [label]="Delete" icon="pi pi-trash" class="p-button-danger" (click)="delMile(i.id)"></button>
+            <button pButton pRipple icon="pi pi-trash" class="p-button-danger" (click)="delMile(i.id)"></button>
                        
                     </tr>
                 </ng-template>
@@ -292,14 +294,15 @@
                         <tr>
                             <!-- <th style="color: #2674a8; font-size: 20px; font: bold;">Team Name</th> -->
                             <th style="color: #2674a8; font-size: 20px; font: bold;">Employee Name</th>
-                           <th style="color: #2674a8; font-size: 20px; font: bold;">Remove</th>
+                            <th ></th>
+                          
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="body" let-i>
                         <tr>
                             <!-- <td>{{teamname}}</td> -->
                             <td>{{i.employeeName}}</td>
-                <button pButton pRipple [label]="Delete" icon="pi pi-trash" class="p-button-danger" (click)="delteam(i.id)"></button>
+                <button pButton pRipple  icon="pi pi-trash" class="p-button-danger" (click)="delteam(i.id)"></button>
                            
                         </tr>
                     </ng-template>
@@ -400,13 +403,13 @@
                     <ng-template pTemplate="header">
                         <tr>
                             <th style="color: #2674a8; font-size: 20px; font: bold;">Document Name</th>
-                           <th style="color: #2674a8; font-size: 20px; font: bold;">Remove</th>
+                           <th ></th>
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="body" let-i>
                         <tr>
                             <td>{{i.documentName}}</td>
-                <button pButton pRipple [label]="Delete" icon="pi pi-trash" class="p-button-danger" (click)="delDocument(i.id)"></button>
+                <button pButton pRipple icon="pi pi-trash" class="p-button-danger" (click)="delDocument(i.id)"></button>
                            
                         </tr>
                     </ng-template>
