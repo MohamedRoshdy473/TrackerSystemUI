@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '../../../Shared/Services/login.service' 
+import { LoginService } from '../../../Shared/Services/login.service'
 import { error } from '@angular/compiler/src/util';
 import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import {MessageService} from 'primeng/api';
+import { MessageService } from 'primeng/api';
 
 
 @Component({
@@ -16,7 +16,8 @@ export class SignupComponent implements OnInit {
   email: any
   password: any
   role: string
-  constructor(private loginSer: LoginService, private routee: Router ,private messageService: MessageService) { }
+  LoginedUserId: string;
+  constructor(private loginSer: LoginService, private routee: Router, private messageService: MessageService) { }
 
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required]),
@@ -29,12 +30,13 @@ export class SignupComponent implements OnInit {
     this.loginSer.login(this.email, this.password)
       .subscribe(
         res => {
-          console.log("res is ",res)
+          console.log("res is ", res)
           localStorage.setItem("token", res["token"])
           localStorage.setItem("roles", res["roles"])
           localStorage.setItem("userName", res['userName']);
-          localStorage.setItem("id", res['id']);     
-          this.role = localStorage.getItem("roles")
+          localStorage.setItem("id", res['id']);
+          localStorage.setItem("loginedUserId", res['loginedUserId']);
+          localStorage.getItem("loginedUserId")
           console.log(localStorage.getItem("token"))
           if (this.role == 'SuperAdmin') {
             this.routee.navigate(['/home/tabs'])
@@ -52,18 +54,18 @@ export class SignupComponent implements OnInit {
   }
   onReject() {
     this.messageService.clear('c');
-}
-clear() {
-  this.messageService.clear();
-}
+  }
+  clear() {
+    this.messageService.clear();
+  }
 
-showTopCenter() {
-  this.messageService.add({key: 'tc', severity:'error', summary: 'Attention !!!',sticky: true, detail: 'User Name or password is incorrect'});
-}
+  showTopCenter() {
+    this.messageService.add({ key: 'tc', severity: 'error', summary: 'Attention !!!', sticky: true, detail: 'User Name or password is incorrect' });
+  }
 
-// showSticky() {
-//   this.messageService.add({severity:'info', summary: 'Sticky', detail: 'Message Content', sticky: true});
-// }
+  // showSticky() {
+  //   this.messageService.add({severity:'info', summary: 'Sticky', detail: 'Message Content', sticky: true});
+  // }
 
 
 

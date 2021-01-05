@@ -49,7 +49,7 @@ export const environment = {
   assignedRequests: 'http://localhost:50653/api/AssignedRequests/',
   getTeambyId:'http://localhost:50653/api/Teams/',
   addteams:'http://localhost:50653/api/Teams/',
-
+  GetEmployeessByTeamId:'http://localhost:50653/api/ProjectTeam/GetEmployeessByTeamId/',
   production: false
 };
 

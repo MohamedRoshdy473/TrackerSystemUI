@@ -20,28 +20,37 @@ export class AssignRequestsComponent implements OnInit {
   lstProjectPosition: projectPosition[]
   lstProjectTeamAfterFilter: projectTeam[]
   lstProjectTeam: projectTeam[]
+  lstProjectTeamAfterFiltration: projectTeam[]
   reqDescriptionObj: requestDescription
-  reqId:number 
-  userId:string
+  projectTeamForEmployees: projectTeam[]
+  reqId: number
+  LoginedUserId: string;
+  Id: any
+  teamId: any;
+  empId: number
+
   constructor(
-    private activeRoute: ActivatedRoute,private route:Router,
+    private activeRoute: ActivatedRoute, private route: Router,
     private assignedRequestsService: AssignedRequestsService,
     private projectPositionService: ProjectPositionService,
     private projectTeamService: ProjectTeamService,
-    private requestDescriptionService:RequestDescriptionService
+    private requestDescriptionService: RequestDescriptionService
   ) { }
 
   ngOnInit(): void {
-   this.reqId=Number( this.activeRoute.snapshot.params['reqId']);
-   console.log("reqID",this.reqId)
-    this.userId = localStorage.getItem('id')
-    console.log("userId",localStorage.getItem('id'))
+    // this.projectTeamObj = {
+    //   departmentId: 0, departmentName: '', employeeId: 0, id: 0, projectId: 0, projectName: '', projectPositionId: 0,
+    //   TeamId: 0, teamName: '', employeeName: '', projectPositionName: ''
+    // }
+    this.reqId = Number(this.activeRoute.snapshot.params['reqId']);
+    this.LoginedUserId = localStorage.getItem("loginedUserId")
     this.lstProjectPosition = []
     this.reqDescriptionObj = {
-      description:'',id:0,requestId:this.reqId,userId:this.userId
+      description: '', id: 0, requestId: this.reqId, userId: this.LoginedUserId
     }
-    this.assignedReqObj = {employeeId:0,
-      requestId: this.reqId, id: 0, projectPositionId: 0, projectTeamId: 0
+    this.assignedReqObj = {
+      employeeId: 0,
+      requestId: this.reqId, id: 0, projectPositionId: 0, teamId: 0
     }
     this.projectPositionService.GetAllProjectPosition().subscribe(e => {
       this.lstProjectPosition = e
@@ -51,27 +60,44 @@ export class AssignRequestsComponent implements OnInit {
   getTeamsByPositionId(event) {
     this.projectTeamService.GetProjectTeamsByProjectPositionId(this.assignedReqObj.projectPositionId).subscribe(e => {
       this.lstProjectTeam = e
-      console.log(this.lstProjectTeam)
-      this.lstProjectTeamAfterFilter = e.reduce((unique, o) => {
-        if (!unique.some(obj => obj.TeamId === o.TeamId)) {
-          unique.push(o);
-        }
-        return unique;
-      }, []);
+      // this.lstProjectTeamAfterFiltration=e
+      // console.log("lst of projteams",this.lstProjectTeam)
+      // this.lstProjectTeamAfterFiltration = e.reduce((unique, o) => {
+      //   if (!unique.some(obj => obj.TeamId == o.TeamId)) {
+      //     unique.push(o);
+      //   }
+      //   return unique;
+      // }, []);
     })
+
+    // this.projectTeamService.GetEmployeessByTeamIdAndPositionId(this.teamId, this.assignedReqObj.projectPositionId).subscribe(e => {
+    //   this.projectTeamForEmployees = e
+    //   console.log(this.projectTeamForEmployees)
+    // })
   }
-  saveAssignedRequest(){
-    this.assignedReqObj.employeeId = Number(this.assignedReqObj.employeeId)
+  saveAssignedRequest() {
+    this.assignedReqObj.employeeId = Number( this.empId)
+
     this.assignedReqObj.projectPositionId = Number(this.assignedReqObj.projectPositionId)
-    this.assignedReqObj.projectTeamId = Number(this.assignedReqObj.projectTeamId)
+    this.assignedReqObj.teamId = Number(this.teamId)
     this.assignedReqObj.requestId = Number(this.assignedReqObj.requestId)
-    this.assignedRequestsService.AssignedRequest(this.assignedReqObj).subscribe(e=>{
-      console.log("ass")
-       this.requestDescriptionService.AddRequestDescription(this.reqDescriptionObj).subscribe(e=>{
-      console.log("desc")
-
-    })
+    this.assignedRequestsService.AssignedRequest(this.assignedReqObj).subscribe(e => {
+      console.log("ass", this.assignedReqObj)
+      this.requestDescriptionService.AddRequestDescription(this.reqDescriptionObj).subscribe(e => {
+        console.log("desc")
+      })
     })
   }
-
+  getEmp(event) {
+    this.teamId = event;
+    console.log(this.teamId)
+    this.projectTeamService.GetEmployeessByTeamIdAndPositionId(this.teamId, this.assignedReqObj.projectPositionId).subscribe(e => {
+      this.projectTeamForEmployees = e
+      console.log(this.projectTeamForEmployees)
+    })
+  }
+  getEmpId(event) {
+    console.log(event)
+    this.empId = event
+  }
 }

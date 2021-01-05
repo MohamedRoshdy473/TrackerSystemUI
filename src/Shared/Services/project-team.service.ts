@@ -20,6 +20,12 @@ export class ProjectTeamService {
   GetAllProjectTeams(): Observable<projectTeam[]> {
     return this.httpClient.get<projectTeam[]>(`${environment.ProjectTeams}`, this.httpHeader);
   }
+  GetProjectByProjectID(ProjectTeamID:Number): Observable <projectTeam>{
+    return this.httpClient.get<projectTeam> (`${environment.ProjectTeams}${ProjectTeamID}`,this.httpHeader) ;
+  }
+  GetEmployeessByTeamIdAndPositionId(teamId:number,positionId:number):Observable <projectTeam[]>{
+    return this.httpClient.get<projectTeam[]> (`${environment.GetEmployeessByTeamId}${teamId}/${positionId}`,this.httpHeader) ;
+  }
   GetAllTeamsByProjectID(ProjectID:Number): Observable <projectTeam[]>{
     return this.httpClient.get<projectTeam[]> (`${environment.GetAllTeamsByProjectId}${ProjectID}`,this.httpHeader) ;
   }

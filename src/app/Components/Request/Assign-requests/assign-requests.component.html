@@ -14,23 +14,23 @@
     </p-dropdown>
 </div> -->
     <div class="col">
-        <label class="labelstyle">Select Position Name</label>
+        <label class="labelstyle">Assign Request to position .....</label>
         <select [(ngModel)]="assignedReqObj.projectPositionId" name="sel2" class="form-control"
-            (change)="getTeamsByPositionId(($event.target.value))">
+        (change)="getTeamsByPositionId(($event.target.value))">
             <option *ngFor="let th of lstProjectPosition" value="{{th.id}}">{{th.positionName}}</option>
         </select>
     </div>
 
     <div class="col">
-        <label class="labelstyle">Select Project Team Name</label>
-        <select [(ngModel)]="assignedReqObj.projectTeamId" name="sel2" class="form-control">
-            <option *ngFor="let th of lstProjectTeamAfterFilter" value="{{th.id}}">{{th.teamName}}</option>
+        <label class="labelstyle">Select Team Name</label>
+        <select [(ngModel)]="assignedReqObj.teamId" name="sel2" class="form-control"  (change)="getEmp(($event.target.value))">
+            <option *ngFor="let th of lstProjectTeam" value="{{th.teamId}}">{{th.teamName}}</option>
         </select>
     </div>
     <div class="col">
         <label class="labelstyle">Select Employee Name</label>
-        <select [(ngModel)]="assignedReqObj.employeeId" name="sel2" class="form-control">
-            <option *ngFor="let th of lstProjectTeam" value="{{th.id}}">{{th.employeeName}}</option>
+        <select [(ngModel)]="assignedReqObj.employeeId" name="sel2" class="form-control" (change)="getEmpId(($event.target.value))">
+            <option *ngFor="let th of projectTeamForEmployees" value="{{th.employeeId}}">{{th.employeeName}}</option>
         </select>
     </div>
  
