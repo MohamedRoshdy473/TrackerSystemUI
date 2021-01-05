@@ -32,12 +32,13 @@ export class SignupComponent implements OnInit {
         res => {
           console.log("res is ", res)
           localStorage.setItem("token", res["token"])
+          localStorage.setItem("email", res["email"])
           localStorage.setItem("roles", res["roles"])
           localStorage.setItem("userName", res['userName']);
           localStorage.setItem("id", res['id']);
           localStorage.setItem("loginedUserId", res['loginedUserId']);
           localStorage.getItem("loginedUserId")
-          console.log(localStorage.getItem("token"))
+          console.log(localStorage.getItem("email"))
           if (this.role == 'SuperAdmin') {
             this.routee.navigate(['/home/tabs'])
             console.log(this.role)

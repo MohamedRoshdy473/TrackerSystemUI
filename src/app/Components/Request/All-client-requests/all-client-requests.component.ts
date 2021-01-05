@@ -12,20 +12,23 @@ export class AllClientRequestsComponent implements OnInit {
   lstRequests:request[]
   clientID:number
   clientName:string
+  emailLoggedIn:string
   constructor(private requestService:RequestService) { }
   ngOnInit(): void {
-  this.clientID = Number(localStorage.getItem("id")) 
+  this.emailLoggedIn=localStorage.getItem("email")
+
+  this.clientID = Number(localStorage.getItem("LoginedUserId")) 
 
     console.log(this.clientID)  
 
     // localStorage.getItem()
-    this.requestService.GetRequestsByClientId(this.clientID).subscribe(e=>{
-      this.lstRequests = e
-      console.log("reqs",this.lstRequests)
-      this.lstRequests.forEach(element => {
-        this.clientName = element.clientName
-      });
-    })
+    // this.requestService.GetRequestsByClientId(this.clientID).subscribe(e=>{
+    //   this.lstRequests = e
+    //   console.log("reqs",this.lstRequests)
+    //   this.lstRequests.forEach(element => {
+    //     this.clientName = element.clientName
+    //   });
+    // })
   }
 
 }
