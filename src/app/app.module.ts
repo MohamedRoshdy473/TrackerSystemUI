@@ -101,6 +101,7 @@ import {AllManagerRequestsComponent} from '../app/Components/Request/All-manager
 import { AssignRequestsComponent } from "./Components/Request/Assign-requests/assign-requests.component";
 import { DisplayAllClientsComponent } from './Components/ClientComponents/display-all-clients/display-all-clients.component';
 import { EditClientComponent } from './Components/ClientComponents/edit-client/edit-client.component';
+import { ClientCreateRequestComponent } from './Components/Request/Client-create-request/client-create-request.component';
 
 
 
@@ -133,7 +134,8 @@ registerLocaleData(en);
    AddOrganizationComponent,
    ListOrganizationsComponent,
    AllManagerRequestsComponent,
-   AssignRequestsComponent
+   AssignRequestsComponent,
+   ClientCreateRequestComponent
   ],
   imports: [
     BrowserModule,

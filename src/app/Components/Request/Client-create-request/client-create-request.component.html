@@ -2,7 +2,7 @@
 
     <div class="row">
         <div class="col-md-3">
-            <label for="Project Name" class="labelMarginRight">RequestName Name</label><br>
+            <label for="Project Name" class="labelMarginRight">Request Name</label><br>
             <input minlength="3" placeholder="Enter Request Name" type="text" [(ngModel)]="reqObj.requestName"
                 pInputText id="name" required autofocus />
         </div>
@@ -66,8 +66,8 @@
             <!-- <p-dropdown [options]="lstProjects" [(ngModel)]="reqObj.projectId" (change)="ClientOnChange(reqObj.projectId)" placeholder="Select Project Name"
                 optionLabel="projectName" optionValue="id">
             </p-dropdown> -->
-            <p-dropdown [options]="lstProjects"  [(ngModel)]="reqObj.projectId"
-            optionLabel="projectName" optionValue="id" (onChange)="onChange($event)">
+            <p-dropdown [options]="lstProjects"  [(ngModel)]="reqObj.projectId" placeholder="Select Project Name"
+            optionLabel="projectName" optionValue="id">
            </p-dropdown>
             <!-- <select (change)="onChange($event.target.value)" name="projectName" [(ngModel)]="reqObj.projectId"
                 class="form-control col-md-6">
@@ -75,13 +75,13 @@
                 <option *ngFor="let item of lstProjects" value="{{item.id}}">{{item.projectName}}</option>
             </select> -->
         </div>
-        <div class="p-field col-md-3">
+        <!-- <div class="p-field col-md-3">
             <label for="clientName" class="labelMarginRight">Client Name</label><br>
 
             <p-dropdown [options]="lstclients" [(ngModel)]="reqObj.clientId" placeholder="Select Client Name"
                 optionLabel="clientName" optionValue="id">
             </p-dropdown>
-        </div>
+        </div> -->
 
         <div class="row">
             <div class="p-field col-md-9">

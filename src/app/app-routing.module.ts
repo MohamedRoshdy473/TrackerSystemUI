@@ -27,6 +27,7 @@ import { EditOrganizationComponent } from './Components/Organization/edit-organi
 import { AllManagerRequestsComponent } from './Components/Request/All-manager-requests/all-manager-requests.component';
 import { AssignRequestsComponent } from "../app/Components/Request/Assign-requests/assign-requests.component";
 import { DisplayAllClientsComponent } from './Components/ClientComponents/display-all-clients/display-all-clients.component';
+import { ClientCreateRequestComponent } from './Components/Request/Client-create-request/client-create-request.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login'},
   { path: 'changePassword', component:  ChangePaswwordComponent},
@@ -42,6 +43,7 @@ const routes: Routes = [
     {path:'AllUsers',component:AllUsersComponent},
     {path:'DisplayAllClients',component:DisplayAllClientsComponent},
     {path:'AllManagersReq',component:AllManagerRequestsComponent},
+    {path:'AllClientsReq',component:ClientCreateRequestComponent},
     {path:'assignReq/:reqId',component:AssignRequestsComponent},
     { path: 'employee', component:DisplayAllEmployeesComponent},
     { path: 'addemployee', component:AddEmployeeComponent },
