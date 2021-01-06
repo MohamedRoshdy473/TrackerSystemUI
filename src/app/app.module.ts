@@ -107,7 +107,7 @@ import { EditDepartmentComponent } from './Components/DepartmentComponents/edit-
 import { ProjectTypeComponent } from './Components/ProjectTypeComponents/project-type/project-type.component';
 import { AddProjectTypeComponent } from './Components/ProjectTypeComponents/add-project-type/add-project-type.component';
 import { EditProjectTypeComponent } from './Components/ProjectTypeComponents/edit-project-type/edit-project-type.component';
-
+import { EditOrganizationComponent } from "./Components/Organization/edit-organization/edit-organization.component";
 
 
 
@@ -145,7 +145,8 @@ registerLocaleData(en);
    EditDepartmentComponent,
    ProjectTypeComponent,
    AddProjectTypeComponent,
-   EditProjectTypeComponent
+   EditProjectTypeComponent,
+   EditOrganizationComponent
   ],
   imports: [
     BrowserModule,

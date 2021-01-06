@@ -12,6 +12,6 @@ export class organization {
 
 }
 
-export class OrganizationVM {
-      organizationName: string;
-}
+// export class OrganizationVM {
+//       organizationName: string;
+// }

@@ -4,11 +4,12 @@
       [longitude]="m.lng" (mapClick)="placeMarker(m)">
       <agm-info-window style="padding: 5px 5px;">
         <div style="margin: 5px 5px; padding: 5px 5px; font-size: 12pt;">
-          <div>{{m.organizationName}}</div>
-          <div>{{m.location}}</div>
-          <div>{{m.mobile}}</div>
-          {{m.organizationCode}}
-          <button class="btn btn-warning" (click)="updateOrganization(m.id)">update</button>
+          <div><span>Organization Name:</span> <span style="font-weight: bold;">{{m.organizationName}}</span></div>
+          <div><span> ResponsiblePerson :</span><span style="font-weight: bold;">{{m.responsiblePerson}}</span></div>
+          Organization Code: <span style="font-weight: bold;">{{m.organizationCode}}</span> <br>
+          <div>Mobile: <span style="font-weight: bold;">{{m.mobile}}</span></div>
+         
+          <button class="btn btn-warning" style="float: right;" (click)="updateOrganization(m.id)">update</button>
         </div>
       </agm-info-window>
     </agm-marker>

@@ -24,22 +24,26 @@ export class EditOrganizationComponent implements OnInit {
   address: string;
 
   constructor(private route: Router,
-    private activatedRoute: ActivatedRoute,
+    private activeRoute: ActivatedRoute,
     private organizationService: OrganizationService,
     private ngZone: NgZone) { }
 
   ngOnInit() {
+    // id=this.activatedRoute.snapshot.params
+     this.OrgId=this.activeRoute.snapshot.params['id'];
+     console.log(this.OrgId)
     
-    // this.organizationObj = {lat:30.0634890000,lng:31.2524870000,address:'',id:0,
+    // this.organizationObj = {lat:'',lng:'',address:'',id:0,
     // organizationName:'',
     // phone:'',location:'',mobile:'',organizationCode:'',responsiblePerson:''};
  
-    // this.organizationObj = { address: '', id: 0, lat: 30.0634890000, lng: 31.2524870000, location: '', mobile: '', organizationCode: '', organizationName: '', phone: '', responsiblePerson: '' }
+    this.organizationObj = { address: '', id: 0, lat: 30.0634890000, lng: 31.2524870000, location: '', mobile: '', organizationCode: '', organizationName: '', phone: '', responsiblePerson: '' }
+    
     // this.OrgId = this.activatedRoute.snapshot.params['id'];
-    // this.organizationService.GetOrganizationByID(this.OrgId).subscribe(E => {
-    //   this.organizationObj = E
-    //   console.log(this.organizationObj)
-    // })
+    this.organizationService.GetOrganizationByID(this.OrgId).subscribe(e => {
+      this.organizationObj = e
+      console.log(this.organizationObj)
+    })
   }
   mapClicked($event: MouseEvent) {
     let lat: number = $event.coords.lat;
@@ -68,5 +72,8 @@ export class EditOrganizationComponent implements OnInit {
   onSubmit() {
     this.organizationObj.lat = Number(this.organizationObj.lat);
     this.organizationObj.lng = Number(this.organizationObj.lng);
+    this.organizationService.UpdateOrganization(this.OrgId,this.organizationObj).subscribe(e=>{
+      this.route.navigate(['home/organizations']);
+    })
   }
 }
