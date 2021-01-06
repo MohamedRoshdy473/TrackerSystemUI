@@ -14,18 +14,19 @@ export class AllClientRequestsComponent implements OnInit {
   clientName:string
   constructor(private requestService:RequestService) { }
   ngOnInit(): void {
-  this.clientID = Number(localStorage.getItem("LoginedUserId")) 
+    console.log("clientID",localStorage.getItem("clientId"))
+     this.clientID = Number(localStorage.getItem("clientId")) 
 
     console.log(this.clientID)  
 
     // localStorage.getItem()
-    // this.requestService.GetRequestsByClientId(this.clientID).subscribe(e=>{
-    //   this.lstRequests = e
-    //   console.log("reqs",this.lstRequests)
-    //   this.lstRequests.forEach(element => {
-    //     this.clientName = element.clientName
-    //   });
-    // })
+    this.requestService.GetRequestsByClientId(this.clientID).subscribe(e=>{
+      this.lstRequests = e
+      console.log("reqs",this.lstRequests)
+      this.lstRequests.forEach(element => {
+        this.clientName = element.clientName
+      });
+    })
   }
 
 }

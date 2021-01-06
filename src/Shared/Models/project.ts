@@ -18,6 +18,7 @@ export class project {
      planndedEndDate:Date   
      actualEndDate:Date     
      description:string       
+     IsDeleted:boolean
      organizationId:number                       
      employeeId:number                                           
      clientId:number  
