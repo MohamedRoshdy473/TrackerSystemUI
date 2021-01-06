@@ -84,7 +84,7 @@
                     (input)="dt.filter($event.target.value, 'email', 'startsWith')" placeholder="Email"
                     class="p-column-filter">
             </th>
-
+<th></th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-employee>
@@ -157,7 +157,7 @@
         </div>
     </div>
     <ng-template pTemplate="footer">
-        <p-button icon="pi pi-check" [routerLink]="['/editEmployee',Employee.id]" label="Update"
+        <p-button icon="pi pi-check" [routerLink]="['/home/editEmployee',Employee.id]" label="Update"
             styleClass="p-button-text"></p-button>
         <p-button icon="pi pi-times" (click)="displayBasic=false" label="No"></p-button>
     </ng-template>

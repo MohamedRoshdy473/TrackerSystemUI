@@ -1,9 +1,15 @@
 <!-- Show all   Requests that belongs to specific client -->
 <p-table [value]="lstRequests">
     <ng-template pTemplate="caption">
-        <div class="p-d-flex p-ai-center p-jc-between">
+        <div class="row">
+        <div class="p-d-flex p-ai-center p-jc-between col-md-10">
            <span class="h3Header">Client Requests</span><span style="color: brown;">({{clientName}})</span>
         </div>
+        <div class="col-md-2" >
+            <button id="addEmpBtn" routerLink="/home/AllClientsReq" class="btn btn-outline-primary btn-md btn-block">
+                <span class="pi pi-plus">Add</span> </button>
+        </div>
+    </div>
     </ng-template>
     <ng-template pTemplate="header">
         <tr>

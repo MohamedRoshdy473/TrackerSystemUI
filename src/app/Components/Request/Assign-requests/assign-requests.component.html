@@ -5,7 +5,8 @@
         minlength="3" [class.is-valid]="userEmail.valid" [(ngModel)]="NewUser.email" disabled name="Email"
         class="col-md-6 form-control" inputId="Email">
 </div> -->
-
+<div class="container">
+<h2>Assign Request</h2>
 <div class="row">
     <!-- <div class="p-field col-md-3" (change)="getTeamsByPositionId(($event.target.value))">
     <label for="Project position" class="labelMarginRight">Project Position Name</label><br>
@@ -14,7 +15,7 @@
     </p-dropdown>
 </div> -->
     <div class="col">
-        <label class="labelstyle">Assign Request to position .....</label>
+        <label class="labelstyle">Position Name</label>
         <select [(ngModel)]="assignedReqObj.projectPositionId" name="sel2" class="form-control"
         (change)="getTeamsByPositionId(($event.target.value))">
             <option *ngFor="let th of lstProjectPosition" value="{{th.id}}">{{th.positionName}}</option>
@@ -34,9 +35,10 @@
         </select>
     </div>
  
-</div>
+</div><br>
 <div class="p-field">
     <label for="description">Description</label>
-    <textarea id="description" [(ngModel)]="reqDescriptionObj.description" pInputTextarea required rows="3" cols="20"></textarea>
-</div>
+    <textarea id="description" [(ngModel)]="reqDescriptionObj.description" pInputTextarea required rows="5" cols="138"></textarea>
+</div><br>
 <button class="btn btn-warning" (click)="saveAssignedRequest()">Save</button>
+</div>
