@@ -101,6 +101,11 @@ import {AllManagerRequestsComponent} from '../app/Components/Request/All-manager
 import { AssignRequestsComponent } from "./Components/Request/Assign-requests/assign-requests.component";
 import { DisplayAllClientsComponent } from './Components/ClientComponents/display-all-clients/display-all-clients.component';
 import { EditClientComponent } from './Components/ClientComponents/edit-client/edit-client.component';
+import { DisplayDepartmentsComponent } from './Components/DepartmentComponents/display-departments/display-departments.component';
+import { EditDepartmentComponent } from './Components/DepartmentComponents/edit-department/edit-department.component';
+import { EditProjectTypeComponent } from './Components/ProjectTypeComponents/edit-project-type/edit-project-type.component';
+import { AddProjectTypeComponent } from './Components/ProjectTypeComponents/add-project-type/add-project-type.component';
+import { ProjectTypeComponent } from './Components/ProjectTypeComponents/project-type/project-type.component';
 
 
 
@@ -133,7 +138,12 @@ registerLocaleData(en);
    AddOrganizationComponent,
    ListOrganizationsComponent,
    AllManagerRequestsComponent,
-   AssignRequestsComponent
+   AssignRequestsComponent,
+   DisplayDepartmentsComponent,
+   EditDepartmentComponent,
+   ProjectTypeComponent,
+   EditProjectTypeComponent,
+   AddProjectTypeComponent
   ],
   imports: [
     BrowserModule,

@@ -27,6 +27,11 @@ import { EditOrganizationComponent } from './Components/Organization/edit-organi
 import { AllManagerRequestsComponent } from './Components/Request/All-manager-requests/all-manager-requests.component';
 import { AssignRequestsComponent } from "../app/Components/Request/Assign-requests/assign-requests.component";
 import { DisplayAllClientsComponent } from './Components/ClientComponents/display-all-clients/display-all-clients.component';
+import { DisplayDepartmentsComponent } from './Components/DepartmentComponents/display-departments/display-departments.component';
+import { EditDepartmentComponent } from './Components/DepartmentComponents/edit-department/edit-department.component';
+import { ProjectTypeComponent } from './Components/ProjectTypeComponents/project-type/project-type.component';
+import { AddProjectTypeComponent } from './Components/ProjectTypeComponents/add-project-type/add-project-type.component';
+import { EditProjectTypeComponent } from './Components/ProjectTypeComponents/edit-project-type/edit-project-type.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login'},
   { path: 'changePassword', component:  ChangePaswwordComponent},
@@ -36,6 +41,11 @@ const routes: Routes = [
     { path: 'Category', component:  CategoryComponent},
     { path: 'client', component:  ClientsComponent},
     { path: 'department', component:  DepartmentComponent},
+    { path: 'DisplayDepartments', component:  DisplayDepartmentsComponent},
+    { path: 'editDepartment/:id', component:  EditDepartmentComponent},
+    { path: 'ProjectTypes', component:  ProjectTypeComponent},
+    { path: 'AddProjectType', component:  AddProjectTypeComponent},
+    { path: 'editProjectType/:id', component:  EditProjectTypeComponent},
     { path: 'Requests', component:  CreateRequesteComponent},
     { path: 'tabs/createProject', component:  CreateProjectComponent},
     { path: 'tabs/updateproject/:id', component:  UpdateProjectComponent},
