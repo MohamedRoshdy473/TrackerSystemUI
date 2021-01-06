@@ -25,8 +25,8 @@ export class ProjectService {
   AddProject(project): Observable<project> {
     return this.httpClient.post<project>(`${environment.project}`,project, this.httpHeader);
   }
-  DeleteProject(id:number) {
-    return this.httpClient.delete(`${environment.project}/`+id, this.httpHeader);
+  DeleteProject(id:number,project:project):Observable<project> {
+    return this.httpClient.put<project>(`${environment.DeleteProject}${id}`, project,this.httpHeader);
   }
   updateProject(id:number,project:project):Observable<project>{
     return this.httpClient.put<project>(`${environment.updateProject}${id}`,project,this.httpHeader);

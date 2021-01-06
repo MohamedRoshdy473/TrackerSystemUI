@@ -4,6 +4,7 @@
 
 export const environment = {
   project: 'http://localhost:50653/api/project',
+  DeleteProject:'http://localhost:50653/api/project/SoftDelete/',
   stackeholders: 'http://localhost:50653/api/Stackeholders/',
   GetAllStackholdersByProjectID: 'http://localhost:50653/api/Stackeholders/GetStackeholdersByProjectId/',
   postListOfStackholders: 'http://localhost:50653/api/Stackeholders/',

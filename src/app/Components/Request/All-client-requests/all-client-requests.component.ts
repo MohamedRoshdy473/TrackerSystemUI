@@ -15,7 +15,7 @@ export class AllClientRequestsComponent implements OnInit {
   constructor(private requestService:RequestService) { }
   ngOnInit(): void {
     console.log("clientID",localStorage.getItem("clientId"))
-  this.clientID = Number(localStorage.getItem("clientId")) 
+     this.clientID = Number(localStorage.getItem("clientId")) 
 
     console.log(this.clientID)  
 

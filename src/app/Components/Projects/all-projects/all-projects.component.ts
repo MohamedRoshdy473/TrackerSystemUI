@@ -44,14 +44,15 @@ export class AllProjectsComponent implements OnInit {
       console.log(this.projects)
     })
 
-    this.project1 = {
+    this.project1 = {IsDeleted:false,
       actualEndDate: new Date(), listOfdocuments: [], listofprojectteam: [], id: 0, organizationId: 0, projectPeriod: 0, clientMobile: '', clientName: '', organizationName: '', projectTypeName: '',
       planndedEndDate: new Date(), planndedStartDate: new Date(), projectCode: '', listOfStackholders: [], listOfmilestones: [], projectTypeId: 0,
       projectName: '', actualStartDate: new Date(), clientId: 0, cost: 0, description: '', employeeId: 0
     }
-    this.projectObj = {
+    this.projectObj = {IsDeleted:false,
       actualEndDate: new Date(), listOfdocuments: [], listofprojectteam: [], id: 0, organizationId: 0, projectPeriod: 0, clientMobile: '', clientName: '', organizationName: '', projectTypeName: '',
-      planndedEndDate: new Date(), planndedStartDate: new Date(), projectCode: '', listOfStackholders: [], listOfmilestones: [], projectTypeId: 0,
+      planndedEndDate: new Date
+      (), planndedStartDate: new Date(), projectCode: '', listOfStackholders: [], listOfmilestones: [], projectTypeId: 0,
       projectName: '', actualStartDate: new Date(), clientId: 0, cost: 0, description: '', employeeId: 0
     }
     this.stake={
@@ -118,7 +119,7 @@ this.ngOnInit()
       this.projectService.getProjectById(this.project1.id).subscribe(res => {
         this.projectObj = res;
       })
-
+    
       this.stackholderService.GetAllStackholdersByProjectID(Projectid).subscribe(e => {
         this.stackholders = e
         this.projectObj.listOfStackholders=e
@@ -160,19 +161,19 @@ this.ngOnInit()
 
   confirm(id) {
     console.log(id)
-    this.confirmationService.confirm({
-      message: 'Are you sure that you want to perform this action?',
-      accept: () => {
-        console.log(id)
-        this.projectService.DeleteProject(id).subscribe(
-          data => {
-            console.log(id, data)
-            this.ngOnInit(),
-              this.messageService.add({ severity: 'info', summary: 'Record Deleted!', detail: 'Record Deleted!' });
-          }
-        )
+
+    this.projectService.getProjectById(id).subscribe(res => {
+      this.projectObj = res;
+      console.log(this.projectObj)
+        this.projectService.DeleteProject(id,this.projectObj).subscribe(
+      data => {
+        console.log(id, data)
+        this.ngOnInit()
+        
       }
-    });
+    )
+    })
+
   }
   showSuccess() {
     this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Message Content' });

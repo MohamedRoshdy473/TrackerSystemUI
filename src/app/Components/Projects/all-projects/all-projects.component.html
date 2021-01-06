@@ -293,7 +293,7 @@
     <div class="row">
         <div class="col" *ngFor="let i of projectObj.listOfStackholders">
             <label style="color: #2674a8; font-size: 25px; font: bold;">stackeholder</label>
-         <span  class="pi pi-times"(click)="delStakeHolders(i.id)" ></span>
+         <span  class="pi pi-times" ></span>
 
             <input   type="text" class="form-control" 
          placeholder="{{i.stackeholderName}}"   >
@@ -332,7 +332,7 @@
 </form>
 <ng-template pTemplate="footer">
 
-    <button pButton type="button"  label="Edit"  (click)="edit(project1.id)" class="p-button-warning"></button>
+    <button pButton type="button"  label="Edit"   class="p-button-warning"></button>
 </ng-template>
 </p-dialog>
 <!--  -->
