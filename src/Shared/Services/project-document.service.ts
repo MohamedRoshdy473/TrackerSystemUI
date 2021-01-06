@@ -45,4 +45,7 @@ export class ProjectDocumentService {
   deletedocument(id:number):Observable<any>{ 
     return this.httpClient.delete<any>(`${environment.deletedocument}${id}`,this.httpHeader);
   }
+  downloadInFile(fileName): any {
+		return this.httpClient.get(`${environment.Domain}wwwroot/documentFiles/${fileName}`, this.httpHeader);
+  }
 }

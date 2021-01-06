@@ -81,7 +81,7 @@ export class CreateProjectComponent implements OnInit {
 
     this.lstOfprojectPosition = []
     this.docproject={
-      Description:'',documentName:'',DocumentFile:'',id:0,projectId:0
+      Description:'',documentName:'',documentFile:'',id:0,projectId:0
     }
     this.projectObj = {
       id: 0, projectName: "", projectCode: "", projectTypeName: "", projectTypeId: 0, cost: 0, projectPeriod: 0, planndedStartDate: new Date()
@@ -282,7 +282,7 @@ addTeamObj.projectTeams =  this.lstOfProjectTeams;
   Savedoctolist(){
     this.lstoddocproj.push(this.docproject);
     this.docproject={
-      Description:'',documentName:'',id:0,DocumentFile:'',projectId:this.projectID
+      Description:'',documentName:'',id:0,documentFile:'',projectId:this.projectID
     };
     console.log(this.lstoddocproj);
       }
@@ -294,7 +294,7 @@ addTeamObj.projectTeams =  this.lstOfProjectTeams;
     let fileToUpload = <File>files[0];
     const formData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
-    this.docproject.DocumentFile=fileToUpload.name;
+    this.docproject.documentFile=fileToUpload.name;
     console.log(fileToUpload.name)
  
     this.httpClient.post(environment.uploadFile, formData)
