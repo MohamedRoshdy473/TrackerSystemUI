@@ -19,14 +19,15 @@ import { client } from 'src/Shared/Models/client';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { RequestImage } from 'src/Shared/Models/RequestImages';
+import { logging } from 'protractor';
 
 @Component({
-  selector: 'app-create-requeste',
-  templateUrl: './create-requeste.component.html',
-  styleUrls: ['./create-requeste.component.css']
+  selector: 'app-client-create-request',
+  templateUrl: './client-create-request.component.html',
+  styleUrls: ['./client-create-request.component.css']
 })
-export class CreateRequesteComponent implements OnInit {
-
+export class ClientCreateRequestComponent implements OnInit {
+ 
   lstReqests: request[]
   requestObj: request
   reqObj: any
@@ -42,6 +43,7 @@ export class CreateRequesteComponent implements OnInit {
   lstclients: client[]
   lstRequestImages: RequestImage[]
   reqImage: RequestImage
+  clientId: string;
 
 
   constructor(private reqService: RequestService,
@@ -56,13 +58,15 @@ export class CreateRequesteComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.lstReqests = []
+    this.clientId= localStorage.getItem('clientId');
+    console.log(this.clientId)
     this.lstProjects = []
     this.lstReqPeriorities = []
     this.lstReqTypies = []
     this.lstReqStatus = []
     this.lstRequestImages = []
     this.lstReqSubCategories = []
+    
     this.reqImage = {
       id: 0, imageName: '', requestId: 0
     }
@@ -70,7 +74,7 @@ export class CreateRequesteComponent implements OnInit {
       id: 0, projectId: 0, projectName: '', requestCode: '',
       requestName: '', requestPeriority: '', requestPeriorityId: 0,
       requestStatus: '', requestStatusId: 0, requestTime: new Date().getHours() + ':' + new Date().getMinutes(), requestDate: new Date(),
-      requestSubCategoryId: 0, requestSubCategoryName: '', assetId: 0, clientId: 0,
+      requestSubCategoryId: 0, requestSubCategoryName: '', assetId: 0, clientId: this.clientId,
       requestTypeId: 0, requestTypeName: '', description: '', requestModeId: 0
     }
     this.requestObj = {
@@ -121,8 +125,8 @@ export class CreateRequesteComponent implements OnInit {
   reqId: any
   AddRequest() {
     this.reqObj.projectId = Number(this.reqObj.projectId)
-    this.reqObj.clientId = Number(this.reqObj.clientId)
-    // console.log(this.requestObj)
+     this.reqObj.clientId = Number(this.reqObj.clientId)
+    console.log("reqObject",this.reqObj)
     this.reqService.inserRequest(this.reqObj).subscribe(e => {
       console.log(e)
       this.reqId = e;

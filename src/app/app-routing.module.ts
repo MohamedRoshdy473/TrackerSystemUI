@@ -27,6 +27,7 @@ import { EditOrganizationComponent } from './Components/Organization/edit-organi
 import { AllManagerRequestsComponent } from './Components/Request/All-manager-requests/all-manager-requests.component';
 import { AssignRequestsComponent } from "../app/Components/Request/Assign-requests/assign-requests.component";
 import { DisplayAllClientsComponent } from './Components/ClientComponents/display-all-clients/display-all-clients.component';
+import { ClientCreateRequestComponent } from './Components/Request/Client-create-request/client-create-request.component';
 import { DisplayDepartmentsComponent } from './Components/DepartmentComponents/display-departments/display-departments.component';
 import { EditDepartmentComponent } from './Components/DepartmentComponents/edit-department/edit-department.component';
 import { ProjectTypeComponent } from './Components/ProjectTypeComponents/project-type/project-type.component';
@@ -42,16 +43,17 @@ const routes: Routes = [
     { path: 'client', component:  ClientsComponent},
     { path: 'department', component:  DepartmentComponent},
     { path: 'DisplayDepartments', component:  DisplayDepartmentsComponent},
-    { path: 'editDepartment/:id', component:  EditDepartmentComponent},
+    { path: 'editDepartment/:id', component: EditDepartmentComponent},
     { path: 'ProjectTypes', component:  ProjectTypeComponent},
-    { path: 'AddProjectType', component:  AddProjectTypeComponent},
-    { path: 'editProjectType/:id', component:  EditProjectTypeComponent},
+    { path: 'addProjectType', component:  AddProjectTypeComponent},
+    { path: 'editProjectType/:id', component: EditProjectTypeComponent},
     { path: 'Requests', component:  CreateRequesteComponent},
     { path: 'tabs/createProject', component:  CreateProjectComponent},
     { path: 'tabs/updateproject/:id', component:  UpdateProjectComponent},
     {path:'AllUsers',component:AllUsersComponent},
     {path:'DisplayAllClients',component:DisplayAllClientsComponent},
     {path:'AllManagersReq',component:AllManagerRequestsComponent},
+    {path:'AllClientsReq',component:ClientCreateRequestComponent},
     {path:'assignReq/:reqId',component:AssignRequestsComponent},
     { path: 'employee', component:DisplayAllEmployeesComponent},
     { path: 'addemployee', component:AddEmployeeComponent },

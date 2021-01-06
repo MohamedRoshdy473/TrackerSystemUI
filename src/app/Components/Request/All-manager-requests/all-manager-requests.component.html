@@ -14,11 +14,15 @@
                         placeholder='Global Search' />
                 </span>
             </div>
+            <div class="col-md-2">
+                <button id="addEmpBtn" routerLink="/home/Requests" class="btn btn-outline-primary btn-md btn-block">
+                    <span class="pi pi-plus">Add</span> </button>
+            </div>
         </div>
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
-            <th>Image</th>
+            <!-- <th>Image</th> -->
             <th>Name</th>
             <th>Code</th>
             <th>Date</th>
@@ -29,9 +33,7 @@
             <th>Operation</th>
         </tr>
         <tr>
-            <th>
-                <label></label>
-            </th>
+
             <th>
                 <input pInputText style="width: 100%;" type="text"
                     (input)="dt.filter($event.target.value, 'requestName', 'startsWith')" placeholder='Name'
@@ -66,15 +68,15 @@
                     (input)="dt.filter($event.target.value, 'RequestTypeName', 'startsWith')" placeholder="Type"
                     class="p-column-filter">
             </th>
-
+<th></th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-request>
         <tr>
-            <td>
-                <!-- <img class="img-thumbnail" src="http://localhost:50653/api/employees/getImage/{{request.photo }}"
-                    alt="" width="50%" height="50%"> -->
-            </td>
+              <!--<td>
+               <img class="img-thumbnail" src="http://localhost:50653/api/employees/getImage/{{request.photo }}"
+                    alt="" width="50%" height="50%">
+            </td> -->
             <td>
                 {{request.requestName}}
             </td>
@@ -92,7 +94,8 @@
             </td>
             <td>
                 {{request.requestStatus}}
-            </td>  <td>
+            </td>
+              <td>
                 {{request.requestTypeName}}
             </td>
             <td>
