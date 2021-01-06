@@ -61,8 +61,9 @@
         </div>
     </div>
    <br/>
-    <button pButton type="button"  label="Edit"  (click)="edit(project1.id)" class="p-button-warning"></button>
-    
+    <button pButton type="button"  label="Edit" style="margin: 20px;" (click)="edit(project1.id)" class="p-button-warning"></button>
+    <br/>
+    <br/>
     <div class="row">
         <div class="col" >
             <!-- <label style="color: #2674a8; font-size: 25px; font: bold;">stackeholder</label> -->
@@ -78,7 +79,7 @@
                 <ng-template pTemplate="body" let-i>
                     <tr>
                         <td>{{i.stackeholderName}}</td>
-            <button pButton pRipple  icon="pi pi-trash" class="p-button-danger" (click)="delStakeHolders(i.id)"></button>
+            <button pButton pRipple  icon="pi pi-trash" class="p-button-danger" style="min-width: 5px;" (click)="delStakeHolders(i.id)"></button>
                        
                     </tr>
                     
@@ -86,6 +87,8 @@
             </p-table>
            
             <p-button (click)="showBasicDialog()" icon="pi pi-external-link" label="Add StakeHolder"></p-button>
+            <br/>
+            <br/>
             <p-dialog header="Header" [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
                 <div class="row">
                     <div class="col">
@@ -186,12 +189,14 @@
                 <ng-template pTemplate="body" let-i>
                     <tr>
                         <td>{{i.title}}</td>
-            <button pButton pRipple icon="pi pi-trash" class="p-button-danger" (click)="delMile(i.id)"></button>
+            <button pButton pRipple icon="pi pi-trash" class="p-button-danger"  style="min-width: 5px;" (click)="delMile(i.id)"></button>
                        
                     </tr>
                 </ng-template>
             </p-table>
             <p-button (click)="showmileDialog()" icon="pi pi-external-link" label="Add MileStones"></p-button>
+            <br/>
+            <br/>
 <p-dialog header="Header" [(visible)]="displayMile" [style]="{width: '50vw'}" [baseZIndex]="10000">
     <div class="row">
         <div class="col">
@@ -302,12 +307,14 @@
                         <tr>
                             <!-- <td>{{teamname}}</td> -->
                             <td>{{i.employeeName}}</td>
-                <button pButton pRipple  icon="pi pi-trash" class="p-button-danger" (click)="delteam(i.id)"></button>
+                <button pButton pRipple  icon="pi pi-trash" class="p-button-danger" style="min-width: 5px;" (click)="delteam(i.id)"></button>
                            
                         </tr>
                     </ng-template>
                 </p-table>
                 <p-button (click)="showteamDialog()" icon="pi pi-external-link" label="Add Teams"></p-button>
+                <br/>
+                <br/>
 <p-dialog header="Header" [(visible)]="displayteam" [style]="{width: '50vw'}" [baseZIndex]="10000">
     <div class="row">
         <div class="p-col-12 p-md-4">
@@ -403,18 +410,23 @@
                     <ng-template pTemplate="header">
                         <tr>
                             <th style="color: #2674a8; font-size: 20px; font: bold;">Document Name</th>
+                            <th style="color: #2674a8; font-size: 20px; font: bold;">Document File</th>
                            <th ></th>
                         </tr>
                     </ng-template>
                     <ng-template pTemplate="body" let-i>
                         <tr>
                             <td>{{i.documentName}}</td>
-                <button pButton pRipple icon="pi pi-trash" class="p-button-danger" (click)="delDocument(i.id)"></button>
-                           
+                           <td (click)="downloadFile(i.documentFile)" style="color: blue; cursor: pointer; text-decoration: blue  underline;">{{i.documentFile}}</td>
+           
+                           <button pButton pRipple icon="pi pi-trash" style="min-width: 5px;"  class="p-button-danger" (click)="delDocument(i.id)"></button>
+                    
                         </tr>
                     </ng-template>
                 </p-table>
                 <p-button (click)="showdocDialog()" icon="pi pi-external-link" label="Add Document"></p-button>
+                <br/>
+                <br/>
                 <p-dialog header="Header" [(visible)]="displaydoc" [style]="{width: '50vw'}" [baseZIndex]="10000">
                    
                     <div class="row">

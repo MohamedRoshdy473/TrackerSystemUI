@@ -78,7 +78,7 @@ export class UpdateProjectComponent implements OnInit {
     this.lstoddocproj = []
     this.lstOfProjectTeams = []
     this.docproject = {
-      Description: '', documentName: '', DocumentFile: '', id: 0, projectId: 0
+      Description: '', documentName: '', documentFile: '', id: 0, projectId: 0
     }
     this.emploeeObj = {
       address: '', dateOfBirth: new Date(), departmentId: 0, departmentName: '', email: '', employeeCode: ''
@@ -104,7 +104,7 @@ export class UpdateProjectComponent implements OnInit {
     }
     this.lstOfprojectPosition = []
     this.docproject = {
-      Description: '', documentName: '', DocumentFile: '', id: 0, projectId: 0
+      Description: '', documentName: '', documentFile: '', id: 0, projectId: 0
     }
     this.projectPositionService.GetAllProjectPosition().subscribe(e => {
       this.lstOfprojectPosition = e
@@ -142,8 +142,6 @@ export class UpdateProjectComponent implements OnInit {
       this.stackholders = e
       this.projectObj.listOfStackholders = e
 
-
-
     })
     //milestone
     this.milestoneservice.GetAllMileStonesByProjectID(this.id).subscribe(m => {
@@ -165,7 +163,9 @@ export class UpdateProjectComponent implements OnInit {
       this.documents = d;
       this.project1.listOfdocuments = this.documents;
       this.projectObj.listOfdocuments = d;
+      console.log("doc",d)
     }), err => console.log(err)
+    
 
   }
   Savetolist_Stackholders() {
@@ -180,7 +180,11 @@ export class UpdateProjectComponent implements OnInit {
 
   SaveToDB_Stackholders() {
     this.stackholderService.insertListOfStackholders(this.lstOfStackholder).subscribe(e => {
-      this.ngOnInit()
+
+      this.ngOnInit();
+      console.log(e)
+
+
     })
 
   }
@@ -194,7 +198,9 @@ export class UpdateProjectComponent implements OnInit {
   }
   SaveToDB_Milestones() {
     this.milestoneservice.insertListOfMilestoness(this.lstOfMilestones).subscribe(e => {
-      this.ngOnInit()
+           this.ngOnInit();
+           console.log(e)
+
     })
   }
   edit(Projectid: number) {
@@ -329,7 +335,7 @@ export class UpdateProjectComponent implements OnInit {
   Savedoctolist() {
     this.lstoddocproj.push(this.docproject);
     this.docproject = {
-      Description: '', documentName: '', id: 0, DocumentFile: '', projectId: this.id
+      Description: '', documentName: '', id: 0, documentFile: '', projectId: this.id
     };
     console.log(this.lstoddocproj);
   }
@@ -341,7 +347,7 @@ export class UpdateProjectComponent implements OnInit {
     let fileToUpload = <File>files[0];
     const formData = new FormData();
     formData.append('file', fileToUpload, fileToUpload.name);
-    this.docproject.DocumentFile = fileToUpload.name;
+    this.docproject.documentFile = fileToUpload.name;
     console.log(fileToUpload.name)
 
     this.httpClient.post(environment.uploadFile, formData)
@@ -359,5 +365,16 @@ export class UpdateProjectComponent implements OnInit {
       this.ngOnInit()
       console.log(e)
     })
+  }
+  downloadFile(fileName) {
+    var filePath = `${environment.Domain}wwwroot/documentFiles/${fileName}`;
+
+  
+    window.open(filePath);
+      // this.projectdocumentsservice.downloadInFile(fileName).subscribe(file => {
+      //   var dwnldFile = filePath  + fileName;
+      //   if (fileName != "" || fileName != null)
+      //     window.open(dwnldFile);
+      // })
   }
 }

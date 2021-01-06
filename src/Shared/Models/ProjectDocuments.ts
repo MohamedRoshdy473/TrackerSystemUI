@@ -2,6 +2,6 @@ export class ProjectDocuments {
     id :number
     documentName: string
     Description :string
-    DocumentFile:string
+    documentFile:string
     projectId:number
 }

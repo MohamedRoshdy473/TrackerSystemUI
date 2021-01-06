@@ -3,6 +3,7 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  Domain:'http://localhost:50653/',
   project: 'http://localhost:50653/api/project',
   DeleteProject:'http://localhost:50653/api/project/SoftDelete/',
   stackeholders: 'http://localhost:50653/api/Stackeholders/',

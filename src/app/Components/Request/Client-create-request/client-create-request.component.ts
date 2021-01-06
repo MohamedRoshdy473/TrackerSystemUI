@@ -125,13 +125,13 @@ export class ClientCreateRequestComponent implements OnInit {
   reqId: any
   AddRequest() {
     this.reqObj.projectId = Number(this.reqObj.projectId)
-    // this.reqObj.clientId = Number(this.reqObj.clientId)
+     this.reqObj.clientId = Number(this.reqObj.clientId)
     console.log("reqObject",this.reqObj)
-    // this.reqService.inserRequest(this.reqObj).subscribe(e => {
-    //   console.log(e)
-    //   this.reqId = e;
-    //   this.reqImage.requestId = this.reqId;
-    // })
+    this.reqService.inserRequest(this.reqObj).subscribe(e => {
+      console.log(e)
+      this.reqId = e;
+      this.reqImage.requestId = this.reqId;
+    })
   }
   id: number
   onChange(event) {
