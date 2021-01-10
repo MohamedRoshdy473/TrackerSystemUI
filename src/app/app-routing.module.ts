@@ -33,6 +33,7 @@ import { EditDepartmentComponent } from './Components/DepartmentComponents/edit-
 import { ProjectTypeComponent } from './Components/ProjectTypeComponents/project-type/project-type.component';
 import { AddProjectTypeComponent } from './Components/ProjectTypeComponents/add-project-type/add-project-type.component';
 import { EditProjectTypeComponent } from './Components/ProjectTypeComponents/edit-project-type/edit-project-type.component';
+import { DisplayCategoriesComponent } from './Components/Request/Categories/display-categories/display-categories.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login'},
   { path: 'changePassword', component:  ChangePaswwordComponent},
@@ -63,6 +64,10 @@ const routes: Routes = [
     { path: 'organization', component:AddOrganizationComponent },
     { path: 'editOrganization/:id', component:EditOrganizationComponent },
     { path: 'editEmployee/:empId', component:EditEmployeeComponent },
+    { path: 'DisplayCategories', component:DisplayCategoriesComponent },
+
+    
+
 ]}
 ];
 

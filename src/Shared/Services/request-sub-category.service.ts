@@ -22,4 +22,7 @@ export class RequestSubCategoryService {
   inserSubCategory(requestSubCategory: requestSubCategory): Observable<any> {
     return this.httpClient.post<any>(`${environment.requestSubCategory}`, requestSubCategory, this.httpHeader);
   }
+  DeleteSubCategory(id:number):Observable<any>{ 
+    return this.httpClient.delete<any>(`${environment.requestSubCategory}${id}`,this.httpHeader);
+  }
 }
