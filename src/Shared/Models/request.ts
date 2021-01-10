@@ -22,4 +22,6 @@ export class request {
     requestTypeId:number
     requestTypeName:string
     description:string
+    IsSolved:boolean
+    IsAssigned:boolean
 }
