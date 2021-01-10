@@ -10,12 +10,12 @@ import { MenuItem } from 'primeng/api';
 })
 export class HomeComponent implements OnInit {
   constructor(private routee: Router) { }
-  pharmacyName:string
+  role:string
   pharmacyType:string
 
   pharmacyID:Number
   ngOnInit() {
-  this.pharmacyID=Number(localStorage.getItem("pharmacyLoggedInID"))
+  this.role=localStorage.getItem("roles")
   // this.pharmacyService.getPharmacyById(this.pharmacyID).subscribe(e=>{
   //   this.pharmacyName = e.name
   //   this.pharmacyType = e.pharmacyType

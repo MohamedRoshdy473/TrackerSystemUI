@@ -1,0 +1,136 @@
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+<p-toast></p-toast>
+<p-toast position="top-left" key="tl"></p-toast>
+<p-toast position="top-center" key="tc"></p-toast>
+<p-toast position="bottom-center" key="bc"></p-toast>
+
+<p-toast position="bottom-center" key="c" (onClose)="onReject()" [baseZIndex]="5000">
+    <ng-template let-message pTemplate="message">
+        <div class="p-flex p-flex-column" style="flex: 1">
+            <div class="p-text-center">
+                <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+                <h4>{{message.summary}}</h4>
+                <p>{{message.detail}}</p>
+            </div>
+            <!-- <div class="p-grid p-fluid">
+                <div class="p-col-6">
+                    <button type="button" pButton (click)="onConfirm()" label="Yes" class="p-button-success"></button>
+                </div>
+                <div class="p-col-6">
+                    <button type="button" pButton (click)="onReject()" label="No" class="p-button-secondary"></button>
+                </div>
+            </div> -->
+        </div>
+    </ng-template>
+</p-toast>
+<h4 style="margin-left: 25px;">All Employee Assigned Requests</h4>
+<p-table class="container card" #dt [value]="lstAssignedReq" dataKey="id" [rows]="5" [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[5,10,50]" [loading]="loading" styleClass="p-datatable-customers" [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+    [globalFilterFields]="['requestName','clientName ','requestMode','requestStatus','requestPeriority','description']">
+    <ng-template pTemplate="caption">
+
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th>RequestName</th>
+            <th>ClientName</th>
+            <th>RequestMode</th>
+            <th>RequestStatus</th>
+            <th>RequestPeriority</th>
+            <th>Description</th>
+
+            <th>Images</th>
+        </tr>
+        <tr>
+            <th>
+                <input pInputText style="width: 100%;" type="text"
+                    (input)="dt.filter($event.target.value, 'requestName', 'startsWith')" placeholder='requestName'
+                    class="p-column-filter">
+            </th>
+            <th>
+                <input pInputText style="width: 100%;" type="text"
+                    (input)="dt.filter($event.target.value, 'clientName', 'startsWith')" placeholder='ClientName'
+                    class="p-column-filter">
+            </th>
+            <th>
+                <input pInputText type="text" style="width: 100%"
+                    (input)="dt.filter($event.target.value, 'requestMode', 'contains')" placeholder='Mode'
+                    class="p-column-filter">
+            </th>
+            <th>
+                <input pInputText type="text" style="width: 100%"
+                    (input)="dt.filter($event.target.value, 'requestStatus', 'contains')" placeholder='Status'
+                    class="p-column-filter">
+            </th>
+            <th>
+                <input pInputText type="text" style="width: 100%"
+                    (input)="dt.filter($event.target.value, 'requestPeriority', 'contains')" placeholder="Periority"
+                    class="p-column-filter">
+            </th>
+            <th>
+                <input pInputText style="width: 100%;" type="text"
+                    (input)="dt.filter($event.target.value, 'description', 'startsWith')" placeholder="Description"
+                    class="p-column-filter">
+            </th>
+            <th></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-empReq>
+        <tr>
+            <td>
+                {{empReq.requestName}}
+            </td>
+            <td>
+                {{empReq.clientName}}
+            </td>
+
+            <td>
+                {{empReq.requestMode}}
+            </td>
+            <td>
+                {{empReq.requestStatus}}
+            </td>
+            <td>
+                {{empReq.requestPeriority}}
+            </td>
+            <td>
+                {{empReq.description}}
+            </td>
+            <td class="btn btn-info" style="height: 50px; margin-left: 30px;" (click)="viewAllImages(empReq.id)">View</td>
+
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+        <tr>
+            <td colspan="6">No Assigned Requests found.</td>
+        </tr>
+        <tr>
+
+        </tr>
+    </ng-template>
+
+</p-table>
+<p-dialog [(visible)]="NewclientDialogbool" [style]="{width: '50vw'}" [baseZIndex]="10000">
+    <div class="row">
+        <p-table [value]="reqImages">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="color: #2674a8; font-size: 20px; font: bold; text-align: center;">Document Name</th>
+                </tr>
+        
+            </ng-template>
+            <ng-template pTemplate="body" let-i>
+                <tr>
+                    <td style="color: rgb(187, 12, 12);font-size: large;text-align: center;"
+                        >{{i.imageName}}<button class="btn btn-info" style="margin-left: 30px;" (click)="viewSingleDoc(i)">View</button></td>
+                  
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-times" (click)="NewclientDialogbool=false" label="No"></p-button>
+    </ng-template>
+
+</p-dialog>

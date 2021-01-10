@@ -13,6 +13,8 @@ export class SideNavComponent implements OnInit {
   IsUser: any;
   show: boolean;
   direction = 'ltr';
+  role:string
+  loggedInUserName:string
 
   constructor(private AuthService: AuthService, public translate: TranslateService, public dir: Directionality) {
     this.show = true;
@@ -26,6 +28,9 @@ export class SideNavComponent implements OnInit {
   }
   userName = localStorage.getItem("userName")
   ngOnInit(): void {
+   this.role= localStorage.getItem('roles')
+   this.loggedInUserName= localStorage.getItem('userName')
+   console.log(this.role)
     // this.dir.change.subscribe((changes) => {
     //   console.log(changes)
     // });

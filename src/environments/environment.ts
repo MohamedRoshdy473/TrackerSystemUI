@@ -53,6 +53,8 @@ export const environment = {
   addteams:'http://localhost:50653/api/Teams/',
   GetEmployeessByTeamId:'http://localhost:50653/api/ProjectTeam/GetEmployeessByTeamId/',
   GetRequestImageByRequestId:'http://localhost:50653/api/RequestImages/GetRequestImageByRequestId/',
+  GetAllRequestByEmployeeId:'http://localhost:50653/api/AssignedRequests/GetAllRequestByEmployeeId/',
+
   production: false
 };
 

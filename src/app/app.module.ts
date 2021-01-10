@@ -109,6 +109,7 @@ import { AddProjectTypeComponent } from './Components/ProjectTypeComponents/add-
 import { EditProjectTypeComponent } from './Components/ProjectTypeComponents/edit-project-type/edit-project-type.component';
 import { EditOrganizationComponent } from "./Components/Organization/edit-organization/edit-organization.component";
 import { DisplayCategoriesComponent } from './Components/Request/Categories/display-categories/display-categories.component';
+import { EmployeeAssignedRequestsComponent } from './Components/employee/employee-assigned-requests/employee-assigned-requests.component';
 
 
 
@@ -148,7 +149,8 @@ registerLocaleData(en);
    AddProjectTypeComponent,
    EditProjectTypeComponent,
    EditOrganizationComponent,
-   DisplayCategoriesComponent
+   DisplayCategoriesComponent,
+   EmployeeAssignedRequestsComponent
   ],
   imports: [
     BrowserModule,
