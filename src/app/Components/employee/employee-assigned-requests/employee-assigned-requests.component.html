@@ -23,12 +23,12 @@
         </div>
     </ng-template>
 </p-toast>
-<h4 style="margin-left: 25px;">All Employee Assigned Requests</h4>
 <p-table class="container card" #dt [value]="lstAssignedReq" dataKey="id" [rows]="5" [showCurrentPageReport]="true"
     [rowsPerPageOptions]="[5,10,50]" [loading]="loading" styleClass="p-datatable-customers" [paginator]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
     [globalFilterFields]="['requestName','clientName ','requestMode','requestStatus','requestPeriority','description']">
     <ng-template pTemplate="caption">
+        <h4 style="margin-left: 25px;">All Employee Assigned Requests</h4>
 
     </ng-template>
     <ng-template pTemplate="header">

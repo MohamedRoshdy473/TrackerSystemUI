@@ -1,6 +1,6 @@
 <div class="wrapper">
   <!-- Page Content Side Bar -->
-  <nav id="sidebar" *ngIf="role!='Client'">
+  <nav id="sidebar"*ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM'">
     <div class="sidebar-header">
       <h3 style="font-size: 25px;">TRACKER SYSTEM</h3>
     </div>
@@ -54,15 +54,15 @@
 
           <ul class="navbar-nav">
 
-            <li *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM'">
-              <a class="active" routerLink='tabs'>All
+            <li style="margin-left: 20px; font-size: 20px; color: rgb(12, 105, 212);" *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM'">
+              <a class="active" routerLink='tabs'>ALL
                 Projects</a><br>
             </li>
 
-            <li style="margin: 10px;" *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM' ||role =='TL'">
+            <li style="margin-left: 20px; font-size: 20px;color: rgb(12, 105, 212);" *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM' ||role =='TL'">
               <a class="active" routerLink='AllManagersReq'>Managers Requests</a><br>
             </li>
-            <li *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM'">
+            <li style="margin-left: 20px; font-size: 20px;color: rgb(12, 105, 212);" *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM'">
               <a class="active" routerLink='organizations'>Lst organizations</a><br>
             </li>
           </ul>
