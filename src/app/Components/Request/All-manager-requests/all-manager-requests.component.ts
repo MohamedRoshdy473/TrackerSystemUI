@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { request } from 'src/Shared/Models/request';
+import { RequestImage } from 'src/Shared/Models/RequestImages';
 import { RequestService } from 'src/Shared/Services/request.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { RequestService } from 'src/Shared/Services/request.service';
 })
 export class AllManagerRequestsComponent implements OnInit {
   lstRequests: request[]
+  requestImages:RequestImage[]
   constructor(private requestService: RequestService,
     private router:Router
     ) { }

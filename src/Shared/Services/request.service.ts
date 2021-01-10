@@ -36,5 +36,8 @@ GetRequestsByClientId(clientID:Number):Observable<any>{
 addListRequestImages(images:RequestImage[]): Observable <RequestImage[] >{
   return this.httpClient.post<RequestImage[]> (`${environment.addRequstImages}`,images,this.httpHeader) ;
 }
+GetRequestImageByRequestId(requestId:Number):Observable<any>{
+  return this.httpClient.get<RequestImage[]>(`${environment.GetRequestImageByRequestId}${requestId}`,this.httpHeader);
+}
 
 }
