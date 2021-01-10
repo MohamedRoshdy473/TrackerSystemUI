@@ -25,18 +25,14 @@
       <li *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM'">
         <a class="active" routerLink='DisplayAllClients'>Client</a><br>
       </li>
-      <li *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM' ||role =='TL'">
-        <a class="active" routerLink='AllManagersReq'>Managers Requests</a><br>
-      </li>
+
       <li *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM'">
         <a class="active" routerLink='DisplayDepartments'>Department</a><br>
       </li>
       <li *ngIf="role=='Client'">
         <a class="active" routerLink='allClientReqts'>ClientRequests</a><br>
       </li>
-      <li *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM'">
-        <a class="active" routerLink='organizations'>Lst organizations</a><br>
-      </li>
+    
       <li *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM'">
         <a class="active" routerLink='organization'>organizations</a><br>
       </li>
@@ -63,13 +59,11 @@
                 Projects</a><br>
             </li>
 
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active">
-                Patient Files </a>
+            <li style="margin: 10px;" *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM' ||role =='TL'">
+              <a class="active" routerLink='AllManagersReq'>Managers Requests</a><br>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" routerLinkActive="active">
-                Reports </a>
+            <li *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM'">
+              <a class="active" routerLink='organizations'>Lst organizations</a><br>
             </li>
           </ul>
         </div>

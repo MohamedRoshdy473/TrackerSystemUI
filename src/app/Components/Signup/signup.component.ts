@@ -40,10 +40,10 @@ export class SignupComponent implements OnInit {
           localStorage.setItem("loginedUserId", res['loginedUserId']);
           this.role= localStorage.getItem("roles")
           console.log(localStorage.getItem("email"))
-          // if (this.role == 'SuperAdmin'||this.role == 'PMO'||this.role == 'PM') {
-          //   this.routee.navigate(['/home/tabs'])
-          //   console.log(this.role)
-          // }
+          if (this.role == 'SuperAdmin'||this.role == 'PMO'||this.role == 'PM') {
+            this.routee.navigate(['/home/tabs'])
+            console.log(this.role)
+          }
            if (this.role == 'Client') {
             this.routee.navigate(['/home/allClientReqts'])
             console.log(this.role)
