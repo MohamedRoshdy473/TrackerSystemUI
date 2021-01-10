@@ -100,9 +100,17 @@
             <td>
                 {{request.requestTypeName}}
             </td>
-            <td>
+            <td id="Assig" *ngIf="request.isAssigned==true">
+                <div>
+                    <button class="btn btn-info" disabled>Assigned</button>
+                </div>
+            </td>
+            <td id="Assig" *ngIf="request.isAssigned==false">
                 <button class="btn btn-info" (click)="assignRequests(request.id)">Assign</button>
             </td>
+            <!-- <td >
+                <button class="btn btn-info" (click)="assignRequests(request.id)">Assign</button>
+            </td> -->
             <td>
                 <button class="btn btn-warning" (click)="ViewImages(request.id)">View All Docs</button>
             </td>

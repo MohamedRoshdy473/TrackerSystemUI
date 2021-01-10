@@ -73,7 +73,7 @@ export class CreateRequesteComponent implements OnInit {
       requestSubCategoryId: 0, requestSubCategoryName: '', assetId: 0, clientId: 0,
       requestTypeId: 0, requestTypeName: '', description: '', requestModeId: 0
     }
-    this.requestObj = {
+    this.requestObj = {IsAssigned:false,IsSolved:false,
       id: 0, projectId: 0, projectName: '', requestCode: '', clientName: '',
       requestName: '', requestPeriority: '', requestPeriorityId: 0,
       requestStatus: '', requestStatusId: 0, requestTime: new Date().getHours() + ':' + new Date().getMinutes(), requestDate: new Date(),
