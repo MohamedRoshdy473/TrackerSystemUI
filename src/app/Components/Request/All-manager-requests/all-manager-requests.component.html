@@ -87,7 +87,7 @@
                 {{request.requestDate | date:'yyyy:MM:dd'}}
             </td>
             <td>
-                {{request.requestTime}}
+                {{request.requestTime | slice:0:5}}
             </td>
             <td>
                 {{request.requestPeriority}}

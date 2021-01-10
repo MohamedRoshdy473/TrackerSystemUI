@@ -10,9 +10,10 @@ import { RequestService } from 'src/Shared/Services/request.service';
 })
 export class AllManagerRequestsComponent implements OnInit {
   lstRequests: request[]
+
   constructor(private requestService: RequestService,
-    private router:Router
-    ) { }
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     this.lstRequests = []
