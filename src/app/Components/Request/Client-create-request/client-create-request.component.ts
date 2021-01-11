@@ -82,7 +82,7 @@ export class ClientCreateRequestComponent implements OnInit {
       requestName: '', requestPeriority: '', requestPeriorityId: 0,
       requestStatus: '', requestStatusId: 0, requestTime: new Date().getHours() + ':' + new Date().getMinutes(), requestDate: new Date(),
       requestSubCategoryId: 0, requestSubCategoryName: '', assetId: 0, clientId: 0,
-      requestTypeId: 0, requestTypeName: '', description: '', requestModeId: 0
+       requestTypeName: '', description: '', requestModeId: 0,teamId:0,projectTeamId:0,teamName:''
     }
     this.reqAsset = {
       assetCode: '', assetName: '', id: 0

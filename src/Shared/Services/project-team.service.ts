@@ -38,4 +38,10 @@ export class ProjectTeamService {
   GetProjectTeamsByProjectPositionId(positionId:number){
     return this.httpClient.get<projectTeam[]> (`${environment.GetProjectTeamsByProjectPositionId}${positionId}`,this.httpHeader) ;
   }
+  GetProjectTeamsByProjectId(projectId:number){
+    return this.httpClient.get<projectTeam[]> (`${environment.GetAllProjectTeamsByProjectID}${projectId}`,this.httpHeader) ;
+  }
+  GetProjectTeamByProjectIdAndTeamIdAndProjectPositionId(projectId:number,teamId:number){
+    return this.httpClient.get<projectTeam> (`${environment.GetAllProjectTeamIdByProjectIDandTeamIdAndPoaitionId}${projectId}/${teamId}/1`,this.httpHeader) ;
+  }
 }
