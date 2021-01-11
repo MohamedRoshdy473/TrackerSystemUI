@@ -11,6 +11,9 @@ export class request {
     clientName:string
     projectName:string
     // projectManager:string
+    teamId:number
+    teamName:string
+    projectTeamId:number
     requestTime:any
     requestDate:Date
     assetId:number
@@ -19,7 +22,7 @@ export class request {
     requestStatus:string
     requestPeriorityId:number
     requestPeriority:string
-    requestTypeId:number
+    //requestTypeId:number
     requestTypeName:string
     description:string
     IsSolved:boolean
