@@ -22,10 +22,11 @@ export class AllUsersComponent implements OnInit {
   NewLeaveDialogbool:boolean;
   NewclientDialogbool:boolean;
   displayBasic: boolean;
+  clientrole: string;
   constructor(private clientService:ClientService,private userService:UsersService,private EmpService:EmployeeService,
     private confirmationService: ConfirmationService,private messageService: MessageService
     ) { 
-    this.NewUser={id:0,email:'',role:'User',userName:'',password:'P@ssw0rd'};
+    this.NewUser={id:0,email:'',role:'',userName:'',password:'P@ssw0rd'};
   }
 
   ngOnInit(): void {
@@ -65,15 +66,25 @@ export class AllUsersComponent implements OnInit {
 
   addNewUser()
   {
-    // if(this.clientrole=='Client')
+    // if(this.NewUser.role!='Client')
     // {
-    //   this.NewUser.role=this.clientrole
-    // }
-    console.log(this.NewUser);
+    //    this.NewUser.role='Client';  
+       
+    // } 
+    console.log("NewUser",this.NewUser.role);
     this.userService.addUser(this.NewUser).subscribe(
       data=>this.ngOnInit()
     )
     this.NewLeaveDialogbool=false;
+    // this.NewclientDialogbool=false;
+  }
+  addNewClient()
+  {   
+     this.NewUser.role='Client';
+     this.userService.addUser(this.NewUser).subscribe(
+     data=>this.ngOnInit()
+    )
+    console.log("NewClient",this.NewUser.role);
     this.NewclientDialogbool=false;
   }
   NewUserDialog()
