@@ -71,7 +71,7 @@
             <p-table [value]="projectObj.listOfStackholders">
                 <ng-template pTemplate="header">
                     <tr>
-                        <th style="color: #2674a8; font-size: 20px; font: bold;">StaheHolders Name</th>
+                        <th style="color: #2674a8; font-size: 20px; font: bold;">Partener Name</th>
                         <th ></th>
 
                     </tr>
@@ -86,7 +86,7 @@
                 </ng-template>
             </p-table>
            
-            <p-button (click)="showBasicDialog()" icon="pi pi-external-link" label="Add StakeHolder"></p-button>
+            <p-button (click)="showBasicDialog()" icon="pi pi-external-link" label="Add Parteners"></p-button>
             <br/>
             <br/>
             <p-dialog header="Header" [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
@@ -95,7 +95,7 @@
                         <div class="p-col-12 p-md-4">
                             <div class="p-inputgroup">
                                 <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-                                <input type="text" pInputText placeholder="Stackeholder Name"
+                                <input type="text" pInputText placeholder="Partener Name"
                                     [(ngModel)]="stackholderInLst.stackeholderName">
                             </div>
                         </div>
@@ -148,7 +148,7 @@
     
                                 </tr>
                                 <tr *ngIf="lstOfStackholder.length == 0">
-                                    <td colspan="4" style="color: rgb(102, 97, 23);">No stackholders found.</td>
+                                    <td colspan="4" style="color: rgb(102, 97, 23);">No Parteners found.</td>
                                 </tr>
                             </tbody>
     
