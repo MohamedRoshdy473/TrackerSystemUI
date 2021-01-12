@@ -101,7 +101,7 @@ export class CreateProjectComponent implements OnInit {
       id: 0, name: ''
     }
     this.ProjectTeam = {teamName:'',
-      TeamId:0,
+      teamId:0,
       departmentId: 0,id: 0, projectName: '', departmentName: '',
       employeeId: 0, employeeName: '',
       projectId: this.projectID, projectPositionId: 0, projectPositionName: ''
@@ -257,10 +257,10 @@ addTeamObj.projectTeams =  this.lstOfProjectTeams;
         this.ProjectTeam.projectPositionName = e.positionName
        this.teamname=this.team.Name;
       // this.ProjectTeam.TeamId=Number(this.team.Id);
-      this.ProjectTeam.TeamId=29;
+      this.ProjectTeam.teamId=29;
         this.lstOfProjectTeams.push(this.ProjectTeam);
         this.ProjectTeam = {teamName:'',
-          TeamId:0,
+          teamId:0,
           departmentId: 0, id: 0, departmentName: '', employeeName: '', projectPositionId: 0, projectPositionName: '', employeeId: 0
           , projectId: this.projectID, projectName: ''
         }
