@@ -22,18 +22,22 @@
       <li *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM'">
         <a class="active" routerLink='DisplayCategories'>Request Category</a><br>
       </li>
-      <li *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM'">
+      <li *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'">
         <a class="active" routerLink='DisplayAllClients'>Client</a><br>
-      </li>
+      </li>  
 
-      <li *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM'">
+      <li *ngIf="role =='PM'">
+        <a class="active" routerLink='allclientsforprojectmanager'>Client</a><br>
+      </li> 
+
+      <li *ngIf="role=='SuperAdmin'">
         <a class="active" routerLink='DisplayDepartments'>Department</a><br>
       </li>
       <li *ngIf="role=='Client'">
         <a class="active" routerLink='allClientReqts'>ClientRequests</a><br>
       </li>
     
-      <li *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM'">
+      <li *ngIf="role=='SuperAdmin'">
         <a class="active" routerLink='organization'>organizations</a><br>
       </li>
     
@@ -57,9 +61,9 @@
 
             <li style="margin-left: 20px; font-size: 20px; color: rgb(12, 105, 212);" *ngIf="role =='PM'">
               <a class="active" routerLink='projectsForProjectManager'>ALL
-                Projects for project manager</a><br>
+                Projects   </a><br>
             </li>
-            <li style="margin-left: 20px; font-size: 20px; color: rgb(12, 105, 212);" *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM'">
+            <li style="margin-left: 20px; font-size: 20px; color: rgb(12, 105, 212);" *ngIf="role=='SuperAdmin'">
               <a class="active" routerLink='tabs'>ALL
                 Projects</a><br>
             </li>
@@ -67,10 +71,13 @@
               <a class="active" routerLink='allTeamLeaderReqts' style="margin-left: 20px; font-size: 20px; color: rgb(12, 105, 212);" *ngIf="role=='TL'">allTeamLeaderReqts</a><br>
             </li>
 
-            <li style="margin-left: 20px; font-size: 20px;color: rgb(12, 105, 212);" *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM' ||role =='TL'">
+            <li style="margin-left: 20px; font-size: 20px;color: rgb(12, 105, 212);" *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'">
               <a class="active" routerLink='AllManagersReq'>Managers Requests</a><br>
             </li>
-            <li style="margin-left: 20px; font-size: 20px;color: rgb(12, 105, 212);" *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM'">
+            <li style="margin-left: 20px; font-size: 20px;color: rgb(12, 105, 212);" *ngIf="role =='PM'">
+              <a class="active" routerLink='projectmanagerRequests'> Requests</a><br>
+            </li>
+            <li style="margin-left: 20px; font-size: 20px;color: rgb(12, 105, 212);" *ngIf="role=='SuperAdmin'">
               <a class="active" routerLink='organizations'>Lst organizations</a><br>
             </li>
           </ul>

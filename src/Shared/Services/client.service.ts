@@ -29,4 +29,7 @@ export class ClientService {
   Deleteclient(id:number):Observable<any>{ 
     return this.httpClient.delete<any>(`${environment.clients}${id}`,this.httpHeader);
   }
+  GetClientsByEmployeeId(Empid:number):Observable<any>{ 
+    return this.httpClient.get<any>(`${environment.GetClientsByEmployeeId}${Empid}`,this.httpHeader);
+  }
 }

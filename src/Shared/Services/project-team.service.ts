@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { projectsVM } from '../Models/projectsVM';
 import { projectTeam } from '../Models/projectTeam';
 import { request } from '../Models/request';
 
@@ -47,6 +48,10 @@ export class ProjectTeamService {
   }
   GetProjectTeamByProjectPositionIdAndEmployeeId(projectPositionId:number,empId:number){
     return this.httpClient.get<projectTeam[]> (`${environment.GetProjectTeamByProjectPositionIdAndEmployeeId}${projectPositionId}/${empId}`,this.httpHeader) ;
+  }
+
+  GetAllProjectTeamsByProjectIds(ProjectIds:projectsVM): Observable<any> {
+    return this.httpClient.post<request[]> (`${environment.GetAllProjectTeamsByProjectIds}`,ProjectIds,this.httpHeader) ;
   }
 
 }

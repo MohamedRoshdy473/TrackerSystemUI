@@ -11,7 +11,7 @@ import { mileStone } from '../../../../Shared/Models/mileStone'
 import { projectTeam } from '../../../../Shared/Models/projectTeam'
 import { ProjectDocuments } from '../../../../Shared/Models/ProjectDocuments'
 import {Router, RouterLink} from '@angular/router';
-
+ 
 @Component({
   selector: 'app-all-projectmanager-projects',
   templateUrl: './all-projectmanager-projects.component.html',
@@ -31,6 +31,9 @@ export class AllProjectmanagerProjectsComponent implements OnInit {
   displayMaximizable: boolean;
   displayEdit: boolean;
   id: any;
+  role:string
+  LoggedInUserId:number
+
   constructor(private route:Router,private projectteamservice: ProjectTeamService, 
     private projectdocumentsservice: ProjectDocumentService, 
     private messageService: MessageService, private confirmationService: ConfirmationService, 
@@ -40,7 +43,10 @@ export class AllProjectmanagerProjectsComponent implements OnInit {
 
   ngOnInit() {
     // this.projects = []
-    this.projectService.GetAllProjects().subscribe(projects => {
+    this.role= localStorage.getItem('roles')
+    this.LoggedInUserId = Number(localStorage.getItem('id'))
+    console.log("loggedin",localStorage.getItem('id'))
+    this.projectService.GetAllProjectsByEmployeeId(this.LoggedInUserId).subscribe(projects => {
       this.projects = projects
       console.log(this.projects)
     })

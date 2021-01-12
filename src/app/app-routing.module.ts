@@ -37,6 +37,8 @@ import { DisplayCategoriesComponent } from './Components/Request/Categories/disp
 import { EmployeeAssignedRequestsComponent } from './Components/employee/employee-assigned-requests/employee-assigned-requests.component';
 import { AllTeamLeaderRequestsComponent } from './Components/Request/All-team-leader-requests/all-team-leader-requests.component';
 import { AllProjectmanagerProjectsComponent } from './Components/Projects/all-projectmanager-projects/all-projectmanager-projects.component';
+import { AllClientsForProjectmanagerComponent } from './Components/ClientComponents/all-clients-for-projectmanager/all-clients-for-projectmanager.component';
+import { ProjectmangerRequestsComponent } from './Components/Request/All-projectmanger-requests/projectmanger-requests.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login'},
   { path: 'changePassword', component:  ChangePaswwordComponent},
@@ -71,6 +73,9 @@ const routes: Routes = [
     { path: 'allEmpAssignedRequests', component:EmployeeAssignedRequestsComponent },
     { path: 'DisplayCategories', component:DisplayCategoriesComponent },
     { path: 'projectsForProjectManager', component:AllProjectmanagerProjectsComponent },
+    { path: 'allclientsforprojectmanager', component:AllClientsForProjectmanagerComponent },
+    { path: 'projectmanagerRequests', component:ProjectmangerRequestsComponent },
+
 
     
 
