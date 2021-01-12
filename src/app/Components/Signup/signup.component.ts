@@ -40,8 +40,12 @@ export class SignupComponent implements OnInit {
           localStorage.setItem("loginedUserId", res['loginedUserId']);
           this.role= localStorage.getItem("roles")
           console.log(localStorage.getItem("email"))
-          if (this.role == 'SuperAdmin'||this.role == 'PMO'||this.role == 'PM') {
+          if (this.role == 'SuperAdmin'||this.role == 'PMO') {
             this.routee.navigate(['/home/tabs'])
+            console.log(this.role)
+          }
+          if(this.role =='PM'){
+            this.routee.navigate(['/home/projectsForProjectManager'])
             console.log(this.role)
           }
            if (this.role == 'Client') {
@@ -49,7 +53,7 @@ export class SignupComponent implements OnInit {
             console.log(this.role)
           }
           if (this.role == 'TL') {
-            this.routee.navigate(['/home/AllManagersReq'])
+            this.routee.navigate(['/home/allTeamLeaderReqts'])
             console.log(this.role)
           }
           if (this.role == 'Employee') {
