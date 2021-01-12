@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { projectTeam } from '../Models/projectTeam';
+import { request } from '../Models/request';
 
 @Injectable({
   providedIn: 'root'
@@ -44,4 +45,8 @@ export class ProjectTeamService {
   GetProjectTeamByProjectIdAndTeamIdAndProjectPositionId(projectId:number,teamId:number){
     return this.httpClient.get<projectTeam> (`${environment.GetAllProjectTeamIdByProjectIDandTeamIdAndPoaitionId}${projectId}/${teamId}/1`,this.httpHeader) ;
   }
+  GetProjectTeamByProjectPositionIdAndEmployeeId(projectPositionId:number,empId:number){
+    return this.httpClient.get<projectTeam[]> (`${environment.GetProjectTeamByProjectPositionIdAndEmployeeId}${projectPositionId}/${empId}`,this.httpHeader) ;
+  }
+
 }

@@ -36,9 +36,10 @@
       <li *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM'">
         <a class="active" routerLink='organization'>organizations</a><br>
       </li>
+    
     </ul>
   </nav>
-
+  
   <!-- Page Content Nav Bar -->
   <div id="content">
 
@@ -57,6 +58,9 @@
             <li style="margin-left: 20px; font-size: 20px; color: rgb(12, 105, 212);" *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM'">
               <a class="active" routerLink='tabs'>ALL
                 Projects</a><br>
+            </li>
+            <li>
+              <a class="active" routerLink='allTeamLeaderReqts'>allTeamLeaderReqts</a><br>
             </li>
 
             <li style="margin-left: 20px; font-size: 20px;color: rgb(12, 105, 212);" *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM' ||role =='TL'">

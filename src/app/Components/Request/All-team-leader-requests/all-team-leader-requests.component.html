@@ -1,0 +1,85 @@
+<!-- Show all   Requests that belongs to specific client -->
+<p-table [value]="lstRequests">
+    <ng-template pTemplate="caption">
+        <div class="row">
+        <div class="p-d-flex p-ai-center p-jc-between col-md-10">
+           <span class="h3Header">Team Leader Requests</span><span style="color: brown;">({{clientName}})</span>
+        </div>
+        <div class="col-md-2" >
+            <button id="addEmpBtn" routerLink="/home/AllClientsReq" class="btn btn-outline-primary btn-md btn-block">
+                <span class="pi pi-plus">Add</span> </button>
+        </div>
+    </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th>RequestName</th>
+            <th>projectName</th>
+            <th>requestTime</th>
+            <th>RequestType</th>
+            <th>RequestPeriority</th>
+            <th>RequestStatus</th>
+            <th>Description</th> 
+
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-request>
+        <tr>
+            <td>{{request.requestName}}</td>
+            <td>{{request.projectName}}</td>
+            <td>{{request.requestTime}}</td>
+            <td>{{request.requestTypeName}}</td>
+<!-- If condition In case high  or Moderate or low (condition for styling and colors only) -->
+
+            <td *ngIf="request.requestPeriority == 'High'">
+                <div style="background-color: #745f61;width: 110px;">
+                    <span
+                    style="font-weight: bold;margin-left: 10px; color: #e0c213;text-transform: uppercase; font-size: 12px;letter-spacing: .3px;font-weight: 700;font-weight: 700;padding: .25em .5rem;border-radius: 2px;">high</span>
+                </div>
+            </td>  <td *ngIf="request.requestPeriority == 'Moderate'">
+                <div style="background-color: #ffcdd2;width: 110px;">
+                    <span
+                    style="font-weight: bold;margin-left: 10px;text-transform: uppercase; color: #694382; font-size: 12px;letter-spacing: .3px;font-weight: 700;font-weight: 700;padding: .25em .5rem;border-radius: 2px;">Moderate</span>
+                </div>
+            </td>  <td *ngIf="request.requestPeriority == 'Low'">
+                <div style="background-color: #ffcdd2;width: 110px;">
+                    <span
+                        style="font-weight: bold;margin-left: 10px; color: #c63737;text-transform: uppercase; font-size: 12px;letter-spacing: .3px;font-weight: 700;padding: .25em .5rem;border-radius: 2px;">Low</span>
+                </div>
+            </td>
+<!-- If condition In case open or In progress or pendin or closed (condition for styling and colors only) -->
+
+            <td *ngIf="request.requestStatus == 'Open'">
+                <div style="background-color: #ffcdd2;width: 110px;">
+                    <span
+                        style="font-weight: bold;margin-left: 10px; color: #c63737;text-transform: uppercase; font-size: 12px;letter-spacing: .3px;font-weight: 700;padding: .25em .5rem;border-radius: 2px;">OPEN</span>
+                </div>
+            </td>
+            <td *ngIf="request.requestStatus == 'In Progress'">
+                <div style="background-color: #ffcdd2;width: 110px;">
+                    <span
+                        style="font-weight: bold;margin-left: 10px; color: #bcc637;text-transform: uppercase; font-size: 12px;letter-spacing: .3px;font-weight: 700;font-weight: 700;padding: .25em .5rem;border-radius: 2px;">IN PROGRESS</span>
+                </div>
+            </td>
+            <td *ngIf="request.requestStatus == 'Pending'">
+                <div style="background-color: #eccfff;width: 110px;">
+                    <span
+                        style="font-weight: bold;margin-left: 10px;text-transform: uppercase; color: #694382; font-size: 12px;letter-spacing: .3px;font-weight: 700;font-weight: 700;padding: .25em .5rem;border-radius: 2px;">PENDING</span>
+                </div>
+            </td>
+            <td *ngIf="request.requestStatus == 'Closed'">
+                <div style="background-color: #c8e6c9;width: 110px;">
+                    <span
+                        style="font-weight: bold;margin-left: 10px;text-transform: uppercase; color: #256029; font-size: 12px;letter-spacing: .3px;font-weight: 700;font-weight: 700;padding: .25em .5rem;border-radius: 2px;">
+                        CLOSED</span>
+                </div>
+            </td>
+            <td>{{request.description}}</td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+        <div class="p-d-flex p-ai-center p-jc-between">
+            In total there are {{lstRequests ? lstRequests.length : 0 }} Requests.
+        </div>
+    </ng-template>
+</p-table>

@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { projectTeamVM } from '../Models/projectTeamVM';
 import { request } from "../Models/request";
 import { RequestImage } from '../Models/RequestImages';
 
@@ -43,5 +44,8 @@ export class RequestService {
   }
   GetAllRequestByEmployeeId(empID: number): Observable<any> {
     return this.httpClient.get<request[]>(`${environment.GetAllRequestByEmployeeId}${empID}`, this.httpHeader);
+  }
+  GetAllRequestByProjectTeamId(projectTeamIdS:projectTeamVM): Observable<any> {
+    return this.httpClient.post<request[]> (`${environment.GetAllRequestByProjectTeamId}`,projectTeamIdS,this.httpHeader) ;
   }
 }

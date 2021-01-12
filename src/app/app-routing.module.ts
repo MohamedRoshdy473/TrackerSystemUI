@@ -35,6 +35,7 @@ import { AddProjectTypeComponent } from './Components/ProjectTypeComponents/add-
 import { EditProjectTypeComponent } from './Components/ProjectTypeComponents/edit-project-type/edit-project-type.component';
 import { DisplayCategoriesComponent } from './Components/Request/Categories/display-categories/display-categories.component';
 import { EmployeeAssignedRequestsComponent } from './Components/employee/employee-assigned-requests/employee-assigned-requests.component';
+import { AllTeamLeaderRequestsComponent } from './Components/Request/All-team-leader-requests/all-team-leader-requests.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login'},
   { path: 'changePassword', component:  ChangePaswwordComponent},
@@ -50,6 +51,7 @@ const routes: Routes = [
     { path: 'addProjectType', component:  AddProjectTypeComponent},
     { path: 'editProjectType/:id', component: EditProjectTypeComponent},
     { path: 'Requests', component:  CreateRequesteComponent},
+    { path: 'allTeamLeaderReqts', component:  AllTeamLeaderRequestsComponent},
     { path: 'tabs/createProject', component:  CreateProjectComponent},
     { path: 'tabs/updateproject/:id', component:  UpdateProjectComponent},
     {path:'AllUsers',component:AllUsersComponent},

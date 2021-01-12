@@ -93,9 +93,6 @@ export class CreateRequesteComponent implements OnInit {
     this.requestMode = {
       Mode: '', id: 0
     }
-    // this.reqStatusService.GetAllRequestStatus().subscribe(e=>{
-    //   this.lstReqStatus = e
-    // })
     this.projectService.GetAllProjects().subscribe(e => {
       this.lstProjects = e
     })

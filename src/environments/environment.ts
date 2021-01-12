@@ -56,7 +56,8 @@ export const environment = {
   GetAllRequestByEmployeeId:'http://localhost:50653/api/AssignedRequests/GetAllRequestByEmployeeId/',
   GetAllProjectTeamsByProjectID:'http://localhost:50653/api/ProjectTeam/GetProjectTeamsByProjectId/',
   GetAllProjectTeamIdByProjectIDandTeamIdAndPoaitionId:'http://localhost:50653/api/ProjectTeam/GetProjectTeamByProjectIdAndTeamIdAndProjectPositionId/',
-
+  GetProjectTeamByProjectPositionIdAndEmployeeId:'http://localhost:50653/api/ProjectTeam/GetProjectTeamByProjectPositionIdAndEmployeeId/',
+  GetAllRequestByProjectTeamId:'http://localhost:50653/api/Request/GetAllRequestByProjectTeamId/',
   production: false
 };
 
