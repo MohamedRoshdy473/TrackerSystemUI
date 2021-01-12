@@ -1,19 +1,7 @@
-<!-- <div class="row">
-    <span class="col-md-3" for="Email">Email</span>
-    <br>
-    <input #userEmail="ngModel" required type="text" [class.is-invalid]="userEmail.invalid && userEmail.touched"
-        minlength="3" [class.is-valid]="userEmail.valid" [(ngModel)]="NewUser.email" disabled name="Email"
-        class="col-md-6 form-control" inputId="Email">
-</div> -->
+
 <div class="container">
 <h2>Assign Request</h2>
 <div class="row">
-    <!-- <div class="p-field col-md-3" (change)="getTeamsByPositionId(($event.target.value))">
-    <label for="Project position" class="labelMarginRight">Project Position Name</label><br>
-    <p-dropdown [options]="lstProjectPosition"  [(ngModel)]="assignedReqObj.projectPositionId"
-        placeholder="Select Project Position Name" optionLabel="positionName" optionValue="id">
-    </p-dropdown>
-</div> -->
     <div class="col">
         <label class="labelstyle">Position Name</label>
         <select [(ngModel)]="assignedReqObj.projectPositionId" name="sel2" class="form-control"
@@ -25,13 +13,13 @@
     <div class="col">
         <label class="labelstyle">Select Team Name</label>
         <select [(ngModel)]="assignedReqObj.teamId" name="sel2" class="form-control"  (change)="getEmp(($event.target.value))">
-            <option *ngFor="let th of lstProjectTeam" value="{{th.teamId}}">{{th.teamName}}</option>
+            <option *ngFor="let th of lstProjectTeamAfterFilterBasedOnPosition" value="{{th.teamId}}">{{th.teamName}}</option>
         </select>
     </div>
     <div class="col">
         <label class="labelstyle">Select Employee Name</label>
         <select [(ngModel)]="assignedReqObj.employeeId" name="sel2" class="form-control" (change)="getEmpId(($event.target.value))">
-            <option *ngFor="let th of projectTeamForEmployees" value="{{th.employeeId}}">{{th.employeeName}}</option>
+            <option *ngFor="let th of lstProjectTeamAfterFiltration" value="{{th.employeeId}}">{{th.employeeName}}</option>
         </select>
     </div>
  

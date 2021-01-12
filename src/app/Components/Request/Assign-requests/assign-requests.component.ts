@@ -18,11 +18,12 @@ export class AssignRequestsComponent implements OnInit {
 
   assignedReqObj: assignedRequests
   lstProjectPosition: projectPosition[]
-  lstProjectTeamAfterFilter: projectTeam[]
+  lstProjectTeamAfterFilterBasedOnPosition: projectTeam[]
   lstProjectTeam: projectTeam[]
   lstProjectTeamAfterFiltration: projectTeam[]
   reqDescriptionObj: requestDescription
   projectTeamForEmployees: projectTeam[]
+  projectTeamForEmployeesAfterFilteration: projectTeam[]
   reqId: number
   LoginedUserId: string;
   Id: any
@@ -59,24 +60,22 @@ export class AssignRequestsComponent implements OnInit {
   }
   getTeamsByPositionId(event) {
     this.projectTeamService.GetProjectTeamsByProjectPositionId(this.assignedReqObj.projectPositionId).subscribe(e => {
-      this.lstProjectTeam = e
-      // this.lstProjectTeamAfterFiltration=e
-      // console.log("lst of projteams",this.lstProjectTeam)
-      // this.lstProjectTeamAfterFiltration = e.reduce((unique, o) => {
-      //   if (!unique.some(obj => obj.TeamId == o.TeamId)) {
-      //     unique.push(o);
-      //   }
-      //   return unique;
-      // }, []);
+      // this.lstProjectTeam = e
+
+      this.lstProjectTeamAfterFilterBasedOnPosition=e
+      console.log("lst of projteams",this.lstProjectTeamAfterFilterBasedOnPosition)
+      this.lstProjectTeamAfterFilterBasedOnPosition = e.reduce((unique, o) => {
+        if (!unique.some(obj => obj.teamId == o.teamId)) {
+          unique.push(o);
+        }
+        return unique;
+      }, []);
     })
 
-    // this.projectTeamService.GetEmployeessByTeamIdAndPositionId(this.teamId, this.assignedReqObj.projectPositionId).subscribe(e => {
-    //   this.projectTeamForEmployees = e
-    //   console.log(this.projectTeamForEmployees)
-    // })
+
   }
   saveAssignedRequest() {
-    this.assignedReqObj.employeeId = Number( this.empId)
+    this.assignedReqObj.employeeId = Number(this.empId)
 
     this.assignedReqObj.projectPositionId = Number(this.assignedReqObj.projectPositionId)
     this.assignedReqObj.teamId = Number(this.teamId)
@@ -92,8 +91,12 @@ export class AssignRequestsComponent implements OnInit {
     this.teamId = event;
     console.log(this.teamId)
     this.projectTeamService.GetEmployeessByTeamIdAndPositionId(this.teamId, this.assignedReqObj.projectPositionId).subscribe(e => {
-      this.projectTeamForEmployees = e
-      console.log(this.projectTeamForEmployees)
+      this.lstProjectTeamAfterFiltration = e.reduce((unique, o) => {
+        if (!unique.some(obj => obj.employeeId == o.employeeId)) {
+          unique.push(o);
+        }
+        return unique;
+      }, []);
     })
   }
   getEmpId(event) {
