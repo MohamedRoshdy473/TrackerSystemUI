@@ -138,13 +138,6 @@
                         Employee
                     </label>
                   </div>
-                  <div class="form-check radio">
-                    <input checked [(ngModel)]="NewUser.role" class="form-check-input" type="radio" name="exampleRadios"
-                     id="exampleRadios2" value="Client">
-                    <label class="form-check-label" for="exampleRadios2">
-                        Client
-                    </label>
-                  </div>
                 </div>
             </div>
         </div>
@@ -156,7 +149,9 @@
         </ng-template>
 
     </p-dialog>
-    <p-dialog  header=" " [(visible)]="NewclientDialogbool" [style]="{width: '50vw'}" [baseZIndex]="10000">
+</form>  
+<form #frm2="ngForm" (ngSubmit)="addNewClient()">
+  <p-dialog  header=" " [(visible)]="NewclientDialogbool" [style]="{width: '50vw'}" [baseZIndex]="10000">
 
         <div class="row">
             <span class="col-md-3" for="Client" >Client</span>
@@ -184,7 +179,7 @@
         </div>
         <br>
         <div class="row">
-            <span class="col-md-3" >Role</span>
+            <!-- <span class="col-md-3" >Role</span>
             <br>
             <div class="p-field-radiobutton">
                 <div class="row">
@@ -194,10 +189,10 @@
                         Client
                     </label>
                 </div>
-            </div>
+            </div> -->
         </div>
         <ng-template pTemplate="footer">
-            <p-button  type="submit" [disabled]="frm.invalid" icon="pi pi-check" label="" 
+            <p-button  type="submit" [disabled]="frm2.invalid" icon="pi pi-check" label="" 
             styleClass="p-button-text"><span >Save</span></p-button>
             <p-button icon="pi pi-times" (click)="NewClientDialog=false"
              label=""><span >NO</span></p-button>
