@@ -55,12 +55,16 @@
 
           <ul class="navbar-nav">
 
+            <li style="margin-left: 20px; font-size: 20px; color: rgb(12, 105, 212);" *ngIf="role =='PM'">
+              <a class="active" routerLink='projectsForProjectManager'>ALL
+                Projects for project manager</a><br>
+            </li>
             <li style="margin-left: 20px; font-size: 20px; color: rgb(12, 105, 212);" *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM'">
               <a class="active" routerLink='tabs'>ALL
                 Projects</a><br>
             </li>
             <li>
-              <a class="active" routerLink='allTeamLeaderReqts'>allTeamLeaderReqts</a><br>
+              <a class="active" routerLink='allTeamLeaderReqts' style="margin-left: 20px; font-size: 20px; color: rgb(12, 105, 212);" *ngIf="role=='TL'">allTeamLeaderReqts</a><br>
             </li>
 
             <li style="margin-left: 20px; font-size: 20px;color: rgb(12, 105, 212);" *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM' ||role =='TL'">

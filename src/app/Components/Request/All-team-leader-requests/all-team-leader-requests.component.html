@@ -1,53 +1,87 @@
 <!-- Show all   Requests that belongs to specific client -->
-<p-table [value]="lstRequests">
+<p-table [value]="lstRequests" class=" card" #dt  dataKey="id" [rows]="5" [showCurrentPageReport]="true"
+[rowsPerPageOptions]="[5,10,50]" styleClass="p-datatable-customers" [paginator]="true"
+currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+[globalFilterFields]="['requestName','projectName ','requestTime','requestSubCategoryName','requestStatus','clientName','teamName','description']">
     <ng-template pTemplate="caption">
         <div class="row">
         <div class="p-d-flex p-ai-center p-jc-between col-md-10">
-           <span class="h3Header">Team Leader Requests</span><span style="color: brown;">({{clientName}})</span>
+           <span class="h3Header">Team Leader Requests</span>
         </div>
-        <div class="col-md-2" >
-            <button id="addEmpBtn" routerLink="/home/AllClientsReq" class="btn btn-outline-primary btn-md btn-block">
-                <span class="pi pi-plus">Add</span> </button>
-        </div>
+       
     </div>
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
-            <th>RequestName</th>
-            <th>projectName</th>
-            <th>requestTime</th>
-            <th>RequestType</th>
-            <th>RequestPeriority</th>
-            <th>RequestStatus</th>
-            <th>Description</th> 
+            <th style="width: 150px;">Request Name</th>
+            <th style="width: 150px;">project Name</th>
+            <th style="width: 150px;">request Time</th>
+            <th style="width: 200px;">Request Spacification</th>
+            <th style="width: 150px;">Request Status</th>
+            <th style="width: 150px;">Client Name</th>
+            <th style="width: 150px;">Team Name</th>
+            <th style="width: 150px;">Description</th> 
+            <th colspan="2" style="text-align: center;">Operation</th>
 
+
+        </tr>
+        <tr>
+
+            <th>
+                <input pInputText style="width: 100%;" type="text"
+                    (input)="dt.filter($event.target.value, 'requestName', 'startsWith')" placeholder='Name'
+                    class="p-column-filter">
+            </th>
+            <th>
+                <input pInputText style="width: 100%;" type="text"
+                    (input)="dt.filter($event.target.value, 'projectName', 'startsWith')" placeholder='project Name'
+                    class="p-column-filter">
+            </th>
+          
+           
+            <th>
+                <input pInputText type="text" style="width: 100%"
+                    (input)="dt.filter($event.target.value, 'requestTime', 'contains')" placeholder="Time"
+                    class="p-column-filter">
+            </th>
+            <th>
+                <input pInputText type="text" style="width: 100%"
+                    (input)="dt.filter($event.target.value, 'requestSubCategoryName', 'contains')" placeholder='spacification'
+                    class="p-column-filter">
+            </th>
+            <th>
+                <input pInputText style="width: 100%;" type="text"
+                    (input)="dt.filter($event.target.value, 'requestStatus', 'startsWith')" placeholder="Status"
+                    class="p-column-filter">
+            </th>
+            <th>
+                <input pInputText style="width: 100%;" type="text"
+                    (input)="dt.filter($event.target.value, 'clientName', 'startsWith')" placeholder="client Name"
+                    class="p-column-filter">
+            </th>
+            <th>
+                <input pInputText style="width: 100%;" type="text"
+                    (input)="dt.filter($event.target.value, 'teamName', 'startsWith')" placeholder="Team Name"
+                    class="p-column-filter">
+            </th>
+            <th>
+                <input pInputText style="width: 100%;" type="text"
+                    (input)="dt.filter($event.target.value, 'description', 'startsWith')" placeholder='Description'
+                    class="p-column-filter">
+            </th>
+            
+            <th></th>
+            <th></th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-request>
         <tr>
             <td>{{request.requestName}}</td>
             <td>{{request.projectName}}</td>
-            <td>{{request.requestTime}}</td>
-            <td>{{request.requestTypeName}}</td>
-<!-- If condition In case high  or Moderate or low (condition for styling and colors only) -->
+            <td>{{request.requestTime | slice:0:8}}</td>
+            <td>{{request.requestSubCategoryName}}</td>
 
-            <td *ngIf="request.requestPeriority == 'High'">
-                <div style="background-color: #745f61;width: 110px;">
-                    <span
-                    style="font-weight: bold;margin-left: 10px; color: #e0c213;text-transform: uppercase; font-size: 12px;letter-spacing: .3px;font-weight: 700;font-weight: 700;padding: .25em .5rem;border-radius: 2px;">high</span>
-                </div>
-            </td>  <td *ngIf="request.requestPeriority == 'Moderate'">
-                <div style="background-color: #ffcdd2;width: 110px;">
-                    <span
-                    style="font-weight: bold;margin-left: 10px;text-transform: uppercase; color: #694382; font-size: 12px;letter-spacing: .3px;font-weight: 700;font-weight: 700;padding: .25em .5rem;border-radius: 2px;">Moderate</span>
-                </div>
-            </td>  <td *ngIf="request.requestPeriority == 'Low'">
-                <div style="background-color: #ffcdd2;width: 110px;">
-                    <span
-                        style="font-weight: bold;margin-left: 10px; color: #c63737;text-transform: uppercase; font-size: 12px;letter-spacing: .3px;font-weight: 700;padding: .25em .5rem;border-radius: 2px;">Low</span>
-                </div>
-            </td>
-<!-- If condition In case open or In progress or pendin or closed (condition for styling and colors only) -->
+            <!-- If condition In case open or In progress or pendin or closed (condition for styling and colors only) -->
 
             <td *ngIf="request.requestStatus == 'Open'">
                 <div style="background-color: #ffcdd2;width: 110px;">
@@ -74,7 +108,19 @@
                         CLOSED</span>
                 </div>
             </td>
+            <td>{{request.clientName}}</td>
+
+<td>{{request.teamName}}</td>
             <td>{{request.description}}</td>
+            <td id="Assig" *ngIf="request.isAssigned==false">
+                <button class="btn btn-info" (click)="assignRequests(request.id)">Assign</button>
+            </td>
+            <!-- <td >
+                <button class="btn btn-info" (click)="assignRequests(request.id)">Assign</button>
+            </td> -->
+            <td>
+                <button class="btn btn-warning" (click)="ViewImages(request.id)">View All Docs</button>
+            </td>
         </tr>
     </ng-template>
     <ng-template pTemplate="summary">
@@ -83,3 +129,27 @@
         </div>
     </ng-template>
 </p-table>
+
+<p-dialog [(visible)]="NewclientDialogbool" [style]="{width: '50vw'}" [baseZIndex]="10000">
+    <div class="row">
+        <p-table [value]="reqImages">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="color: #2674a8; font-size: 20px; font: bold; text-align: center;">Document Name</th>
+                </tr>
+        
+            </ng-template>
+            <ng-template pTemplate="body" let-i>
+                <tr>
+                    <td style="color: rgb(187, 12, 12);font-size: large;text-align: center;"
+                        >{{i.imageName}}<button class="btn btn-info" style="margin-left: 30px;" (click)="viewSingleDoc(i)">View</button></td>
+                  
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <ng-template pTemplate="footer">
+        <p-button icon="pi pi-times" (click)="NewclientDialogbool=false" label="No"></p-button>
+    </ng-template>
+
+</p-dialog>

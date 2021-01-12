@@ -36,6 +36,7 @@ import { EditProjectTypeComponent } from './Components/ProjectTypeComponents/edi
 import { DisplayCategoriesComponent } from './Components/Request/Categories/display-categories/display-categories.component';
 import { EmployeeAssignedRequestsComponent } from './Components/employee/employee-assigned-requests/employee-assigned-requests.component';
 import { AllTeamLeaderRequestsComponent } from './Components/Request/All-team-leader-requests/all-team-leader-requests.component';
+import { AllProjectmanagerProjectsComponent } from './Components/Projects/all-projectmanager-projects/all-projectmanager-projects.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login'},
   { path: 'changePassword', component:  ChangePaswwordComponent},
@@ -69,6 +70,7 @@ const routes: Routes = [
     { path: 'editEmployee/:empId', component:EditEmployeeComponent },
     { path: 'allEmpAssignedRequests', component:EmployeeAssignedRequestsComponent },
     { path: 'DisplayCategories', component:DisplayCategoriesComponent },
+    { path: 'projectsForProjectManager', component:AllProjectmanagerProjectsComponent },
 
     
 

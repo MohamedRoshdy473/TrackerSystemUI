@@ -50,4 +50,7 @@ export class ProjectService {
   getTeamByTeamId(id:number):Observable<any>{
     return this.httpClient.get<any>(`${environment.getTeambyId}${id}`,this.httpHeader);
   }
+  GetAllProjectsByEmployeeId(id:number):Observable<any>{
+    return this.httpClient.get<any>(`${environment.GetAllProjectsByEmployeeId}${id}`,this.httpHeader);
+  }
 }

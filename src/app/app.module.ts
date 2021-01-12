@@ -111,6 +111,7 @@ import { EditOrganizationComponent } from "./Components/Organization/edit-organi
 import { DisplayCategoriesComponent } from './Components/Request/Categories/display-categories/display-categories.component';
 import { EmployeeAssignedRequestsComponent } from './Components/employee/employee-assigned-requests/employee-assigned-requests.component';
 import { AllTeamLeaderRequestsComponent } from './Components/Request/All-team-leader-requests/all-team-leader-requests.component';
+import { AllProjectmanagerProjectsComponent } from './Components/Projects/all-projectmanager-projects/all-projectmanager-projects.component';
 
 
 
@@ -152,7 +153,8 @@ registerLocaleData(en);
    EditOrganizationComponent,
    DisplayCategoriesComponent,
    EmployeeAssignedRequestsComponent,
-   AllTeamLeaderRequestsComponent
+   AllTeamLeaderRequestsComponent,
+   AllProjectmanagerProjectsComponent
   ],
   imports: [
     BrowserModule,

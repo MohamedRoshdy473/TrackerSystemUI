@@ -2,7 +2,7 @@
 <p-table class="container card" #dt [value]="lstRequests" dataKey="id" [rows]="5" [showCurrentPageReport]="true"
     [rowsPerPageOptions]="[5,10,50]" styleClass="p-datatable-customers" [paginator]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
-    [globalFilterFields]="['requestName','requestCode ','requestDate','requestPeriority','RequestStatus','RequestTypeName']">
+    [globalFilterFields]="['requestName','requestCode ','projectName','requestDate','requestPeriority','RequestStatus','spacification']">
     <ng-template pTemplate="caption">
         <div class="row">
             <div class="table-header col-md-10">
@@ -25,11 +25,12 @@
             <!-- <th>Image</th> -->
             <th>Name</th>
             <th>Code</th>
-            <th>Date</th>
+            <th style="width: 150px;">project Name</th>
+            <th style="width: 120px;">Date</th>
             <th>Time</th>
-            <th>Periority</th>
+            <th style="width: 100px;">Periority</th>
             <th>Status</th>
-            <th>TypeName</th>
+            <th style="width: 190px;">Request Spacification</th>
             <th colspan="2" style="text-align: center;">Operation</th>
         </tr>
         <tr>
@@ -42,6 +43,11 @@
             <th>
                 <input pInputText style="width: 100%;" type="text"
                     (input)="dt.filter($event.target.value, 'requestCode', 'startsWith')" placeholder='Code'
+                    class="p-column-filter">
+            </th>
+            <th>
+                <input pInputText style="width: 100%;" type="text"
+                    (input)="dt.filter($event.target.value, 'projectName', 'startsWith')" placeholder='project Name'
                     class="p-column-filter">
             </th>
             <th>
@@ -66,9 +72,10 @@
             </th>
             <th>
                 <input pInputText style="width: 100%;" type="text"
-                    (input)="dt.filter($event.target.value, 'RequestTypeName', 'startsWith')" placeholder="Type"
+                    (input)="dt.filter($event.target.value, 'spacification', 'startsWith')" placeholder="spacification"
                     class="p-column-filter">
             </th>
+            
             <th></th>
             <th></th>
         </tr>
@@ -86,6 +93,9 @@
                 {{request.requestCode}}
             </td>
             <td>
+                {{request.projectName}}
+            </td>
+            <td >
                 {{request.requestDate | date:'dd/MM/yyyy'}}
             </td>
             <td>
@@ -98,7 +108,7 @@
                 {{request.requestStatus}}
             </td>
             <td>
-                {{request.requestTypeName}}
+                {{request.requestSubCategoryName}}
             </td>
             <td id="Assig" *ngIf="request.isAssigned==true">
                 <div>
