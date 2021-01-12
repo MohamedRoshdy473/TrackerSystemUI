@@ -55,6 +55,7 @@ export class CategoryComponent implements OnInit {
     this.subCategory.RequestCategoryId = Number(this.subCategory.RequestCategoryId)
     console.log(this.subCategory)
     this.SubCategService.inserSubCategory(this.subCategory).subscribe(e => {
+      this.router.navigate(['home/DisplayCategories']); 
       console.log(e)
     })
   }
