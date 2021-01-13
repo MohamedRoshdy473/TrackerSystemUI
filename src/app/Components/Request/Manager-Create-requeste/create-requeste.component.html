@@ -1,28 +1,16 @@
 <div style="margin-left: 25px;">
-
     <div class="row">
         <div class="col-md-3">
             <label for="Project Name" class="labelMarginRight">Request Name </label><br>
             <input minlength="3" placeholder="Enter Request Name" type="text" [(ngModel)]="reqObj.requestName"
                 pInputText id="name" required autofocus />
         </div>
-      
-        <!-- <div class="p-field col-md-3">
-            <label for="Project Type" class="labelMarginRight">Request Type</label><br>
-            <p-dropdown [options]="lstReqTypies" [(ngModel)]="reqObj.requestTypeId" placeholder="Select Request Type"
-                optionLabel="requestTypeName" optionValue="id">
-            </p-dropdown>
-        </div> -->
-    
-      
+
         <div class="p-field col-md-3">
             <label for="Project Type" class="labelMarginRight">Project Name</label><br>
-            <!-- <p-dropdown [options]="lstProjects" [(ngModel)]="reqObj.projectId" (change)="ClientOnChange(reqObj.projectId)" placeholder="Select Project Name"
-                optionLabel="projectName" optionValue="id">
-            </p-dropdown> -->
-            <p-dropdown [options]="lstProjects"  [(ngModel)]="reqObj.projectId" placeholder="Select Project Name"
-            optionLabel="projectName" optionValue="id" (onChange)="onChange($event)">
-           </p-dropdown>
+            <p-dropdown [options]="lstProjects" [(ngModel)]="reqObj.projectId" placeholder="Select Project Name"
+                optionLabel="projectName" optionValue="id" (onChange)="onChange($event)">
+            </p-dropdown>
         </div>
         <div class="p-field col-md-3">
             <label for="clientName" class="labelMarginRight">Client Name</label><br>
@@ -55,12 +43,7 @@
                 placeholder="Select Request Periority" optionLabel="periorty" optionValue="id">
             </p-dropdown>
         </div>
-        <!-- <div class="p-field col-md-3">
-            <label for="Project Type" class="labelMarginRight">Request Status</label><br>
-            <p-dropdown [options]="lstReqStatus" [(ngModel)]="reqObj.requestStatusId"
-                placeholder="Select Request Status" optionLabel="status" optionValue="id">
-            </p-dropdown>
-        </div> -->
+
         <div class="p-field col-md-3">
             <label for="Project Type" class="labelMarginRight">Request Mode</label><br>
             <p-dropdown [options]="lstRequestMode" [(ngModel)]="reqObj.requestModeId" placeholder="Select Request Mode"
@@ -76,7 +59,7 @@
     </div><br>
     <div class="row">
 
-    
+
         <div class="col-md-3" hidden>
             <label for="Request Date" class="labelMarginRight">Request Date</label><br>
             <p-calendar [(ngModel)]="reqObj.requestDate" dateFormat="dd/mm/yy"></p-calendar>
@@ -87,8 +70,6 @@
 
             <p-calendar [(ngModel)]="reqObj.requestTime" [timeOnly]="true" inputId="timeonly"></p-calendar>
         </div>
-     
-     
 
         <div class="row">
             <div class="p-field col-md-9">
@@ -96,8 +77,8 @@
                 <textarea id="description" [(ngModel)]="reqObj.description" pInputTextarea required rows="3"
                     cols="63"></textarea>
             </div>
-            <button class="col-md-3" pButton type="button" style="height: 40px; margin-top: 50px;margin-left: 20px; " (click)="AddRequest()"
-                icon="pi pi-check" label="Submit" class="p-button-raised "></button>
+            <button class="col-md-3" pButton type="button" style="height: 40px; margin-top: 50px;margin-left: 20px; "
+                (click)="AddRequest()" icon="pi pi-check" label="Submit" class="p-button-raised "></button>
         </div>
 
     </div>
