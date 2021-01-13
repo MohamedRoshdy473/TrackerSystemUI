@@ -25,7 +25,7 @@ import { AddOrganizationComponent } from './Components/Organization/add-organiza
 import { ListOrganizationsComponent } from './Components/Organization/list-organizations/list-organizations.component';
 import { EditOrganizationComponent } from './Components/Organization/edit-organization/edit-organization.component';
 import { AllManagerRequestsComponent } from './Components/Request/All-manager-requests/all-manager-requests.component';
-import { AssignRequestsComponent } from "../app/Components/Request/Assign-requests/assign-requests.component";
+import { AssignRequestsComponent } from "./Components/Request/Assign-requests/assign-requests.component";
 import { DisplayAllClientsComponent } from './Components/ClientComponents/display-all-clients/display-all-clients.component';
 import { ClientCreateRequestComponent } from './Components/Request/Client-create-request/client-create-request.component';
 import { DisplayDepartmentsComponent } from './Components/DepartmentComponents/display-departments/display-departments.component';
@@ -34,11 +34,12 @@ import { ProjectTypeComponent } from './Components/ProjectTypeComponents/project
 import { AddProjectTypeComponent } from './Components/ProjectTypeComponents/add-project-type/add-project-type.component';
 import { EditProjectTypeComponent } from './Components/ProjectTypeComponents/edit-project-type/edit-project-type.component';
 import { DisplayCategoriesComponent } from './Components/Request/Categories/display-categories/display-categories.component';
-import { EmployeeAssignedRequestsComponent } from './Components/employee/employee-assigned-requests/employee-assigned-requests.component';
+import { EmployeeAssignedRequestsComponent } from './Components/employee/All-employee-assigned-requests/employee-assigned-requests.component';
 import { AllTeamLeaderRequestsComponent } from './Components/Request/All-team-leader-requests/all-team-leader-requests.component';
 import { AllProjectmanagerProjectsComponent } from './Components/Projects/all-projectmanager-projects/all-projectmanager-projects.component';
 import { AllClientsForProjectmanagerComponent } from './Components/ClientComponents/all-clients-for-projectmanager/all-clients-for-projectmanager.component';
 import { ProjectmangerRequestsComponent } from './Components/Request/All-projectmanger-requests/projectmanger-requests.component';
+import { AssignemployeeRequestComponent } from './Components/Request/assignemployee-request/assignemployee-request.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login'},
   { path: 'changePassword', component:  ChangePaswwordComponent},
@@ -75,6 +76,7 @@ const routes: Routes = [
     { path: 'projectsForProjectManager', component:AllProjectmanagerProjectsComponent },
     { path: 'allclientsforprojectmanager', component:AllClientsForProjectmanagerComponent },
     { path: 'projectmanagerRequests', component:ProjectmangerRequestsComponent },
+    { path: 'assignemployeerequest/:id', component:AssignemployeeRequestComponent },
 
 
     

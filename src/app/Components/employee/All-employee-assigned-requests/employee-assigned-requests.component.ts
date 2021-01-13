@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { environment } from 'src/environments/environment';
 import { request } from 'src/Shared/Models/request';
@@ -20,7 +21,10 @@ export class EmployeeAssignedRequestsComponent implements OnInit {
   reqImages: RequestImage []
   NewclientDialogbool:boolean=false
 
-  constructor(private empService: EmployeeService, private requestService: RequestService, private messageService: MessageService) { }
+  constructor(private empService: EmployeeService, 
+    private router: Router
+    ,
+    private requestService: RequestService, private messageService: MessageService) { }
 
   ngOnInit(): void {
     this.lstAssignedReq = []
@@ -48,6 +52,10 @@ export class EmployeeAssignedRequestsComponent implements OnInit {
   viewSingleDoc(imgObj){
     var filePath = `${environment.Domain}wwwroot/requestImage/${imgObj.imageName}`;
     window.open(filePath);
+  }
+  assignRequests(id: number) {
+    console.log(id)
+    this.router.navigate(['home/assignemployeerequest', id]);
   }
 
 }

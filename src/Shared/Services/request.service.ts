@@ -48,4 +48,10 @@ export class RequestService {
   GetAllRequestByProjectTeamId(projectTeamIdS:projectTeamVM): Observable<any> {
     return this.httpClient.post<request[]> (`${environment.GetAllRequestByProjectTeamId}`,projectTeamIdS,this.httpHeader) ;
   }
+  GetRequestByRequestId(requestId: number): Observable<any> {
+    return this.httpClient.get<request[]>(`${environment.requests}${requestId}`, this.httpHeader);
+  }
+  updateRequest(id:number,request:request):Observable<request>{
+    return this.httpClient.put<request>(`${environment.updateRequest}${id}`,request,this.httpHeader);
+  }
 }

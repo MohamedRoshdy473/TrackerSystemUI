@@ -21,6 +21,7 @@ import { environment } from 'src/environments/environment';
 import { RequestImage } from 'src/Shared/Models/RequestImages';
 import { ProjectTeamService } from 'src/Shared/Services/project-team.service';
 import { projectTeam } from 'src/Shared/Models/projectTeam';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-requeste',
@@ -36,7 +37,6 @@ export class CreateRequesteComponent implements OnInit {
   projectId:number
   lstReqAssets: asset[]
   reqAsset: asset
-  lstRequestMode: requestMode[]
   requestMode: requestMode
   lstReqTypies: requestType[]
   lstReqPeriorities: requestPeriority[]
@@ -48,6 +48,12 @@ export class CreateRequesteComponent implements OnInit {
   lstRequestImages: RequestImage[]
   reqImage: RequestImage
    ProjId:number
+   lstRequestMode: Array<{id: number, mode: string}> = [
+    {id: 1, mode: 'Phone'},
+    {id: 2, mode: 'Chat'},
+    {id: 3, mode: 'Mail'},
+    {id: 4, mode: 'SMS'},
+];;
 
 
   constructor(private reqService: RequestService,
@@ -60,6 +66,7 @@ export class CreateRequesteComponent implements OnInit {
     private ReqModeService: RequestModeService,
     private projectService: ProjectService,
     private ReqSubCatService: RequestSubCategoryService,
+    private router:Router
   ) { }
 
   ngOnInit(): void {
@@ -71,6 +78,7 @@ export class CreateRequesteComponent implements OnInit {
     this.lstReqStatus = []
     this.lstRequestImages = []
     this.lstReqSubCategories = []
+  
     this.reqImage = {
       id: 0, imageName: '', requestId: 0
     }
@@ -116,10 +124,10 @@ export class CreateRequesteComponent implements OnInit {
       console.log(this.lstReqAssets)
 
     })
-    this.ReqModeService.GetAllRequetsMode().subscribe(e => {
-      this.lstRequestMode = e
-      console.log(this.lstRequestMode)
-    })
+    // this.ReqModeService.GetAllRequetsMode().subscribe(e => {
+    //   this.lstRequestMode = e
+    //   console.log(this.lstRequestMode)
+    // })
 
   }
   GetProjectTeamId(TeamId){
@@ -133,14 +141,16 @@ export class CreateRequesteComponent implements OnInit {
   }
   reqId: any
   AddRequest() {
-    this.reqObj.requestStatusId=1  //open
+    this.reqObj.requestStatusId = 1  //open
     this.reqObj.projectId = Number(this.reqObj.projectId)
     this.reqObj.clientId = Number(this.reqObj.clientId)
     console.log(this.reqObj)
     this.reqService.inserRequest(this.reqObj).subscribe(e => {
-      console.log(e)
       this.reqId = e;
       this.reqImage.requestId = this.reqId;
+      
+      this.router.navigate(['home/AllManagersReq']);
+
     })
   }
   onChange(event) {
