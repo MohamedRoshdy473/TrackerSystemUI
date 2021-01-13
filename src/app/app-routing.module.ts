@@ -25,7 +25,7 @@ import { AddOrganizationComponent } from './Components/Organization/add-organiza
 import { ListOrganizationsComponent } from './Components/Organization/list-organizations/list-organizations.component';
 import { EditOrganizationComponent } from './Components/Organization/edit-organization/edit-organization.component';
 import { AllManagerRequestsComponent } from './Components/Request/All-manager-requests/all-manager-requests.component';
-import { AssignRequestsComponent } from "../app/Components/Request/Assign-requests/assign-requests.component";
+import { AssignRequestsComponent } from "./Components/Request/Assign-requests/assign-requests.component";
 import { DisplayAllClientsComponent } from './Components/ClientComponents/display-all-clients/display-all-clients.component';
 import { ClientCreateRequestComponent } from './Components/Request/Client-create-request/client-create-request.component';
 import { DisplayDepartmentsComponent } from './Components/DepartmentComponents/display-departments/display-departments.component';
