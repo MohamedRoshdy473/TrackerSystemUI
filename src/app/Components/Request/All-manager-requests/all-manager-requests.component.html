@@ -1,37 +1,47 @@
-<h4 style="margin-left: 25px;">All Requests</h4>
+<div class="table-header col-md-12" >
+    <!-- List of Employees -->
+
+    <span >
+        <button class="btn btn-info" style="width: 20%;" (click)="GetAllRequests()"> All Requests</button>
+    </span>
+</div>
 <p-table class="container card" #dt [value]="lstRequests" dataKey="id" [rows]="5" [showCurrentPageReport]="true"
     [rowsPerPageOptions]="[5,10,50]" styleClass="p-datatable-customers" [paginator]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
     [globalFilterFields]="['requestName','requestCode ','projectName','requestDate','requestPeriority','RequestStatus','spacification']">
     <ng-template pTemplate="caption">
+        <h5 class="labelstyle">See Requests By Problem Name</h5>
         <div class="row">
-            <div class="table-header col-md-10">
-                <!-- List of Employees -->
-
-                <span class="p-input-icon-left">
-                    <i class="pi pi-search"></i>
-                    <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
-                        placeholder='Global Search' />
-                </span>
+            <div class="col-md-3">
+                <select  name="RequestProblemName" (change)="GetproblemId(($event.target.value))" class="form-control">
+                    <option>Select Problem</option>
+                    <option *ngFor="let th of lstRequestProblems" value="{{th.id}}">{{th.problemName}}</option>
+                </select>
             </div>
+     <div class="col-md-7">
+
+     </div>
             <div class="col-md-2">
                 <button id="addEmpBtn" routerLink="/home/Requests" class="btn btn-outline-primary btn-md btn-block">
                     <span class="pi pi-plus">Add</span> </button>
             </div>
         </div>
+        <div class="row">
+
+    </div>
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
             <!-- <th>Image</th> -->
-            <th>Name</th>
-            <th>Code</th>
+            <th style="width: 100px;">Name</th>
+            <th  style="width: 100px;"> Code</th>
             <th style="width: 150px;">project Name</th>
             <th style="width: 120px;">Date</th>
-            <th>Time</th>
-            <th style="width: 100px;">Periority</th>
-            <th>Status</th>
-            <th style="width: 190px;">Request Spacification</th>
-            <th colspan="2" style="text-align: center;">Operation</th>
+            <th  style="width: 100px;">Time</th>
+            <!-- <th style="width: 130px;">Periority</th> -->
+            <th  style="width: 100px;"> Status</th>
+            <th style="width: 200px;"> Problem</th>
+            <th colspan="2" style="text-align: center; width: 200px;">Operation</th>
         </tr>
         <tr>
 
@@ -60,11 +70,11 @@
                     (input)="dt.filter($event.target.value, 'requestTime', 'contains')" placeholder="Time"
                     class="p-column-filter">
             </th>
-            <th>
+            <!-- <th>
                 <input pInputText style="width: 100%;" type="text"
                     (input)="dt.filter($event.target.value, 'requestPeriority', 'startsWith')" placeholder="Periority"
                     class="p-column-filter">
-            </th>
+            </th> -->
             <th>
                 <input pInputText style="width: 100%;" type="text"
                     (input)="dt.filter($event.target.value, 'RequestStatus', 'startsWith')" placeholder="Status"
@@ -101,9 +111,9 @@
             <td>
                 {{request.requestTime | slice:0:8}}
             </td>
-            <td>
+            <!-- <td>
                 {{request.requestPeriority}}
-            </td>
+            </td> -->
             <td>
                 {{request.requestStatus}}
             </td>

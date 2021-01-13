@@ -19,4 +19,7 @@ export class RequestDescriptionService {
   AddRequestDescription(reqDescription): Observable<requestDescription> {
     return this.httpClient.post<requestDescription>(`${environment.RequestDescription}`,reqDescription, this.httpHeader);
   }
+  GetAllDescByRequestID(requestId:number): Observable <requestDescription[]>{
+    return this.httpClient.get<requestDescription[]> (`${environment.GetAllDescByRequestID}${requestId}`,this.httpHeader) ;
+  }
 }
