@@ -109,11 +109,12 @@ import { AddProjectTypeComponent } from './Components/ProjectTypeComponents/add-
 import { EditProjectTypeComponent } from './Components/ProjectTypeComponents/edit-project-type/edit-project-type.component';
 import { EditOrganizationComponent } from "./Components/Organization/edit-organization/edit-organization.component";
 import { DisplayCategoriesComponent } from './Components/Request/Categories/display-categories/display-categories.component';
-import { EmployeeAssignedRequestsComponent } from './Components/employee/employee-assigned-requests/employee-assigned-requests.component';
+import { EmployeeAssignedRequestsComponent } from './Components/employee/All-employee-assigned-requests/employee-assigned-requests.component';
 import { AllTeamLeaderRequestsComponent } from './Components/Request/All-team-leader-requests/all-team-leader-requests.component';
 import { AllProjectmanagerProjectsComponent } from './Components/Projects/all-projectmanager-projects/all-projectmanager-projects.component';
 import { AllClientsForProjectmanagerComponent } from './Components/ClientComponents/all-clients-for-projectmanager/all-clients-for-projectmanager.component';
 import { ProjectmangerRequestsComponent } from './Components/Request/All-projectmanger-requests/projectmanger-requests.component';
+import { AssignemployeeRequestComponent } from './Components/Request/assignemployee-request/assignemployee-request.component';
 
 
 
@@ -158,7 +159,8 @@ registerLocaleData(en);
    AllTeamLeaderRequestsComponent,
    AllProjectmanagerProjectsComponent,
    AllClientsForProjectmanagerComponent,
-   ProjectmangerRequestsComponent
+   ProjectmangerRequestsComponent,
+   AssignemployeeRequestComponent
   ],
   imports: [
     BrowserModule,

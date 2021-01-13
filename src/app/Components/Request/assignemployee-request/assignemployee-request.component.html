@@ -1,0 +1,27 @@
+<div class="container">
+<h2 style="text-align: center; color: rgb(101, 101, 199);">Re_Request To TeamLeader</h2>
+<div class="row">
+    <div class="col">
+
+        <h4 class="labelstyle">Problem Name</h4>
+        <select [(ngModel)]="requestProblemObj.problemId" name="problemName" class="form-control"
+        (change)="getProblemId(($event.target.value))">
+            <option *ngFor="let th of lstProblems" value="{{th.id}}">{{th.problemName}}</option>
+        </select>
+    </div>
+</div>
+<br />
+<br />
+<div class="row">
+
+    <div class="col">
+       
+
+        <h4 for="description">Description</h4>
+        <textarea id="description" [(ngModel)]="reqDescriptionObj.description" pInputTextarea required rows="5"
+            cols="155"></textarea>
+        <br>
+        <button class="btn btn-warning" (click)="AssignedEmployeeRequest()">Save</button>
+    </div>
+</div>
+</div>

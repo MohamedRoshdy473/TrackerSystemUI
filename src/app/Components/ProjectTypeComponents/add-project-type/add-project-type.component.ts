@@ -26,7 +26,8 @@ export class AddProjectTypeComponent implements OnInit {
     }
     Add(){
       this.projectTypeService.AddprojectType(this.ProjectTypeObj).subscribe(e=>{
-        console.log(this.ProjectTypeObj),this.router.navigate(['home/ProjectTypes']);
+        console.log(this.ProjectTypeObj),
+        this.router.navigate(['home/ProjectTypes']);
   
       })
     }

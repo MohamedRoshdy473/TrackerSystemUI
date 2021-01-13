@@ -44,6 +44,7 @@ export class AssignRequestsComponent implements OnInit {
     //   TeamId: 0, teamName: '', employeeName: '', projectPositionName: ''
     // }
     this.reqId = Number(this.activeRoute.snapshot.params['reqId']);
+    console.log("reqId",this.reqId)
     this.LoginedUserId = localStorage.getItem("loginedUserId")
     this.lstProjectPosition = []
     this.reqDescriptionObj = {
