@@ -3,9 +3,11 @@ import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { Problem } from 'src/Shared/Models/problem';
 import { request } from 'src/Shared/Models/request';
+import { requestDescription } from 'src/Shared/Models/requestDescription';
 import { RequestImage } from 'src/Shared/Models/RequestImages';
 import { RequestProblems } from 'src/Shared/Models/requestProblems';
 import { ProblemServiceService } from 'src/Shared/Services/problem-service.service';
+import { RequestDescriptionService } from 'src/Shared/Services/request-description.service';
 import { RequestService } from 'src/Shared/Services/request.service';
 
 @Component({
@@ -20,12 +22,17 @@ export class AllManagerRequestsComponent implements OnInit {
   reqImages:RequestImage[]
   lstRequestProblems:Problem[]
   NewclientDialogbool:boolean = false
+  lstRequestDesc:requestDescription[]
+  NewdecDialogbool: boolean;
+
 
   constructor(private requestService: RequestService,private requestProblemService:ProblemServiceService,
+    private requestDescservive:RequestDescriptionService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
+    this.lstRequestDesc=[]
     this.lstAllRequestsByProblem=[]
     this.lstRequestProblems=[]
     this.lstRequests = []
@@ -70,4 +77,11 @@ export class AllManagerRequestsComponent implements OnInit {
   {
     this.ngOnInit()
     }
+    ViewMoreDesc(requestID){
+      this.requestDescservive.GetAllDescByRequestID(requestID).subscribe(res=>{
+        console.log("desc",res)
+        this.lstRequestDesc=res;
+        this.NewdecDialogbool=true;
+      })
+        }
 }
