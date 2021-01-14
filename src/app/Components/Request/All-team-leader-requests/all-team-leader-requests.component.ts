@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { Problem } from 'src/Shared/Models/problem';
 import { projectTeam } from 'src/Shared/Models/projectTeam';
 import { projectTeamVM } from 'src/Shared/Models/projectTeamVM';
 import { request } from 'src/Shared/Models/request';
+import { requestDescription } from 'src/Shared/Models/requestDescription';
 import { RequestImage } from 'src/Shared/Models/RequestImages';
+import { ProblemServiceService } from 'src/Shared/Services/problem-service.service';
 import { ProjectTeamService } from 'src/Shared/Services/project-team.service';
+import { RequestDescriptionService } from 'src/Shared/Services/request-description.service';
 import { RequestService } from 'src/Shared/Services/request.service';
 
 @Component({
@@ -20,15 +24,29 @@ export class AllTeamLeaderRequestsComponent implements OnInit {
   projectTeamId:number
   lst:string
   lstofIds:projectTeamVM  
-  lstRequests:request
+  lstRequests:any[]
   reqImages:RequestImage[]
+  lstRequestDesc:requestDescription[]
   NewclientDialogbool: boolean;
+  NewdecDialogbool: boolean;
+  lstRequestProblems:Problem[]
+
 
   constructor(private projectTeamSrvice:ProjectTeamService,private requestsService:RequestService,
+    private requestProblemService:ProblemServiceService,
+    private requestDescservive:RequestDescriptionService,
     private router: Router) { }
 
   ngOnInit(): void {
     this.reqImages=[]
+    this.lstRequestDesc=[]
+    this.lstRequestProblems=[]
+    this.requestProblemService.GetAllProblems().subscribe(
+      res=>{this.lstRequestProblems=res,
+        console.log("lstRequestProblems",res)
+    }
+
+    )
     this.lstofIds={ProjectTeamIds:''}
     this.lstProjectTeams=[]
   this.role= localStorage.getItem('roles')
@@ -67,6 +85,21 @@ export class AllTeamLeaderRequestsComponent implements OnInit {
     var filePath = `${environment.Domain}wwwroot/requestImage/${imgObj.imageName}`;
     window.open(filePath);
   }
-
- 
+  GetAllTLRequests(){
+    this.ngOnInit()
+  }
+  GetproblemId(problemId){
+    console.log("problemId",problemId)
+    this.requestProblemService.GetAllRequestByRequestProblemId(problemId).subscribe(e=>{
+      this.lstRequests=e
+      console.log(e)
+    })
+  }
+  ViewMoreDesc(requestID){
+this.requestDescservive.GetAllDescByRequestID(requestID).subscribe(res=>{
+  console.log("desc",res)
+  this.lstRequestDesc=res;
+  this.NewdecDialogbool=true;
+})
+  }
 }

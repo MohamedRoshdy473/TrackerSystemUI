@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { Problem } from 'src/Shared/Models/problem';
 import { request } from 'src/Shared/Models/request';
 import { RequestImage } from 'src/Shared/Models/RequestImages';
+import { RequestProblems } from 'src/Shared/Models/requestProblems';
+import { ProblemServiceService } from 'src/Shared/Services/problem-service.service';
 import { RequestService } from 'src/Shared/Services/request.service';
 
 @Component({
@@ -11,21 +14,32 @@ import { RequestService } from 'src/Shared/Services/request.service';
   styleUrls: ['./all-manager-requests.component.css']
 })
 export class AllManagerRequestsComponent implements OnInit {
-  lstRequests: request[]
+  lstRequests: any[]
+  RequestProblemId:number
+  lstAllRequestsByProblem:RequestProblems[]
   reqImages:RequestImage[]
+  lstRequestProblems:Problem[]
   NewclientDialogbool:boolean = false
 
-  constructor(private requestService: RequestService,
+  constructor(private requestService: RequestService,private requestProblemService:ProblemServiceService,
     private router: Router
   ) { }
 
   ngOnInit(): void {
+    this.lstAllRequestsByProblem=[]
+    this.lstRequestProblems=[]
     this.lstRequests = []
     this.reqImages = []
     this.requestService.GetAllRequests().subscribe(e => {
       this.lstRequests = e
       console.log(this.lstRequests)
     })
+    this.requestProblemService.GetAllProblems().subscribe(
+      res=>{this.lstRequestProblems=res,
+        console.log("lstRequestProblems",res)
+    }
+
+    )
   }
   assignRequests(reqId: number) {
     console.log(reqId)
@@ -44,5 +58,16 @@ export class AllManagerRequestsComponent implements OnInit {
     var filePath = `${environment.Domain}wwwroot/requestImage/${imgObj.imageName}`;
     window.open(filePath);
   }
-
+  GetproblemId(problemId)
+  {
+   console.log("problemId",problemId)
+   this.requestProblemService.GetAllRequestByRequestProblemId(problemId).subscribe(e=>{
+     this.lstRequests=e
+     console.log(e)
+   })
+  }
+  GetAllRequests()
+  {
+    this.ngOnInit()
+    }
 }
