@@ -51,8 +51,7 @@ import {InputSwitchModule} from 'primeng/inputswitch';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import {PickListModule} from 'primeng/picklist';
 import {OrderListModule} from 'primeng/orderlist';
-import{TranslateModule,TranslateLoader} from '@ngx-translate/core'
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
@@ -116,7 +115,8 @@ import { AllClientsForProjectmanagerComponent } from './Components/ClientCompone
 import { ProjectmangerRequestsComponent } from './Components/Request/All-projectmanger-requests/projectmanger-requests.component';
 import { AssignemployeeRequestComponent } from './Components/Request/assignemployee-request/assignemployee-request.component';
 
-
+import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
 registerLocaleData(en);
 
@@ -163,6 +163,8 @@ registerLocaleData(en);
    AssignemployeeRequestComponent
   ],
   imports: [
+    TranslateModule,
+  
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
@@ -222,19 +224,19 @@ registerLocaleData(en);
     TableModule,
     ButtonModule,
 
- 
+    TranslateModule.forRoot({
+      loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+          deps: [HttpClient]
+      }
+  }),
     // ConfirmationService,
     AgmCoreModule.forRoot({
       libraries: ["places", "geometry"],
       apiKey:'AIzaSyCxvNEG1CRZ0pzoriAujg07y101MbOkFrQ'}),
     RouterModule.forRoot([]),
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    })
+
   ],
   providers: [MessageService,ConfirmationService,],
   bootstrap: [AppComponent]

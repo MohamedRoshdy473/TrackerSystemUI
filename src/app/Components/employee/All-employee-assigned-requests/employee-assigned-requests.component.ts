@@ -44,6 +44,7 @@ export class EmployeeAssignedRequestsComponent implements OnInit {
     //   console.log("e",e)
     // })
     this.EmpId = Number(localStorage.getItem('id'))
+    console.log("empId",this.EmpId)
     this.requestService.GetAllRequestByEmployeeId(this.EmpId).subscribe(e => {
       this.loading = false;
       this.lstAssignedReq = e
