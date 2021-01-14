@@ -21,7 +21,6 @@
 <div class="container card">
     <div class="row">
         <div class="col-9" style="margin-left: 20px;">
-            <h3>All Project</h3>
         </div>
         <div class="col-2" style="margin-left: 6%;">
             <p-button icon="pi pi-external-link" label="Add Project" routerLink="createProject" class="create">
@@ -31,11 +30,13 @@
     </div>
     <!-- Basic Data -->
     <ng-template pTemplate="header">
+        <h3 style="text-align: center;">All Project</h3>
+
         <i class="pi pi-fw pi-home"></i>
         <span style="margin-left: 10px;">Basic Data</span>
     </ng-template>
 
-    <div class="card" id="PopupWindow">
+    <div  id="PopupWindow">
         <p-table #dt1 [value]="projects" dataKey="id" [rows]="5" [paginator]="true" stateStorage="session"
             stateKey="statedemo-session">
             <ng-template pTemplate="header">
@@ -144,6 +145,7 @@
                         <span class="p-column-title"></span>
                         <span [class]="'customer-badge type-' + project.actualEndDate">{{project.actualEndDate | date:'yyyy:MM:dd'}}</span>
                     </td>
+
                     <td>
                         <span class="pi pi-compass" aria-hidden="true"
                             (click)="showMaximizableDialog(project.id)"></span>
@@ -155,6 +157,7 @@
                          <!-- (click)="DisplayToEditProject(project.id)" -->
                         <span class="p-button-icon pi pi-times" (click)="confirm(project.id)" aria-hidden="true"></span>
                     </td>
+               
                     
                 </tr>
                 <!-- <p-dialog class="data" header={{project.projectName}} [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"

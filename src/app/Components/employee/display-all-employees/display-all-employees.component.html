@@ -23,12 +23,13 @@
         </div>
     </ng-template>
 </p-toast>
-<h4 style="margin-left: 25px;">All Employees</h4>
 <p-table class="container card" #dt [value]="Employees" dataKey="id" [rows]="5" [showCurrentPageReport]="true"
     [rowsPerPageOptions]="[5,10,50]" [loading]="loading" styleClass="p-datatable-customers" [paginator]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
     [globalFilterFields]="['employeeName','position ','departmentName','phone','Email']">
     <ng-template pTemplate="caption">
+<h2 style="text-align: center;">All Employees</h2>
+
         <div class="row">
             <div class="table-header col-md-10">
                 <!-- List of Employees -->
