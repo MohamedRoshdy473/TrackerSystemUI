@@ -95,7 +95,7 @@
                 </button>
             </td>
             <td id="Assig" *ngIf="!empReq.RequestProblemObj">
-                <button class="btn btn-info">Assign</button>
+                <button class="btn btn-info" (click)="assignRequests(empReq.id)">Assign</button>
             </td>
             <td id="Assig" *ngIf="empReq.RequestProblemObj">
                 <button class="btn btn-warning">{{empReq.RequestProblemObj.problemName}}</button>

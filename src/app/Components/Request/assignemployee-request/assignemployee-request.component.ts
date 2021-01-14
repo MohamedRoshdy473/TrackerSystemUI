@@ -22,6 +22,7 @@ export class AssignemployeeRequestComponent implements OnInit {
   LoginedUserId: string;
   problemId: number
   requestObj: request
+  EmpId: number
 
   constructor(
     private activeRoute: ActivatedRoute,
@@ -32,13 +33,15 @@ export class AssignemployeeRequestComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.EmpId = Number(localStorage.getItem('id'))
+    console.log("emploee", this.EmpId)
     this.reqId = Number(this.activeRoute.snapshot.params['id']);
     console.log("reqId", this.reqId)
     this.LoginedUserId = localStorage.getItem("loginedUserId")
     // console.log(this.LoginedUserId)
     this.lstProblems = []
     this.requestProblemObj = {
-      id: 0, requestId: 0, problemId: 0, problemName: '', requestName: ''
+      id: 0, requestId: 0, problemId: 0, problemName: '', requestName: '',employeeId:0
     }
     this.reqDescriptionObj = {
       description: '', requestId: 0, id: 0, userId: this.LoginedUserId
@@ -53,18 +56,19 @@ export class AssignemployeeRequestComponent implements OnInit {
   }
   getProblemId(id) {
     this.problemId = id
-  } 
+  }
   AssignedEmployeeRequest() {
     this.reqDescriptionObj.requestId = this.reqId;
     this.requestdescriptionservice.AddRequestDescription(this.reqDescriptionObj).subscribe(e => {
       this.requestProblemObj.requestId = this.reqId;
       this.requestProblemObj.problemId = Number(this.problemId)
+      this.requestProblemObj.employeeId=Number(this.EmpId)
       this.problemservice.AddRequestProblem(this.requestProblemObj).subscribe(e => {
         this.requestservice.GetRequestByRequestId(this.reqId).subscribe(e => {
           this.requestObj = e
           this.requestObj.IsAssigned = false;
           this.requestservice.updateRequest(this.reqId, this.requestObj).subscribe(e => {
-            this.router.navigate(['home/allEmpAssigned',this.reqId,this.problemId]);
+            this.router.navigate(['home/allEmpAssigned', this.reqId, this.problemId]);
           })
         })
       })

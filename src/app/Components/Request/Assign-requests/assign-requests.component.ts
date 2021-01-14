@@ -3,10 +3,12 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { assignedRequests } from 'src/Shared/Models/assignedRequest';
 import { projectPosition } from 'src/Shared/Models/projectPosition';
 import { projectTeam } from 'src/Shared/Models/projectTeam';
+import { request } from 'src/Shared/Models/request';
 import { requestDescription } from 'src/Shared/Models/requestDescription';
 import { AssignedRequestsService } from 'src/Shared/Services/assigned-requests.service';
 import { ProjectPositionService } from 'src/Shared/Services/project-position.service';
 import { ProjectTeamService } from 'src/Shared/Services/project-team.service';
+import { RequestService } from 'src/Shared/Services/request.service';
 import { RequestDescriptionService } from "../../../../Shared/Services/request-description.service";
 
 @Component({
@@ -29,13 +31,17 @@ export class AssignRequestsComponent implements OnInit {
   Id: any
   teamId: any;
   empId: number
+  requestObj:request
 
   constructor(
     private activeRoute: ActivatedRoute, private route: Router,
     private assignedRequestsService: AssignedRequestsService,
     private projectPositionService: ProjectPositionService,
     private projectTeamService: ProjectTeamService,
-    private requestDescriptionService: RequestDescriptionService
+    private requestDescriptionService: RequestDescriptionService,
+    private router: Router,
+    private requestservice:RequestService
+
   ) { }
 
   ngOnInit(): void {
@@ -43,6 +49,7 @@ export class AssignRequestsComponent implements OnInit {
     //   departmentId: 0, departmentName: '', employeeId: 0, id: 0, projectId: 0, projectName: '', projectPositionId: 0,
     //   TeamId: 0, teamName: '', employeeName: '', projectPositionName: ''
     // }
+   
     this.reqId = Number(this.activeRoute.snapshot.params['reqId']);
     console.log("reqId",this.reqId)
     this.LoginedUserId = localStorage.getItem("loginedUserId")
@@ -85,6 +92,16 @@ export class AssignRequestsComponent implements OnInit {
       console.log("ass", this.assignedReqObj)
       this.requestDescriptionService.AddRequestDescription(this.reqDescriptionObj).subscribe(e => {
         console.log("desc")
+        this.requestservice.GetRequestByRequestId( this.assignedReqObj.requestId).subscribe(e => {
+          this.requestObj = e
+          this.requestObj.IsAssigned = true;
+          this.requestservice.updateRequest(this.reqId, this.requestObj).subscribe(e => {
+        this.router.navigate(['home/AllManagersReq']);
+           
+          })
+        })
+
+
       })
     })
   }
