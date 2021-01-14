@@ -38,7 +38,7 @@
             <th>Request Mode</th>
             <th>Request Status</th>
             <th>Description</th>
-            <th >Operation</th>
+            <th>Operation</th>
             <th></th>
         </tr>
         <tr>
@@ -86,17 +86,20 @@
             <td>
                 {{empReq.requestStatus}}
             </td>
-          
+
             <td>
                 {{empReq.description}}
             </td>
-            <td >
-           <button class="btn btn-info" (click)="viewAllImages(empReq.id)">View
-        </button>
-           </td>
-                <td id="Assig">
-                    <button class="btn btn-info" (click)="assignRequests(empReq.id)">Assign</button>
-                </td>
+            <td>
+                <button class="btn btn-success" (click)="viewAllImages(empReq.id)">View
+                </button>
+            </td>
+            <td id="Assig" *ngIf="!empReq.RequestProblemObj">
+                <button class="btn btn-info">Assign</button>
+            </td>
+            <td id="Assig" *ngIf="empReq.RequestProblemObj">
+                <button class="btn btn-warning">{{empReq.RequestProblemObj.problemName}}</button>
+            </td>
         </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">
@@ -116,13 +119,13 @@
                 <tr>
                     <th style="color: #2674a8; font-size: 20px; font: bold; text-align: center;">Document Name</th>
                 </tr>
-        
+
             </ng-template>
             <ng-template pTemplate="body" let-i>
                 <tr>
-                    <td style="color: rgb(187, 12, 12);font-size: large;text-align: center;"
-                        >{{i.imageName}}<button class="btn btn-info" style="margin-left: 30px;" (click)="viewSingleDoc(i)">View</button></td>
-                  
+                    <td style="color: rgb(187, 12, 12);font-size: large;text-align: center;">{{i.imageName}}<button
+                            class="btn btn-info" style="margin-left: 30px;" (click)="viewSingleDoc(i)">View</button>
+                    </td>
                 </tr>
             </ng-template>
             <ng-template pTemplate="emptymessage">
@@ -130,7 +133,7 @@
                     <td colspan="6">No Images Requests found.</td>
                 </tr>
                 <tr>
-        
+
                 </tr>
             </ng-template>
         </p-table>

@@ -10,15 +10,20 @@ import { RequestProblems } from '../Models/requestProblems';
 })
 export class ProblemServiceService {
 
-  constructor(private httpClient : HttpClient) { }
-  httpHeader={headers: new HttpHeaders({
-    'content-type':'application/json',
-    'Accept': '*/*'  
-  })};
-  GetAllProblems(): Observable <Problem[]>{
-    return this.httpClient.get<Problem[]> (`${environment.Problems}`,this.httpHeader) ;
+  constructor(private httpClient: HttpClient) { }
+  httpHeader = {
+    headers: new HttpHeaders({
+      'content-type': 'application/json',
+      'Accept': '*/*'
+    })
+  };
+  GetAllProblems(): Observable<Problem[]> {
+    return this.httpClient.get<Problem[]>(`${environment.Problems}`, this.httpHeader);
   }
-  AddRequestProblem(requestProblem:RequestProblems):Observable<RequestProblems>{
-return this.httpClient.post<RequestProblems>(`${environment.RequestProblems}`,requestProblem,this.httpHeader)
+  AddRequestProblem(requestProblem: RequestProblems): Observable<RequestProblems> {
+    return this.httpClient.post<RequestProblems>(`${environment.RequestProblems}`, requestProblem, this.httpHeader)
+  }
+  GetProblemById(problemId: number): Observable<any> {
+    return this.httpClient.get<Problem>(`${environment.Problems}${problemId}`, this.httpHeader)
   }
 }

@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { projectTeamVM } from '../Models/projectTeamVM';
 import { request } from "../Models/request";
 import { RequestImage } from '../Models/RequestImages';
+import { RequestProblems } from '../Models/requestProblems';
 
 @Injectable({
   providedIn: 'root'
@@ -53,5 +54,8 @@ export class RequestService {
   }
   updateRequest(id:number,request:request):Observable<request>{
     return this.httpClient.put<request>(`${environment.updateRequest}${id}`,request,this.httpHeader);
+  }
+  GetProblemByEmployeeIdAndRequestId(empID: number,reqId:number): Observable<any> {
+    return this.httpClient.get<RequestProblems[]>(`${environment.GetProblemByEmployeeIdAndRequestId}${empID}/${reqId}`, this.httpHeader);
   }
 }

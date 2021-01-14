@@ -21,12 +21,13 @@ export class AssignemployeeRequestComponent implements OnInit {
   reqId: number
   LoginedUserId: string;
   problemId: number
-  requestObj:request
+  requestObj: request
+
   constructor(
     private activeRoute: ActivatedRoute,
     private problemservice: ProblemServiceService,
     private requestdescriptionservice: RequestDescriptionService,
-    private requestservice:RequestService,
+    private requestservice: RequestService,
     private router: Router
   ) { }
 
@@ -51,29 +52,22 @@ export class AssignemployeeRequestComponent implements OnInit {
 
   }
   getProblemId(id) {
-    console.log("problemId", id)
     this.problemId = id
-  }
+  } 
   AssignedEmployeeRequest() {
     this.reqDescriptionObj.requestId = this.reqId;
     this.requestdescriptionservice.AddRequestDescription(this.reqDescriptionObj).subscribe(e => {
       this.requestProblemObj.requestId = this.reqId;
       this.requestProblemObj.problemId = Number(this.problemId)
-    //  console.log(this.requestProblemObj)
       this.problemservice.AddRequestProblem(this.requestProblemObj).subscribe(e => {
-        this.requestservice.GetRequestByRequestId(this.reqId).subscribe(e=>{
-          this.requestObj=e
-          console.log("requestObj",this.requestObj)
-          this.requestObj.IsAssigned=false;
-          this.requestservice.updateRequest(this.reqId,this.requestObj).subscribe(e=>{
-            console.log(e)
-    this.router.navigate(['home/allEmpAssignedRequests']);
-
+        this.requestservice.GetRequestByRequestId(this.reqId).subscribe(e => {
+          this.requestObj = e
+          this.requestObj.IsAssigned = false;
+          this.requestservice.updateRequest(this.reqId, this.requestObj).subscribe(e => {
+            this.router.navigate(['home/allEmpAssigned',this.reqId,this.problemId]);
           })
         })
       })
     })
-
-
   }
 }

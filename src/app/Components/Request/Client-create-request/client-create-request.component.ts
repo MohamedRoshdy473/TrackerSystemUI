@@ -83,9 +83,9 @@ export class ClientCreateRequestComponent implements OnInit {
       requestName: '', requestPeriority: '', requestPeriorityId: 0,IsSolved:false,projectTeamId:0,
       requestStatus: '', requestStatusId: 0, requestTime: new Date().getHours() + ':' + new Date().getMinutes(), requestDate: new Date(),
       requestSubCategoryId: 0, requestSubCategoryName: '', assetId: 0, clientId: this.ClientId,
-      requestTypeName: '', description: '', requestModeId: 0
+      requestTypeName: '', description: '', requestModeId: 0,RequestProblemObj:{requestId:0,id:0,problemId:0,problemName:'',requestName:''}
     }
-    this.requestObj = {IsAssigned:false,IsSolved:false,
+    this.requestObj = {IsAssigned:false,IsSolved:false,RequestProblemObj:{requestId:0,id:0,problemId:0,problemName:'',requestName:''},
       id: 0, projectId: 0, projectName: '', requestCode: '', clientName: '',
       requestName: '', requestPeriority: '', requestPeriorityId: 0,teamName:'',projectTeamId:0,requestTypeName:'',teamId:0,
       requestStatus: '', requestStatusId: 0, requestTime: new Date().getHours() + ':' + new Date().getMinutes(), requestDate: new Date(),
@@ -191,7 +191,7 @@ export class ClientCreateRequestComponent implements OnInit {
       this.reqObj = {
         description: '', requestTypeName: '', requestSubCategoryName: '', requestSubCategoryId: 0,projectTeamId:0,IsSolved:false,IsAssigned:false,
         id: 0, requestStatusId: 0, requestPeriorityId: 0, requestName: '', requestCode: '', projectName: '', projectId: 0,teamName:'',teamId:0,clientName:'',
-        requestPeriority: '', requestStatus: '', requestDate: new Date(), requestTime: '', requestModeId: 0, assetId: 0, clientId: 0,
+        requestPeriority: '', requestStatus: '', requestDate: new Date(), requestTime: '', requestModeId: 0, assetId: 0, clientId: 0,RequestProblemObj:{requestId:0,id:0,problemId:0,problemName:'',requestName:''}
       }
     })
 
