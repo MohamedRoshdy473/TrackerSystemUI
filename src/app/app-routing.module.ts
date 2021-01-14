@@ -56,8 +56,8 @@ const routes: Routes = [
     { path: 'editProjectType/:id', component: EditProjectTypeComponent},
     { path: 'Requests', component:  CreateRequesteComponent},
     { path: 'allTeamLeaderReqts', component:  AllTeamLeaderRequestsComponent},
-    { path: 'tabs/createProject', component:  CreateProjectComponent},
-    { path: 'tabs/updateproject/:id', component:  UpdateProjectComponent},
+    { path: 'createProject', component:  CreateProjectComponent},
+    { path: 'updateproject/:id', component:  UpdateProjectComponent},
     {path:'AllUsers',component:AllUsersComponent},
     {path:'DisplayAllClients',component:DisplayAllClientsComponent},
     {path:'AllManagersReq',component:AllManagerRequestsComponent},
@@ -78,6 +78,7 @@ const routes: Routes = [
     { path: 'allclientsforprojectmanager', component:AllClientsForProjectmanagerComponent },
     { path: 'projectmanagerRequests', component:ProjectmangerRequestsComponent },
     { path: 'assignemployeerequest/:id', component:AssignemployeeRequestComponent },
+
 
 
     

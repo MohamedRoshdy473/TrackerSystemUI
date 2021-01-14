@@ -1,7 +1,70 @@
 {
     "Tracker": {
       "Lst organizations": "المنظمات",
-      "SELECT": "Change language"
+      "All Employees": "الموظفين",
+      "Global Search":"بحث عام",
+      "Add":"إضافة",
+      "Update":"تعديل",
+      "messege":"يجب أن تكون أكثر من ثلاثة حروف",
+      "messegeNumber":"يجب إدخال رقم",
+      "messegeDate":"يجب إدخال تاريخ",
+      "Confirmation":"تأكيد",
+      "No data found":"لا يوجد بيانات",
+      "No":"إلغاء",
+      "Details":"التفاصيل",
+      "Image":"الصورة",
+      "Employee Name":"إسم الموظف",
+      "Employee Position":"منصب الموظف",
+      "Department Name":"إسم القسم",
+      "Phone":"رقم الهاتف",
+      "Mobile":"رقم المحمول",
+      "Email":"البريد الألكتروني",
+      "Address":"العنوان",
+      "gender":"الجنس",
+      "Male":"ذكر",
+      "Female":"أنثى",
+      "Single":"أعزب",
+      "Married":"متزوج",
+      "maritalStatus":"الحالة الإجتماعية",
+      "Employee Code":"كود الموظف",
+      "Upload Image":"تحميل صورة",
+      "Choose file":"إختر ملف",
+      "Upload":"تحميل",
+      "Controls":"العمليات",
+      "All Project Types":"أنواع المشاريع",
+      "Project Type Name":"اسم نوع المشروع",
+
+      "All Project":"كل المشاريع",
+      "Basic Data":"البيانات الأساسية",
+      "Project Name":"إسم المشروع",
+      "Project Type":"نوع المشروع",
+      "Organization":"المنظمات",
+      "Project Code":"كود المشروع",
+      "Project Cost":"تكلفة المشروع",
+      "Start Date":"تاريخ البداية",
+      "End Date":"تاريخ النهاية",
+      "Edit Project Data":"تعديل بيانات المشروع",
+      "Client Mobile":"رقم هاتف العميل",
+      "Organization Name":"إسم المنظمة",
+      "Project Period":"فترة المشروع",
+      "Description":"الوصف",
+      "Plannded Start Date":"تاريخ البداية المخطط",
+      "Actual Start Date":"تاريخ البداية الفعلي",
+      "Plannded End Date":"تاريخ النهاية المخطط",
+      "Actual End Date":"تاريخ النهاية الفعلي",
+      "Parteners":"المستفدين",
+      "MileStones":"الخطوات",
+      "Teams":"فرق العمل",
+      "Documents":"المستندات",
+      "Project Data":"بيانات المشروع",
+      "Project Manager":"مدير المشروع",
+      "Client Name":"إسم العميل",
+      "Submit":"حفظ"
+
+
+
+
+
     }
   }
   
