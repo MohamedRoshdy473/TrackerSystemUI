@@ -18,36 +18,24 @@ export class SideNavComponent implements OnInit {
 
   constructor(private AuthService: AuthService, public translate: TranslateService, public dir: Directionality) {
     this.show = true;
-    // console.log(dir.value);
-    // this.direction = 'rtl';
+    translate.addLangs(['en', 'ar']);
+    translate.setDefaultLang('en');
 
-    // translate.addLangs(['English', 'العربية']);
-    // translate.setDefaultLang('العربية');
-    // const browserLang = translate.getBrowserLang();
-    // translate.use(browserLang.match(/English|العربية/) ? browserLang : 'العربية');
+    const browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/en|ar/) ? browserLang : 'en');
   }
   userName = localStorage.getItem("userName")
   ngOnInit(): void {
    this.role= localStorage.getItem('roles')
    this.loggedInUserName= localStorage.getItem('userName')
    console.log(this.role)
-    // this.dir.change.subscribe((changes) => {
-    //   console.log(changes)
-    // });
+ 
 
   }
   logout() {
     this.AuthService.logout();
   }
-  isAdmin() {
-    // this.show == this.show;
-    // return this.AuthService.IsAdmin();
-  }
-  isUser() {
-    // this.show != this.show;
-    // return this.AuthService.IsUser();
-
-  }
+ 
   openNav() {
     document.getElementById("mySidenav").style.width = "250px";
     document.getElementById("main").style.marginLeft = "250px";

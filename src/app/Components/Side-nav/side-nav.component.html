@@ -78,12 +78,34 @@
               <a class="active" routerLink='projectmanagerRequests'> Requests</a><br>
             </li>
             <li style="margin-left: 20px; font-size: 20px;color: rgb(12, 105, 212);" *ngIf="role=='SuperAdmin'">
-              <a class="active" routerLink='organizations'>Lst organizations</a><br>
+              <a class="active" routerLink='organizations'  > {{ 'Tracker.Lst organizations' | translate }} </a><br>
             </li>
           </ul>
         </div>
-        <div>
+        <!-- <div>
+          
+          <label>
+           
+            <select #langSelect (change)="translate.use(langSelect.value)">
+              <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</option>
+            </select>
+          </label>
+        </div> -->
+        <div style="margin-right: 10px;">
           <span style="font-size: large; margin-right: 20px;color: brown;">{{loggedInUserName}}</span>
+
+          <label>
+              <select #langSelect (change)="translate.use(langSelect.value)"
+                  class="btn btn-success dropdown-toggle">
+                  <option *ngFor="let lang of translate.getLangs()" [value]="lang"
+                      [selected]="lang === translate.currentLang">{{ lang }}</option>
+              </select>
+          </label>
+
+      </div>
+      
+        <div>
+          
           <a href="#" class="btn btn-warning" style="font-size: 15px;" (click)="logout()">Logout
           </a>
         </div>
