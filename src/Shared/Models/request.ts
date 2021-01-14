@@ -1,4 +1,5 @@
 import { Time } from "@angular/common"
+import { RequestProblems } from "./requestProblems"
 
 export class request {
     id :number
@@ -10,6 +11,7 @@ export class request {
     clientId:number
     clientName:string
     projectName:string
+    // problemName:string
     // projectManager:string
     teamId:number
     teamName:string
@@ -23,6 +25,7 @@ export class request {
     requestPeriorityId:number
     requestPeriority:string
     //requestTypeId:number
+    RequestProblemObj:RequestProblems
     requestTypeName:string
     description:string
     IsSolved:boolean

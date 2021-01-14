@@ -64,7 +64,11 @@ export const environment = {
   Problems:'http://localhost:50653/api/Problems/',
   updateRequest:'http://localhost:50653/api/Request/',
   RequestProblems:'http://localhost:50653/api/RequestProblems/',
+<<<<<<< HEAD
+  GetProblemByEmployeeIdAndRequestId:'http://localhost:50653/api/RequestProblems/GetProblemByEmployeeIdAndRequestId/',
+=======
   GetAllDescByRequestID:'http://localhost:50653/api/RequestDescription/GetAllDescriptionsByRequestId/',
+>>>>>>> 6b69e5616f548fa0f903bdb82b714aaafb0f934d
   production: false
 };
 

@@ -72,6 +72,7 @@ const routes: Routes = [
     { path: 'editOrganization/:id', component:EditOrganizationComponent },
     { path: 'editEmployee/:empId', component:EditEmployeeComponent },
     { path: 'allEmpAssignedRequests', component:EmployeeAssignedRequestsComponent },
+    { path: 'allEmpAssigned/:reqId/:problemId', component:EmployeeAssignedRequestsComponent },
     { path: 'DisplayCategories', component:DisplayCategoriesComponent },
     { path: 'projectsForProjectManager', component:AllProjectmanagerProjectsComponent },
     { path: 'allclientsforprojectmanager', component:AllClientsForProjectmanagerComponent },
