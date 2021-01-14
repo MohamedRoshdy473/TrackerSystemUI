@@ -1,7 +1,41 @@
 {
-    "Tracker": {
-      "Lst organizations": "Lst organizations",
-      "SELECT": "Change language"
-    }
+  "Tracker": {
+    "TRACKER SYSTEM": "TRACKER SYSTEM",
+    "All Users": "All Users",
+    "All Employees": "All Employees",
+    "Project Type ": "Project Type ",
+    "Request Category ": "Request Category",
+    "Client": "Client",
+    "ClientCode": "ClientCode",
+    "OrganizationName": "OrganizationName",
+    "Address": "Address",
+    "Email": "Email",
+    "Phone": "Phone",
+    "Code": "Code",
+    "No clients found.": "No clients found.",
+    "Gender": "Gender",
+    "Controls": "Controls",
+    "name": "name",
+    "All Clients": "All Clients",
+    "Male": "Male",
+    "Female":"Female",
+    "Save":"Save",
+    "Add Client":"Add Client",
+    "Department": "Department",
+    "ClientName": "ClientName",
+    "Projects": "Projects",
+    "ClientRequests": "ClientRequests",
+    "Managers Requests": "Managers Requests",
+    "Requests": "Requests",
+    "Logout": "Logout",
+    "Lst organizations": "Lst organizations",
+    "Global Search": "Global Search",
+    "Add": "Add",
+    "Update": "Update",
+    "messege": "Must more than 3 letters",
+    "Confirmation": "Confirmation",
+    "No data found": "No data found",
+    "No": "No",
+    "Details": "Details"
   }
-  
+}

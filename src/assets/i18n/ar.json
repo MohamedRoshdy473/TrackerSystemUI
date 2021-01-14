@@ -1,7 +1,41 @@
 {
-    "Tracker": {
-      "Lst organizations": "المنظمات",
-      "SELECT": "Change language"
-    }
+  "Tracker": {
+    "TRACKER SYSTEM": "نظام التتبع",
+    "All Users": "كل المستخدمين",
+    "Project Type ": "نوع المشروع",
+    "Request Category ": " تصنيف فئه الطلب ",
+    "Client": "العملاء",
+    "Department": "القسم",
+    "ClientName": "اسم العميل",
+    "ClientCode": "كود العميل",
+    "OrganizationName": "اسم المنظمه",
+    "Add Client": " اضافه عميل جديد",
+    "Male":"ذكر",
+    "Female":"انثي",
+    "Address": "العنوان",
+    "Phone": " رقم الهاتف",
+    "Email": " البريد الالكتروني",
+    "Gender": "الجنس ",
+    "All Clients": "كل العملاء ",
+    "Code": "كود",
+    "No clients found.":"لا يوجد عملاء",
+    "Controls": "العمليات",
+    "name": "الاسم ",
+    "ClientRequests": "طلبات العميل",
+    "All Employees": "كل الموظفين",
+    "Lst organizations": "المنظمات",
+    "Projects": "كل المشاريع",
+    "Managers Requests": "طلبات المدير",
+    "Requests": "كل الطلبات",
+    "Logout": "تسجيل خروج",
+    "Global Search": "بحث عام",
+    "Add": "إضافة",
+    "Update": "تعديل",
+    "messege": "يجب أن تكون أكثر من ثلاثة حروف",
+    "Confirmation": "تأكيد",
+    "No data found": "لا يوجد بيانات",
+    "No": "إلغاء",
+    "Save":"حفظ",
+    "Details": "التفاصيل"
   }
-  
+}

@@ -28,7 +28,7 @@
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
     [globalFilterFields]="['address','clientCode ','clientName','email','organizationName','phone']">
     <ng-template pTemplate="caption">
-<h2 style="text-align: center;">All Clients</h2>
+<h2 style="text-align: center;"> {{ 'Tracker.All Clients' | translate }}</h2>
 
         <div class="row">
             <div class="table-header col-md-10">
@@ -37,60 +37,60 @@
                 <span class="p-input-icon-left">
                     <i class="pi pi-search"></i>
                     <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
-                        placeholder='Global Search' />
+                        [placeholder]="'Tracker.Global Search' | translate" />
                 </span>
             </div>
             <div class="col-md-2">
                 <button id="addEmpBtn" routerLink="/home/client" class="btn btn-outline-primary btn-md btn-block">
-                    <span class="pi pi-plus">Add</span> </button>
+                    <span class="pi pi-plus"> {{ 'Tracker.Add' | translate }}</span> </button>
             </div>
         </div>
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
-            <th>ClientName</th>
-            <th>ClientCode</th>
-            <th>OrganizationName</th>
-            <th>Address</th>
-            <th>Phone</th>
-            <th>Email</th>
-            <th>Gender</th>
-            <th>Controls</th>
+            <th>{{ 'Tracker.ClientName' | translate }}</th>
+            <th>{{ 'Tracker.ClientCode' | translate }}</th>
+            <th>{{ 'Tracker.OrganizationName' | translate }}</th>
+            <th>{{ 'Tracker.Address' | translate }}</th>
+            <th>{{ 'Tracker.Phone' | translate }}</th>
+            <th>{{ 'Tracker.Email' | translate }}</th>
+            <th>{{ 'Tracker.Gender' | translate }}</th>
+            <th>{{ 'Tracker.Controls' | translate }}</th>
         </tr>
         <tr>
             <th>
                 <input pInputText style="width: 100%;" type="text"
-                    (input)="dt.filter($event.target.value, 'clientName', 'startsWith')" placeholder='Name'
+                    (input)="dt.filter($event.target.value, 'clientName', 'startsWith')" [placeholder]="'Tracker.name' | translate" 
                     class="p-column-filter">
             </th>
             <th>
                 <input pInputText style="width: 100%;" type="text"
-                    (input)="dt.filter($event.target.value, 'clientCode', 'startsWith')" placeholder='Code'
+                    (input)="dt.filter($event.target.value, 'clientCode', 'startsWith')" [placeholder]="'Tracker.Code' | translate"
                     class="p-column-filter">
             </th>
             <th>
                 <input pInputText type="text" style="width: 100%"
-                    (input)="dt.filter($event.target.value, 'organizationName', 'contains')" placeholder='org.Name'
+                    (input)="dt.filter($event.target.value, 'organizationName', 'contains')"[placeholder]="'Tracker.OrganizationName' | translate"
                     class="p-column-filter">
             </th>
             <th>
                 <input pInputText type="text" style="width: 100%"
-                    (input)="dt.filter($event.target.value, 'address', 'contains')" placeholder='address'
+                    (input)="dt.filter($event.target.value, 'address', 'contains')" [placeholder]="'Tracker.Address' | translate"
                     class="p-column-filter">
             </th>
             <th>
                 <input pInputText type="text" style="width: 100%"
-                    (input)="dt.filter($event.target.value, 'phone', 'contains')" placeholder="Phone"
+                    (input)="dt.filter($event.target.value, 'Phone', 'contains')" [placeholder]="'Tracker.Phone' | translate"
                     class="p-column-filter">
             </th>
             <th>
                 <input pInputText style="width: 100%;" type="email"
-                    (input)="dt.filter($event.target.value, 'email', 'startsWith')" placeholder="Email"
+                    (input)="dt.filter($event.target.value, 'email', 'startsWith')" placeholder="Email" [placeholder]="'Tracker.Email' | translate"
                     class="p-column-filter">
             </th>
             <th>
                 <input pInputText style="width: 100%;" type="email"
-                    (input)="dt.filter($event.target.value, 'gender', 'startsWith')" placeholder="gender"
+                    (input)="dt.filter($event.target.value, 'gender', 'startsWith')" [placeholder]="'Tracker.Gender' | translate"
                     class="p-column-filter">
             </th>
 <th></th>
@@ -130,7 +130,7 @@
     </ng-template>
     <ng-template pTemplate="emptymessage">
         <tr>
-            <td colspan="6">No clients found.</td>
+            <td colspan="6"> {{ 'Tracker.No clients found.' | translate }}</td>
         </tr>
         <tr>
 

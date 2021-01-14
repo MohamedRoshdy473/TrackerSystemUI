@@ -7,6 +7,7 @@ import { AuthService } from 'src/Shared/Services/auth.service';
 import { client } from 'src/Shared/Models/client';
 import { organization } from 'src/Shared/Models/organization';
 import { ClientService } from 'src/Shared/Services/client.service';
+import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-display-all-clients',
   templateUrl: './display-all-clients.component.html',
@@ -19,8 +20,16 @@ export class DisplayAllClientsComponent implements OnInit {
   organization:organization
   displayBasic: boolean;
   loading: boolean = true;
-  constructor(private clientService:ClientService,private OrganizationService: OrganizationService, private router: Router,private authservice:AuthService,
-    private confirmationService: ConfirmationService, private messageService: MessageService) { }
+  constructor(private clientService:ClientService,public translate: TranslateService,private OrganizationService: OrganizationService, private router: Router,private authservice:AuthService,
+    private confirmationService: ConfirmationService, private messageService: MessageService) {
+        translate.addLangs(['en', 'ar']);
+        translate.setDefaultLang('en');
+    
+        const browserLang = translate.getBrowserLang();
+        translate.use(browserLang.match(/en|ar/) ? browserLang : 'en');
+      
+
+     }
     ngOnInit(): void {
       this.lstclients = []
       this.organizations = []
