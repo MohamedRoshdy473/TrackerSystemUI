@@ -10,34 +10,44 @@
         <p-tabPanel>
             <ng-template pTemplate="header">
                 <i class="pi pi-fw pi-home"></i>
-                <span style="margin-left: 10px;">Project</span>
+                <span style="margin-left: 10px;" [translate]="'Tracker.Project Data'"></span>
             </ng-template>
             <div class="row">
                 <div class="p-field col-md-3">
-                    <label for="Project Name" class="labelMarginRight">Project Name</label><br>
-                    <!--  [(ngModel)]="product.name" -->
-                    <input minlength="3" type="text" [(ngModel)]="projectObj.projectName" pInputText id="name" required
-                        autofocus />
-                    <!-- <br> <small [hidden]="Name.valid || Name.untouched" id="helpId" class="text-muted">Must more than 3
-                        letters</small> -->
+                    <label for="Project Name" class="labelMarginRight" [translate]="'Tracker.Project Name'">
+                    </label><br>
+                    <input minlength="3" #ProjectName="ngModel" autofocus [placeholder]="'Tracker.Project Name' | translate"
+                        [class.is-invalid]="ProjectName.invalid && ProjectName.touched"
+                        [class.is-valid]="ProjectName.valid" required minlength="3" type="text"
+                        [(ngModel)]="projectObj.projectName" pInputText id="name" required />
+                    <br> <small [hidden]="ProjectName.valid || ProjectName.untouched" id="helpId"
+                        class="text-muted">Must more than 3
+                        letters</small>
                 </div>
                 <div class="p-field col-md-3">
-                    <label for="Project Code" class="labelMarginRight">Project Code</label><br>
-                    <input type="text" [(ngModel)]="projectObj.projectCode" pInputText id="Code" required autofocus />
-                    <!-- <br> <small [hidden]="Name.valid || Name.untouched" id="helpId" class="text-muted">Must more than 3
-                        letters</small> -->
+                    <label for="Project Code" class="labelMarginRight" [translate]="'Tracker.Project Code'"></label><br>
+                    <input type="text" #ProCode="ngModel" name="ProjectCode" [placeholder]="'Tracker.Project Code' | translate"
+                    [class.is-invalid]="ProCode.invalid && ProCode.touched"
+                    [class.is-valid]="ProCode.valid" required minlength="3" [(ngModel)]="projectObj.projectCode" pInputText id="Code" required  />
+                    <br> <small [hidden]="ProCode.valid || ProCode.untouched" id="helpId" class="text-muted" [translate]="'Tracker.messege'"
+                    ></small>
                 </div>
                 <div class="p-field col-md-3">
-                    <label for="Project Type" class="labelMarginRight">Project Type Name</label><br>
+                    <label for="Project Type" class="labelMarginRight"
+                        [translate]="'Tracker.Project Type Name'"></label><br>
                     <p-dropdown [options]="lstProjectTypes" [(ngModel)]="projectObj.projectTypeId"
-                        placeholder="Select Project Type Name" optionLabel="typeName" optionValue="id">
+                    [placeholder]="'Tracker.Project Type Name' | translate"
+                    optionLabel="typeName" optionValue="id">
                     </p-dropdown>
                 </div>
                 <div class="p-field col-md-3">
-                    <label for="Project Cost" class="labelMarginRight">Project Cost</label><br>
-                    <input type="number" [(ngModel)]="projectObj.cost" pInputText id="Cost" required autofocus />
-                    <!-- <br> <small [hidden]="Name.valid || Name.untouched" id="helpId" class="text-muted">Must more than 3
-                        letters</small> -->
+                    <label for="Project Cost" class="labelMarginRight" [translate]="'Tracker.Project Cost'">
+                    </label><br>
+                    <input type="number" autofocus  [(ngModel)]="projectObj.cost" pInputText id="Cost" #Procost="ngModel" name="ProjectCost"
+                    [class.is-invalid]="Procost.invalid && Procost.touched" [placeholder]="'Tracker.Project Cost' | translate"
+                    [class.is-valid]="Procost.valid" required minlength="3"  />
+                    <br> <small [hidden]="Procost.valid || Procost.untouched" id="helpId" class="text-muted" [translate]="'Tracker.messegeNumber'"
+                    ></small>
                 </div>
                 <!-- <div class="p-field">
                 <label for="description">Description</label>
@@ -47,74 +57,102 @@
             <div class="row">
 
                 <div class="p-field col-md-3">
-                    <label for="Project Period" class="labelMarginRight">Project Period</label><br>
-                    <input type="number" [(ngModel)]="projectObj.projectPeriod" pInputText id="Period" required
-                        autofocus />
-                    <!-- <br> <small [hidden]="Name.valid || Name.untouched" id="helpId" class="text-muted">Must more than 3
-                        letters</small> -->
+                    <label for="Project Period" class="labelMarginRight" [translate]="'Tracker.Project Period'">
+                    </label><br>
+                    <input type="number" #ProPeriod="ngModel" name="ProPeriod" autofocus [placeholder]="'Tracker.Project Period' | translate"
+                    [class.is-invalid]="ProPeriod.invalid && ProPeriod.touched"
+                    [class.is-valid]="ProPeriod.valid" required minlength="3"  [(ngModel)]="projectObj.projectPeriod" pInputText id="Period" required/>
+                    <br> <small [hidden]="ProPeriod.valid || ProPeriod.untouched" id="helpId" class="text-muted" [translate]="'Tracker.messegeNumber'"></small>
                 </div>
                 <div class="p-field col-md-3">
-                    <label for="Plannded Start Date" class="labelMarginRight">Plannded Start Date</label><br>
-                    <p-calendar [(ngModel)]="projectObj.planndedStartDate" dateFormat="dd/mm/yy"></p-calendar>
-                    <small class="p-invalid"></small>
+                    <label for="Plannded Start Date" class="labelMarginRight"
+                        [translate]="'Tracker.Plannded Start Date'"></label><br>
+                    <p-calendar [(ngModel)]="projectObj.planndedStartDate" dateFormat="dd/mm/yy" 
+                    #ProplanndedStartDate="ngModel" name="planndedStartDate"
+                    [class.is-invalid]="ProplanndedStartDate.invalid && ProplanndedStartDate.touched"
+                    [class.is-valid]="ProplanndedStartDate.valid" required minlength="3"
+                    ></p-calendar>
+                    <br> <small [hidden]="ProplanndedStartDate.valid || ProplanndedStartDate.untouched" id="helpId" class="text-muted" [translate]="'Tracker.messegeDate'"></small>
                 </div>
                 <div class="p-field col-md-3">
-                    <label for="Actual Start Date" class="labelMarginRight">Actual Start Date</label><br>
-                    <p-calendar [(ngModel)]="projectObj.actualStartDate" dateFormat="dd/mm/yy"></p-calendar>
-                    <!-- <br> <small [hidden]="Name.valid || Name.untouched" id="helpId" class="text-muted">Must more than 3
-                        letters</small> -->
+                    <label for="Actual Start Date" class="labelMarginRight"
+                        [translate]="'Tracker.Actual Start Date'"></label><br>
+                    <p-calendar [(ngModel)]="projectObj.actualStartDate" dateFormat="dd/mm/yy"
+                    #ProActualStartDate="ngModel" name="ProActualStartDate"
+                    [class.is-invalid]="ProActualStartDate.invalid && ProActualStartDate.touched"
+                    [class.is-valid]="ProActualStartDate.valid" required minlength="3"
+                    ></p-calendar>
+                    <br> <small [hidden]="ProActualStartDate.valid || ProActualStartDate.untouched" id="helpId" class="text-muted" [translate]="'Tracker.messegeDate'"></small>
+
                 </div>
                 <div class="p-field col-md-3">
-                    <label for="Plannded End Date" class="labelMarginRight">Plannded End Date</label><br>
-                    <p-calendar [(ngModel)]="projectObj.planndedEndDate" dateFormat="dd/mm/yy"></p-calendar>
-                    <!-- <br> <small [hidden]="Name.valid || Name.untouched" id="helpId" class="text-muted">Must more than 3
-                        letters</small> -->
+                    <label for="Plannded End Date" class="labelMarginRight"
+                        [translate]="'Tracker.Plannded End Date'"></label><br>
+                    <p-calendar [(ngModel)]="projectObj.planndedEndDate" dateFormat="dd/mm/yy"
+                    #ProplanndedEndDate="ngModel" name="ProplanndedEndDate"
+                    [class.is-invalid]="ProplanndedEndDate.invalid && ProplanndedEndDate.touched"
+                    [class.is-valid]="ProplanndedEndDate.valid" required minlength="3"
+                    ></p-calendar>
+                    <br> <small [hidden]="ProplanndedEndDate.valid || ProplanndedEndDate.untouched" id="helpId" class="text-muted" [translate]="'Tracker.messegeDate'"></small>
+
                 </div>
             </div> <br>
             <div class="row">
                 <div class="p-field col-md-3">
-                    <label for="Actual End Date" class="labelMarginRight">Actual End Date</label><br>
-                    <p-calendar [(ngModel)]="projectObj.actualEndDate" dateFormat="dd/mm/yy"></p-calendar>
-                    <!-- <br> <small [hidden]="Name.valid || Name.untouched" id="helpId" class="text-muted">Must more than 3
-                        letters</small> -->
+                    <label for="Actual End Date" class="labelMarginRight"
+                        [translate]="'Tracker.Actual End Date'"></label><br>
+                    <p-calendar [(ngModel)]="projectObj.actualEndDate" dateFormat="dd/mm/yy"
+                    #ProactualEndDate="ngModel" name="ProactualEndDate"
+                    [class.is-invalid]="ProactualEndDate.invalid && ProactualEndDate.touched"
+                    [class.is-valid]="ProactualEndDate.valid" required minlength="3"
+                    ></p-calendar>
+                    <br> <small [hidden]="ProactualEndDate.valid || ProactualEndDate.untouched" id="helpId" class="text-muted" [translate]="'Tracker.messegeDate'"></small>
+
                 </div>
                 <div class="p-field col-md-3">
-                    <label for="organization Name" class="labelMarginRight">Organization Name</label><br>
+                    <label for="organization Name" class="labelMarginRight"
+                        [translate]="'Tracker.Organization Name'"></label><br>
                     <p-dropdown [options]="lstOrganizations" [(ngModel)]="projectObj.organizationId"
-                        placeholder="Select Organization Name" optionLabel="organizationName" optionValue="id">
+                    [placeholder]="'Tracker.Organization Name' | translate"
+                    optionLabel="organizationName" optionValue="id">
                     </p-dropdown>
                 </div>
                 <div class="p-field col-md-3">
-                    <label for="Project Manager" class="labelMarginRight">Project Manager</label><br>
+                    <label for="Project Manager" class="labelMarginRight" [translate]="'Tracker.Project Manager'">
+                    </label><br>
                     <p-dropdown [options]="lstEmployees" [(ngModel)]="projectObj.employeeId"
-                        placeholder="Select Employee Name" optionLabel="employeeName" optionValue="id"></p-dropdown>
+                    [placeholder]="'Tracker.Project Manager' | translate"
+                    optionLabel="employeeName" optionValue="id"></p-dropdown>
                 </div>
                 <div class="p-field col-md-3">
-                    <label for="Client Name" class="labelMarginRight">Client Name</label><br>
+                    <label for="Client Name" class="labelMarginRight" [translate]="'Tracker.Client Name'"></label><br>
                     <p-dropdown [options]="lstClients" [(ngModel)]="projectObj.clientId"
-                        placeholder="Select Client Name" optionLabel="clientName" optionValue="id"></p-dropdown>
+                    [placeholder]="'Tracker.Client Name' | translate"
+                    optionLabel="clientName" optionValue="id"></p-dropdown>
                 </div>
             </div><br>
             <div class="row">
                 <div class="p-field col-md-6">
-                    <label for="description">Description</label><br>
+                    <label for="description" [translate]="'Tracker.Description'"></label><br>
                     <textarea id="description" [(ngModel)]="projectObj.description" pInputTextarea required rows="3"
                         cols="63"></textarea>
                 </div>
                 <div class="col-md-2" style="margin-top: 7%;margin-left: 28%;"> <button pButton type="button"
-                        (click)="AddProject()" icon="pi pi-check" label="Submit" class="p-button-raised "></button>
+                        (click)="AddProject()" icon="pi pi-check" [label]="'Tracker.Submit' | translate"
+                        class="p-button-raised "></button>
                 </div>
             </div>
         </p-tabPanel>
 
 
 
- 
+
 
         <p-tabPanel>
             <ng-template pTemplate="header">
                 <i class="pi pi-user-minus"></i>
-                <span style="margin-left: 10px;">Create Parteners</span>
+                <span style="margin-left: 10px;" [translate]="'Tracker.Parteners'"
+                ></span>
             </ng-template>
 
             <div class="row">
@@ -185,7 +223,7 @@
                         (click)="SaveToDB_Stackholders()">Add List</button>
                 </div>
             </div>
-            
+
         </p-tabPanel>
 
 
@@ -193,7 +231,7 @@
         <p-tabPanel>
             <ng-template pTemplate="header">
                 <i class="pi pi-user-minus"></i>
-                <span style="margin-left: 10px;">Create Milestone</span>
+                <span style="margin-left: 10px;" [translate]="'Tracker.MileStones'"> </span>
             </ng-template>
 
             <div class="row">
@@ -289,15 +327,14 @@
         <p-tabPanel header="Header II">
             <ng-template pTemplate="header">
                 <i class="pi pi-users"></i>
-                <span style="margin-left: 10px;">Create Teams</span>
+                <span style="margin-left: 10px;" [translate]="'Tracker.Teams'"></span>
             </ng-template>
 
             <div class="row">
                 <div class="p-col-12 p-md-4">
                     <div class="p-inputgroup">
                         <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-                        <input type="text" pInputText placeholder="Team Name"
-                        [(ngModel)]="team.Name">
+                        <input type="text" pInputText placeholder="Team Name" [(ngModel)]="team.Name">
                     </div>
                 </div>
                 <div class="col">
@@ -317,14 +354,14 @@
                             <option *ngFor="let th of lstEmployees" value="{{th.id}}">{{th.employeeName}}</option>
                         </select>
                     </div>
-                    
+
                     <div class="col">
                         <label class="labelstyle">Department Name</label>
                         <select [(ngModel)]="ProjectTeam.departmentId" name="sub" class="form-control">
                             <option value="{{department.id}}">{{department.name}}</option>
                         </select>
                     </div>
-            
+
                     <div class="p-col-12 p-md-4">
 
                         <div>
@@ -374,7 +411,7 @@
         <p-tabPanel header="Header III">
             <ng-template pTemplate="header">
                 <i class="pi pi-file"></i>
-                <span style="margin-left: 10px;">Add Document</span>
+                <span style="margin-left: 10px;" [translate]="'Tracker.Documents'"></span>
                 <!-- <i class="pi pi-cog"></i> -->
             </ng-template>
             <div class="row">
@@ -383,26 +420,27 @@
                         <div class="p-inputgroup">
                             <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
                             <input type="text" pInputText placeholder="Document Name"
-                            [(ngModel)]="docproject.documentName">
+                                [(ngModel)]="docproject.documentName">
                         </div>
-                    </div>       
+                    </div>
                     <div class="p-col-12 p-md-4">
                         <div>
                             <textarea pInputTextarea placeholder="Description" style="width: 100%;"
-                            [(ngModel)]="docproject.Description" class="row p-col-12 p-md-4"></textarea>
+                                [(ngModel)]="docproject.Description" class="row p-col-12 p-md-4"></textarea>
                         </div>
-                        <br/>
-                        <br/>
+                        <br />
+                        <br />
                         <div class="p-field col-md-3" style="margin-bottom:15px;">
                             <div class="col-md-3">
                                 <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)"
                                     style="display:none;">
-                                <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
+                                <button type="button" class="btn btn-success" (click)="file.click()">Upload
+                                    File</button>
                             </div>
                             <div class="col-md-4">
-                              
+
                                 <span class="upload" *ngIf="message">
-        
+
                                     {{message}}
                                 </span>
                             </div>
@@ -419,8 +457,8 @@
                         <thead>
                             <tr>
                                 <th>Document Name</th>
-                        <th >Document Description</th>
-                        <th >File Name</th>
+                                <th>Document Description</th>
+                                <th>File Name</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -445,7 +483,7 @@
                         (click)="SaveDocuentToDB()">Add List</button>
                 </div>
             </div>
-         
+
         </p-tabPanel>
     </p-tabView>
 

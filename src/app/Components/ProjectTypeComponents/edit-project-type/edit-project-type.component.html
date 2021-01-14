@@ -27,13 +27,19 @@
     <form #frm="ngForm" (ngSubmit)="update()">
         <div class="form-row">
             <div class="col-md-6">
-                <label for="name">Project Type Name</label>
-                <input type="text" #ProjectType="ngModel" [class.is-invalid]="ProjectType.invalid && ProjectType.touched"
-                    [class.is-valid]="ProjectType.valid" [(ngModel)]="ProjectTypeObj.typeName" required minlength="3" name="ProjectType"
-                    id="ProjectType" class="form-control" placeholder="ProjectType Name" aria-describedby="helpId">
+                <label for="name" [translate]="'Tracker.Project Type Name'"></label>
+                <input type="text" #ProjectType="ngModel"
+                    [class.is-invalid]="ProjectType.invalid && ProjectType.touched" [class.is-valid]="ProjectType.valid"
+                    [(ngModel)]="ProjectTypeObj.typeName" required minlength="3" name="ProjectType" id="ProjectType"
+                    class="form-control" [placeholder]="'Tracker.Project Type Name' | translate"
+                    aria-describedby="helpId">  
+                              <small [hidden]="ProjectType.valid || ProjectType.untouched" id="helpId" class="text-muted"
+            [translate]="'Tracker.messege'"></small>
             </div>
+
         </div>
         <br>
-        <button id="Add" type="submit" [disabled]="frm.invalid" class="btn btn-primary">Update</button>
+        <button id="Add" type="submit" [disabled]="frm.invalid" class="btn btn-primary"
+            [translate]="'Tracker.Update'"></button>
     </form>
 </div>
