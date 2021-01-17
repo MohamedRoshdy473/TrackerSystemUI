@@ -25,17 +25,17 @@
 </p-toast>
 <br>
 <div class="card">
-    <h2 style="text-align: center;" >System Users</h2>
+    <h2 style="text-align: center;"> {{ 'Tracker.System Users' | translate }}</h2>
 
     <br>
     <div class="row">
         <div class="col-md-2 ml-5">
             <button id="addEmpBtn" (click)="NewUserDialog()" class="btn btn-outline-primary btn-md btn-block">
-                <span class="pi pi-plus"></span> <span >Add Employee</span> </button>
+                <span class="pi pi-plus"></span> <span> {{ 'Tracker.Add Employee' | translate }}</span> </button>
         </div>
         <div class="col-md-2 ml-5">
             <button id="addEmpBtn" (click)="NewClientDialog()" class="btn btn-outline-primary btn-md btn-block">
-                <span class="pi pi-plus"></span> <span > Add Client</span> </button>
+                <span class="pi pi-plus"></span> <span> {{ 'Tracker.Add Client' | translate }}</span> </button>
         </div>
     </div>
     <p-table [value]="users" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
@@ -43,9 +43,9 @@
         [rowsPerPageOptions]="[5,10,50]">
         <ng-template pTemplate="header">
             <tr>
-                <th >UserName</th>
-                <th >Email</th>
-                <th >Role</th>
+                <th> {{ 'Tracker.UserName' | translate }}</th>
+                <th> {{ 'Tracker.Email' | translate }}</th>
+                <th> {{ 'Tracker.Role' | translate }}</th>
                 <th></th>
             </tr>
         </ng-template>
@@ -55,125 +55,122 @@
                 <td>{{customer.email}}</td>
                 <td>{{customer.role}}</td>
                 <td><button (click)="confirm(customer.id)" style="display: flex;" class="btn btn-danger c-btn">
-                    <i class="p-button-icon pi pi-times"
-                    aria-hidden="true"></i></button></td>
+                        <i class="p-button-icon pi pi-times" aria-hidden="true"></i></button></td>
             </tr>
         </ng-template>
     </p-table>
 </div>
 
 <form #frm="ngForm" (ngSubmit)="addNewUser()">
-    <p-dialog  header=" " [(visible)]="NewLeaveDialogbool" [style]="{width: '50vw'}" [baseZIndex]="10000">
+    <p-dialog header=" " [(visible)]="NewLeaveDialogbool" [style]="{width: '50vw'}" [baseZIndex]="10000">
 
         <div class="row">
-            <span class="col-md-3" for="employee" >Employee</span>
-            <select (change)="onChange($event.target.value)" name="employee" class="form-control col-md-6" >Employee
-                <option value="" selected disabled hidden><span >Employee Name</span></option>
+            <span class="col-md-3" for="employee">{{ 'Tracker.Employee' | translate }}</span>
+            <select (change)="onChange($event.target.value)" name="employee" class="form-control col-md-6">Employee
+                <option value="" selected disabled hidden><span>{{ 'Tracker.Employee Name' | translate }}</span>
+                </option>
                 <option *ngFor="let item of GetUnregisteredUsers" value="{{item.id}}">{{item.employeeName}}</option>
             </select>
         </div>
         <br>
         <div class="row">
-            <span class="col-md-3" for="Email" >Email</span>
+            <span class="col-md-3" for="Email">{{ 'Tracker.Email' | translate }}</span>
             <br>
-            <input #userEmail="ngModel" required type="text" 
-            [class.is-invalid]="userEmail.invalid && userEmail.touched" minlength="3"
-                [class.is-valid]="userEmail.valid" [(ngModel)]="NewUser.email" disabled 
-                name="Email" class="col-md-6 form-control"
-                inputId="Email">
+            <input #userEmail="ngModel" required type="text" [class.is-invalid]="userEmail.invalid && userEmail.touched"
+                minlength="3" [class.is-valid]="userEmail.valid" [(ngModel)]="NewUser.email" disabled name="Email"
+                class="col-md-6 form-control" inputId="Email">
         </div>
         <br>
         <div class="row">
-            <span class="col-md-3" for="Password" >Password</span>
+            <span class="col-md-3" for="Password">{{ 'Tracker.Password' | translate }}</span>
             <br>
             <input disabled value="P@ssw0rd" type="text" disabled name="Password" class="col-md-6 form-control"
-                inputId="Password">
+            inputId="Password">
         </div>
         <br>
         <div class="row">
-            <span class="col-md-3" >Role</span>
+            <span class="col-md-3">{{ 'Tracker.Role' | translate }}</span>
             <br>
             <div class="p-field-radiobutton">
                 <div class="row">
-                <div class="form-check radio">
-                    <input checked [(ngModel)]="NewUser.role" class="form-check-input" type="radio" name="exampleRadios"
-                     id="exampleRadios2" value="SuperAdmin">
-                    <label class="form-check-label" for="exampleRadios2">
-                        SuperAdmin
-                    </label>
-                  </div>
-                <div  class="form-check radio">
-                    <input  [(ngModel)]="NewUser.role" class="form-check-input" type="radio" name="exampleRadios"
-                     id="exampleRadios1" value="Admin" >
-                    <label class="form-check-label" for="exampleRadios1">
-                        Admin
-                    </label>
-                  </div>
-                  <div  class="form-check radio">
-                    <input  [(ngModel)]="NewUser.role" class="form-check-input" type="radio" name="exampleRadios"
-                     id="exampleRadios1" value="PMO" >
-                    <label class="form-check-label" for="exampleRadios1">
-                        PMO
-                    </label>
-                  </div>
-                  <div  class="form-check radio">
-                    <input  [(ngModel)]="NewUser.role" class="form-check-input" type="radio" name="exampleRadios"
-                     id="exampleRadios1" value="PM" >
-                    <label class="form-check-label" for="exampleRadios1">
-                        PM
-                    </label>
-                  </div>
+                    <div class="form-check radio">
+                        <input checked [(ngModel)]="NewUser.role" class="form-check-input" type="radio"
+                            name="exampleRadios" id="exampleRadios2" value="SuperAdmin">
+                        <label class="form-check-label" for="exampleRadios2">
+                            {{ 'Tracker.SuperAdmin' | translate }}
+                        </label>
+                    </div>
+                    <div class="form-check radio">
+                        <input [(ngModel)]="NewUser.role" class="form-check-input" type="radio" name="exampleRadios"
+                            id="exampleRadios1" value="Admin">
+                        <label class="form-check-label" for="exampleRadios1">
+                            {{ 'Tracker.Admin' | translate }}
+                        </label>
+                    </div>
+                    <div class="form-check radio">
+                        <input [(ngModel)]="NewUser.role" class="form-check-input" type="radio" name="exampleRadios"
+                            id="exampleRadios1" value="PMO">
+                        <label class="form-check-label" for="exampleRadios1">
+                            {{ 'Tracker.PMO' | translate }}
+                        </label>
+                    </div>
+                    <div class="form-check radio">
+                        <input [(ngModel)]="NewUser.role" class="form-check-input" type="radio" name="exampleRadios"
+                            id="exampleRadios1" value="PM">
+                        <label class="form-check-label" for="exampleRadios1">
+                            {{ 'Tracker.System Users' | translate }}
+                        </label>
+                    </div>
                 </div>
                 <div class="row">
-                  <div  class="form-check radio">
-                    <input  [(ngModel)]="NewUser.role" class="form-check-input" type="radio" name="exampleRadios"
-                     id="exampleRadios1" value="TL" >
-                    <label class="form-check-label" for="exampleRadios1">
-                        TL
-                    </label>
-                  </div>
-                  <div class="form-check radio">
-                    <input checked [(ngModel)]="NewUser.role" class="form-check-input" type="radio" name="exampleRadios"
-                     id="exampleRadios2" value="Employee">
-                    <label class="form-check-label" for="exampleRadios2">
-                        Employee
-                    </label>
-                  </div>
+                    <div class="form-check radio">
+                        <input [(ngModel)]="NewUser.role" class="form-check-input" type="radio" name="exampleRadios"
+                            id="exampleRadios1" value="TL">
+                        <label class="form-check-label" for="exampleRadios1">
+                            {{ 'Tracker.TL' | translate }}
+                        </label>
+                    </div>
+                    <div class="form-check radio">
+                        <input checked [(ngModel)]="NewUser.role" class="form-check-input" type="radio"
+                            name="exampleRadios" id="exampleRadios2" value="Employee">
+                        <label class="form-check-label" for="exampleRadios2">
+                            {{ 'Tracker.Employee' | translate }}
+                        </label>
+                    </div>
                 </div>
             </div>
         </div>
         <ng-template pTemplate="footer">
-            <p-button  type="submit" [disabled]="frm.invalid" icon="pi pi-check" label="" 
-            styleClass="p-button-text"><span >Save</span></p-button>
-            <p-button icon="pi pi-times" (click)="NewLeaveDialogbool=false"
-             label=""><span >NO</span></p-button>
+            <p-button type="submit" [disabled]="frm.invalid" icon="pi pi-check" label="" styleClass="p-button-text">
+                <span>{{ 'Tracker.Save' | translate }}</span>
+            </p-button>
+            <p-button icon="pi pi-times" (click)="NewLeaveDialogbool=false" label=""><span>{{ 'Tracker.No'| translate
+                    }}</span></p-button>
         </ng-template>
 
     </p-dialog>
-</form>  
+</form>
 <form #frm2="ngForm" (ngSubmit)="addNewClient()">
-  <p-dialog  header=" " [(visible)]="NewclientDialogbool" [style]="{width: '50vw'}" [baseZIndex]="10000">
+    <p-dialog header=" " [(visible)]="NewclientDialogbool" [style]="{width: '50vw'}" [baseZIndex]="10000">
 
         <div class="row">
-            <span class="col-md-3" for="Client" >Client</span>
-            <select (change)="onChangeclient($event.target.value)" name="Client" class="form-control col-md-6" >Employee
-                <option value="" selected disabled hidden><span >Client Name</span></option>
+            <span class="col-md-3" for="Client">{{ 'Tracker.Client' | translate }}</span>
+            <select (change)="onChangeclient($event.target.value)" name="Client" class="form-control col-md-6">Employee
+                <option value="" selected disabled hidden><span> {{ 'Tracker.Client Name' | translate }}</span></option>
                 <option *ngFor="let item of GetUnregisteredClients" value="{{item.id}}">{{item.clientName}}</option>
             </select>
         </div>
         <br>
         <div class="row">
-            <span class="col-md-3" for="Email" >Email</span>
+            <span class="col-md-3" for="Email">{{ 'Tracker.Email' | translate }}</span>
             <br>
-            <input #userEmail="ngModel" required type="text" 
-            [class.is-invalid]="userEmail.invalid && userEmail.touched" minlength="3"
-                [class.is-valid]="userEmail.valid" [(ngModel)]="NewUser.email" disabled 
-                name="Email" class="col-md-6 form-control"
-                inputId="Email">
+            <input #userEmail="ngModel" required type="text" [class.is-invalid]="userEmail.invalid && userEmail.touched"
+                minlength="3" [class.is-valid]="userEmail.valid" [(ngModel)]="NewUser.email" disabled name="Email"
+                class="col-md-6 form-control" inputId="Email">
         </div>
         <br>
         <div class="row">
-            <span class="col-md-3" for="Password" >Password</span>
+            <span class="col-md-3" for="Password">{{ 'Tracker.Password' | translate }}</span>
             <br>
             <input disabled value="P@ssw0rd" type="text" disabled name="Password" class="col-md-6 form-control"
                 inputId="Password">
@@ -193,10 +190,11 @@
             </div> -->
         </div>
         <ng-template pTemplate="footer">
-            <p-button  type="submit" [disabled]="frm2.invalid" icon="pi pi-check" label="" 
-            styleClass="p-button-text"><span >Save</span></p-button>
-            <p-button icon="pi pi-times" (click)="NewClientDialog=false"
-             label=""><span >NO</span></p-button>
+            <p-button type="submit" [disabled]="frm2.invalid" icon="pi pi-check" label="" styleClass="p-button-text">
+                <span>{{ 'Tracker.Save' | translate }}</span>
+            </p-button>
+            <p-button icon="pi pi-times" (click)="NewClientDialog=false" label=""><span>{{ 'Tracker.No' |translate
+                    }}</span></p-button>
         </ng-template>
 
     </p-dialog>
