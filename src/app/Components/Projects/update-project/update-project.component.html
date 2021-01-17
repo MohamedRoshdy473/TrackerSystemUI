@@ -3,65 +3,83 @@
     <div class="col">
 
     <div>
-        <h3 >Edit Project Data</h3>
+        <h3 [translate]="'Tracker.Edit Project Data'" ></h3>
     </div>
     <br/>
     <div class="row">
         <div class="col">
-            
-            <label>Project Name</label>
-            <input type="text" class="form-control" [(ngModel)]="projectObj.projectName" name="projectName">
+            <label for="Project Name" class="labelMarginRight" [translate]="'Tracker.Project Name'">
+            </label><br>
+            <input minlength="3" #ProjectName="ngModel" autofocus
+                [placeholder]="'Tracker.Project Name' | translate"
+                [class.is-invalid]="ProjectName.invalid && ProjectName.touched"
+                [class.is-valid]="ProjectName.valid" required minlength="3" type="text"
+                [(ngModel)]="projectObj.projectName" pInputText id="name" required />
+            <br> <small [hidden]="ProjectName.valid || ProjectName.untouched" id="helpId"
+                class="text-muted" [translate]="'Tracker.messege'"></small>
         </div>
         <div class="col">
-            <label>Project Code</label>
-            <input type="text" class="form-control" [(ngModel)]="projectObj.projectCode" name="projectCode">
+            <label for="Project Code" class="labelMarginRight" [translate]="'Tracker.Project Code'"></label><br>
+            <input type="text" #ProCode="ngModel" name="ProjectCode"
+                [placeholder]="'Tracker.Project Code' | translate"
+                [class.is-invalid]="ProCode.invalid && ProCode.touched" [class.is-valid]="ProCode.valid"
+                required minlength="3" [(ngModel)]="projectObj.projectCode" pInputText id="Code" required />
+            <br> <small [hidden]="ProCode.valid || ProCode.untouched" id="helpId" class="text-muted"
+                [translate]="'Tracker.messege'"></small>
         </div>
         <div class="col">
-            <label>Project Cost</label>
-            <input type="text" class="form-control"  [(ngModel)]="projectObj.cost" name="cost">
+            <label for="Project Cost" class="labelMarginRight" [translate]="'Tracker.Project Cost'">
+            </label><br>
+            <input type="number" autofocus [(ngModel)]="projectObj.cost" pInputText id="Cost" #Procost="ngModel"
+                name="ProjectCost" [class.is-invalid]="Procost.invalid && Procost.touched"
+                [placeholder]="'Tracker.Project Cost' | translate" [class.is-valid]="Procost.valid" required
+                minlength="3" />
+            <br> <small [hidden]="Procost.valid || Procost.untouched" id="helpId" class="text-muted"
+                [translate]="'Tracker.messegeNumber'"></small>
         </div>
         <div class="col">
-            <label>client Mobile</label>
+            <label [translate]="'Tracker.Client Mobile'"></label>
             <input type="text" class="form-control" [(ngModel)]="projectObj.clientMobile" name="clientMobile">
         </div>
     </div>
    
     <div class="row">
         <div class="col">
-            <label>projectType Name</label>
+            <label [translate]="'Tracker.Project Type Name'"></label>
             <input type="text" class="form-control"   [(ngModel)]="projectObj.projectTypeName" name="projectTypeName" >
         </div>
         <div class="col">
-            <label>organization Name</label>
+            <label [translate]="'Tracker.Organization Name'"></label>
             <input type="text" class="form-control" [(ngModel)]="projectObj.organizationName" name="organizationName" >
         </div>
         <div class="col">
-            <label>project Period</label>
+            <label [translate]="'Tracker.Project Period'"></label>
             <input type="text" class="form-control" [(ngModel)]="projectObj.projectPeriod" name="projectPeriod" >
         </div>
         <div class="col">
-            <label>description</label>
+            <label [translate]="'Tracker.Description'"></label>
             <input type="text" class="form-control"  [(ngModel)]="projectObj.description" name="description">
         </div>
     </div>
  
     <div class="row">
         <div class="col">
-            <label>Employee Name</label>
+            <label [translate]="'Tracker.Employee Name'"></label>
             <input type="text" class="form-control"  [(ngModel)]="emploeeObj.employeeName" >
         </div>
         <div class="col">
-            <label>actual Start Date</label>
+            <label [translate]="'Tracker.Actual Start Date'"></label>
             <input type="text" class="form-control"  [(ngModel)]="projectObj.actualStartDate" name="actualStartDate" >
         </div>
       
         <div class="col">
-            <label>actual End Date</label>
+            <label [translate]="'Tracker.Actual End Date'"></label>
             <input type="text" class="form-control" [(ngModel)]="projectObj.actualEndDate" name="actualEndDate">
         </div>
     </div>
    <br/>
-    <button pButton type="button"  label="Edit" style="margin: 20px;" (click)="edit(project1.id)" class="p-button-warning"></button>
+    <button pButton type="button"  [label]="'Tracker.Update' | translate"
+    style="margin: 20px;" (click)="edit(project1.id)" class="p-button-warning"></button>
     <br/>
     <br/>
     <div class="row">
@@ -71,7 +89,7 @@
             <p-table [value]="projectObj.listOfStackholders">
                 <ng-template pTemplate="header">
                     <tr>
-                        <th style="color: #2674a8; font-size: 20px; font: bold;">Partener Name</th>
+                        <th style="color: #2674a8; font-size: 20px; font: bold;" [translate]="'Tracker.Partener Name'"></th>
                         <th ></th>
 
                     </tr>
@@ -86,7 +104,7 @@
                 </ng-template>
             </p-table>
            
-            <p-button (click)="showBasicDialog()" icon="pi pi-external-link" label="Add Parteners"></p-button>
+            <p-button (click)="showBasicDialog()" icon="pi pi-external-link"  [label]="'Tracker.Add Partener' | translate"></p-button>
             <br/>
             <br/>
             <p-dialog header="Header" [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">

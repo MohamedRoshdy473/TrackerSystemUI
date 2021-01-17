@@ -175,7 +175,7 @@
             </ng-template>
             <ng-template pTemplate="emptymessage">
                 <tr>
-                    <td colspan="4">No Projects found.</td>
+                    <td colspan="4" [translate]="'Tracker.No data found'"></td>
                 </tr>
             </ng-template>
         </p-table>
@@ -228,25 +228,25 @@
 
             <form>
                 <div>
-                    <h3>Edit Project Data</h3>
+                    <h3 [translate]="'Tracker.Edit Project Data'"></h3>
                 </div>
                 <br />
                 <div class="row">
                     <div class="col">
 
-                        <label>Project Name</label>
+                        <label [translate]="'Tracker.Project Name'"></label>
                         <input type="text" class="form-control" [(ngModel)]="projectObj.projectName" name="projectName">
                     </div>
                     <div class="col">
-                        <label>Project Code</label>
+                        <label [translate]="'Tracker.Project Code'"></label>
                         <input type="text" class="form-control" [(ngModel)]="projectObj.projectCode" name="projectCode">
                     </div>
                     <div class="col">
-                        <label>Project Cost</label>
+                        <label [translate]="'Tracker.Project Cost'"></label>
                         <input type="text" class="form-control" [(ngModel)]="projectObj.cost" name="cost">
                     </div>
                     <div class="col">
-                        <label>Client Mobile</label>
+                        <label [translate]="'Tracker.Client Mobile'"></label>
                         <input type="text" class="form-control" [(ngModel)]="projectObj.clientMobile"
                             name="clientMobile">
                     </div>
@@ -263,44 +263,44 @@
     </div> -->
                 <div class="row">
                     <div class="col">
-                        <label>projectType Name</label>
+                        <label [translate]="'Tracker.Project Type Name'"></label>
                         <input type="text" class="form-control" [(ngModel)]="projectObj.projectTypeName"
                             name="projectTypeName">
                     </div>
                     <div class="col">
-                        <label>Organization Name</label>
+                        <label [translate]="'Tracker.Organization Name'"></label>
                         <input type="text" class="form-control" [(ngModel)]="projectObj.organizationName"
                             name="organizationName">
                     </div>
                     <div class="col">
-                        <label>Project Period</label>
+                        <label [translate]="'Tracker.Project Period'"></label>
                         <input type="text" class="form-control" [(ngModel)]="projectObj.projectPeriod"
                             name="projectPeriod">
                     </div>
                     <div class="col">
-                        <label>Description</label>
+                        <label [translate]="'Tracker.Description'"></label>
                         <input type="text" class="form-control" [(ngModel)]="projectObj.description" name="description">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col">
-                        <label>Plannded Start Date</label>
+                        <label [translate]="'Tracker.Plannded Start Date'"></label>
                         <input type="text" class="form-control" [(ngModel)]="projectObj.planndedStartDate"
                             name="planndedStartDate">
                     </div>
                     <div class="col">
-                        <label>Actual Start Date</label>
+                        <label [translate]="'Tracker.Actual Start Date'"></label>
                         <input type="text" class="form-control" [(ngModel)]="projectObj.actualStartDate"
                             name="actualStartDate">
                     </div>
                     <div class="col">
-                        <label>Plannded End Date</label>
+                        <label [translate]="'Tracker.Plannded End Date'"></label>
                         <input type="text" class="form-control" [(ngModel)]="projectObj.planndedEndDate"
                             name="planndedEndDate">
                     </div>
                     <div class="col">
-                        <label>Actual End Date</label>
+                        <label [translate]="'Tracker.Actual End Date'"></label>
                         <input type="text" class="form-control" [(ngModel)]="projectObj.actualEndDate"
                             name="actualEndDate">
                     </div>
@@ -309,7 +309,7 @@
 
                 <div class="row">
                     <div class="col" *ngFor="let i of projectObj.listOfStackholders">
-                        <label style="color: #2674a8; font-size: 25px; font: bold;">Parteners</label>
+                        <label style="color: #2674a8; font-size: 25px; font: bold;" [translate]="'Tracker.Parteners'"></label>
                         <span class="pi pi-times"></span>
 
                         <input type="text" class="form-control" placeholder="{{i.stackeholderName}}">
@@ -325,7 +325,7 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <label style="color: #2674a8; font-size: 25px; font: bold;">MileStones</label>
+                        <label style="color: #2674a8; font-size: 25px; font: bold;"[translate]="'Tracker.MileStones'"></label>
                         <input type="text" *ngFor="let i of projectObj.listOfmilestones" class="form-control"
                             placeholder="{{i.title}}" name="title">
                     </div>
@@ -333,14 +333,14 @@
 
                 <div class="row">
                     <div class="col">
-                        <label style="color: #2674a8; font-size: 25px; font: bold;">Teams</label>
+                        <label style="color: #2674a8; font-size: 25px; font: bold;" [translate]="'Tracker.Teams'"></label>
                         <input type="text" *ngFor="let i of projectObj.listofprojectteam" class="form-control"
                             placeholder="{{i.teamName}}" name="teamName">
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <label style="color: #2674a8; font-size: 25px; font: bold;">Documents</label>
+                        <label style="color: #2674a8; font-size: 25px; font: bold;" [translate]="'Tracker.Documents'"></label>
                         <input type="text" *ngFor="let i of projectObj.listOfdocuments" class="form-control"
                             placeholder="{{i.documentName}}" name="documentName">
 
@@ -351,7 +351,8 @@
             </form>
             <ng-template pTemplate="footer">
 
-                <button pButton type="button" label="Edit" class="p-button-warning"></button>
+                <button pButton type="button" [label]="'Tracker.Update' | translate"
+                class="p-button-warning"></button>
             </ng-template>
         </p-dialog>
         <!--  -->
@@ -360,24 +361,24 @@
 
             <form>
                 <div>
-                    <h3> Project Data</h3>
+                    <h3 [translate]="'Tracker.Project Data'"> </h3>
                 </div>
                 <br />
                 <div class="row">
                     <div class="col">
-                        <label>Project Name</label>
+                        <label [translate]="'Tracker.Project Name'"></label>
                         <input type="text" class="form-control" placeholder="{{project1.projectName}}" readonly>
                     </div>
                     <div class="col">
-                        <label>Project Code</label>
+                        <label [translate]="'Tracker.Project Code'"></label>
                         <input type="text" class="form-control" placeholder="{{project1.projectCode}}" readonly>
                     </div>
                     <div class="col">
-                        <label>Project Cost</label>
+                        <label [translate]="'Tracker.Project Cost'"></label>
                         <input type="text" class="form-control" placeholder="{{project1.cost}}" readonly>
                     </div>
                     <div class="col">
-                        <label>client Mobile</label>
+                        <label [translate]="'Tracker.Client Mobile'"></label>
                         <input type="text" class="form-control" placeholder="{{project1.clientMobile}}" readonly>
                     </div>
                 </div>
@@ -393,68 +394,68 @@
                 </div> -->
                 <div class="row">
                     <div class="col">
-                        <label>projectType Name</label>
+                        <label [translate]="'Tracker.Project Type Name'"></label>
                         <input type="text" class="form-control" placeholder="{{project1.projectTypeName}}" readonly>
                     </div>
                     <div class="col">
-                        <label>organization Name</label>
+                        <label [translate]="'Tracker.Organization Name'"></label>
                         <input type="text" class="form-control" placeholder="{{project1.organizationName}}" readonly>
                     </div>
                     <div class="col">
-                        <label>project Period</label>
+                        <label [translate]="'Tracker.Project Period'"></label>
                         <input type="text" class="form-control" placeholder="{{project1.projectPeriod}}" readonly>
                     </div>
                     <div class="col">
-                        <label>description</label>
+                        <label [translate]="'Tracker.Description'"></label>
                         <input type="text" class="form-control" placeholder="{{project1.description}}" readonly>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col">
-                        <label>plannded Start Date</label>
+                        <label [translate]="'Tracker.Plannded Start Date'"></label>
                         <input type="text" class="form-control"
-                            placeholder="{{project1.planndedStartDate | date:'yyyy:MM:dd'}}" readonly>
+                            placeholder="{{project1.planndedStartDate | date:'dd/MM/yyyy'}}" readonly>
                     </div>
                     <div class="col">
-                        <label>actual Start Date</label>
+                        <label [translate]="'Tracker.Actual Start Date'"></label>
                         <input type="text" class="form-control"
-                            placeholder="{{project1.actualStartDate | date:'yyyy:MM:dd'}}" readonly>
+                            placeholder="{{project1.actualStartDate | date:'dd/MM/yyyy'}}" readonly>
                     </div>
                     <div class="col">
-                        <label>plannded End Date</label>
+                        <label [translate]="'Tracker.Plannded End Date'"></label>
                         <input type="text" class="form-control"
-                            placeholder="{{project1.planndedEndDate | date:'yyyy:MM:dd'}}" readonly>
+                            placeholder="{{project1.planndedEndDate | date:'dd/MM/yyyy'}}" readonly>
                     </div>
                     <div class="col">
-                        <label>actual End Date</label>
+                        <label [translate]="'Tracker.Actual End Date'"></label>
                         <input type="text" class="form-control"
-                            placeholder="{{project1.actualEndDate | date:'yyyy:MM:dd'}}" readonly>
+                            placeholder="{{project1.actualEndDate | date:'dd/MM/yyyy'}}" readonly>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col">
-                        <label>plannded End Date</label>
+                        <label [translate]="'Tracker.Plannded End Date'"></label>
                         <input type="text" class="form-control"
-                            placeholder="{{project1.planndedEndDate | date:'yyyy:MM:dd'}}" readonly>
+                            placeholder="{{project1.planndedEndDate | date:'dd/MM/yyyy'}}" readonly>
                     </div>
                     <div class="col">
-                        <label>actual End Date</label>
+                        <label [translate]="'Tracker.Actual End Date'"></label>
                         <input type="text" class="form-control" placeholder="{{project1.actualEndDate }}" readonly>
                     </div>
 
                 </div>
                 <div class="row">
                     <div class="col">
-                        <label style="color: #2674a8; font-size: 25px; font: bold;">Parteners</label>
+                        <label style="color: #2674a8; font-size: 25px; font: bold;" [translate]="'Tracker.Parteners'"></label>
                         <input *ngFor="let i of project1.listOfStackholders" type="text" class="form-control"
                             placeholder="{{i.stackeholderName}}" readonly>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <label style="color: #2674a8; font-size: 25px; font: bold;">mileStones</label>
+                        <label style="color: #2674a8; font-size: 25px; font: bold;" [translate]="'Tracker.MileStones'"></label>
                         <input type="text" *ngFor="let i of project1.listOfmilestones" class="form-control"
                             placeholder="{{i.title}}" readonly>
                     </div>
@@ -462,24 +463,25 @@
 
                 <div class="row">
                     <div class="col">
-                        <label style="color: #2674a8; font-size: 25px; font: bold;">Teams</label>
+                        <label style="color: #2674a8; font-size: 25px; font: bold;" [translate]="'Tracker.Teams'"></label>
                         <input type="text" *ngFor="let i of project1.listofprojectteam" class="form-control"
                             placeholder="{{i.teamName}}" readonly>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col">
-                        <label style="color: #2674a8; font-size: 25px; font: bold;">Documents</label>
+                        <label style="color: #2674a8; font-size: 25px; font: bold;" [translate]="'Tracker.Documents'"></label>
                         <input type="text" *ngFor="let i of project1.listOfdocuments" class="form-control"
                             placeholder="{{i.documentName}}" readonly>
 
                     </div>
                 </div>
-                <div>End</div>
+                <div [translate]="'Tracker.End'"></div>
             </form>
 
             <ng-template pTemplate="footer">
-                <p-button icon="pi pi-check" (click)="displayMaximizable=false" label="Ok" styleClass="p-button-text">
+                <p-button icon="pi pi-check" (click)="displayMaximizable=false" [label]="'Tracker.Ok' | translate"
+                styleClass="p-button-text">
                 </p-button>
             </ng-template>
         </p-dialog>
