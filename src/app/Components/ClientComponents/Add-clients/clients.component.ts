@@ -19,11 +19,7 @@ organizations:organization[]
 organization:organization
   constructor(private router: Router,private clientService:ClientService,private organizationService:OrganizationService,
     public translate: TranslateService) {
-    translate.addLangs(['en', 'ar']);
-    translate.setDefaultLang('en');
 
-    const browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/en|ar/) ? browserLang : 'en');
   }
 
   ngOnInit(): void {
