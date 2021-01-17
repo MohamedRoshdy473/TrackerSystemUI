@@ -5,12 +5,12 @@
                 <div class="p-col-12 p-md-4">
                     <div class="p-inputgroup">
                         <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-                        <input type="text" pInputText placeholder="Department Name" [(ngModel)]="departmentObj.name">
+                        <input type="text" pInputText [placeholder]="'Tracker.Department Name' |translate" [(ngModel)]="departmentObj.name">
                     </div>
                 </div>
                 <div class="p-col-12 p-md-4">
                     <button class="btn btn-info" style="margin-top: 20px;float: right;" (click)="SaveDepToDB()">
-                        Save</button>
+                      {{'Tracker.Save'|translate}}  </button>
                 </div>
                 
             </div>

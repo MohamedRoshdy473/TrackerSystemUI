@@ -1,9 +1,9 @@
 
 <div class="container">
-<h2>Assign Request</h2>
+<h2>{{'Tracker.Assign Request'|translate}}</h2>
 <div class="row">
     <div class="col">
-        <label class="labelstyle">Position Name</label>
+        <label class="labelstyle">{{'Tracker.Position Name'|translate}}</label>
         <select [(ngModel)]="assignedReqObj.projectPositionId" name="sel2" class="form-control"
         (change)="getTeamsByPositionId(($event.target.value))">
             <option *ngFor="let th of lstProjectPosition" value="{{th.id}}">{{th.positionName}}</option>
@@ -11,22 +11,27 @@
     </div>
 
     <div class="col">
-        <label class="labelstyle">Select Team Name</label>
+        <label class="labelstyle">{{'Tracker.Select Team Name'|translate}}</label>
         <select [(ngModel)]="assignedReqObj.teamId" name="sel2" class="form-control"  (change)="getEmp(($event.target.value))">
             <option *ngFor="let th of lstProjectTeamAfterFilterBasedOnPosition" value="{{th.teamId}}">{{th.teamName}}</option>
         </select>
     </div>
     <div class="col">
-        <label class="labelstyle">Select Employee Name</label>
+        <label class="labelstyle">{{'Tracker.Select Employee Name'|translate}}</label>
         <select [(ngModel)]="assignedReqObj.employeeId" name="sel2" class="form-control" (change)="getEmpId(($event.target.value))">
             <option *ngFor="let th of lstProjectTeamAfterFiltration" value="{{th.employeeId}}">{{th.employeeName}}</option>
         </select>
     </div>
  
 </div><br>
-<div class="p-field col">
-    <label for="description">Description</label>
-    <textarea id="description" [(ngModel)]="reqDescriptionObj.description" pInputTextarea required rows="5" cols="138"></textarea>
-</div><br>
-<button class="btn btn-warning" (click)="saveAssignedRequest()">Save</button>
+<div class="col">
+       
+
+    <h4 for="description">{{'Tracker.Description'|translate}}</h4>
+    <textarea id="description" [(ngModel)]="reqDescriptionObj.description" pInputTextarea required rows="5"
+        cols="155"></textarea>
+    <br>
+    <button class="btn btn-warning" (click)="saveAssignedRequest()">{{'Tracker.Save'|translate}}</button>
+</div>
+
 </div>

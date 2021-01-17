@@ -30,13 +30,13 @@
     <ng-template pTemplate="caption">
         <div class="row">
             <div class="table-header col-md-10">
-                <h2 style="text-align: center;">Categories</h2>
+                <h2 style="text-align: center;">{{'Tracker.Categories'|translate}}</h2>
 
                 <span class="p-input-icon-left">
 
                     <i class="pi pi-search"></i>
                     <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
-                        placeholder="Global Search" />
+                        [placeholder]="'Tracker.Global Search'|translate" />
                 </span>
             </div>
             <div class="col-md-2">
@@ -50,11 +50,11 @@
             <th>
                 <input pInputText type="text"
                     (input)="dt.filter($event.target.value, 'requestCategoryName', 'startsWith')"
-                    placeholder="CategoryName" class="p-column-filter">
+                    [placeholder]="'Tracker.CategoryName'|translate" class="p-column-filter">
             </th>
             <th>
                 <input pInputText type="text" (input)="dt.filter($event.target.value, 'subCategoryName', 'startsWith')"
-                    placeholder="SubCategoryName" class="p-column-filter">
+                [placeholder]="'Tracker.SubCategoryName'|translate"  class="p-column-filter">
             </th>
             <th></th>
         </tr>

@@ -3,22 +3,22 @@
     <ng-template pTemplate="caption">
         <div class="row">
         <div class="p-d-flex p-ai-center p-jc-between col-md-10">
-           <span class="h3Header">Client Requests</span><span style="color: brown;">({{clientName}})</span>
+           <span class="h3Header">  {{ 'Tracker.Client Requests' | translate }}</span>
         </div>
         <div class="col-md-2" >
             <button id="addEmpBtn" routerLink="/home/AllClientsReq" class="btn btn-outline-primary btn-md btn-block">
-                <span class="pi pi-plus">Add</span> </button>
+                <span class="pi pi-plus"> {{ 'Tracker.Add' | translate }}</span> </button>
         </div>
     </div>
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
-            <th>RequestName</th>
-            <th>projectName</th>
-            <th>requestTime</th>
-            <th>RequestType</th>
-            <th>RequestStatus</th>
-            <th>Description</th> 
+            <th>{{ 'Tracker.Request Name' | translate }}</th>
+            <th>{{ 'Tracker.project Name' | translate }}</th>
+            <th>{{ 'Tracker.request Time' | translate }}</th>
+            <th>{{ 'Tracker.Request Type' | translate }}</th>
+            <th>{{ 'Tracker.Request Status' | translate }}</th>
+            <th>{{ 'Tracker.Description' | translate }}</th> 
 
         </tr>
     </ng-template>
@@ -66,7 +66,9 @@
     </ng-template>
     <ng-template pTemplate="summary">
         <div class="p-d-flex p-ai-center p-jc-between">
-            In total there are {{lstRequests ? lstRequests.length : 0 }} Requests.
+            {{ 'Tracker.In total there are ' | translate }} {{lstRequests ? lstRequests.length : 0 }}  {{ 'Tracker.Requests'  | translate }}
+            <!-- In total there are {{lstRequests ? lstRequests.length : 0 }} Requests. -->
         </div>
     </ng-template>
+    
 </p-table>
