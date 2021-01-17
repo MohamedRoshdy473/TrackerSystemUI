@@ -84,7 +84,7 @@ import { AllProjectsComponent } from './Components/Projects/all-projects/all-pro
 import { CreateProjectComponent } from './Components/Projects/create-project/create-project.component';
 import { UpdateProjectComponent } from './Components/Projects/update-project/update-project.component';
 import { CategoryComponent } from './Components/Request/Categories/category/category.component';
-import { ClientsComponent } from './Components/ClientComponents/clients/clients.component';
+import { ClientsComponent } from './Components/ClientComponents/Add-clients/clients.component';
 import { DepartmentComponent } from './Components/DepartmentComponents/Department/department.component';
 import { CreateRequesteComponent } from './Components/Request/Manager-Create-requeste/create-requeste.component';
 import { ChangePaswwordComponent } from './Components/Change-paswword/change-paswword.component';

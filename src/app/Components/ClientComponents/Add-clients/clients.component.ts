@@ -1,6 +1,7 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 import { organization } from 'src/Shared/Models/organization';
 import { client } from "../../../../Shared/Models/client";
 import { ClientService } from "../../../../Shared/Services/client.service";
@@ -16,7 +17,10 @@ clients:client[]
 client:client
 organizations:organization[]
 organization:organization
-  constructor(private router: Router,private clientService:ClientService,private organizationService:OrganizationService) { }
+  constructor(private router: Router,private clientService:ClientService,private organizationService:OrganizationService,
+    public translate: TranslateService) {
+
+  }
 
   ngOnInit(): void {
     this.clients = []

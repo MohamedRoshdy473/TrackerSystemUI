@@ -21,10 +21,11 @@
 <div class="container card">
     <div class="row">
         <div class="col-9" style="margin-left: 20px;">
-            <h3 style="text-align: center;">All Project</h3>
+            <h3 style="text-align: center;" [translate]="'Tracker.All Project'"></h3>
         </div>
         <div class="col-2" style="margin-left: 6%;">
-            <p-button icon="pi pi-external-link" label="Add Project" routerLink="createProject" class="create">
+            <p-button icon="pi pi-external-link" [label]="'Tracker.Add' | translate" routerLink="/home/createProject"
+                class="create">
             </p-button>
         </div>
 
@@ -32,7 +33,7 @@
     <!-- Basic Data -->
     <ng-template pTemplate="header">
         <i class="pi pi-fw pi-home"></i>
-        <span style="margin-left: 10px;">Basic Data</span>
+        <span style="margin-left: 10px;" [translate]="'Tracker.Basic Data'"></span>
     </ng-template>
 
     <div  id="PopupWindow">
@@ -41,26 +42,26 @@
             <ng-template pTemplate="header">
                 <tr>
                     <!-- <th pSortableColumn="code" >Project Code  <p-sortIcon field="code"></p-sortIcon></th> -->
-                    <th pSortableColumn="projectName" style="font-size: 12px;">Project Name <p-sortIcon
+                    <th pSortableColumn="projectName" style="font-size: 12px;" >{{ 'Tracker.Project Name' | translate }}<p-sortIcon
                             field="projectName"></p-sortIcon>
                     </th>
-                    <th pSortableColumn="type" style="font-size: 12px;">Project Type <p-sortIcon field="type">
+                    <th pSortableColumn="type" style="font-size: 12px;"> {{ 'Tracker.Project Type Name' | translate }}<p-sortIcon field="type">
                         </p-sortIcon>
                     </th>
-                    <th pSortableColumn="organizationName" style="font-size: 12px;">Organization<p-sortIcon
+                    <th pSortableColumn="organizationName" style="font-size: 12px;"> {{ 'Tracker.Organization' | translate }}<p-sortIcon
                             field="organizationName"></p-sortIcon>
                     </th>
-                    <th pSortableColumn="projectCode" style="font-size: 12px;">project Code<p-sortIcon
+                    <th pSortableColumn="projectCode" style="font-size: 12px;"> {{ 'Tracker.Project Code' | translate }}<p-sortIcon
                             field="projectCode"></p-sortIcon>
                     </th>
 
-                    <th pSortableColumn="startDate" style="font-size: 12px;">Start Date <p-sortIcon field="startDate">
+                    <th pSortableColumn="startDate" style="font-size: 12px;"> {{ 'Tracker.Start Date' | translate }} <p-sortIcon field="startDate">
                         </p-sortIcon>
                     </th>
-                    <th pSortableColumn="endtDate" style="font-size: 12px;">End Date <p-sortIcon field="endtDate">
+                    <th pSortableColumn="endtDate" style="font-size: 12px;"> {{ 'Tracker.End Date' | translate }}<p-sortIcon field="endtDate">
                         </p-sortIcon>
                     </th>
-                    <th>Operations</th>
+                    <th>{{ 'Tracker.Controls' | translate }}</th>
 
 
 
@@ -72,37 +73,43 @@
                     <th>
                         <input pInputText type="text" style="width: 100%;"
                             (input)="dt1.filter($event.target.value, 'projectName', 'contains')"
-                            [value]="dt1.filters['projectName']?.value" placeholder="Search by ProjectName"
+                            [value]="dt1.filters['projectName']?.value" [placeholder]="'Tracker.Project Name' | translate"
+
                             class="p-column-filter">
                     </th>
                     <th>
                         <input pInputText type="text" style="width: 100%;"
                             (input)="dt1.filter($event.target.value, 'type', 'contains')"
-                            [value]="dt1.filters['type']?.value" placeholder="Search by type" class="p-column-filter">
+                            [value]="dt1.filters['type']?.value" [placeholder]="'Tracker.Project Type Name' | translate"
+                            class="p-column-filter">
                     </th>
                     <th>
                         <input pInputText type="text" style="width: 100%;"
                             (input)="dt1.filter($event.target.value, 'organizationName', 'contains')"
-                            [value]="dt1.filters['organizationName']?.value" placeholder="Search by organizationName"
+                            [value]="dt1.filters['organizationName']?.value" [placeholder]="'Tracker.Organization' | translate"
+
                             class="p-column-filter">
                     </th>
                     <th>
                         <input pInputText type="text" style="width: 100%;"
                             (input)="dt1.filter($event.target.value, 'projectCode', 'contains')"
-                            [value]="dt1.filters['projectCode']?.value" placeholder="Search by projectCode"
+                            [value]="dt1.filters['projectCode']?.value" [placeholder]="'Tracker.Project Code' | translate"
+
                             class="p-column-filter">
                     </th>
 
                     <th>
                         <input pInputText type="text" style="width: 100%;"
                             (input)="dt1.filter($event.target.value, 'startDate', 'contains')"
-                            [value]="dt1.filters['startDate']?.value" placeholder="Search by startDate"
+                            [value]="dt1.filters['startDate']?.value" [placeholder]="'Tracker.Start Date' | translate"
+
                             class="p-column-filter">
                     </th>
                     <th>
                         <input pInputText type="text" style="width: 100%;"
-                            (input)="dt1.filter($event.target.value, 'startDate', 'contains')"
-                            [value]="dt1.filters['startDate']?.value" placeholder="Search by startDate"
+                            (input)="dt1.filter($event.target.value, 'endDate', 'contains')"
+                            [value]="dt1.filters['startDate']?.value" [placeholder]="'Tracker.End Date' | translate"
+
                             class="p-column-filter">
                     </th>
                     <th></th>
@@ -137,25 +144,26 @@
                         </td> -->
                     <td>
                         <span class="p-column-title"></span>
-                        <span
-                            [class]="'customer-badge type-' + project.actualStartDate">{{project.actualStartDate | date:'yyyy:MM:dd'}}</span>
+                        <span [class]="'customer-badge type-' + project.actualStartDate">{{project.actualStartDate |
+                            date:'yyyy:MM:dd'}}</span>
                     </td>
                     <td>
                         <span class="p-column-title"></span>
-                        <span [class]="'customer-badge type-' + project.actualEndDate">{{project.actualEndDate | date:'yyyy:MM:dd'}}</span>
+                        <span [class]="'customer-badge type-' + project.actualEndDate">{{project.actualEndDate |
+                            date:'yyyy:MM:dd'}}</span>
                     </td>
+
                     <td>
                         <span class="pi pi-compass" aria-hidden="true"
                             (click)="showMaximizableDialog(project.id)"></span>
-                            &nbsp; &nbsp; 
+                        &nbsp; &nbsp;
                         <span class="p-button-icon pi pi-pencil" aria-hidden="true"
-                      
-                        [routerLink]="['updateproject',project.id]"
-                       ></span>
-                         <!-- (click)="DisplayToEditProject(project.id)" -->
+                            [routerLink]="['/home/updateproject',project.id]"></span>
+                        <!-- (click)="DisplayToEditProject(project.id)" -->
                         <span class="p-button-icon pi pi-times" (click)="confirm(project.id)" aria-hidden="true"></span>
                     </td>
-                    
+
+
                 </tr>
                 <!-- <p-dialog class="data" header={{project.projectName}} [(visible)]="displayModal" [modal]="true" [style]="{width: '50vw'}"
                         [baseZIndex]="10000" [draggable]="false" [resizable]="false">
@@ -166,7 +174,7 @@
             </ng-template>
             <ng-template pTemplate="emptymessage">
                 <tr>
-                    <td colspan="4">No Projects found.</td>
+                    <td colspan="4" [translate]="'Tracker.No data found'"></td>
                 </tr>
             </ng-template>
         </p-table>
@@ -336,124 +344,134 @@
 </ng-template>
 </p-dialog>
 <!--  -->
-        <p-dialog id="PopupWindow" [(visible)]="displayMaximizable" [modal]="true"
-            [style]="{width: '50vw'}" [maximizable]="true" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
-           
-            <form>
-                <div>
-                    <h3 > Project Data</h3>
-                </div>
-                <br/>
-                <div class="row">
-                    <div class="col">
-                        <label>Project Name</label>
-                        <input type="text" class="form-control" placeholder="{{project1.projectName}}" readonly>
-                    </div>
-                    <div class="col">
-                        <label>Project Code</label>
-                        <input type="text" class="form-control" placeholder="{{project1.projectCode}}" readonly>
-                    </div>
-                    <div class="col">
-                        <label>Project Cost</label>
-                        <input type="text" class="form-control" placeholder="{{project1.cost}}" readonly>
-                    </div>
-                    <div class="col">
-                        <label>client Mobile</label>
-                        <input type="text" class="form-control" placeholder="{{project1.clientMobile}}" readonly>
-                    </div>
-                </div>
-                <!-- <div class="row">
-                    <div class="col">
-                        <label>Project Cost</label>
-                        <input type="text" class="form-control" placeholder="{{project1.cost}}" readonly>
-                    </div>
-                    <div class="col">
-                        <label>client Mobile</label>
-                        <input type="text" class="form-control" placeholder="{{project1.clientMobile}}" readonly>
-                    </div>
-                </div> -->
-                <div class="row">
-                    <div class="col">
-                        <label>projectType Name</label>
-                        <input type="text" class="form-control" placeholder="{{project1.projectTypeName}}" readonly>
-                    </div>
-                    <div class="col">
-                        <label>organization Name</label>
-                        <input type="text" class="form-control" placeholder="{{project1.organizationName}}" readonly>
-                    </div>
-                    <div class="col">
-                        <label>project Period</label>
-                        <input type="text" class="form-control" placeholder="{{project1.projectPeriod}}" readonly>
-                    </div>
-                    <div class="col">
-                        <label>description</label>
-                        <input type="text" class="form-control" placeholder="{{project1.description}}" readonly>
-                    </div>
-                </div>
-             
-                <div class="row">
-                    <div class="col">
-                        <label>plannded Start Date</label>
-                        <input type="text" class="form-control" placeholder="{{project1.planndedStartDate | date:'yyyy:MM:dd'}}" readonly>
-                    </div>
-                    <div class="col">
-                        <label>actual Start Date</label>
-                        <input type="text" class="form-control" placeholder="{{project1.actualStartDate | date:'yyyy:MM:dd'}}" readonly>
-                    </div>
-                    <div class="col">
-                        <label>plannded End Date</label>
-                        <input type="text" class="form-control" placeholder="{{project1.planndedEndDate | date:'yyyy:MM:dd'}}" readonly>
-                    </div>
-                    <div class="col">
-                        <label>actual End Date</label>
-                        <input type="text" class="form-control" placeholder="{{project1.actualEndDate | date:'yyyy:MM:dd'}}" readonly>
-                    </div>
-                </div>
-               
-                <div class="row">
-                    <div class="col">
-                        <label>plannded End Date</label>
-                        <input type="text" class="form-control" placeholder="{{project1.planndedEndDate | date:'yyyy:MM:dd'}}" readonly>
-                    </div>
-                    <div class="col">
-                        <label>actual End Date</label>
-                        <input type="text" class="form-control" placeholder="{{project1.actualEndDate }}" readonly>
-                    </div>
-                
-                </div>
-                <div class="row">
-                    <div class="col" >
-                        <label style="color: #2674a8; font-size: 25px; font: bold;">Parteners</label>
-                        <input *ngFor="let i of project1.listOfStackholders" type="text" class="form-control" placeholder="{{i.stackeholderName}}" readonly>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col" >
-                        <label style="color: #2674a8; font-size: 25px; font: bold;">mileStones</label>
-                        <input type="text" *ngFor="let i of project1.listOfmilestones" class="form-control" placeholder="{{i.title}}" readonly>
-                    </div>
-                </div>
-              
-                    <div class="row">
-                        <div class="col" >
-                            <label style="color: #2674a8; font-size: 25px; font: bold;">Teams</label>
-                            <input type="text" *ngFor="let i of project1.listofprojectteam" class="form-control" placeholder="{{i.teamName}}" readonly>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col" >
-                            <label style="color: #2674a8; font-size: 25px; font: bold;">Documents</label>
-                            <input type="text" *ngFor="let i of project1.listOfdocuments" class="form-control" placeholder="{{i.documentName}}" readonly>
-                     
-                    </div>
-                </div>
-                <div>End</div>
-            </form>
+<p-dialog id="PopupWindow" [(visible)]="displayMaximizable" [modal]="true" [style]="{width: '50vw'}"
+[maximizable]="true" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
 
-            <ng-template pTemplate="footer">
-                <p-button icon="pi pi-check" (click)="displayMaximizable=false" label="Ok" styleClass="p-button-text">
-                </p-button>
-            </ng-template>
-        </p-dialog>
+<form>
+    <div>
+        <h3 [translate]="'Tracker.Project Data'"> </h3>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col">
+            <label [translate]="'Tracker.Project Name'"></label>
+            <input type="text" class="form-control" placeholder="{{project1.projectName}}" readonly>
+        </div>
+        <div class="col">
+            <label [translate]="'Tracker.Project Code'"></label>
+            <input type="text" class="form-control" placeholder="{{project1.projectCode}}" readonly>
+        </div>
+        <div class="col">
+            <label [translate]="'Tracker.Project Cost'"></label>
+            <input type="text" class="form-control" placeholder="{{project1.cost}}" readonly>
+        </div>
+        <div class="col">
+            <label [translate]="'Tracker.Client Mobile'"></label>
+            <input type="text" class="form-control" placeholder="{{project1.clientMobile}}" readonly>
+        </div>
+    </div>
+    <!-- <div class="row">
+        <div class="col">
+            <label>Project Cost</label>
+            <input type="text" class="form-control" placeholder="{{project1.cost}}" readonly>
+        </div>
+        <div class="col">
+            <label>client Mobile</label>
+            <input type="text" class="form-control" placeholder="{{project1.clientMobile}}" readonly>
+        </div>
+    </div> -->
+    <div class="row">
+        <div class="col">
+            <label [translate]="'Tracker.Project Type Name'"></label>
+            <input type="text" class="form-control" placeholder="{{project1.projectTypeName}}" readonly>
+        </div>
+        <div class="col">
+            <label [translate]="'Tracker.Organization Name'"></label>
+            <input type="text" class="form-control" placeholder="{{project1.organizationName}}" readonly>
+        </div>
+        <div class="col">
+            <label [translate]="'Tracker.Project Period'"></label>
+            <input type="text" class="form-control" placeholder="{{project1.projectPeriod}}" readonly>
+        </div>
+        <div class="col">
+            <label [translate]="'Tracker.Description'"></label>
+            <input type="text" class="form-control" placeholder="{{project1.description}}" readonly>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <label [translate]="'Tracker.Plannded Start Date'"></label>
+            <input type="text" class="form-control"
+                placeholder="{{project1.planndedStartDate | date:'dd/MM/yyyy'}}" readonly>
+        </div>
+        <div class="col">
+            <label [translate]="'Tracker.Actual Start Date'"></label>
+            <input type="text" class="form-control"
+                placeholder="{{project1.actualStartDate | date:'dd/MM/yyyy'}}" readonly>
+        </div>
+        <div class="col">
+            <label [translate]="'Tracker.Plannded End Date'"></label>
+            <input type="text" class="form-control"
+                placeholder="{{project1.planndedEndDate | date:'dd/MM/yyyy'}}" readonly>
+        </div>
+        <div class="col">
+            <label [translate]="'Tracker.Actual End Date'"></label>
+            <input type="text" class="form-control"
+                placeholder="{{project1.actualEndDate | date:'dd/MM/yyyy'}}" readonly>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <label [translate]="'Tracker.Plannded End Date'"></label>
+            <input type="text" class="form-control"
+                placeholder="{{project1.planndedEndDate | date:'dd/MM/yyyy'}}" readonly>
+        </div>
+        <div class="col">
+            <label [translate]="'Tracker.Actual End Date'"></label>
+            <input type="text" class="form-control" placeholder="{{project1.actualEndDate }}" readonly>
+        </div>
+
+    </div>
+    <div class="row">
+        <div class="col">
+            <label style="color: #2674a8; font-size: 25px; font: bold;" [translate]="'Tracker.Parteners'"></label>
+            <input *ngFor="let i of project1.listOfStackholders" type="text" class="form-control"
+                placeholder="{{i.stackeholderName}}" readonly>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label style="color: #2674a8; font-size: 25px; font: bold;" [translate]="'Tracker.MileStones'"></label>
+            <input type="text" *ngFor="let i of project1.listOfmilestones" class="form-control"
+                placeholder="{{i.title}}" readonly>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <label style="color: #2674a8; font-size: 25px; font: bold;" [translate]="'Tracker.Teams'"></label>
+            <input type="text" *ngFor="let i of project1.listofprojectteam" class="form-control"
+                placeholder="{{i.teamName}}" readonly>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <label style="color: #2674a8; font-size: 25px; font: bold;" [translate]="'Tracker.Documents'"></label>
+            <input type="text" *ngFor="let i of project1.listOfdocuments" class="form-control"
+                placeholder="{{i.documentName}}" readonly>
+
+        </div>
+    </div>
+    <div [translate]="'Tracker.End'"></div>
+</form>
+
+<ng-template pTemplate="footer">
+    <p-button icon="pi pi-check" (click)="displayMaximizable=false" [label]="'Tracker.Ok' | translate"
+    styleClass="p-button-text">
+    </p-button>
+</ng-template>
+</p-dialog>
     </div>
 </div>

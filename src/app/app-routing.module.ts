@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SignupComponent } from './Components/Signup/signup.component';
-import {SideNavComponent} from './Components/Side-nav/side-nav.component'
+import { SideNavComponent } from './Components/Side-nav/side-nav.component'
 import { HomeComponent } from './Components/Home/home.component';
 import { NavBarComponent } from './Components/Nav-bar/nav-bar.component';
-import {AllProjectsComponent} from '../app/Components/Projects/all-projects/all-projects.component'
-import {CreateProjectComponent} from '../app/Components/Projects/create-project/create-project.component'
+import { AllProjectsComponent } from '../app/Components/Projects/all-projects/all-projects.component'
+import { CreateProjectComponent } from '../app/Components/Projects/create-project/create-project.component'
 
-import {UpdateProjectComponent} from '../app/Components/Projects/update-project/update-project.component'
+import { UpdateProjectComponent } from '../app/Components/Projects/update-project/update-project.component'
 // import { CategoryComponent } from './Components/Request/Categories/category/category.component';
 // import { ClientsComponent } from './Components/Clients/clients.component';
 // import { DepartmentComponent } from './Components/Department/department.component';
 import { CategoryComponent } from './Components/Request/Categories/category/category.component';
-import { ClientsComponent } from './Components/ClientComponents/clients/clients.component';
+import { ClientsComponent } from './Components/ClientComponents/Add-clients/clients.component';
 import { CreateRequesteComponent } from './Components/Request/Manager-Create-requeste/create-requeste.component';
 import { DepartmentComponent } from './Components/DepartmentComponents/Department/department.component';
 import { ChangePaswwordComponent } from './Components/Change-paswword/change-paswword.component';
@@ -40,49 +40,53 @@ import { AllProjectmanagerProjectsComponent } from './Components/Projects/all-pr
 import { AllClientsForProjectmanagerComponent } from './Components/ClientComponents/all-clients-for-projectmanager/all-clients-for-projectmanager.component';
 import { ProjectmangerRequestsComponent } from './Components/Request/All-projectmanger-requests/projectmanger-requests.component';
 import { AssignemployeeRequestComponent } from './Components/Request/assignemployee-request/assignemployee-request.component';
+import { EditClientComponent } from './Components/ClientComponents/edit-client/edit-client.component';
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'login'},
-  { path: 'changePassword', component:  ChangePaswwordComponent},
-  { path: 'login', component:  SignupComponent},
-  { path: 'home', component: HomeComponent ,children:[
-    { path: 'tabs', component:  AllProjectsComponent},
-    { path: 'Category', component:  CategoryComponent},
-    { path: 'client', component:  ClientsComponent},
-    { path: 'department', component:  DepartmentComponent},
-    { path: 'DisplayDepartments', component:  DisplayDepartmentsComponent},
-    { path: 'editDepartment/:id', component: EditDepartmentComponent},
-    { path: 'ProjectTypes', component:  ProjectTypeComponent},
-    { path: 'addProjectType', component:  AddProjectTypeComponent},
-    { path: 'editProjectType/:id', component: EditProjectTypeComponent},
-    { path: 'Requests', component:  CreateRequesteComponent},
-    { path: 'allTeamLeaderReqts', component:  AllTeamLeaderRequestsComponent},
-    { path: 'tabs/createProject', component:  CreateProjectComponent},
-    { path: 'tabs/updateproject/:id', component:  UpdateProjectComponent},
-    {path:'AllUsers',component:AllUsersComponent},
-    {path:'DisplayAllClients',component:DisplayAllClientsComponent},
-    {path:'AllManagersReq',component:AllManagerRequestsComponent},
-    {path:'AllClientsReq',component:ClientCreateRequestComponent},
-    {path:'assignReq/:reqId',component:AssignRequestsComponent},
-    { path: 'employee', component:DisplayAllEmployeesComponent},
-    { path: 'addemployee', component:AddEmployeeComponent },
-    { path: 'allClientReqts', component:AllClientRequestsComponent },
-    { path: 'organization', component:AddOrganizationComponent },
-    { path: 'organizations', component:ListOrganizationsComponent },
-    { path: 'organization', component:AddOrganizationComponent },
-    { path: 'editOrganization/:id', component:EditOrganizationComponent },
-    { path: 'editEmployee/:empId', component:EditEmployeeComponent },
-    { path: 'allEmpAssignedRequests', component:EmployeeAssignedRequestsComponent },
-    { path: 'allEmpAssigned/:reqId/:problemId', component:EmployeeAssignedRequestsComponent },
-    { path: 'DisplayCategories', component:DisplayCategoriesComponent },
-    { path: 'projectsForProjectManager', component:AllProjectmanagerProjectsComponent },
-    { path: 'allclientsforprojectmanager', component:AllClientsForProjectmanagerComponent },
-    { path: 'projectmanagerRequests', component:ProjectmangerRequestsComponent },
-    { path: 'assignemployeerequest/:id', component:AssignemployeeRequestComponent },
+  { path: '', pathMatch: 'full', redirectTo: 'login' },
+  { path: 'changePassword', component: ChangePaswwordComponent },
+  { path: 'login', component: SignupComponent },
+  {
+    path: 'home', component: HomeComponent, children: [
+      { path: 'tabs', component: AllProjectsComponent },
+      { path: 'Category', component: CategoryComponent },
+      { path: 'client', component: ClientsComponent },
+      { path: 'editClient/:id', component: EditClientComponent },
+      { path: 'department', component: DepartmentComponent },
+      { path: 'DisplayDepartments', component: DisplayDepartmentsComponent },
+      { path: 'editDepartment/:id', component: EditDepartmentComponent },
+      { path: 'ProjectTypes', component: ProjectTypeComponent },
+      { path: 'addProjectType', component: AddProjectTypeComponent },
+      { path: 'editProjectType/:id', component: EditProjectTypeComponent },
+      { path: 'Requests', component: CreateRequesteComponent },
+      { path: 'allTeamLeaderReqts', component: AllTeamLeaderRequestsComponent },
+      { path: 'createProject', component: CreateProjectComponent },
+      { path: 'updateproject/:id', component: UpdateProjectComponent },
+      { path: 'AllUsers', component: AllUsersComponent },
+      { path: 'DisplayAllClients', component: DisplayAllClientsComponent },
+      { path: 'AllManagersReq', component: AllManagerRequestsComponent },
+      { path: 'AllClientsReq', component: ClientCreateRequestComponent },
+      { path: 'assignReq/:reqId', component: AssignRequestsComponent },
+      { path: 'employee', component: DisplayAllEmployeesComponent },
+      { path: 'addemployee', component: AddEmployeeComponent },
+      { path: 'allClientReqts', component: AllClientRequestsComponent },
+      { path: 'organization', component: AddOrganizationComponent },
+      { path: 'organizations', component: ListOrganizationsComponent },
+      { path: 'organization', component: AddOrganizationComponent },
+      { path: 'editOrganization/:id', component: EditOrganizationComponent },
+      { path: 'editEmployee/:empId', component: EditEmployeeComponent },
+      { path: 'allEmpAssignedRequests', component: EmployeeAssignedRequestsComponent },
+      { path: 'allEmpAssigned/:reqId/:problemId', component: EmployeeAssignedRequestsComponent },
+      { path: 'DisplayCategories', component: DisplayCategoriesComponent },
+      { path: 'projectsForProjectManager', component: AllProjectmanagerProjectsComponent },
+      { path: 'allclientsforprojectmanager', component: AllClientsForProjectmanagerComponent },
+      { path: 'projectmanagerRequests', component: ProjectmangerRequestsComponent },
+      { path: 'assignemployeerequest/:id', component: AssignemployeeRequestComponent },
 
 
-    
 
-]}
+
+    ]
+  }
 ];
 
 @NgModule({

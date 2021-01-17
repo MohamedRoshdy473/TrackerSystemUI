@@ -7,6 +7,7 @@ import { AuthService } from 'src/Shared/Services/auth.service';
 import { client } from 'src/Shared/Models/client';
 import { organization } from 'src/Shared/Models/organization';
 import { ClientService } from 'src/Shared/Services/client.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-all-clients-for-projectmanager',
@@ -23,8 +24,9 @@ export class AllClientsForProjectmanagerComponent implements OnInit {
   loading: boolean = true;
   role:string
   LoggedInUserId:number
-  constructor(private clientService:ClientService,private OrganizationService: OrganizationService, private router: Router,private authservice:AuthService,
-    private confirmationService: ConfirmationService, private messageService: MessageService) { }
+  constructor(private clientService:ClientService, public translate: TranslateService,private OrganizationService: OrganizationService, private router: Router,private authservice:AuthService,
+    private confirmationService: ConfirmationService, private messageService: MessageService,) { 
+    }
     ngOnInit(): void {
       this.role= localStorage.getItem('roles')
       this.LoggedInUserId = Number(localStorage.getItem('id'))
