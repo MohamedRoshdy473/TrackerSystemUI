@@ -26,13 +26,6 @@ export class AllClientsForProjectmanagerComponent implements OnInit {
   LoggedInUserId:number
   constructor(private clientService:ClientService, public translate: TranslateService,private OrganizationService: OrganizationService, private router: Router,private authservice:AuthService,
     private confirmationService: ConfirmationService, private messageService: MessageService,) { 
-        translate.addLangs(['en', 'ar']);
-        translate.setDefaultLang('en');
-    
-        const browserLang = translate.getBrowserLang();
-        translate.use(browserLang.match(/en|ar/) ? browserLang : 'en');
-      
-
     }
     ngOnInit(): void {
       this.role= localStorage.getItem('roles')

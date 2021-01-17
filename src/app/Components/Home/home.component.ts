@@ -16,11 +16,5 @@ export class HomeComponent implements OnInit {
   pharmacyID:Number
   ngOnInit() {
   this.role=localStorage.getItem("roles")
-  // this.pharmacyService.getPharmacyById(this.pharmacyID).subscribe(e=>{
-  //   this.pharmacyName = e.name
-  //   this.pharmacyType = e.pharmacyType
-  //   console.log(this.pharmacyType)
-  // })
-
   }
 }
