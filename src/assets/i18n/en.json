@@ -148,7 +148,9 @@
     "Ok": "Ok",
     "Add Partener": "Add Partener",
     "UserName":"UserName",
-    "Role":"Role"
+    "Role":"Role",
+    " Name is required":" Name is required",
+    "Name must be at least 4 characters long":"Name must be at least 4 characters long"
 
 
  
