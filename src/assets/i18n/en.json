@@ -148,7 +148,12 @@
     "Ok": "Ok",
     "Add Partener": "Add Partener",
     "UserName":"UserName",
-    "Role":"Role"
+    "Role":"Role",
+    "Problems":"Problems",
+    "All Problems":"All Problems",
+    "Assets":"Assets",
+    "All Assets":"All Assets",
+    "Asset Name":"Asset Name"
 
 
  

@@ -41,6 +41,12 @@ import { AllClientsForProjectmanagerComponent } from './Components/ClientCompone
 import { ProjectmangerRequestsComponent } from './Components/Request/All-projectmanger-requests/projectmanger-requests.component';
 import { AssignemployeeRequestComponent } from './Components/Request/assignemployee-request/assignemployee-request.component';
 import { EditClientComponent } from './Components/ClientComponents/edit-client/edit-client.component';
+import { DisplayProblemsComponent } from './Components/ProblemComponent/display-problems/display-problems.component';
+import { AddProblemComponent } from './Components/ProblemComponent/add-problem/add-problem.component';
+import { UpdateProblemComponent } from './Components/ProblemComponent/update-problem/update-problem.component';
+import { DisplayAssetsComponent } from './Components/Assets/display-assets/display-assets.component';
+import { AddAssetsComponent } from './Components/Assets/add-assets/add-assets.component';
+import { UpdateAssetsComponent } from './Components/Assets/update-assets/update-assets.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'changePassword', component: ChangePaswwordComponent },
@@ -81,6 +87,14 @@ const routes: Routes = [
       { path: 'allclientsforprojectmanager', component: AllClientsForProjectmanagerComponent },
       { path: 'projectmanagerRequests', component: ProjectmangerRequestsComponent },
       { path: 'assignemployeerequest/:id', component: AssignemployeeRequestComponent },
+      { path: 'DisplayProblemsComponent', component: DisplayProblemsComponent },
+      { path: 'addproblem', component: AddProblemComponent },
+      { path: 'editProblem/:id', component: UpdateProblemComponent },
+      { path: 'DisplayAssets', component: DisplayAssetsComponent },
+      { path: 'addAssets', component: AddAssetsComponent },
+      { path: 'updateAsset/:id', component: UpdateAssetsComponent },
+
+
 
 
 

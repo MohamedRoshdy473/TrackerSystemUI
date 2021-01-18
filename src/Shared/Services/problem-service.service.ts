@@ -32,7 +32,13 @@ export class ProblemServiceService {
   GetAllRequestByRequestProblemId(problemId:number): Observable <RequestProblems[]>{
     return this.httpClient.get<RequestProblems[]> (`${environment.RequestProblems}GetAllRequestByProblemId/${problemId}`,this.httpHeader) ;
   }
-//   AddRequestProblem(requestProblem:RequestProblems):Observable<RequestProblems>{
-// return this.httpClient.post<RequestProblems>(`${environment.RequestProblems}`,requestProblem,this.httpHeader)
-//   }
+  deleteProblem(id:number):Observable<any>{ 
+    return this.httpClient.delete<any>(`${environment.Problems}${id}`,this.httpHeader);
+  }
+  AddProblem(Problem: Problem): Observable<Problem> {
+    return this.httpClient.post<Problem>(`${environment.Problems}`, Problem, this.httpHeader)
+  }
+  updateProblem(id:Number,problem:Problem):Observable<Problem>{
+    return this.httpClient.put<Problem>(`${environment.Problems}`+ id,problem,this.httpHeader);
+  }
 }

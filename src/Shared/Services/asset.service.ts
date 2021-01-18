@@ -19,4 +19,15 @@ export class AssetService {
   inserAsset(client:asset): Observable <any>{
     return this.httpClient.post<any> (`${environment.asset}`,client,this.httpHeader) ;
   }
+
+  deleteAsset(id:asset):Observable<any>{ 
+    return this.httpClient.delete<any>(`${environment.asset}${id}`,this.httpHeader);
+  }
+
+  updateAsset(id:Number,asset:asset):Observable<asset>{
+    return this.httpClient.put<asset>(`${environment.asset}`+ id,asset,this.httpHeader);
+  }
+  GetAssetById(assetId: number): Observable<any> {
+    return this.httpClient.get<asset>(`${environment.asset}${assetId}`, this.httpHeader)
+  }
 }

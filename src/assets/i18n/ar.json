@@ -150,6 +150,11 @@
     "CategoryName": "اسم التصنيف",
     "SubCategoryName": "اسم الصنيف الفرعي",
     "Add Employee": "اضافة موظف",
-    "All Departments": "الاقسام"
+    "All Departments": "الاقسام",
+    "Problems":"المشاكل",
+    "All Problems":"المشاكل",
+    "Assets":"الادوات",
+    "All Assets":"كل الادوات",
+    "Asset Name":"اسم الاداة"
   }
 }
