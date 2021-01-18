@@ -28,43 +28,44 @@
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
     [globalFilterFields]="['requestName','clientName ','requestMode','requestStatus','requestPeriority','description']">
     <ng-template pTemplate="caption">
-        <h4 style="margin-left: 25px;">All Employee Assigned Requests</h4>
+        <h4 style="margin-left: 25px;" [translate]="'Tracker.All Employee Assigned Requests'"
+        ></h4>
 
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
-            <th>Request Name</th>
-            <th>Client Name</th>
-            <th>Request Mode</th>
-            <th>Request Status</th>
-            <th>Description</th>
-            <th>Operation</th>
+            <th [translate]="'Tracker.Request Name'"></th>
+            <th [translate]="'Tracker.Client Name'"></th>
+            <th [translate]="'Tracker.Request Mode'"></th>
+            <th [translate]="'Tracker.Request Status'"></th>
+            <th [translate]="'Tracker.Description'"></th>
+            <th [translate]="'Tracker.Operation'"></th>
             <th></th>
         </tr>
         <tr>
             <th>
                 <input pInputText style="width: 100%;" type="text"
-                    (input)="dt.filter($event.target.value, 'requestName', 'startsWith')" placeholder='requestName'
+                    (input)="dt.filter($event.target.value, 'requestName', 'startsWith')"[placeholder]="'Tracker.Request Name' | translate"
                     class="p-column-filter">
             </th>
             <th>
                 <input pInputText style="width: 100%;" type="text"
-                    (input)="dt.filter($event.target.value, 'clientName', 'startsWith')" placeholder='ClientName'
+                    (input)="dt.filter($event.target.value, 'clientName', 'startsWith')" [placeholder]="'Tracker.Client Name' | translate"
                     class="p-column-filter">
             </th>
             <th>
                 <input pInputText type="text" style="width: 100%"
-                    (input)="dt.filter($event.target.value, 'requestMode', 'contains')" placeholder='Mode'
+                    (input)="dt.filter($event.target.value, 'requestMode', 'contains')" [placeholder]="'Tracker.Request Mode' | translate"
                     class="p-column-filter">
             </th>
             <th>
                 <input pInputText type="text" style="width: 100%"
-                    (input)="dt.filter($event.target.value, 'requestStatus', 'contains')" placeholder='Status'
+                    (input)="dt.filter($event.target.value, 'requestStatus', 'contains')" [placeholder]="'Tracker.Request Status' | translate"
                     class="p-column-filter">
             </th>
             <th>
                 <input pInputText style="width: 100%;" type="text"
-                    (input)="dt.filter($event.target.value, 'description', 'startsWith')" placeholder="Description"
+                    (input)="dt.filter($event.target.value, 'description', 'startsWith')" [placeholder]="'Tracker.Description' | translate"
                     class="p-column-filter">
             </th>
             <th></th>
@@ -91,11 +92,11 @@
                 {{empReq.description}}
             </td>
             <td>
-                <button class="btn btn-success" (click)="viewAllImages(empReq.id)">View
+                <button class="btn btn-success" (click)="viewAllImages(empReq.id)" [translate]="'Tracker.View'">
                 </button>
             </td>
             <td id="Assig" *ngIf="!empReq.RequestProblemObj">
-                <button class="btn btn-info" (click)="assignRequests(empReq.id)">Assign</button>
+                <button class="btn btn-info" (click)="assignRequests(empReq.id)" [translate]="'Tracker.Assign'"></button>
             </td>
             <td id="Assig" *ngIf="empReq.RequestProblemObj">
                 <button class="btn btn-warning">{{empReq.RequestProblemObj.problemName}}</button>
@@ -104,7 +105,8 @@
     </ng-template>
     <ng-template pTemplate="emptymessage">
         <tr>
-            <td colspan="6">No Assigned Requests found.</td>
+            <td colspan="6" [translate]="'Tracker.No data found'"
+            ></td>
         </tr>
         <tr>
 
@@ -117,7 +119,7 @@
         <p-table [value]="reqImages">
             <ng-template pTemplate="header">
                 <tr>
-                    <th style="color: #2674a8; font-size: 20px; font: bold; text-align: center;">Document Name</th>
+                    <th style="color: #2674a8; font-size: 20px; font: bold; text-align: center;" [translate]="'Tracker.Document Name'"></th>
                 </tr>
 
             </ng-template>
@@ -130,7 +132,7 @@
             </ng-template>
             <ng-template pTemplate="emptymessage">
                 <tr>
-                    <td colspan="6">No Images Requests found.</td>
+                    <td colspan="6" [translate]="'Tracker.No data found'"></td>
                 </tr>
                 <tr>
 
@@ -139,7 +141,7 @@
         </p-table>
     </div>
     <ng-template pTemplate="footer">
-        <p-button icon="pi pi-times" (click)="NewclientDialogbool=false" label="No"></p-button>
+        <p-button icon="pi pi-times" (click)="NewclientDialogbool=false" [label]="'Tracker.No' | translate"></p-button>
     </ng-template>
 
 </p-dialog>

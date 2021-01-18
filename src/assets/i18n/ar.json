@@ -152,6 +152,12 @@
     "Add Employee": "اضافة موظف",
     "All Departments": "الاقسام",
     "Name is required":"يجب ان تدخل الاسم",
-    "Name must be at least 4 characters long":"يجب ان يكون الاسم علي الاقل اربع حروف"
+    "Name must be at least 4 characters long":"يجب ان يكون الاسم علي الاقل اربع حروف",
+    "Problems":"المشاكل",
+    "All Problems":"المشاكل",
+    "Assets":"الادوات",
+    "All Assets":"كل الادوات",
+    "Asset Name":"اسم الاداة",
+    "All Employee Assigned Requests":"جميع طلبات الموظف المعينة"
   }
 }
