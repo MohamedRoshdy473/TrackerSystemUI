@@ -25,7 +25,7 @@ export const environment = {
   projectPositions: 'http://localhost:50653/api/ProjectPositions/',
   getDepartmentByEmpID: 'http://localhost:50653/api/Departments/GetDepartmentByEmployeeId/',
   projectTypes: 'http://localhost:50653/api/ProjectTypes/',
-  asset: 'http://localhost:50653/api/Assets',
+  asset: 'http://localhost:50653/api/Assets/',
   GetAllRequestByClientId: 'http://localhost:50653/api/Request/GetAllRequestByClientId/',
   reqMode: 'http://localhost:50653/api/RequestModes/',
   GetAllMilestonsByProjectId: 'http://localhost:50653/api/MileStones/GetMileStonesByProjectId/',

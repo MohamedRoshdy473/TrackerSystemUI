@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -21,7 +22,7 @@ export class LoginService {
     this.password=password;
     let Data={email,password}
     console.log(Data)
-  return this.httpClient.post('http://localhost:50653/api/Authenticate/login',Data,this.httpHeader)
+  return this.httpClient.post(`${environment.Domain}api/Authenticate/login`,Data,this.httpHeader)
   }
 
   public isLoggedIn()

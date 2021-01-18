@@ -27,10 +27,18 @@
     <form #frm="ngForm" (ngSubmit)="update()">
         <div class="form-row">
             <div class="col-md-6">
-                <label for="name">{{'Tracker.Department Name'|translate}}</label>
+                <label for="name">{{'Tracker.Asset Name'|translate}}</label>
                 <input type="text" #Dept="ngModel" [class.is-invalid]="Dept.invalid && Dept.touched"
-                    [class.is-valid]="Dept.valid" [(ngModel)]="departmentObj.name" required minlength="3" name="Dept"
-                    id="Department" class="form-control" [placeholder]="'Tracker.Department Name'|translate" aria-describedby="helpId">
+                    [class.is-valid]="Dept.valid" [(ngModel)]="assetObj.assetName" required minlength="3" name="Dept"
+                    id="asset" class="form-control" [placeholder]="'Tracker.Name'|translate" aria-describedby="helpId">
+            </div>
+            <br>
+            <br>
+            <div class="col-md-6">
+                <label for="code">{{'Tracker.Code'|translate}}</label>
+                <input type="text" #Dept2="ngModel" [class.is-invalid]="Dept2.invalid && Dept2.touched"
+                    [class.is-valid]="Dept2.valid" [(ngModel)]="assetObj.assetCode" required minlength="3" name="Dept2"
+                    id="asset" class="form-control" [placeholder]="'Tracker.Code'|translate" aria-describedby="helpId">
             </div>
         </div>
         <br>

@@ -1,28 +1,46 @@
 <div style="margin-left: 25px;">
     <div class="row">
         <div class="col-md-3">
-            <label for="Project Name" class="labelMarginRight">Request Name </label><br>
-            <input minlength="3" placeholder="Enter Request Name" type="text" [(ngModel)]="reqObj.requestName"
-                pInputText id="name" required autofocus />
+            <label for="Project Name"  name="name" class="labelMarginRight">{{'Tracker.Request Name'|translate}} </label><br>
+            <input id="name" name="name" class="form-control"
+            required minlength="4" [placeholder]=" 'Tracker.Enter Request Name'|translate"
+            [(ngModel)]="reqObj.requestName" #name="ngModel"  pInputText>
+
+            <!-- <input minlength="4" [placeholder]=" 'Tracker.Enter Request Name'|translate" type="text"
+             [(ngModel)]="reqObj.requestName"
+                pInputText id="name" name="name"   #name="ngModel"  /> -->
+
+               
+          
+          <div *ngIf="name.invalid && (name.dirty || name.touched)"
+              class="alert alert-danger">
+          
+            <div *ngIf="name.errors.required">
+              Name is required.
+            </div>
+            <div *ngIf="name.errors.minlength">
+              Name must be at least 4 characters long.
+            </div>
+          </div>
         </div>
 
         <div class="p-field col-md-3">
-            <label for="Project Type" class="labelMarginRight">Project Name</label><br>
-            <p-dropdown [options]="lstProjects" [(ngModel)]="reqObj.projectId" placeholder="Select Project Name"
+            <label for="Project Type" class="labelMarginRight"> {{'Tracker.Project Name'|translate}}</label><br>
+            <p-dropdown [options]="lstProjects" [(ngModel)]="reqObj.projectId" [placeholder]=" 'Tracker.Select Project Name'|translate"
                 optionLabel="projectName" optionValue="id" (onChange)="onChange($event)">
             </p-dropdown>
         </div>
         <div class="p-field col-md-3">
-            <label for="clientName" class="labelMarginRight">Client Name</label><br>
+            <label for="clientName" class="labelMarginRight">{{'Tracker.Client Name'|translate}} </label><br>
 
-            <p-dropdown [options]="lstclients" [(ngModel)]="reqObj.clientId" placeholder="Select Client Name"
+            <p-dropdown [options]="lstclients" [(ngModel)]="reqObj.clientId" [placeholder]=" 'Tracker.Select Client Name'|translate" 
                 optionLabel="clientName" optionValue="id">
             </p-dropdown>
         </div>
         <div class="p-field col-md-3">
-            <label for="requestType" class="labelMarginRight">Request Type</label><br>
+            <label for="requestType" class="labelMarginRight">{{'Tracker.Request Type'|translate}} </label><br>
 
-            <p-dropdown [options]="lstProjectTeams" [(ngModel)]="reqObj.teamId" placeholder="Select Request Type"
+            <p-dropdown [options]="lstProjectTeams" [(ngModel)]="reqObj.teamId" [placeholder]="'Tracker.Select Request Type'|translate"
                 optionLabel="teamName" optionValue="teamId" (onChange)="GetProjectTeamId($event)">
             </p-dropdown>
         </div>
@@ -32,27 +50,28 @@
     <div class="row">
 
         <div class="col">
-            <label for="Project Type" class="labelMarginRight">Request Sub Category</label><br>
+            <label for="Project Type" class="labelMarginRight">{{'Tracker.Request Sub Category'|translate}}  </label><br>
             <p-dropdown [options]="lstReqSubCategories" [(ngModel)]="reqObj.requestSubCategoryId"
-                placeholder="Select Sub Category" optionLabel="subCategoryName" optionValue="id">
+            [placeholder]="'Tracker.Select Sub Category'|translate"  optionLabel="subCategoryName" optionValue="id">
             </p-dropdown>
         </div>
         <div class="col">
-            <label for="Project Type" class="labelMarginRight">Request Periority</label><br>
+            <label for="Project Type" class="labelMarginRight">{{'Tracker.Request Periority'|translate}} </label><br>
             <p-dropdown [options]="lstReqPeriorities" [(ngModel)]="reqObj.requestPeriorityId"
-                placeholder="Select Request Periority" optionLabel="periorty" optionValue="id">
+            [placeholder]="'Tracker.Select Request Periority'|translate"   optionLabel="periorty" optionValue="id">
             </p-dropdown>
         </div>
 
         <div class="p-field col-md-3">
-            <label for="Project Type" class="labelMarginRight">Request Mode</label><br>
-            <p-dropdown [options]="lstRequestMode" [(ngModel)]="reqObj.requestModeId" placeholder="Select Request Mode"
+            <label for="Project Type" class="labelMarginRight">{{'Tracker.Request Mode'|translate}} </label><br>
+           
+            <p-dropdown [options]="lstRequestMode" [(ngModel)]="reqObj.requestModeId" [placeholder]="'Tracker.Select Request Mode'|translate"
                 optionLabel="mode" optionValue="id">
             </p-dropdown>
         </div>
         <div class="p-field col-md-3">
-            <label for="Project Type" class="labelMarginRight">Request Asset</label><br>
-            <p-dropdown [options]="lstReqAssets" [(ngModel)]="reqObj.assetId" placeholder="Select Request Asset"
+            <label for="Project Type" class="labelMarginRight">{{'Tracker.Request Asset'|translate}} </label><br>
+            <p-dropdown [options]="lstReqAssets" [(ngModel)]="reqObj.assetId"   [placeholder]="'Tracker.Select Request Asset'|translate"
                 optionLabel="assetName" optionValue="id">
             </p-dropdown>
         </div>
@@ -73,7 +92,7 @@
 
         <div class="row">
             <div class="p-field col-md-9">
-                <label for="description">Description</label><br>
+                <label for="description">{{ 'Tracker.Description' | translate }}</label><br>
                 <textarea id="description" [(ngModel)]="reqObj.description" pInputTextarea required rows="3"
                     cols="63"></textarea>
             </div>
@@ -90,7 +109,7 @@
 
 <div class="p-field col-md-9">
     <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
-    <button type="button" class="btn btn-success" (click)="file.click()">Upload Request Images</button>
+    <button type="button" class="btn btn-success" (click)="file.click()">{{'Tracker.Upload Request Images'|translate}}</button>
 
 </div>
 <!-- 
@@ -105,7 +124,7 @@
         <table class="table">
             <thead>
                 <tr>
-                    <th>Request Image Name</th>
+                    <th>  {{'Tracker.Request Image Name'|translate}}</th>
 
                 </tr>
             </thead>
@@ -120,13 +139,13 @@
 
                 </tr>
                 <tr *ngIf="lstRequestImages.length == 0">
-                    <td colspan="4" style="color: rgb(102, 97, 23);">No images found.</td>
+                    <td colspan="4" style="color: rgb(102, 97, 23);">{{'Tracker.No images found'|translate}}</td>
                 </tr>
             </tbody>
 
         </table>
 
-        <button class="btn btn-warning" [disabled]="lstRequestImages.length == 0" (click)="SaveimageToDB()">Add
-            List</button>
+        <button class="btn btn-warning" [disabled]="lstRequestImages.length == 0" (click)="SaveimageToDB()">
+            {{'Tracker.Add List'|translate}}</button>
     </div>
 </div>

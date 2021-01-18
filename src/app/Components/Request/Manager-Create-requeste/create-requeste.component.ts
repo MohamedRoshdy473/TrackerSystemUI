@@ -149,7 +149,7 @@ export class CreateRequesteComponent implements OnInit {
       this.reqId = e;
       this.reqImage.requestId = this.reqId;
       
-      this.router.navigate(['home/AllManagersReq']);
+     ;
 
     })
   }
@@ -197,6 +197,7 @@ export class CreateRequesteComponent implements OnInit {
         id: 0, requestStatusId: 0, requestPeriorityId: 0, requestName: '', requestCode: '', projectName: '', projectId: 0,
         requestPeriority: '', requestStatus: '', requestDate: new Date(), requestTime: '', requestModeId: 0, assetId: 0, clientId: 0,
       }
+      this.router.navigate(['home/AllManagersReq'])
     })
 
   }
