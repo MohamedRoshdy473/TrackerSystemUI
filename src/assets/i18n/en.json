@@ -149,11 +149,13 @@
     "Add Partener": "Add Partener",
     "UserName":"UserName",
     "Role":"Role",
-    "Problems":"Problems",
+    " Name is required":" Name is required",
+    "Name must be at least 4 characters long":"Name must be at least 4 characters long",
     "All Problems":"All Problems",
     "Assets":"Assets",
     "All Assets":"All Assets",
-    "Asset Name":"Asset Name"
+    "Asset Name":"Asset Name",
+    "All Employee Assigned Requests":"All Employee Assigned Requests"
 
 
  
