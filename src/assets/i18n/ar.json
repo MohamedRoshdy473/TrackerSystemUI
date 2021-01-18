@@ -9,9 +9,6 @@
     "ClientCode": "كود العميل",
     "OrganizationName": "اسم المنظمه",
     "Add Client": " اضافه عميل جديد",
-<<<<<<< HEAD
-    "Male":"ذكر",
-    "Employee Name":"اسم الموظف",
     "System Users":"مستخدمي النظام",
     "Add Employee":"اضافه موظف جديد",
     "UserName":"مستخدم جديد",
@@ -22,15 +19,10 @@
     "Admin":"مشرف",
     "PM":"مدير المشروع",
     "TL":"قائد فريق ",
-    "Client Name":"اسم العميل",
-    "Mobile":"موبايل",
     "ResponsiblePerson":"الشخص المسؤل",
     "Latitude":"خط الطول",
-    "Female":"انثي",
-=======
     "Male": "ذكر",
     "Female": "انثي",
->>>>>>> 7801dd260a9e023cb7a7a4554eb524261feba93b
     "Address": "العنوان",
     "Phone": " رقم الهاتف",
     "Email": " البريد الالكتروني",

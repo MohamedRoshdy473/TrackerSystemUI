@@ -15,7 +15,7 @@ import { CategoryComponent } from './Components/Request/Categories/category/cate
 import { ClientsComponent } from './Components/ClientComponents/Add-clients/clients.component';
 import { CreateRequesteComponent } from './Components/Request/Manager-Create-requeste/create-requeste.component';
 import { DepartmentComponent } from './Components/DepartmentComponents/Department/department.component';
-import { ChangePaswwordComponent } from './Components/Change-paswword/change-paswword.component';
+import { ChangePaswwordComponent } from './Components/Profile/Change-paswword/change-paswword.component';
 import { AllUsersComponent } from './Components/All-users/all-users.component';
 import { DisplayAllEmployeesComponent } from './Components/employee/display-all-employees/display-all-employees.component';
 import { AddEmployeeComponent } from './Components/employee/add-employee/add-employee.component';
@@ -41,9 +41,9 @@ import { AllClientsForProjectmanagerComponent } from './Components/ClientCompone
 import { ProjectmangerRequestsComponent } from './Components/Request/All-projectmanger-requests/projectmanger-requests.component';
 import { AssignemployeeRequestComponent } from './Components/Request/assignemployee-request/assignemployee-request.component';
 import { EditClientComponent } from './Components/ClientComponents/edit-client/edit-client.component';
+import { ProfileComponent } from './Components/Profile/Profile/profile.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
-  { path: 'changePassword', component: ChangePaswwordComponent },
   { path: 'login', component: SignupComponent },
   {
     path: 'home', component: HomeComponent, children: [
@@ -52,6 +52,7 @@ const routes: Routes = [
       { path: 'client', component: ClientsComponent },
       { path: 'editClient/:id', component: EditClientComponent },
       { path: 'department', component: DepartmentComponent },
+      { path: 'changePassword', component: ChangePaswwordComponent },
       { path: 'DisplayDepartments', component: DisplayDepartmentsComponent },
       { path: 'editDepartment/:id', component: EditDepartmentComponent },
       { path: 'ProjectTypes', component: ProjectTypeComponent },
@@ -68,6 +69,7 @@ const routes: Routes = [
       { path: 'assignReq/:reqId', component: AssignRequestsComponent },
       { path: 'employee', component: DisplayAllEmployeesComponent },
       { path: 'addemployee', component: AddEmployeeComponent },
+      { path: 'profile', component: ProfileComponent },
       { path: 'allClientReqts', component: AllClientRequestsComponent },
       { path: 'organization', component: AddOrganizationComponent },
       { path: 'organizations', component: ListOrganizationsComponent },

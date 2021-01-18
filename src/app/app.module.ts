@@ -51,7 +51,7 @@ import {InputSwitchModule} from 'primeng/inputswitch';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import {PickListModule} from 'primeng/picklist';
 import {OrderListModule} from 'primeng/orderlist';
-
+import { ValidateEqualModule } from 'ng-validate-equal';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSelectModule } from '@angular/material/select';
@@ -72,7 +72,7 @@ import {DynamicDialogModule} from 'primeng/dynamicdialog';
 
 import {MatTooltipModule} from '@angular/material/tooltip';
 // import { MaterialModule} from '@angular/material';
-
+import { MustMatchDirective } from './helpers/must-match.directive';
 
 import { from } from 'rxjs';
 
@@ -87,7 +87,7 @@ import { CategoryComponent } from './Components/Request/Categories/category/cate
 import { ClientsComponent } from './Components/ClientComponents/Add-clients/clients.component';
 import { DepartmentComponent } from './Components/DepartmentComponents/Department/department.component';
 import { CreateRequesteComponent } from './Components/Request/Manager-Create-requeste/create-requeste.component';
-import { ChangePaswwordComponent } from './Components/Change-paswword/change-paswword.component';
+import { ChangePaswwordComponent } from './Components/Profile/Change-paswword/change-paswword.component';
 import { AddEmployeeComponent } from './Components/employee/add-employee/add-employee.component';
 import { EditEmployeeComponent } from './Components/employee/edit-employee/edit-employee.component';
 import { DisplayAllEmployeesComponent } from './Components/employee/display-all-employees/display-all-employees.component';
@@ -117,6 +117,8 @@ import { AssignemployeeRequestComponent } from './Components/Request/assignemplo
 
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { ProfileComponent } from './Components/Profile/Profile/profile.component';
+
 
 registerLocaleData(en);
 
@@ -134,6 +136,7 @@ registerLocaleData(en);
     CategoryComponent,
     ClientsComponent,
     DisplayAllClientsComponent,
+    MustMatchDirective,
     EditClientComponent,
     CreateRequesteComponent,
     DepartmentComponent,
@@ -160,7 +163,8 @@ registerLocaleData(en);
    AllProjectmanagerProjectsComponent,
    AllClientsForProjectmanagerComponent,
    ProjectmangerRequestsComponent,
-   AssignemployeeRequestComponent
+   AssignemployeeRequestComponent,
+   ProfileComponent
   ],
   imports: [
     TranslateModule,
@@ -208,6 +212,7 @@ registerLocaleData(en);
     SplitButtonModule,
     AutoCompleteModule,
     InputSwitchModule,
+    ValidateEqualModule,
     MatCardModule,
     MatButtonModule,
     MatToolbarModule,

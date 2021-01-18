@@ -50,11 +50,10 @@ export class AuthService {
   changPassword(NewPassword:string)
   {
     var data={
-      userName:localStorage.getItem('userName'),
+      userName:localStorage.getItem('email'),
       password:"P@ssw0rd",
       Newpassword:NewPassword
     };
-    console.log(data);
     return this.httpclient.post(`${environment.User}/Authenticate/changPassword`, data, this.httpOptions)
   }
 }

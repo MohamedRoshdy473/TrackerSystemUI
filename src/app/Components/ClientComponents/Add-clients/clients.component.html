@@ -55,7 +55,9 @@
             <small [hidden]="Email.valid || Email.untouched" id="helpId" class="text-muted" [translate]="'Tracker.messege'"></small>
 
     </div>
-    <div class="col-4" style="margin-top: 30px;">
+    <div class="col-4">
+        <label for="name"> {{ 'Tracker.Organization Name' | translate }}</label>
+        <br>
         <p-dropdown [options]="organizations" [(ngModel)]="client.organizationId" [placeholder]="'Tracker.OrganizationName' | translate"
             optionLabel="organizationName" optionValue="id">
         </p-dropdown>
