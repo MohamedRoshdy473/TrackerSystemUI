@@ -7,7 +7,7 @@
     </div>
     <br/>
     <div class="row">
-        <div class="col">
+        <div class="p-field col-md-3">
             <label for="Project Name" class="labelMarginRight" [translate]="'Tracker.Project Name'">
             </label><br>
             <input minlength="3" #ProjectName="ngModel" autofocus
@@ -18,7 +18,7 @@
             <br> <small [hidden]="ProjectName.valid || ProjectName.untouched" id="helpId"
                 class="text-muted" [translate]="'Tracker.messege'"></small>
         </div>
-        <div class="col">
+        <div class="p-field col-md-3">
             <label for="Project Code" class="labelMarginRight" [translate]="'Tracker.Project Code'"></label><br>
             <input type="text" #ProCode="ngModel" name="ProjectCode"
                 [placeholder]="'Tracker.Project Code' | translate"
@@ -27,7 +27,7 @@
             <br> <small [hidden]="ProCode.valid || ProCode.untouched" id="helpId" class="text-muted"
                 [translate]="'Tracker.messege'"></small>
         </div>
-        <div class="col">
+        <div class="p-field col-md-3">
             <label for="Project Cost" class="labelMarginRight" [translate]="'Tracker.Project Cost'">
             </label><br>
             <input type="number" autofocus [(ngModel)]="projectObj.cost" pInputText id="Cost" #Procost="ngModel"
@@ -37,49 +37,80 @@
             <br> <small [hidden]="Procost.valid || Procost.untouched" id="helpId" class="text-muted"
                 [translate]="'Tracker.messegeNumber'"></small>
         </div>
-        <div class="col">
+        <!-- <div class="p-field col-md-3">
             <label [translate]="'Tracker.Client Mobile'"></label>
             <input type="text" class="form-control" [(ngModel)]="projectObj.clientMobile" name="clientMobile">
+        </div> -->
+        <div class="p-field col-md-3">
+            
+            <label for="Project Type" 
+                [translate]="'Tracker.Project Type Name'"></label><br>
+            <p-dropdown [options]="lstProjectTypes" [(ngModel)]="projectObj.projectTypeId"
+                [placeholder]="'Tracker.Project Type Name' | translate" optionLabel="typeName" optionValue="id">
+            </p-dropdown>
         </div>
     </div>
    
-    <div class="row">
-        <div class="col">
+    <div class="row"> 
+        <!-- <div class="col">
             <label [translate]="'Tracker.Project Type Name'"></label>
             <input type="text" class="form-control"   [(ngModel)]="projectObj.projectTypeName" name="projectTypeName" >
-        </div>
-        <div class="col">
+        </div> -->
+
+      
+
+<!-- 
+        <div class="p-field col-md-3">
             <label [translate]="'Tracker.Organization Name'"></label>
             <input type="text" class="form-control" [(ngModel)]="projectObj.organizationName" name="organizationName" >
+        </div> -->
+
+        <div class="p-field col-md-3">
+            <label for="organization Name" class="labelMarginRight"
+                [translate]="'Tracker.Organization Name'"></label><br>
+            <p-dropdown [options]="lstOrganizations" [(ngModel)]="projectObj.organizationId"
+                [placeholder]="'Tracker.Organization Name' | translate" optionLabel="organizationName"
+                optionValue="id">
+            </p-dropdown>
         </div>
-        <div class="col">
+        <div class="p-field col-md-3">
             <label [translate]="'Tracker.Project Period'"></label>
             <input type="text" class="form-control" [(ngModel)]="projectObj.projectPeriod" name="projectPeriod" >
         </div>
-        <div class="col">
+        <div class="p-field col-md-3">
             <label [translate]="'Tracker.Description'"></label>
             <input type="text" class="form-control"  [(ngModel)]="projectObj.description" name="description">
+        </div>
+          <div class="p-field col-md-3">
+            <label for="Project Manager" class="labelMarginRight" [translate]="'Tracker.Project Manager'">
+            </label><br>
+            <p-dropdown [options]="lstEmployees" [(ngModel)]="projectObj.employeeId"
+                [placeholder]="'Tracker.Project Manager' | translate" optionLabel="employeeName"
+                optionValue="id"></p-dropdown>
         </div>
     </div>
  
     <div class="row">
-        <div class="col">
+        <!-- <div class="col">
             <label [translate]="'Tracker.Employee Name'"></label>
             <input type="text" class="form-control"  [(ngModel)]="emploeeObj.employeeName" >
-        </div>
-        <div class="col">
+        </div> -->
+
+      
+         
+        <div class="p-field col-md-3">
             <label [translate]="'Tracker.Actual Start Date'"></label>
-            <input type="text" class="form-control"  [(ngModel)]="projectObj.actualStartDate" name="actualStartDate" >
+            <input type="text" class="form-control"  [ngModel]="projectObj.actualStartDate| date: 'MM/dd/yy'" name="actualStartDate" >
         </div>
       
-        <div class="col">
+        <div class="p-field col-md-3">
             <label [translate]="'Tracker.Actual End Date'"></label>
-            <input type="text" class="form-control" [(ngModel)]="projectObj.actualEndDate" name="actualEndDate">
+            <input type="text" class="form-control" [ngModel]="projectObj.actualEndDate| date: 'MM/dd/yy'" name="actualEndDate">
         </div>
     </div>
    <br/>
     <button pButton type="button"  [label]="'Tracker.Update' | translate"
-    style="margin: 20px;" (click)="edit(project1.id)" class="p-button-warning"></button>
+    style="margin: 20px;" (click)="edit()" class="p-button-warning"></button>
     <br/>
     <br/>
     <div class="row">
@@ -91,7 +122,6 @@
                     <tr>
                         <th style="color: #2674a8; font-size: 20px; font: bold;" [translate]="'Tracker.Partener Name'"></th>
                         <th ></th>
-
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-i>
@@ -107,7 +137,7 @@
             <p-button (click)="showBasicDialog()" icon="pi pi-external-link"  [label]="'Tracker.Add Partener' | translate"></p-button>
             <br/>
             <br/>
-            <p-dialog header="Header" [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
+            <p-dialog header="Add Partener" [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
                 <div class="row">
                     <div class="col">
                         <div class="p-col-12 p-md-4">
@@ -215,7 +245,7 @@
             <p-button (click)="showmileDialog()" icon="pi pi-external-link" label="Add MileStones"></p-button>
             <br/>
             <br/>
-<p-dialog header="Header" [(visible)]="displayMile" [style]="{width: '50vw'}" [baseZIndex]="10000">
+<p-dialog header="Add MileStones" [(visible)]="displayMile" [style]="{width: '50vw'}" [baseZIndex]="10000">
     <div class="row">
         <div class="col">
             <div class="p-col-12 p-md-4">
@@ -333,7 +363,7 @@
                 <p-button (click)="showteamDialog()" icon="pi pi-external-link" label="Add Teams"></p-button>
                 <br/>
                 <br/>
-<p-dialog header="Header" [(visible)]="displayteam" [style]="{width: '50vw'}" [baseZIndex]="10000">
+<p-dialog header="Add New Team" [(visible)]="displayteam" [style]="{width: '50vw'}" [baseZIndex]="10000">
     <div class="row">
         <div class="p-col-12 p-md-4">
             <div class="p-inputgroup">
@@ -445,7 +475,7 @@
                 <p-button (click)="showdocDialog()" icon="pi pi-external-link" label="Add Document"></p-button>
                 <br/>
                 <br/>
-                <p-dialog header="Header" [(visible)]="displaydoc" [style]="{width: '50vw'}" [baseZIndex]="10000">
+                <p-dialog header="Add Document" [(visible)]="displaydoc" [style]="{width: '50vw'}" [baseZIndex]="10000">
                    
                     <div class="row">
                         <div class="col">

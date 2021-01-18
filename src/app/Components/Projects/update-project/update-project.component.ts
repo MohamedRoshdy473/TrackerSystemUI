@@ -22,6 +22,11 @@ import { DepartmentService } from "../../../../Shared/Services/department.servic
 import { EmployeeService } from 'src/Shared/Services/employee.service';
 import { employee } from 'src/Shared/Models/employee';
 import { environment } from 'src/environments/environment';
+import { projectType } from 'src/Shared/Models/projectType';
+import { ProjectTypeService } from 'src/Shared/Services/project-type.service';
+import { organization } from 'src/Shared/Models/organization';
+import { OrganizationService } from 'src/Shared/Services/organization.service';
+import { pipe } from 'rxjs';
 
 @Component({
   selector: 'app-update-project',
@@ -62,21 +67,43 @@ export class UpdateProjectComponent implements OnInit {
   teamname: any
   team: Team
   emploeeObj: employee
+  lstProjectTypes: projectType[];
+  lstOrganizations: organization[];
 
+  projectid:number
 
   constructor(private positionService: ProjectPositionService, private employeeService: EmployeeService, private departmentService: DepartmentService, private route: ActivatedRoute, private milestoneservice: MilestoneService, private projectService: ProjectService,
     private stackholderService: StackholdersService,
     private httpClient: HttpClient,
     private projectteamservice: ProjectTeamService,
     private projectPositionService: ProjectPositionService,
-    private projectdocumentsservice: ProjectDocumentService) { }
+    private projectdocumentsservice: ProjectDocumentService,
+    private projectTypeService: ProjectTypeService,
+    private activeRoute: ActivatedRoute,
+    private organizationService: OrganizationService,) { }
 
   ngOnInit(): void {
+ this.projectid = this.activeRoute.snapshot.params['id'];
+console.log("id",this.projectid)
     // this.id=this.Id;
     this.lstOfStackholder = []
     this.lstOfMilestones = []
     this.lstoddocproj = []
     this.lstOfProjectTeams = []
+    this.projectTypeService.GetAllProjectTypes().subscribe(
+      data => { this.lstProjectTypes = data },
+      err => console.log(err)
+    )
+    this.employeeService.GetAllEmployees().subscribe(
+      res => {
+        this.lstEmployees = res
+        console.log("lstEmp", this.lstEmployees)
+      },
+      err => console.log(err))
+      this.organizationService.GetAllOrganizations().subscribe(
+        res => { this.lstOrganizations = res },
+        err => console.log(err)
+      )
     this.docproject = {
       Description: '', documentName: '', documentFile: '', id: 0, projectId: 0
     }
@@ -130,7 +157,8 @@ export class UpdateProjectComponent implements OnInit {
     }
     this.projectService.getProjectById(this.id).subscribe(res => {
       this.projectObj = res;
-      console.log(this.projectObj)
+  
+      console.log("this.projectObj",this.projectObj)
       this.employeeService.getEmpByID(this.projectObj.employeeId).subscribe(res => {
         this.emploeeObj = res;
         console.log("employee", this.emploeeObj.employeeName)
@@ -181,8 +209,9 @@ export class UpdateProjectComponent implements OnInit {
   SaveToDB_Stackholders() {
     this.stackholderService.insertListOfStackholders(this.lstOfStackholder).subscribe(e => {
 
-      this.ngOnInit();
       console.log(e)
+      this.ngOnInit();
+
 
 
     })
@@ -198,33 +227,25 @@ export class UpdateProjectComponent implements OnInit {
   }
   SaveToDB_Milestones() {
     this.milestoneservice.insertListOfMilestoness(this.lstOfMilestones).subscribe(e => {
-           this.ngOnInit();
            console.log(e)
+           this.ngOnInit();
+
 
     })
   }
-  edit(Projectid: number) {
-    console.log(Projectid)
-    this.projects.forEach(element => {
-      if (element.id == Projectid) {
-        this.project1 = element
-        console.log("id in edit", this.project1.id)
-      }
-    })
+  edit() {
+    
+   // console.log("id",this.projectid)
+    this.projectService.updateProject(this.projectid, this.projectObj).subscribe(res => {
 
-
-    console.log("name", this.projectObj.projectName)
-
-
-    this.projectService.updateProject(this.project1.id, this.projectObj).subscribe(res => {
-
-      console.log("update project", res)
+      //console.log("update project", res)
       alert('Updated Successfully.');
 
     }), err => console.log(err)
-    this.stackholderService.updatestakeholdersbyprojectid(this.projectObj.listOfStackholders).subscribe(res => {
-      console.log(res)
-    })
+    
+    // this.stackholderService.updatestakeholdersbyprojectid(this.projectObj.listOfStackholders).subscribe(res => {
+    //   console.log(res)
+    // })
 
   }
   delStakeHolders(id: number) {
@@ -362,8 +383,9 @@ export class UpdateProjectComponent implements OnInit {
   SaveDocuentToDB() {
 
     this.projectdocumentsservice.postProjectDocumentByProjectID(this.lstoddocproj).subscribe(e => {
-      this.ngOnInit()
       console.log(e)
+      this.ngOnInit();
+
     })
   }
   downloadFile(fileName) {
