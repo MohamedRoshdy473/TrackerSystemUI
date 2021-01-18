@@ -117,6 +117,12 @@ import { AssignemployeeRequestComponent } from './Components/Request/assignemplo
 
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { AddProblemComponent } from './Components/ProblemComponent/add-problem/add-problem.component';
+import { UpdateProblemComponent } from './Components/ProblemComponent/update-problem/update-problem.component';
+import { DisplayProblemsComponent } from './Components/ProblemComponent/display-problems/display-problems.component';
+import { DisplayAssetsComponent } from './Components/Assets/display-assets/display-assets.component';
+import { AddAssetsComponent } from './Components/Assets/add-assets/add-assets.component';
+import { UpdateAssetsComponent } from './Components/Assets/update-assets/update-assets.component';
 
 registerLocaleData(en);
 
@@ -160,7 +166,14 @@ registerLocaleData(en);
    AllProjectmanagerProjectsComponent,
    AllClientsForProjectmanagerComponent,
    ProjectmangerRequestsComponent,
-   AssignemployeeRequestComponent
+   AssignemployeeRequestComponent,
+   AddProblemComponent,
+   UpdateProblemComponent,
+   DisplayProblemsComponent,
+   DisplayAssetsComponent,
+   AddAssetsComponent,
+   UpdateAssetsComponent,
+ 
   ],
   imports: [
     TranslateModule,

@@ -33,6 +33,12 @@
       <li *ngIf="role=='SuperAdmin'">
         <a class="active" routerLink='DisplayDepartments'> {{ 'Tracker.Department' | translate }}</a><br>
       </li>
+      <li *ngIf="role=='SuperAdmin'">
+        <a class="active" routerLink='DisplayProblemsComponent'> {{ 'Tracker.Problems' | translate }}</a><br>
+      </li>
+      <li *ngIf="role=='SuperAdmin'||role== 'PMO' ||role =='PM'">
+        <a class="active" routerLink='DisplayAssets'> {{ 'Tracker.Assets' | translate }}</a><br>
+      </li>
       <li *ngIf="role=='Client'">
         <a class="active" routerLink='allClientReqts'> {{ 'Tracker.ClientRequests' | translate }}</a><br>
       </li>
@@ -60,7 +66,7 @@
           <ul class="navbar-nav">
 
             <li style="margin-left: 20px; font-size: 20px; color: rgb(12, 105, 212);" *ngIf="role =='PM'">
-              <a class="active" routerLink='projectsForProjectManager'>ALL
+              <a class="active" routerLink='projectsForProjectManager'>
                 {{ 'Tracker.Projects' | translate }}   </a><br>
             </li>
             <li style="margin-left: 20px; font-size: 20px; color: rgb(12, 105, 212);" *ngIf="role=='SuperAdmin'">
