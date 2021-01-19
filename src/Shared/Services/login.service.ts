@@ -20,6 +20,8 @@ export class LoginService {
   login(email:string,password:string){
     this.email=email;
     this.password=password;
+    localStorage.setItem("OldPassword",this.password)
+    console.log("old",localStorage.getItem("OldPassword"))
     let Data={email,password}
     console.log(Data)
   return this.httpClient.post(`${environment.Domain}api/Authenticate/login`,Data,this.httpHeader)
