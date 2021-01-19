@@ -20,18 +20,21 @@
       loginForm.controls['password'].invalid" class="alert-danger">
         <div *ngIf="loginForm.controls['password'].errors &&
       loginForm.controls['password'].errors.required">
-          password required.</div> 
+          password required.</div>
       </div>
       <!-- <input type="password" name="password2" placeholder="Retype password" /> -->
       <!-- <input id="rememberChkBox" type="checkbox"> Remember Me -->
-      <!-- <button type="submit"   [disabled]=></button> -->
+      <!-- <button type="submit"[disabled]=></button> -->
       <div>
         <span>
-        <button id="sub" pButton type="submit" name="signup_submit" value="Sign me up" icon="pi pi-check"
-          [disabled]="!loginForm.valid" label="Sign Me Up"></button></span>
-          &nbsp; <span>
-        <button routerLink="/changePassword" pButton type="button" name="signup_submit" value="Sign me up"
-          label="Change Password"></button></span>
+          <button id="sub" pButton type="submit" name="signup_submit" value="Sign me up" icon="pi pi-check"
+            [disabled]="!loginForm.valid" label="Sign Me Up"></button></span>
+        &nbsp;
+        <span>
+          <!-- <button routerLink="/changePassword" pButton type="button" name="signup_submit" value="Sign me up"
+            label="Change Password">
+          </button> -->
+        </span>
       </div>
     </div>
 
