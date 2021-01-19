@@ -155,7 +155,10 @@
     "Assets":"Assets",
     "All Assets":"All Assets",
     "Asset Name":"Asset Name",
-    "All Employee Assigned Requests":"All Employee Assigned Requests"
+    "All Employee Assigned Requests":"All Employee Assigned Requests",
+    "Longitude":"Longitude",
+    "ResponsiblePerson":"ResponsiblePerson",
+    "Latitude":"Latitude"
 
 
  
