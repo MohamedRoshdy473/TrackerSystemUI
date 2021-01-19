@@ -18,88 +18,118 @@ import { RequestService } from 'src/Shared/Services/request.service';
   styleUrls: ['./all-team-leader-requests.component.css']
 })
 export class AllTeamLeaderRequestsComponent implements OnInit {
-  role:string
-  LoggedInUserId:number
-  lstProjectTeams:projectTeam[]
-  projectTeamId:number
-  lst:string
-  lstofIds:projectTeamVM  
-  lstRequests:any[]
-  reqImages:RequestImage[]
-  lstRequestDesc:requestDescription[]
+  role: string
+  LoggedInUserId: number
+  lstProjectTeams: projectTeam[]
+  projectTeamId: number
+  lst: string
+  lstofIds: projectTeamVM
+  lstRequests: any[]
+  reqImages: RequestImage[]
+  lstRequestDesc: requestDescription[]
   NewclientDialogbool: boolean;
   NewdecDialogbool: boolean;
-  lstRequestProblems:Problem[]
+  lstRequestProblems: Problem[]
+
+  reqDescriptionObj: requestDescription
+  LoggedInUserString: string
+  requestIDForCloseRequest: number
+  NewdecDialogForCloseRequest: boolean
+  RequestObj: request
 
 
-  constructor(private projectTeamSrvice:ProjectTeamService,private requestsService:RequestService,
-    private requestProblemService:ProblemServiceService,
-    private requestDescservive:RequestDescriptionService,
+  constructor(private projectTeamSrvice: ProjectTeamService, private requestsService: RequestService,
+    private requestProblemService: ProblemServiceService,
+    private requestDescservive: RequestDescriptionService,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.reqImages=[]
-    this.lstRequestDesc=[]
-    this.lstRequestProblems=[]
-    this.requestProblemService.GetAllProblems().subscribe(
-      res=>{this.lstRequestProblems=res,
-        console.log("lstRequestProblems",res)
+    this.reqDescriptionObj = {
+      description: '', id: 0, requestId: 0, userId: this.LoggedInUserString
     }
+    this.reqImages = []
+    this.lstRequestDesc = []
+    this.lstRequestProblems = []
+    this.requestProblemService.GetAllProblems().subscribe(
+      res => {
+        this.lstRequestProblems = res,
+        console.log("lstRequestProblems", res)
+      }
 
     )
-    this.lstofIds={ProjectTeamIds:''}
-    this.lstProjectTeams=[]
-  this.role= localStorage.getItem('roles')
-  this.LoggedInUserId = Number(localStorage.getItem('id'))
-  console.log("loggedin",localStorage.getItem('id'))
-  this.projectTeamSrvice.GetProjectTeamByProjectPositionIdAndEmployeeId(1,this.LoggedInUserId).subscribe(e=>{
-    this.lstProjectTeams = e
-    this.lstProjectTeams.forEach(element => {
-      console.log(element.id.toString())
-      this.lstofIds.ProjectTeamIds+=(element.id).toString()+','
-    });
-    this.lstofIds.ProjectTeamIds=this.lstofIds.ProjectTeamIds.substring(0, this.lstofIds.ProjectTeamIds.length - 1)
-    console.log("lst=",this.lstofIds.ProjectTeamIds)
+    this.lstofIds = { ProjectTeamIds: '' }
+    this.lstProjectTeams = []
+    this.role = localStorage.getItem('roles')
+    this.LoggedInUserId = Number(localStorage.getItem('id'))
+    console.log("loggedin", localStorage.getItem('id'))
+    this.projectTeamSrvice.GetProjectTeamByProjectPositionIdAndEmployeeId(1, this.LoggedInUserId).subscribe(e => {
+      this.lstProjectTeams = e
+      this.lstProjectTeams.forEach(element => {
+        console.log(element.id.toString())
+        this.lstofIds.ProjectTeamIds += (element.id).toString() + ','
+      });
+      this.lstofIds.ProjectTeamIds = this.lstofIds.ProjectTeamIds.substring(0, this.lstofIds.ProjectTeamIds.length - 1)
+      console.log("lst=", this.lstofIds.ProjectTeamIds)
 
-    this.requestsService.GetAllRequestByProjectTeamId(this.lstofIds).subscribe(e=>{
-      console.log(e)
-      this.lstRequests=e
+      this.requestsService.GetAllRequestByProjectTeamId(this.lstofIds).subscribe(e => {
+        console.log(e)
+        this.lstRequests = e
 
+      })
     })
-  })
   }
-  assignRequests(id:number){
+  assignRequests(id: number) {
     console.log(id)
     this.router.navigate(['home/assignReq', id]);
   }
-  ViewImages(reqId:number){
+  ViewImages(reqId: number) {
     console.log(reqId)
-    this.requestsService.GetRequestImageByRequestId(reqId).subscribe(e=>{
+    this.requestsService.GetRequestImageByRequestId(reqId).subscribe(e => {
       this.reqImages = e
       console.log(this.reqImages)
       this.NewclientDialogbool = true
     })
   }
-  viewSingleDoc(imgObj){
+  viewSingleDoc(imgObj) {
     console.log(imgObj)
     var filePath = `${environment.Domain}wwwroot/requestImage/${imgObj.imageName}`;
     window.open(filePath);
   }
-  GetAllTLRequests(){
+  GetAllTLRequests() {
     this.ngOnInit()
   }
-  GetproblemId(problemId){
-    console.log("problemId",problemId)
-    this.requestProblemService.GetAllRequestByRequestProblemId(problemId).subscribe(e=>{
-      this.lstRequests=e
+  GetproblemId(problemId) {
+    console.log("problemId", problemId)
+    this.requestProblemService.GetAllRequestByRequestProblemId(problemId).subscribe(e => {
+      this.lstRequests = e
       console.log(e)
     })
   }
-  ViewMoreDesc(requestID){
-this.requestDescservive.GetAllDescByRequestID(requestID).subscribe(res=>{
-  console.log("desc",res)
-  this.lstRequestDesc=res;
-  this.NewdecDialogbool=true;
-})
+  ViewMoreDesc(requestID) {
+    this.requestDescservive.GetAllDescByRequestID(requestID).subscribe(res => {
+      console.log("desc", res)
+      this.lstRequestDesc = res;
+      this.NewdecDialogbool = true;
+    })
+  }
+  Opendialog(requestID: number) {
+    this.requestIDForCloseRequest = requestID
+    console.log("requestIDForCloseRequest", requestID)
+    this.NewdecDialogForCloseRequest = true
+  }
+  CloseRequest() {
+    this.reqDescriptionObj.requestId=this.requestIDForCloseRequest;
+    this.requestDescservive.AddRequestDescription(this.reqDescriptionObj).subscribe(e => {
+      this.requestsService.GetRequestByRequestId(this.requestIDForCloseRequest).subscribe(e => {
+        this.RequestObj = e
+        console.log("this.RequestObj",this.RequestObj)
+        this.RequestObj.requestStatusId = 2  //Close
+        this.requestsService.updateRequest(this.requestIDForCloseRequest, this.RequestObj).subscribe(e => {
+          this.ngOnInit();
+
+        })
+      })
+    })
+    this.NewdecDialogForCloseRequest = false
   }
 }

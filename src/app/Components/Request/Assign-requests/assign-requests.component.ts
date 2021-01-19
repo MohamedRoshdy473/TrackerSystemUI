@@ -32,6 +32,7 @@ export class AssignRequestsComponent implements OnInit {
   teamId: any;
   empId: number
   requestObj:request
+  role: string;
 
   constructor(
     private activeRoute: ActivatedRoute, private route: Router,
@@ -49,7 +50,8 @@ export class AssignRequestsComponent implements OnInit {
     //   departmentId: 0, departmentName: '', employeeId: 0, id: 0, projectId: 0, projectName: '', projectPositionId: 0,
     //   TeamId: 0, teamName: '', employeeName: '', projectPositionName: ''
     // }
-   
+    this.role= localStorage.getItem("roles")
+    console.log("role",this.role)
     this.reqId = Number(this.activeRoute.snapshot.params['reqId']);
     console.log("reqId",this.reqId)
     this.LoginedUserId = localStorage.getItem("loginedUserId")
@@ -62,7 +64,21 @@ export class AssignRequestsComponent implements OnInit {
       requestId: this.reqId, id: 0, projectPositionId: 0, teamId: 0
     }
     this.projectPositionService.GetAllProjectPosition().subscribe(e => {
-      this.lstProjectPosition = e
+      // this.lstProjectPosition = e
+      e.forEach(element => {
+        if(element.positionName!="Employee")
+        {
+          this.lstProjectPosition.push(element)
+        }
+      });
+      if(this.role=="TL")
+      {
+        this.lstProjectPosition = e
+      }
+      if(this.role=="SuperAdmin")
+      {
+        this.lstProjectPosition = e
+      }
     })
 
   }
@@ -95,6 +111,7 @@ export class AssignRequestsComponent implements OnInit {
         this.requestservice.GetRequestByRequestId( this.assignedReqObj.requestId).subscribe(e => {
           this.requestObj = e
           this.requestObj.IsAssigned = true;
+          this.requestObj.requestStatusId=3  //Inprogress
           this.requestservice.updateRequest(this.reqId, this.requestObj).subscribe(e => {
         this.router.navigate(['home/AllManagersReq']);
            

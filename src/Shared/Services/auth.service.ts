@@ -50,7 +50,7 @@ export class AuthService {
   changPassword(NewPassword:string)
   {
     var data={
-      userName:localStorage.getItem('userName'),
+      email:localStorage.getItem('email'),
       password:"P@ssw0rd",
       Newpassword:NewPassword
     };

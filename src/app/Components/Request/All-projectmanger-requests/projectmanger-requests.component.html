@@ -1,225 +1,262 @@
-<div class="table-header col-md-12" >
-    <!-- List of Employees -->
+    <div class="table-header col-md-12">
+        <!-- List of Employees -->
 
-    <span >
-        <button class="btn btn-info" style="width: 20%;" (click)="GetAllRequests()"> {{'Tracker.All Requests' |translate}} </button>
-    </span>
-</div>
-<p-table class="container " #dt [value]="lstRequests" dataKey="id" [rows]="5" [showCurrentPageReport]="true"
-    [rowsPerPageOptions]="[5,10,50]" styleClass="p-datatable-customers" [paginator]="true"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
-    [globalFilterFields]="['requestName','requestCode ','projectName','requestDate','requestPeriority','RequestStatus','Problem']">
-    <ng-template pTemplate="caption">
-        <h5 class="labelstyle">
-           {{'Tracker.See Requests By Problem Name'|translate}} </h5> 
-        <div class="row">
-            <div class="col-md-3">
-                <select  name="RequestProblemName" (change)="GetproblemId(($event.target.value))" class="form-control">
-                    <option>{{'Tracker.Select Problem'|translate}}</option>
-                    <option *ngFor="let th of lstRequestProblems" value="{{th.id}}">{{th.problemName}}</option>
-                </select>
-            </div>
-     <div class="col-md-7">
-
-     </div>
-            <div class="col-md-2">
-                <button id="addEmpBtn" routerLink="/home/Requests" class="btn btn-outline-primary btn-md btn-block">
-                    <span class="pi pi-plus">{{'Tracker.Add'|translate}} </span> </button>
-            </div>
-        </div>
-        <div class="row">
-
+        <span>
+            <button class="btn btn-info" style="width: 20%;" (click)="GetAllRequests()"> {{'Tracker.All Requests'
+                |translate}} </button>
+        </span>
     </div>
-    </ng-template>
-    <ng-template pTemplate="header">
-        <tr>
-            <th style="width: 100px;"> {{'Tracker.Name'|translate}}</th>
-            <th>{{'Tracker.Code'|translate}}  </th>
-            <th style="width: 150px;">{{'Tracker.Project Name'|translate}}</th>
-            <th style="width: 100px;">{{'Tracker.Date'|translate}} </th>
-            <th>{{'Tracker.Time'|translate}} </th>
-            
-            <th style="width: 100px;"> {{'Tracker.Status'|translate}} </th>
-            <th style="width: 150px;">{{'Tracker.Problem'|translate}}  </th>
-            <th >{{'Tracker.Operation'|translate}} </th>
-            <th></th>
-            <th></th>
-            <th></th>
-            
-        </tr>
-        <tr>
+    <p-table class="container " #dt [value]="lstRequests" dataKey="id" [rows]="5" [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[5,10,50]" styleClass="p-datatable-customers" [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
+        [globalFilterFields]="['requestName','requestCode ','projectName','requestDate','requestPeriority','RequestStatus','Problem']">
+        <ng-template pTemplate="caption">
+            <h5 class="labelstyle">
+                {{'Tracker.See Requests By Problem Name'|translate}} </h5>
+            <div class="row">
+                <div class="col-md-3">
+                    <select name="RequestProblemName" (change)="GetproblemId(($event.target.value))"
+                        class="form-control">
+                        <option>{{'Tracker.Select Problem'|translate}}</option>
+                        <option *ngFor="let th of lstRequestProblems" value="{{th.id}}">{{th.problemName}}</option>
+                    </select>
+                </div>
+                <div class="col-md-7">
 
-            <th>
-                <input pInputText style="width: 100%;" type="text"
-                    (input)="dt.filter($event.target.value, 'requestName', 'startsWith')" [placeholder]="'Tracker.Name' |translate"
-                    class="p-column-filter">
-            </th>
-            <th>
-                <input pInputText style="width: 100%;" type="text"
-                    (input)="dt.filter($event.target.value, 'requestCode', 'startsWith')" [placeholder]="'Tracker.Code'| translate"
-                    class="p-column-filter">
-            </th>
-            <th>
-                <input pInputText style="width: 100%;" type="text"
-                    (input)="dt.filter($event.target.value, 'projectName', 'startsWith')" [placeholder]="'Tracker.project Name'| translate"
-                    class="p-column-filter">
-            </th>
-            <th>
-                <input pInputText type="text" style="width: 100%"
-                    (input)="dt.filter($event.target.value, 'requestDate', 'contains')" [placeholder]="'Tracker.Date'| translate"
-                    class="p-column-filter">
-            </th>
-            <th>
-                <input pInputText type="text" style="width: 100%"
-                    (input)="dt.filter($event.target.value, 'requestTime', 'contains')" [placeholder]="'Tracker.Time'| translate"
-                    class="p-column-filter">
-            </th>
-            <!-- <th>
+                </div>
+                <div class="col-md-2">
+                    <button id="addEmpBtn" routerLink="/home/Requests" class="btn btn-outline-primary btn-md btn-block">
+                        <span class="pi pi-plus">{{'Tracker.Add'|translate}} </span> </button>
+                </div>
+            </div>
+            <div class="row">
+
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 100px;"> {{'Tracker.Name'|translate}}</th>
+                <th>{{'Tracker.Code'|translate}} </th>
+                <th style="width: 150px;">{{'Tracker.Project Name'|translate}}</th>
+                <th style="width: 100px;">{{'Tracker.Date'|translate}} </th>
+                <th>{{'Tracker.Time'|translate}} </th>
+
+                <th style="width: 100px;"> {{'Tracker.Status'|translate}} </th>
+                <th style="width: 150px;">{{'Tracker.Problem'|translate}} </th>
+                <th>{{'Tracker.Operation'|translate}} </th>
+                <th></th>
+                <th></th>
+                <th></th>
+
+            </tr>
+            <tr>
+
+                <th>
+                    <input pInputText style="width: 100%;" type="text"
+                        (input)="dt.filter($event.target.value, 'requestName', 'startsWith')"
+                        [placeholder]="'Tracker.Name' |translate" class="p-column-filter">
+                </th>
+                <th>
+                    <input pInputText style="width: 100%;" type="text"
+                        (input)="dt.filter($event.target.value, 'requestCode', 'startsWith')"
+                        [placeholder]="'Tracker.Code'| translate" class="p-column-filter">
+                </th>
+                <th>
+                    <input pInputText style="width: 100%;" type="text"
+                        (input)="dt.filter($event.target.value, 'projectName', 'startsWith')"
+                        [placeholder]="'Tracker.project Name'| translate" class="p-column-filter">
+                </th>
+                <th>
+                    <input pInputText type="text" style="width: 100%"
+                        (input)="dt.filter($event.target.value, 'requestDate', 'contains')"
+                        [placeholder]="'Tracker.Date'| translate" class="p-column-filter">
+                </th>
+                <th>
+                    <input pInputText type="text" style="width: 100%"
+                        (input)="dt.filter($event.target.value, 'requestTime', 'contains')"
+                        [placeholder]="'Tracker.Time'| translate" class="p-column-filter">
+                </th>
+                <!-- <th>
                 <input pInputText style="width: 100%;" type="text"
                     (input)="dt.filter($event.target.value, 'requestPeriority', 'startsWith')" placeholder="Periority"
                     class="p-column-filter">
             </th> -->
-            <th>
-                <input pInputText style="width: 100%;" type="text"
-                    (input)="dt.filter($event.target.value, 'RequestStatus', 'startsWith')" [placeholder]="'Tracker.Status'| translate" 
-                    class="p-column-filter">
-            </th>
-            <th>
-                <input pInputText style="width: 100%;" type="text"
-                    (input)="dt.filter($event.target.value, 'problem', 'startsWith')" [placeholder]="'Tracker.Problem'| translate"
-                    class="p-column-filter">
-            </th>
-            
-            <th></th>
-            <th></th>
-            <th></th>
-            <th></th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-request>
-        <tr>
-        
-           
-            
-            
-            <td>
-                {{request.requestName}}
-            </td>
-            <td>
-                {{request.requestCode}}
-            </td>
-            <td>
-                {{request.projectName}}
-            </td>
-            <td >
-                {{request.requestDate | date:'dd/MM/yyyy'}}
-            </td>
-            <td>
-                {{request.requestTime | slice:0:8}}
-            </td>
-            <!-- <td>
+                <th>
+                    <input pInputText style="width: 100%;" type="text"
+                        (input)="dt.filter($event.target.value, 'RequestStatus', 'startsWith')"
+                        [placeholder]="'Tracker.Status'| translate" class="p-column-filter">
+                </th>
+                <th>
+                    <input pInputText style="width: 100%;" type="text"
+                        (input)="dt.filter($event.target.value, 'problem', 'startsWith')"
+                        [placeholder]="'Tracker.Problem'| translate" class="p-column-filter">
+                </th>
+
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-request>
+            <tr>
+                <td>
+                    {{request.requestName}}
+                </td>
+                <td>
+                    {{request.requestCode}}
+                </td>
+                <td>
+                    {{request.projectName}}
+                </td>
+                <td>
+                    {{request.requestDate | date:'dd/MM/yyyy'}}
+                </td>
+                <td>
+                    {{request.requestTime | slice:0:8}}
+                </td>
+                <!-- <td>
                 {{request.requestPeriority}}
             </td> -->
-            <td>
-                {{request.requestStatus}}
-            </td>
-            <td>
-                {{request.requestSubCategoryName}}
-            </td>
-            <td id="Assig" *ngIf="request.isAssigned==true">
-                <div>
-                <button class="btn btn-info" disabled> {{'Tracker.Assigned'|translate}}</button>
-
+            <td *ngIf="request.requestStatus == 'Open'">
+                <div style="background-color: #ffcdd2;">
+                    <span
+                        style="font-weight: bold;padding-right: 15px; color: #c63737;text-transform: uppercase; font-size: 12px;letter-spacing: .3px;font-weight: 700;padding: .25em .5rem;border-radius: 2px;">OPEN</span>
                 </div>
             </td>
-            <td id="Assig" *ngIf="request.isAssigned==false">
-                <button class="btn btn-info" (click)="assignRequests(request.id)">{{'Tracker.Assign'|translate}}</button>
-
+            <td *ngIf="request.requestStatus == 'InProgress'">
+                <div style="background-color: #ffcdd2;">
+                    <span
+                        style="font-weight: bold; color: #bcc637;text-transform: uppercase; font-size: 12px;letter-spacing: .3px;font-weight: 700;font-weight: 700;padding: .25em .5rem;border-radius: 2px;">IN
+                        PROGRESS</span>
+                </div>
             </td>
-            <!-- <td >
+            <!-- <td *ngIf="request.requestStatus == 'Pending'">
+                <div style="background-color: #eccfff;width: 110px;">
+                    <span
+                        style="font-weight: bold;margin-left: 10px;text-transform: uppercase; color: #694382; font-size: 12px;letter-spacing: .3px;font-weight: 700;font-weight: 700;padding: .25em .5rem;border-radius: 2px;">PENDING</span>
+                </div>
+            </td> -->
+            <td *ngIf="request.requestStatus == 'Closed'">
+                <div style="background-color: #c8e6c9;">
+                    <span
+                        style="font-weight: bold; text-transform: uppercase; color: #256029; font-size: 12px;letter-spacing: .3px;font-weight: 700;font-weight: 700;padding: .25em .5rem;border-radius: 2px;">
+                        CLOSED</span>
+                </div>
+            </td>
+                <td>
+                    {{request.requestSubCategoryName}}
+                </td>
+                <td id="Assig" *ngIf="request.isAssigned==true">
+                    <div>
+                        <button class="btn btn-info" disabled> {{'Tracker.Assigned'|translate}}</button>
+
+                    </div>
+                </td>
+                <td id="Assig" *ngIf="request.isAssigned==false">
+                    <button class="btn btn-info"
+                        (click)="assignRequests(request.id)">{{'Tracker.Assign'|translate}}</button>
+
+                </td>
+                <!-- <td >
                 <button class="btn btn-info" (click)="assignRequests(request.id)">Assign</button>
             </td> -->
-            <td >
-                <button class="btn btn-warning" style="margin: 10px;" (click)="ViewImages(request.id)"> {{'Tracker.Docs'|translate}}</button>
+                <td >
+                    <button  style="margin-right: 15px;" class="btn btn-warning" (click)="ViewImages(request.id)">
+                        {{'Tracker.Documents'|translate}}</button>
 
-            </td>
-            <td >
-                <button class="btn btn-warning" (click)="ViewMoreDesc(request.id)"> 
-                    
-                    <span style="font-size: 15px; margin: 15px;">{{'Tracker.Descriptions'|translate}}  </span>
-
+                </td>
+                <td >
+                    <button  class="btn btn-warning" (click)="ViewMoreDesc(request.id)">
+                        <span>{{'Tracker.Descriptions'|translate}} </span>
                     </button>
-            </td>
-            
-            
-            
-            
-            
-            
-          
-            
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="emptymessage">
-        <tr>
-            <td colspan="6">{{'Tracker.No Requests found'|translate}} .</td>
+                </td>
+                <td id="status" *ngIf="request.requestStatusId == 2">
+                    <button disabled style="margin-left: 10px;" class="btn btn-warning">
+                        {{'Tracker.Close'|translate}}</button>
+                </td>
+                <td id="statusclosed" *ngIf="request.requestStatusId !=2"> 
+                    <button  style="margin-left: 10px;" class="btn btn-warning" (click)="Opendialog(request.id)">
+                        {{'Tracker.Close'|translate}}</button>
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="6">{{'Tracker.No Requests found'|translate}} .</td>
 
-        </tr>
-        <tr>
+            </tr>
+            <tr>
 
-        </tr>
-    </ng-template>
+            </tr>
+        </ng-template>
 
-</p-table>
-
+    </p-table>
 
 <p-dialog [(visible)]="NewclientDialogbool" [style]="{width: '50vw'}" [baseZIndex]="10000">
     <div class="row">
         <p-table [value]="reqImages">
             <ng-template pTemplate="header">
                 <tr>
-                    <th style="color: #2674a8; font-size: 20px; font: bold; text-align: center;">{{'Tracker.Document Name'|translate}} </th>
+                    <th style="color: #2674a8; font-size: 20px; font: bold; text-align: center;">{{'Tracker.Document
+                        Name'|translate}} </th>
 
                 </tr>
-        
+
             </ng-template>
             <ng-template pTemplate="body" let-i>
                 <tr>
-                    <td style="color: rgb(187, 12, 12);font-size: large;text-align: center;"
-                    >{{i.imageName}}<button class="btn btn-info" style="margin-left: 30px;" (click)="viewSingleDoc(i)">{{'Tracker.View'|translate}} </button></td>
+                    <td style="color: rgb(187, 12, 12);font-size: large;text-align: center;">{{i.imageName}}<button
+                            class="btn btn-info" style="margin-left: 30px;"
+                            (click)="viewSingleDoc(i)">{{'Tracker.View'|translate}} </button></td>
 
-                  
+
                 </tr>
             </ng-template>
         </p-table>
     </div>
-    
+
 
 </p-dialog>
+<p-dialog [(visible)]="NewdecDialogForCloseRequest" [style]="{width: '50vw'}" [baseZIndex]="10000">
+    <div class="row">
+        <h2>Reason For Close</h2>
+        <div class="col">
+            <h4 for="description">{{'Tracker.Description'|translate}}</h4>
+            <textarea id="description" [(ngModel)]="reqDescriptionObj.description" pInputTextarea required rows="5"
+                cols="85"></textarea>
+            <br>
+            <button class="btn btn-warning" (click)="CloseRequest()">{{'Tracker.Save'|translate}}</button>
+        </div>
+    </div>
+</p-dialog>
+
+
 <p-dialog [(visible)]="NewdecDialogbool" [style]="{width: '50vw'}" [baseZIndex]="10000">
     <div class="row">
         <p-table [value]="lstRequestDesc">
             <ng-template pTemplate="header">
 
                 <tr>
-                 
-                    <th style="color: #2674a8; font-size: 20px; font: bold; text-align: center;">{{'Tracker.description Name'| translate}} </th>
-                    <th style="color: #2674a8; font-size: 20px; font: bold; text-align: center;">{{'Tracker.userName'| translate}}</th>
+
+                    <th style="color: #2674a8; font-size: 20px; font: bold; text-align: center;">{{'Tracker.description
+                        Name'| translate}} </th>
+                    <th style="color: #2674a8; font-size: 20px; font: bold; text-align: center;">{{'Tracker.userName'|
+                        translate}}</th>
 
                 </tr>
-        
+
             </ng-template>
             <ng-template pTemplate="body" let-i>
                 <tr>
                     <td style="font-size: large;text-align: center;">
                         {{i.description}}
-                      
+
                     </td>
                     <td style="font-size: large;text-align: center;">
                         {{i.userName}}
-                      
+
                     </td>
-                  
+
                 </tr>
             </ng-template>
         </p-table>
