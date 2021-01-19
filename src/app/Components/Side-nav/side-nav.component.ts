@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
- import { AuthService } from 'src/Shared/Services/auth.service';
+import { AuthService } from 'src/Shared/Services/auth.service';
 import { TranslateService } from '@ngx-translate/core';
 import { Directionality } from '@angular/cdk/bidi';
+import { EmployeeService } from 'src/Shared/Services/employee.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-side-nav',
@@ -13,10 +15,18 @@ export class SideNavComponent implements OnInit {
   IsUser: any;
   show: boolean;
   direction = 'ltr';
-  role:string
-  loggedInUserName:string
+  role: string
+  loggedInUserName: string
+  empId:number
+  imgName:string
 
-  constructor(private AuthService: AuthService, public translate: TranslateService, public dir: Directionality) {
+  constructor(private AuthService: AuthService,
+     public translate: TranslateService, 
+     public dir: Directionality,
+     private empService:EmployeeService,
+     private route:Router
+     ) {
+
     this.show = true;
     translate.addLangs(['en', 'ar']);
     translate.setDefaultLang('en');
@@ -26,39 +36,48 @@ export class SideNavComponent implements OnInit {
   }
   userName = localStorage.getItem("userName")
   ngOnInit(): void {
-   this.role= localStorage.getItem('roles')
-   this.loggedInUserName= localStorage.getItem('userName')
-   console.log(this.role)
- 
+    this.empId=Number(localStorage.getItem('id'))
+    console.log(localStorage.getItem('id'))
 
+    this.empService.getEmpByID(this.empId).subscribe(w=>{
+      console.log(w)
+      this.imgName=w.photo
+    })
+    
+    this.role = localStorage.getItem('roles')
+    this.loggedInUserName = localStorage.getItem('userName')
+    console.log(this.role)
   }
   logout() {
     this.AuthService.logout();
   }
- 
+
   openNav() {
     document.getElementById("mySidenav").style.width = "250px";
     document.getElementById("main").style.marginLeft = "250px";
   }
   closeNav() {
     document.getElementById("mySidenav").style.width = "0";
-    document.getElementById("main").style.marginLeft= "0";
+    document.getElementById("main").style.marginLeft = "0";
   }
+  goToProfile(){
+    this.route.navigate(['home/profile']);
+    
+  }
+  //   changeDir($event) {
+  //     //debugger;
+  //     //console.log($event.target.value);
+  //     // this.translate.use($event.target.value);
+  //     sessionStorage.setItem("lang", $event.target.value);
 
-//   changeDir($event) {
-//     //debugger;
-//     //console.log($event.target.value);
-//     // this.translate.use($event.target.value);
-//     sessionStorage.setItem("lang", $event.target.value);
 
+  //     if ($event.target.value === 'English') {
+  //       localStorage.setItem('dir', 'ltr');
+  //     }
+  //     if ($event.target.value === 'العربية') {
+  //       localStorage.setItem('dir', 'rtl');
+  //     }
 
-//     if ($event.target.value === 'English') {
-//       localStorage.setItem('dir', 'ltr');
-//     }
-//     if ($event.target.value === 'العربية') {
-//       localStorage.setItem('dir', 'rtl');
-//     }
-
-// console.log("test",this.dir)
-//   }
+  // console.log("test",this.dir)
+  //   }
 }

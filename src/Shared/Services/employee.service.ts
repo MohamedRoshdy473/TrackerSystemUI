@@ -24,6 +24,9 @@ export class EmployeeService {
   getEmpByID(id: number): Observable<employee> {
     return this.httpClient.get<employee>(`${environment.employees}${id}`, this.httpHeader);
   }
+  GetImageByName(imageName: string): Observable<any> {
+    return this.httpClient.get<any>(`${environment.getImageByName}${imageName}`, this.httpHeader);
+  }
 
 
   AddEmployee(emp: employee) {

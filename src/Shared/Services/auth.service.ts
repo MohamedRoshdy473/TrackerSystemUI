@@ -8,53 +8,52 @@ import { User } from '../Models/User';
   providedIn: 'root'
 })
 export class AuthService {
-  httpOptions = {headers: new HttpHeaders({
-    'Content-Type': 'application/json',
-    "Authorization": "bearer " + localStorage.getItem('token')
-      })};
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      "Authorization": "bearer " + localStorage.getItem('token')
+    })
+  };
   user: User;
-  constructor(private httpclient: HttpClient,private router : Router) { }
-  logout()
-  {
+  constructor(private httpclient: HttpClient, private router: Router) { }
+  logout() {
     localStorage.removeItem('token');
     this.router.navigate(['login']);
   }
-  IsSuperAdmin()
-  {
+  IsSuperAdmin() {
     return localStorage.getItem('roles') == 'SuperAdmin';
   }
-  IsAdmin()
-  {
+  IsAdmin() {
     return localStorage.getItem('roles') == 'Admin';
   }
-  IsPMO()
-  {
+  IsPMO() {
     return localStorage.getItem('roles') == 'PMO';
   }
-  IsPM()
-  {
+  IsPM() {
     return localStorage.getItem('roles') == 'PM';
   }
-  IsTL()
-  {
+  IsTL() {
     return localStorage.getItem('roles') == 'TL';
   }
-  IsEmployee()
-  {
+  IsEmployee() {
     return localStorage.getItem('roles') == 'Employee';
   }
-  IsClient()
-  {
+  IsClient() {
     return localStorage.getItem('roles') == 'Client';
   }
-  changPassword(NewPassword:string)
-  {
-    var data={
-      email:localStorage.getItem('email'),
-      password:"P@ssw0rd",
-      Newpassword:NewPassword
+
+  changPassword(NewPassword: string) {
+    var Oldpass=localStorage.getItem("OldPassword")
+
+    var data = {
+      userName: localStorage.getItem('userName'),
+      
+      // email:localStorage.getItem("email"),
+      password: Oldpass,
+      Newpassword: NewPassword
     };
-    console.log(data);
+
+
     return this.httpclient.post(`${environment.User}/Authenticate/changPassword`, data, this.httpOptions)
   }
 }
