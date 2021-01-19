@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { AuthService } from 'src/Shared/Services/auth.service'
 import { EmployeeService } from 'src/Shared/Services/employee.service';
-import { MustMatch } from '../../../helpers/must-match.validator';
+import { MustMatch } from '../../../../helpers/must-match.validator';
 
 @Component({
   selector: 'app-change-paswword',

@@ -156,21 +156,18 @@
 
 <!-- main app container -->
 <div class="card m-3">
-    <h5 class="card-header">Angular 8 Reactive Form Validation</h5>
+    <h5 class="card-header">Change Password</h5>
     <div class="card-body">
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <div class="form-group">
                 <label>Email</label>
-                <input type="text" formControlName="email" class="form-control" [(ngModel)]="employeeEmail" readonly [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
-                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                    <div *ngIf="f.email.errors.required">Email is required</div>
-                    <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
-                </div>
+                <input type="text" formControlName="email" class="form-control" [(ngModel)]="employeeEmail" readonly/>
             </div>
             <div class="form-row">
                 <div class="form-group col">
                     <label>Password</label>
-                    <input type="password" formControlName="password" class="form-control" [(ngModel)]="Newpassword" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <input type="password" formControlName="password" name="password" class="form-control" [(ngModel)]="Newpassword"
+                     [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                         <div *ngIf="f.password.errors.required">Password is required</div>
                         <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
@@ -188,25 +185,15 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group form-check">
+            <!-- <div class="form-group form-check">
                 <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
                 <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
                 <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
-            </div>
+            </div> -->
             <div class="text-center">
-                <button class="btn btn-primary mr-1">Register</button>
+                <button class="btn btn-primary mr-1">Change</button>
                 <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
             </div>
         </form>
     </div>
-</div>
-
-<!-- credits -->
-<div class="text-center">
-    <p>
-        <a href="https://jasonwatmore.com/post/2019/06/14/angular-8-reactive-forms-validation-example" target="_top">Angular 8 - Reactive Forms Validation Example</a>
-    </p>
-    <p>
-        <a href="http://jasonwatmore.com" target="_top">JasonWatmore.com</a>
-    </p>
 </div>
