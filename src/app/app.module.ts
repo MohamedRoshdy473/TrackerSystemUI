@@ -73,7 +73,7 @@ import {DynamicDialogModule} from 'primeng/dynamicdialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
 // import { MaterialModule} from '@angular/material';
 import { MustMatchDirective } from './helpers/must-match.directive';
-
+import { HashLocationStrategy, LocationStrategy  } from '@angular/common';
 import { from } from 'rxjs';
 
 import 'zone.js/dist/zone';
@@ -243,7 +243,7 @@ registerLocaleData(en);
     RouterModule.forRoot([]),
 
   ],
-  providers: [MessageService,ConfirmationService,],
+  providers: [MessageService,ConfirmationService,{provide : LocationStrategy , useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
