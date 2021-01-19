@@ -4,7 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { Directionality } from '@angular/cdk/bidi';
 import { EmployeeService } from 'src/Shared/Services/employee.service';
 import { Router } from '@angular/router';
-
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-side-nav',
   templateUrl: './side-nav.component.html',
@@ -19,7 +19,7 @@ export class SideNavComponent implements OnInit {
   loggedInUserName: string
   empId:number
   imgName:string
-
+  getimage:any
   constructor(private AuthService: AuthService,
      public translate: TranslateService, 
      public dir: Directionality,
@@ -34,8 +34,10 @@ export class SideNavComponent implements OnInit {
     const browserLang = translate.getBrowserLang();
     translate.use(browserLang.match(/en|ar/) ? browserLang : 'en');
   }
+ 
   userName = localStorage.getItem("userName")
   ngOnInit(): void {
+    this.getimage= environment.Domain
     this.empId=Number(localStorage.getItem('id'))
     console.log(localStorage.getItem('id'))
 
