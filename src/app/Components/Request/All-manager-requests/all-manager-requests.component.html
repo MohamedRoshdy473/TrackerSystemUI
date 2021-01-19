@@ -1,4 +1,3 @@
-<div class="container">
 
 <div class="table-header col-md-12" >
     <!-- List of Employees -->
@@ -124,8 +123,31 @@
             <!-- <td>
                 {{request.requestPeriority}}
             </td> -->
-            <td>
-                {{request.requestStatus}}
+            <td *ngIf="request.requestStatus == 'Open'">
+                <div style="background-color: #ffcdd2;">
+                    <span
+                        style="font-weight: bold;padding-right: 15px; color: #c63737;text-transform: uppercase; font-size: 12px;letter-spacing: .3px;font-weight: 700;padding: .25em .5rem;border-radius: 2px;">OPEN</span>
+                </div>
+            </td>
+            <td *ngIf="request.requestStatus == 'InProgress'">
+                <div style="background-color: #ffcdd2;">
+                    <span
+                        style="font-weight: bold; color: #bcc637;text-transform: uppercase; font-size: 12px;letter-spacing: .3px;font-weight: 700;font-weight: 700;padding: .25em .5rem;border-radius: 2px;">IN
+                        PROGRESS</span>
+                </div>
+            </td>
+            <!-- <td *ngIf="request.requestStatus == 'Pending'">
+                <div style="background-color: #eccfff;width: 110px;">
+                    <span
+                        style="font-weight: bold;margin-left: 10px;text-transform: uppercase; color: #694382; font-size: 12px;letter-spacing: .3px;font-weight: 700;font-weight: 700;padding: .25em .5rem;border-radius: 2px;">PENDING</span>
+                </div>
+            </td> -->
+            <td *ngIf="request.requestStatus == 'Closed'">
+                <div style="background-color: #c8e6c9;">
+                    <span
+                        style="font-weight: bold; text-transform: uppercase; color: #256029; font-size: 12px;letter-spacing: .3px;font-weight: 700;font-weight: 700;padding: .25em .5rem;border-radius: 2px;">
+                        CLOSED</span>
+                </div>
             </td>
             <td>
                 {{request.requestSubCategoryName}}
@@ -141,14 +163,23 @@
             <!-- <td >
                 <button class="btn btn-info" (click)="assignRequests(request.id)">Assign</button>
             </td> -->
-            <td>
-                <button class="btn btn-warning" style="margin: 10px;" (click)="ViewImages(request.id)"> {{'Tracker.Docs'|translate}}</button>
+            <td >
+                <button  style="margin-right: 15px;" class="btn btn-warning" (click)="ViewImages(request.id)">
+                    {{'Tracker.Documents'|translate}}</button>
+
             </td>
-            <td>
-                <button class="btn btn-warning" (click)="ViewMoreDesc(request.id)"> 
-                    <span style="font-size: 15px; margin: 15px;">{{'Tracker.Descriptions'|translate}}  </span>
-                    
-                    </button>
+            <td >
+                <button  class="btn btn-warning" (click)="ViewMoreDesc(request.id)">
+                    <span>{{'Tracker.Descriptions'|translate}} </span>
+                </button>
+            </td>
+            <td id="status" *ngIf="request.requestStatusId == 2">
+                <button disabled style="margin-left: 10px;" class="btn btn-warning">
+                    {{'Tracker.Close'|translate}}</button>
+            </td>
+            <td id="statusclosed" *ngIf="request.requestStatusId !=2"> 
+                <button  style="margin-left: 10px;" class="btn btn-warning" (click)="Opendialog(request.id)">
+                    {{'Tracker.Close'|translate}}</button>
             </td>
         </tr>
     </ng-template>
@@ -187,7 +218,22 @@
     </ng-template> -->
 
 </p-dialog>
+<p-dialog [(visible)]="NewdecDialogForCloseRequest" [style]="{width: '50vw'}" [baseZIndex]="10000">
+    <div class="row">
+        <h2>Reason For Close</h2>
+        <form #frm="ngForm" (ngSubmit)="CloseRequest()">
+        <div class="col">
+            <h4 for="description">{{'Tracker.Description'|translate}}</h4>
+            <textarea id="description" required [(ngModel)]="reqDescriptionObj.description" pInputTextarea required rows="5"
+                cols="85"></textarea>
+            <br>
+            <button type="submit" [disabled]="frm.invalid" class="btn btn-warning">{{'Tracker.Save'|translate}}</button>
+        </div>
+    </form>
+    </div>
 
+
+</p-dialog>
 <p-dialog [(visible)]="NewdecDialogbool" [style]="{width: '50vw'}" [baseZIndex]="10000">
     <div class="row">
         <p-table [value]="lstRequestDesc">
@@ -221,4 +267,3 @@
     </ng-template> -->
 
 </p-dialog>
-</div>

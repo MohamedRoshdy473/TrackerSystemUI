@@ -41,6 +41,7 @@ export class AuthService {
   IsClient() {
     return localStorage.getItem('roles') == 'Client';
   }
+
   changPassword(NewPassword: string) {
     var Oldpass=localStorage.getItem("OldPassword")
 
