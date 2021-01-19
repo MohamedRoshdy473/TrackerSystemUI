@@ -79,8 +79,9 @@
                     </th>
                     <th>
                         <input pInputText type="text" style="width: 100%;"
-                            (input)="dt1.filter($event.target.value, 'type', 'contains')"
-                            [value]="dt1.filters['type']?.value" [placeholder]="'Tracker.Project Type Name' | translate"
+                            (input)="dt1.filter($event.target.value, 'projectTypeName
+                            ', 'contains')"
+                            [value]="dt1.filters['projectTypeName']?.value" [placeholder]="'Tracker.Project Type Name' | translate"
                             class="p-column-filter">
                     </th>
                     <th>
