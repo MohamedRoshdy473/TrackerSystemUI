@@ -156,7 +156,14 @@
     "All Assets":"All Assets",
     "Asset Name":"Asset Name",
     "All Employee Assigned Requests":"All Employee Assigned Requests",
-    "Close":"Close"
+    "Close":"Close",
+    "Password":"Password",
+    "SuperAdmin":"SuperAdmin",
+    "Admin":"Admin",
+    "PMO":"PMO",
+    "PM":"PM",
+    "TL":"TL",
+    "Employee":"Employee"
 
 
  

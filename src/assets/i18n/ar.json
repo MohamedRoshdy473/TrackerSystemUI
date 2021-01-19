@@ -159,6 +159,14 @@
     "All Assets":"كل الادوات",
     "Asset Name":"اسم الاداة",
     "All Employee Assigned Requests":"جميع طلبات الموظف المعينة",
-    "Close":"إغلاق"
+    "Close":"إغلاق",
+    "Password":"الرقم السري",
+    "SuperAdmin":"مشرف رئيسي",
+    "Admin":"مشرف",
+    "PMO":"مدير عام",
+    "PM":"مدير المشروع",
+    "TL":"مشرف المشروع",
+    "Employee":"الموظف"
+
   }
 }
