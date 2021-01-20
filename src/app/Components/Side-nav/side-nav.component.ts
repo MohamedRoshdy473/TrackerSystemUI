@@ -44,7 +44,7 @@ export class SideNavComponent implements OnInit {
     this.getimage= environment.Domain
     this.empId=Number(localStorage.getItem('id'))
 
-    console.log(localStorage.getItem('id'))
+    //console.log(localStorage.getItem('id'))
 
     this.empService.getEmpByID(this.empId).subscribe(w=>{
       console.log(w)

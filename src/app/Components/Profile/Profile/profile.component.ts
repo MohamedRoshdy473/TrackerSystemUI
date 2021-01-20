@@ -10,42 +10,45 @@ import { EmployeeService } from 'src/Shared/Services/employee.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  empId:number
-  imgName:string
-  employee:any
-  client:any
+  empId: number
+  imgName: string
+  employee: any
+  client: any
   role: string;
   clientId: number;
   clientImage: any;
   constructor(
-    private empService:EmployeeService,private router:Router,private clientService:ClientService
+    private empService: EmployeeService, private router: Router, private clientService: ClientService
   ) { }
 
   ngOnInit(): void {
-    this.role= localStorage.getItem("roles")
+    this.role = localStorage.getItem("roles")
     this.employee = {
-      address:'',departmentId:0,departmentName:'',employeeName:'',id:0,dateOfBirth:new Date
+      address: '', departmentId: 0, departmentName: '', employeeName: '', id: 0, dateOfBirth: new Date
     }
-    this.client={id:0,clientName:"",clientCode:"",organizationId:0,organizationName:"",gender:"",address:"",phone:"",email:""}
-    this.empId=Number(localStorage.getItem('id'))
+    this.client = { id: 0, clientName: "", clientCode: "", organizationId: 0, organizationName: "", gender: "", address: "", phone: "", email: "" }
+    this.empId = Number(localStorage.getItem('id'))
 
-    this.empService.getEmpByID(this.empId).subscribe(w=>{
+    this.empService.getEmpByID(this.empId).subscribe(w => {
       this.employee = w
-      this.imgName=w.photo
+      this.imgName = w.photo
     })
 
-    this.clientId=Number(localStorage.getItem("clientId"))
-    console.log("this.clientId",this.clientId)
-    this.clientService.GetclientByID(this.clientId).subscribe(w=>{
-      this.client=w
+    this.clientId = Number(localStorage.getItem("clientId"))
+    console.log("this.clientId", this.clientId)
+    this.clientService.GetclientByID(this.clientId).subscribe(w => {
+      this.client = w
       console.log(w["photo"])
-      this.clientImage=w["photo"]
+      this.clientImage = w["photo"]
     })
   }
-  navigateToChangePassword(employee){
+  navigateToChangePassword(employee) {
     console.log(employee)
     this.router.navigate(['home/changePassword']);
 
   }
-
+  navigateToChangePasswordClient(client) {
+    console.log("client",client)
+    this.router.navigate(['home/changePassword']);
+  }
 }

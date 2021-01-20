@@ -22,7 +22,7 @@
     <div class="row">
         <div class="col-9" style="margin-left: 20px;">
         </div>
-        <div class="col-2" style="margin-left: 6%;">
+        <div *ngIf="role=='SuperAdmin'|| role=='PMO'" class="col-2" style="margin-left: 6%;">
             <p-button icon="pi pi-external-link" [label]="'Tracker.Add' | translate" routerLink="/home/createProject"
                 class="create">
             </p-button>
@@ -158,10 +158,10 @@
                         <span class="pi pi-compass" aria-hidden="true"
                             (click)="showMaximizableDialog(project.id)"></span>
                         &nbsp; &nbsp;
-                        <span class="p-button-icon pi pi-pencil" aria-hidden="true"
+                        <span *ngIf="role=='SuperAdmin'|| role=='PMO'" class="p-button-icon pi pi-pencil" aria-hidden="true"
                             [routerLink]="['/home/updateproject',project.id]"></span>
                         <!-- (click)="DisplayToEditProject(project.id)" -->
-                        <span class="p-button-icon pi pi-times" (click)="confirm(project.id)" aria-hidden="true"></span>
+                        <span *ngIf="role=='SuperAdmin'|| role=='PMO'" class="p-button-icon pi pi-times" (click)="confirm(project.id)" aria-hidden="true"></span>
                     </td>
 
 

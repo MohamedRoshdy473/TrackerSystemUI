@@ -1,0 +1,96 @@
+
+<div class="card m-3" *ngIf="role!='Client'">
+    <h5 class="card-header">Change Password</h5>
+    <div class="card-body">
+        <form  [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <div  class="form-group">
+                <label>Email</label>
+                <input type="text" formControlName="email" class="form-control" [(ngModel)]="employeeEmail" readonly/>
+            </div>
+            <!-- <div *ngIf="role=='Client'"  class="form-group">
+                <label>Email</label>
+                <input type="text" formControlName="email" class="form-control" [(ngModel)]="clientEmail" readonly/>
+            </div> -->
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Password</label>
+                    <input type="password" formControlName="password" name="password" class="form-control" [(ngModel)]="Newpassword"
+                     [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                        <div *ngIf="f.password.errors.pattern">Enter 1 upper case letter, and 1 special character</div>
+                        <!-- <div *ngIf="f.password.errors.pattern">Passwords must match</div> -->
+
+                    </div>
+                </div>
+                <div class="form-group col">
+                    <label>Confirm Password</label>
+                    <input type="password" formControlName="confirmPassword" [(ngModel)]="confirmedPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+                    <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                        <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+                        <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="form-group form-check">
+                <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
+                <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
+                <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
+            </div> -->
+            <div class="text-center">
+                <button class="btn btn-primary mr-1">Change</button>
+                <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<div class="card m-3" *ngIf="role=='Client'">
+    <h5 class="card-header">Change Password</h5>
+    <div class="card-body">
+        <form  [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <!-- <div  class="form-group">
+                <label>Email</label>
+                <input type="text" formControlName="email" class="form-control" [(ngModel)]="employeeEmail" readonly/>
+            </div> -->
+            <div   class="form-group">
+                <label>Email</label>
+                <input type="text" formControlName="email" class="form-control" [(ngModel)]="clientEmail" readonly/>
+            </div>
+            <div class="form-row">
+                <div class="form-group col">
+                    <label>Password</label>
+                    <input type="password" formControlName="password" name="password" class="form-control" [(ngModel)]="Newpassword"
+                     [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                        <div *ngIf="f.password.errors.required">Password is required</div>
+                        <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
+                        <div *ngIf="f.password.errors.pattern">Enter 1 upper case letter, and 1 special character</div>
+                        <!-- <div *ngIf="f.password.errors.pattern">Passwords must match</div> -->
+
+                    </div>
+                </div>
+                <div class="form-group col">
+                    <label>Confirm Password</label>
+                    <input type="password" formControlName="confirmPassword" [(ngModel)]="confirmedPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+                    <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                        <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+                        <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="form-group form-check">
+                <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
+                <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
+                <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
+            </div> -->
+            <div class="text-center">
+                <button class="btn btn-primary mr-1">Change</button>
+                <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

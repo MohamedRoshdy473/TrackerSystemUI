@@ -149,7 +149,7 @@
     "Add Partener": "Add Partener",
     "UserName":"UserName",
     "Role":"Role",
-    " Name is required":" Name is required",
+    "Name is required":" Name is required",
     "Name must be at least 4 characters long":"Name must be at least 4 characters long",
     "All Problems":"All Problems",
     "Assets":"Assets",
@@ -163,7 +163,9 @@
     "PMO":"PMO",
     "PM":"PM",
     "TL":"TL",
-    "Employee":"Employee"
+    "Employee":"Employee",
+    "Client Requests Category":"Client Requests Category"
+   
 
 
  

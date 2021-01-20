@@ -1,9 +1,11 @@
+
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MustMatch } from 'src/app/helpers/must-match.validator';
 import { AuthService } from 'src/Shared/Services/auth.service'
+import { ClientService } from 'src/Shared/Services/client.service';
 import { EmployeeService } from 'src/Shared/Services/employee.service';
-import { MustMatch } from '../../../../helpers/must-match.validator';
 
 @Component({
   selector: 'app-change-paswword',
@@ -16,14 +18,18 @@ export class ChangePaswwordComponent implements OnInit {
   model: any = {};
   empId: number;
   employeeEmail:any
+  clientEmail:any
   confirmedPassword:any
   passwordPattern:string
   submitted = false;
+  clientId: number;
+  role: string;
 
   constructor(private AuthService: AuthService, 
     private router: Router, 
     public formBuilder: FormBuilder,
-    private empService:EmployeeService
+    private empService:EmployeeService,
+    private clientService: ClientService
     ) 
   {
   }
@@ -31,6 +37,7 @@ export class ChangePaswwordComponent implements OnInit {
 
 
   ngOnInit(): void {
+    this.role = localStorage.getItem("roles")
     // Validators.pattern(/^(?=.*[A-Z])(?=.*[!@#\$%\^&\*])(?=.{9,})/)
     this.passwordPattern = "^[a-z0-9_-]{8,15}$"; 
     this.employeeEmail = ''
@@ -39,10 +46,17 @@ export class ChangePaswwordComponent implements OnInit {
       this.employeeEmail = w.email
       
     })
+     this.clientEmail=''
+     this.clientId = Number(localStorage.getItem("clientId"))
+     this.clientService.GetclientByID(this.clientId).subscribe(w => {
+      this.clientEmail =w["email"]
+      console.log("Client email",w["email"])
+    })
+
+
     this.registerForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6),
-        Validators.required,
+      password: ['', [Validators.required, Validators.minLength(6),  
         Validators.pattern(/^(?=.*[A-Z])(?=.*[!@#\$%\^&\*])(?=.{9,})/)]],
      
       confirmPassword: ['', Validators.required],
@@ -68,6 +82,7 @@ export class ChangePaswwordComponent implements OnInit {
 
     // stop here if form is invalid
     if (this.registerForm.invalid) {
+      console.log("valid or not",this.registerForm)
         return;
     }
     else{
@@ -78,13 +93,15 @@ export class ChangePaswwordComponent implements OnInit {
       error=>console.log(error)
     )}
     // display form values on success
+    alert("hello")
    
 } 
   get f() { return this.registerForm.controls; }
   
   onReset() {
-    this.submitted = false;
-    this.registerForm.reset();
+   // this.submitted = false;
+    this.router.navigate(['/home/profile'])
+    // this.registerForm.reset();
 }
   // password(formGroup: FormGroup) {
   //   const { value: password } = formGroup.get('password');

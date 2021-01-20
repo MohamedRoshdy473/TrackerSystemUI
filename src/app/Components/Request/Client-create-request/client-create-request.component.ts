@@ -23,6 +23,8 @@ import { logging } from 'protractor';
 import { projectTeam } from 'src/Shared/Models/projectTeam';
 import { ProjectTeamService } from 'src/Shared/Services/project-team.service';
 import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
+import { Route } from '@angular/compiler/src/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-client-create-request',
@@ -34,7 +36,7 @@ export class ClientCreateRequestComponent implements OnInit {
   requestObj: request
   reqObj: request
   ClientId: number
-  projectId:number
+  projectId: number
   lstReqAssets: asset[]
   reqAsset: asset
 
@@ -47,15 +49,17 @@ export class ClientCreateRequestComponent implements OnInit {
   lstReqSubCategories: requestSubCategory[]
   lstProjects: project[]
   lstclients: client[]
-  lstProjectTeams:projectTeam[]
+  lstProjectTeams: projectTeam[]
+  lstProjectTeamsAfterFiltration: projectTeam[]
   lstRequestImages: RequestImage[]
   reqImage: RequestImage
-   ProjId:number
+  ProjId: number
+  TestValue:number=0
 
 
   constructor(private reqService: RequestService,
     private httpClient: HttpClient,
-    private projectTeamService:ProjectTeamService,
+    private projectTeamService: ProjectTeamService,
     private reqPeriorityService: RequestPeriorityService,
     private reqStatusService: RequestStatusService,
     private reqTypeService: RequestTypeService,
@@ -63,15 +67,17 @@ export class ClientCreateRequestComponent implements OnInit {
     private ReqModeService: RequestModeService,
     private projectService: ProjectService,
     private ReqSubCatService: RequestSubCategoryService,
+    private route:Router
   ) { }
 
   ngOnInit(): void {
-    this.ClientId=Number(localStorage.getItem('clientId'))
+    this.ClientId = Number(localStorage.getItem('clientId'))
     this.lstReqests = []
     this.lstProjects = []
     this.lstReqPeriorities = []
     this.lstReqTypies = []
     this.lstProjectTeams = []
+    this.lstProjectTeamsAfterFiltration = []
     this.lstReqStatus = []
     this.lstRequestImages = []
     this.lstReqSubCategories = []
@@ -79,15 +85,16 @@ export class ClientCreateRequestComponent implements OnInit {
       id: 0, imageName: '', requestId: 0
     }
     this.reqObj = {
-      id: 0, projectId: 0, projectName: '', requestCode: '',clientName:'',teamId:0,teamName:'',IsAssigned:false,
-      requestName: '', requestPeriority: '', requestPeriorityId: 0,IsSolved:false,projectTeamId:0,
+      id: 0, projectId: 0, projectName: '', requestCode: '', clientName: '', teamId: 0, teamName: '', IsAssigned: false,
+      requestName: '', requestPeriority: '', requestPeriorityId: 0, IsSolved: false, projectTeamId: 0,
       requestStatus: '', requestStatusId: 0, requestTime: new Date().getHours() + ':' + new Date().getMinutes(), requestDate: new Date(),
       requestSubCategoryId: 0, requestSubCategoryName: '', assetId: 0, clientId: this.ClientId,
-      requestTypeName: '', description: '', requestModeId: 0,RequestProblemObj:{requestId:0,id:0,employeeId:0,problemId:0,problemName:'',requestName:''}
+      requestTypeName: '', description: '', requestModeId: 0, RequestProblemObj: { requestId: 0, id: 0, employeeId: 0, problemId: 0, problemName: '', requestName: '' }
     }
-    this.requestObj = {IsAssigned:false,IsSolved:false,RequestProblemObj:{requestId:0,employeeId:0,id:0,problemId:0,problemName:'',requestName:''},
+    this.requestObj = {
+      IsAssigned: false, IsSolved: false, RequestProblemObj: { requestId: 0, employeeId: 0, id: 0, problemId: 0, problemName: '', requestName: '' },
       id: 0, projectId: 0, projectName: '', requestCode: '', clientName: '',
-      requestName: '', requestPeriority: '', requestPeriorityId: 0,teamName:'',projectTeamId:0,requestTypeName:'',teamId:0,
+      requestName: '', requestPeriority: '', requestPeriorityId: 0, teamName: '', projectTeamId: 0, requestTypeName: '', teamId: 0,
       requestStatus: '', requestStatusId: 0, requestTime: new Date().getHours() + ':' + new Date().getMinutes(), requestDate: new Date(),
       requestSubCategoryId: 0, requestSubCategoryName: '', assetId: 0, clientId: this.ClientId, description: '', requestModeId: 0
     }
@@ -126,34 +133,66 @@ export class ClientCreateRequestComponent implements OnInit {
     // })
 
   }
-  GetProjectTeamId(TeamId){
-    this.projectTeamService.GetProjectTeamByProjectIdAndTeamIdAndProjectPositionId(this.projectId,TeamId.value)
-    .subscribe(e=>{
-       this.ProjId= e.id
-      console.log("projectTeamId",e.id)
-      this.reqObj.projectTeamId = this.ProjId
-      console.log("aftergetProjTeamid",this.reqObj)
-    })
+  GetProjectTeamId(TeamId) {
+    this.projectTeamService.GetProjectTeamByProjectIdAndTeamIdAndProjectPositionId(this.projectId, TeamId.value)
+      .subscribe(e => {
+        this.ProjId = e.id
+        console.log("projectTeamId", e.id)
+        this.reqObj.projectTeamId = this.ProjId
+        console.log("aftergetProjTeamid", this.reqObj)
+      })
   }
   reqId: any
   AddRequest() {
-    this.reqObj.requestStatusId=1  //open
-    this.reqObj.projectId = Number(this.reqObj.projectId)
-    this.reqObj.clientId = Number(this.reqObj.clientId)
-    console.log(this.reqObj)
-    // this.reqObj.clientId = this.ClientId
-    this.reqObj.requestModeId = 5 //meaning it refer to 'By the Client Option'
-    this.reqService.inserRequest(this.reqObj).subscribe(e => {
-      console.log(e)
-      this.reqId = e;
-      this.reqImage.requestId = this.reqId;
-    })
+    if( 
+      this.projectId==undefined && 
+      this.reqObj.teamId==0 && 
+      this.reqObj.assetId==0 &&
+      this.reqObj.requestPeriorityId==0 && 
+      this.reqObj.requestSubCategoryId==0
+      //this.lstProjectTeams==null
+      )
+    {
+      alert("plz enter complete data")
+      console.log("reqObj",this.projectId)
+    }
+    else{
+     // console.log(this.reqObj.teamId)
+      alert("hello")
+    }
+    // else{
+    //   this.reqObj.requestStatusId = 1  //open
+    //   this.reqObj.projectId = Number(this.reqObj.projectId)
+    //   this.reqObj.clientId = Number(this.reqObj.clientId)
+    //   console.log(this.reqObj)
+    //   // this.reqObj.clientId = this.ClientId
+    //   this.reqObj.requestModeId = 5 //meaning it refer to 'By the Client Option'
+    //   this.reqService.inserRequest(this.reqObj).subscribe(e => {
+    //     console.log(e)
+    //     this.reqId = e;
+    //     this.reqImage.requestId = this.reqId;
+    //   })
+    //   alert("Request added successfuly")
+    //     if (window.confirm('Do you want add images')) {      
+    //     }
+    //     else {
+    //      this.route.navigate(['/home/allClientReqts'])
+    //     }
+    // }
+   
+
   }
   onChange(event) {
     this.projectId = event.value
-    this.projectTeamService.GetProjectTeamsByProjectId(this.projectId).subscribe(e=>{
+    this.projectTeamService.GetProjectTeamsByProjectId(this.projectId).subscribe(e => {
       this.lstProjectTeams = e
-      console.log("lstproTeams",this.lstProjectTeams)
+      this.lstProjectTeams = e.reduce((unique, o) => {
+        if (!unique.some(obj => obj.teamId == o.teamId)) {
+          unique.push(o);
+        }
+        return unique;
+      }, []);
+      console.log("lstproTeams", this.lstProjectTeams)
     })
     this.projectService.GetProjectsByClientId(this.projectId).subscribe(e => {
       this.lstclients = e
@@ -189,13 +228,12 @@ export class ClientCreateRequestComponent implements OnInit {
     this.reqService.addListRequestImages(this.lstRequestImages).subscribe(e => {
       console.log(e)
       this.reqObj = {
-        description: '', requestTypeName: '', requestSubCategoryName: '', requestSubCategoryId: 0,projectTeamId:0,IsSolved:false,IsAssigned:false,
-        id: 0, requestStatusId: 0, requestPeriorityId: 0, requestName: '', requestCode: '', projectName: '', projectId: 0,teamName:'',teamId:0,clientName:'',
-        requestPeriority: '', requestStatus: '', requestDate: new Date(), requestTime: '', requestModeId: 0, assetId: 0, clientId: 0,RequestProblemObj:{requestId:0,employeeId:0,id:0,problemId:0,problemName:'',requestName:''}
+        description: '', requestTypeName: '', requestSubCategoryName: '', requestSubCategoryId: 0, projectTeamId: 0, IsSolved: false, IsAssigned: false,
+        id: 0, requestStatusId: 0, requestPeriorityId: 0, requestName: '', requestCode: '', projectName: '', projectId: 0, teamName: '', teamId: 0, clientName: '',
+        requestPeriority: '', requestStatus: '', requestDate: new Date(), requestTime: '', requestModeId: 0, assetId: 0, clientId: 0, RequestProblemObj: { requestId: 0, employeeId: 0, id: 0, problemId: 0, problemName: '', requestName: '' }
       }
     })
 
   }
 
 }
-                                 
