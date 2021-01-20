@@ -60,7 +60,7 @@
           <ul class="navbar-nav">
 
             <li style="margin-left: 20px; font-size: 20px; color: rgb(12, 105, 212);" *ngIf="role =='PM'">
-              <a class="active" routerLink='projectsForProjectManager'>ALL
+              <a class="active" routerLink='projectsForProjectManager'>
                 {{ 'Tracker.Projects' | translate }} </a><br>
             </li>
             <li style="margin-left: 20px; font-size: 20px; color: rgb(12, 105, 212);" *ngIf="role=='SuperAdmin'">
@@ -89,16 +89,20 @@
 
         <div class="row">
         
-          <div (click)="goToProfile()" style="cursor: pointer;">
+          <div *ngIf="role!='Client'"  (click)="goToProfile()" style="cursor: pointer;">
             <span style="font-size: large;color: brown;">{{loggedInUserName}}</span>
-            <img class="img-thumbnail" class="roounded" src="http://localhost:50653/api/employees/getImage/{{imgName }}"
+            <img class="img-thumbnail" class="roounded" src="{{getimage}}api/employees/getImage/{{imgName }}"
+              alt="" width="50px" height="50px" style="border-radius: 50%;">
+          </div>
+          <div *ngIf="role=='Client'" (click)="goToProfile()" style="cursor: pointer;">
+            <span style="font-size: large;color: brown;">{{loggedInUserName}}</span>
+            <img class="img-thumbnail" class="roounded" src="{{getimage}}api/Clients/getImage/{{clientImage }}"
               alt="" width="50px" height="50px" style="border-radius: 50%;">
           </div>
 
 
-
           <div class="col">
-            <a class="btn btn-warning" style="font-size: 15px;margin-right: 10px;" (click)="logout()">{{ 'Tracker.Logout' |
+            <a class="btn btn-warning" style="font-size: 15px;margin-right: 10px;margin-top: 3px;" (click)="logout()">{{ 'Tracker.Logout' |
               translate }}
             </a>
           </div>

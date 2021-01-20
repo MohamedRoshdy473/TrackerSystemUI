@@ -4,7 +4,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { Directionality } from '@angular/cdk/bidi';
 import { EmployeeService } from 'src/Shared/Services/employee.service';
 import { Router } from '@angular/router';
-
+import { environment } from 'src/environments/environment';
+import { ClientService } from 'src/Shared/Services/client.service';
 @Component({
   selector: 'app-side-nav',
   templateUrl: './side-nav.component.html',
@@ -19,12 +20,15 @@ export class SideNavComponent implements OnInit {
   loggedInUserName: string
   empId:number
   imgName:string
-
+  clientImage:string
+  clientId:number
+  getimage:any
   constructor(private AuthService: AuthService,
      public translate: TranslateService, 
      public dir: Directionality,
      private empService:EmployeeService,
-     private route:Router
+     private route:Router,
+     private clientService:ClientService
      ) {
 
     this.show = true;
@@ -34,14 +38,23 @@ export class SideNavComponent implements OnInit {
     const browserLang = translate.getBrowserLang();
     translate.use(browserLang.match(/en|ar/) ? browserLang : 'en');
   }
+ 
   userName = localStorage.getItem("userName")
   ngOnInit(): void {
+    this.getimage= environment.Domain
     this.empId=Number(localStorage.getItem('id'))
+
     console.log(localStorage.getItem('id'))
 
     this.empService.getEmpByID(this.empId).subscribe(w=>{
       console.log(w)
       this.imgName=w.photo
+    })
+    this.clientId=Number(localStorage.getItem("clientId"))
+    console.log("this.clientId",this.clientId)
+    this.clientService.GetclientByID(this.clientId).subscribe(w=>{
+      console.log(w["photo"])
+      this.clientImage=w["photo"]
     })
     
     this.role = localStorage.getItem('roles')

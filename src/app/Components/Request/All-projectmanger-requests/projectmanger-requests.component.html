@@ -220,13 +220,15 @@
 <p-dialog [(visible)]="NewdecDialogForCloseRequest" [style]="{width: '50vw'}" [baseZIndex]="10000">
     <div class="row">
         <h2>Reason For Close</h2>
-        <div class="col">
-            <h4 for="description">{{'Tracker.Description'|translate}}</h4>
-            <textarea id="description" [(ngModel)]="reqDescriptionObj.description" pInputTextarea required rows="5"
-                cols="85"></textarea>
-            <br>
-            <button class="btn btn-warning" (click)="CloseRequest()">{{'Tracker.Save'|translate}}</button>
-        </div>
+        <form #frm="ngForm" (ngSubmit)="CloseRequest()">
+            <div class="col">
+                <h4 for="description">{{'Tracker.Description'|translate}}</h4>
+                <textarea id="description" required [(ngModel)]="reqDescriptionObj.description" pInputTextarea required rows="5"
+                    cols="85"></textarea>
+                <br>
+                <button type="submit" [disabled]="frm.invalid" class="btn btn-warning">{{'Tracker.Save'|translate}}</button>
+            </div>
+        </form>
     </div>
 </p-dialog>
 

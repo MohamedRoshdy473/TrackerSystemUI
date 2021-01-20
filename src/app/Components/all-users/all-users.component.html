@@ -65,7 +65,7 @@
     <p-dialog header=" " [(visible)]="NewLeaveDialogbool" [style]="{width: '50vw'}" [baseZIndex]="10000">
 
         <div class="row">
-            <span class="col-md-3" for="employee">{{ 'Tracker.Employee' | translate }}</span>
+            <span class="col-md-3" for="employee">{{ 'Tracker.Employee Name' | translate }}</span>
             <select (change)="onChange($event.target.value)" name="employee" class="form-control col-md-6">Employee
                 <option value="" selected disabled hidden><span>{{ 'Tracker.Employee Name' | translate }}</span>
                 </option>
@@ -118,7 +118,7 @@
                         <input [(ngModel)]="NewUser.role" class="form-check-input" type="radio" name="exampleRadios"
                             id="exampleRadios1" value="PM">
                         <label class="form-check-label" for="exampleRadios1">
-                            {{ 'Tracker.System Users' | translate }}
+                            {{ 'Tracker.PM' | translate }}
                         </label>
                     </div>
                 </div>

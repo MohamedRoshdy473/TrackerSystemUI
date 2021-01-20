@@ -9,6 +9,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 import { employee } from 'src/Shared/Models/employee';
 import { EmployeeService } from 'src/Shared/Services/employee.service'
 import { AuthService } from 'src/Shared/Services/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
     selector: 'app-display-all-employees',
@@ -28,6 +29,7 @@ role:any;
 
     submitted: boolean;
     representatives: { name: string; image: string; }[];
+    getimage: string;
 
     constructor(private EmployeeService: EmployeeService, private router: Router,private authservice:AuthService,
         private confirmationService: ConfirmationService, private messageService: MessageService) {
@@ -46,6 +48,7 @@ role:any;
     @ViewChild('dt') table: Table;
 
     ngOnInit() {
+        this.getimage= environment.Domain
 
         this.EmployeeService.GetAllEmployees().subscribe(
             (res) => {
