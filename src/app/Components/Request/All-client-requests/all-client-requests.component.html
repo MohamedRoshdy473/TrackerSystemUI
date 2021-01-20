@@ -42,16 +42,10 @@
                         style="font-weight: bold;margin-left: 10px; color: #c63737;text-transform: uppercase; font-size: 12px;letter-spacing: .3px;font-weight: 700;padding: .25em .5rem;border-radius: 2px;">OPEN</span>
                 </div>
             </td>
-            <td *ngIf="request.requestStatus == 'In Progress'">
+            <td *ngIf="request.requestStatus == 'InProgress'">
                 <div style="background-color: #ffcdd2;width: 110px;">
                     <span
                         style="font-weight: bold;margin-left: 10px; color: #bcc637;text-transform: uppercase; font-size: 12px;letter-spacing: .3px;font-weight: 700;font-weight: 700;padding: .25em .5rem;border-radius: 2px;">IN PROGRESS</span>
-                </div>
-            </td>
-            <td *ngIf="request.requestStatus == 'Pending'">
-                <div style="background-color: #eccfff;width: 110px;">
-                    <span
-                        style="font-weight: bold;margin-left: 10px;text-transform: uppercase; color: #694382; font-size: 12px;letter-spacing: .3px;font-weight: 700;font-weight: 700;padding: .25em .5rem;border-radius: 2px;">PENDING</span>
                 </div>
             </td>
             <td *ngIf="request.requestStatus == 'Closed'">
