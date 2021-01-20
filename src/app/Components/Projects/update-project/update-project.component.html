@@ -1,29 +1,23 @@
-
-
-    <div class="col">
-
+<div class="col">
     <div>
-        <h3 [translate]="'Tracker.Edit Project Data'" ></h3>
+        <h3 [translate]="'Tracker.Edit Project Data'"></h3>
     </div>
-    <br/>
+    <br />
     <div class="row">
         <div class="p-field col-md-3">
             <label for="Project Name" class="labelMarginRight" [translate]="'Tracker.Project Name'">
             </label><br>
-            <input minlength="3" #ProjectName="ngModel" autofocus
-                [placeholder]="'Tracker.Project Name' | translate"
-                [class.is-invalid]="ProjectName.invalid && ProjectName.touched"
-                [class.is-valid]="ProjectName.valid" required minlength="3" type="text"
-                [(ngModel)]="projectObj.projectName" pInputText id="name" required />
-            <br> <small [hidden]="ProjectName.valid || ProjectName.untouched" id="helpId"
-                class="text-muted" [translate]="'Tracker.messege'"></small>
+            <input minlength="3" #ProjectName="ngModel" autofocus [placeholder]="'Tracker.Project Name' | translate"
+                [class.is-invalid]="ProjectName.invalid && ProjectName.touched" [class.is-valid]="ProjectName.valid"
+                required minlength="3" type="text" [(ngModel)]="projectObj.projectName" pInputText id="name" required />
+            <br> <small [hidden]="ProjectName.valid || ProjectName.untouched" id="helpId" class="text-muted"
+                [translate]="'Tracker.messege'"></small>
         </div>
         <div class="p-field col-md-3">
             <label for="Project Code" class="labelMarginRight" [translate]="'Tracker.Project Code'"></label><br>
-            <input type="text" #ProCode="ngModel" name="ProjectCode"
-                [placeholder]="'Tracker.Project Code' | translate"
-                [class.is-invalid]="ProCode.invalid && ProCode.touched" [class.is-valid]="ProCode.valid"
-                required minlength="3" [(ngModel)]="projectObj.projectCode" pInputText id="Code" required />
+            <input type="text" #ProCode="ngModel" name="ProjectCode" [placeholder]="'Tracker.Project Code' | translate"
+                [class.is-invalid]="ProCode.invalid && ProCode.touched" [class.is-valid]="ProCode.valid" required
+                minlength="3" [(ngModel)]="projectObj.projectCode" pInputText id="Code" required />
             <br> <small [hidden]="ProCode.valid || ProCode.untouched" id="helpId" class="text-muted"
                 [translate]="'Tracker.messege'"></small>
         </div>
@@ -42,24 +36,23 @@
             <input type="text" class="form-control" [(ngModel)]="projectObj.clientMobile" name="clientMobile">
         </div> -->
         <div class="p-field col-md-3">
-            
-            <label for="Project Type" 
-                [translate]="'Tracker.Project Type Name'"></label><br>
+
+            <label for="Project Type" [translate]="'Tracker.Project Type Name'"></label><br>
             <p-dropdown [options]="lstProjectTypes" [(ngModel)]="projectObj.projectTypeId"
                 [placeholder]="'Tracker.Project Type Name' | translate" optionLabel="typeName" optionValue="id">
             </p-dropdown>
         </div>
     </div>
-   
-    <div class="row"> 
+
+    <div class="row">
         <!-- <div class="col">
             <label [translate]="'Tracker.Project Type Name'"></label>
             <input type="text" class="form-control"   [(ngModel)]="projectObj.projectTypeName" name="projectTypeName" >
         </div> -->
 
-      
 
-<!-- 
+
+        <!-- 
         <div class="p-field col-md-3">
             <label [translate]="'Tracker.Organization Name'"></label>
             <input type="text" class="form-control" [(ngModel)]="projectObj.organizationName" name="organizationName" >
@@ -69,74 +62,75 @@
             <label for="organization Name" class="labelMarginRight"
                 [translate]="'Tracker.Organization Name'"></label><br>
             <p-dropdown [options]="lstOrganizations" [(ngModel)]="projectObj.organizationId"
-                [placeholder]="'Tracker.Organization Name' | translate" optionLabel="organizationName"
-                optionValue="id">
+                [placeholder]="'Tracker.Organization Name' | translate" optionLabel="organizationName" optionValue="id">
             </p-dropdown>
         </div>
         <div class="p-field col-md-3">
             <label [translate]="'Tracker.Project Period'"></label>
-            <input type="text" class="form-control" [(ngModel)]="projectObj.projectPeriod" name="projectPeriod" >
+            <input type="text" class="form-control" [(ngModel)]="projectObj.projectPeriod" name="projectPeriod">
         </div>
         <div class="p-field col-md-3">
             <label [translate]="'Tracker.Description'"></label>
-            <input type="text" class="form-control"  [(ngModel)]="projectObj.description" name="description">
+            <input type="text" class="form-control" [(ngModel)]="projectObj.description" name="description">
         </div>
-          <div class="p-field col-md-3">
+        <div class="p-field col-md-3">
             <label for="Project Manager" class="labelMarginRight" [translate]="'Tracker.Project Manager'">
             </label><br>
             <p-dropdown [options]="lstEmployees" [(ngModel)]="projectObj.employeeId"
-                [placeholder]="'Tracker.Project Manager' | translate" optionLabel="employeeName"
-                optionValue="id"></p-dropdown>
+                [placeholder]="'Tracker.Project Manager' | translate" optionLabel="employeeName" optionValue="id">
+            </p-dropdown>
         </div>
     </div>
- 
+
     <div class="row">
         <!-- <div class="col">
             <label [translate]="'Tracker.Employee Name'"></label>
             <input type="text" class="form-control"  [(ngModel)]="emploeeObj.employeeName" >
         </div> -->
 
-      
-         
+
+
         <div class="p-field col-md-3">
             <label [translate]="'Tracker.Actual Start Date'"></label>
-            <input type="text" class="form-control"  [ngModel]="projectObj.actualStartDate| date: 'MM/dd/yy'" name="actualStartDate" >
+            <input type="text" class="form-control" [ngModel]="projectObj.actualStartDate| date: 'MM/dd/yy'"
+                name="actualStartDate">
         </div>
-      
+
         <div class="p-field col-md-3">
             <label [translate]="'Tracker.Actual End Date'"></label>
-            <input type="text" class="form-control" [ngModel]="projectObj.actualEndDate| date: 'MM/dd/yy'" name="actualEndDate">
+            <input type="text" class="form-control" [ngModel]="projectObj.actualEndDate| date: 'MM/dd/yy'"
+                name="actualEndDate">
         </div>
     </div>
-   <br/>
-    <button pButton type="button"  [label]="'Tracker.Update' | translate"
-    style="margin: 20px;" (click)="edit()" class="p-button-warning"></button>
-    <br/>
-    <br/>
+    <br />
+    <button pButton type="button" [label]="'Tracker.Update' | translate" style="margin: 20px;" (click)="edit()"
+        class="p-button-warning"></button>
+    <br />
+    <br />
     <div class="row">
-        <div class="col" >
-            <!-- <label style="color: #2674a8; font-size: 25px; font: bold;">stackeholder</label> -->
-
+        <div class="col">
             <p-table [value]="projectObj.listOfStackholders">
                 <ng-template pTemplate="header">
                     <tr>
-                        <th style="color: #2674a8; font-size: 20px; font: bold;" [translate]="'Tracker.Partener Name'"></th>
-                        <th ></th>
+                        <th style="color: #2674a8; font-size: 20px; font: bold;" [translate]="'Tracker.Partener Name'">
+                        </th>
+                        <th></th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-i>
                     <tr>
                         <td>{{i.stackeholderName}}</td>
-            <button pButton pRipple  icon="pi pi-trash" class="p-button-danger" style="min-width: 5px;" (click)="delStakeHolders(i.id)"></button>
-                       
+                        <button pButton pRipple icon="pi pi-trash" class="p-button-danger" style="min-width: 5px;"
+                            (click)="delStakeHolders(i.id)"></button>
                     </tr>
-                    
                 </ng-template>
             </p-table>
-           
-            <p-button (click)="showBasicDialog()" icon="pi pi-external-link"  [label]="'Tracker.Add Partener' | translate"></p-button>
-            <br/>
-            <br/>
+
+            <p-button (click)="showBasicDialog()" icon="pi pi-external-link"
+                [label]="'Tracker.Add Partener' | translate"></p-button>
+            <br />
+            <br />
+            <!-- Dialog Add Partener -->
             <p-dialog header="Add Partener" [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
                 <div class="row">
                     <div class="col">
@@ -150,7 +144,8 @@
                         <div class="p-col-12 p-md-4">
                             <div class="p-inputgroup">
                                 <span class="p-inputgroup-addon">00</span>
-                                <input type="text" pInputText placeholder="Mobile" [(ngModel)]="stackholderInLst.mobile">
+                                <input type="text" pInputText placeholder="Mobile"
+                                    [(ngModel)]="stackholderInLst.mobile">
                                 <span class="p-inputgroup-addon">.00</span>
                             </div>
                         </div>
@@ -172,7 +167,7 @@
                             </div>
                         </div>
                     </div>
-    
+
                     <div class="col">
                         <table class="table">
                             <thead>
@@ -183,7 +178,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-    
+
                                 <tr *ngFor="let i of lstOfStackholder">
                                     <td>
                                         {{i.stackeholderName}}
@@ -193,68 +188,70 @@
                                     </td>
                                 </tr>
                                 <tr>
-    
+
                                 </tr>
                                 <tr *ngIf="lstOfStackholder.length == 0">
                                     <td colspan="4" style="color: rgb(102, 97, 23);">No Parteners found.</td>
                                 </tr>
                             </tbody>
-    
+
                         </table>
-    
+
                         <button class="btn btn-warning" [disabled]="lstOfStackholder.length == 0"
                             (click)="SaveToDB_Stackholders()">Add List</button>
                     </div>
                 </div>
-                
+
 
                 <ng-template pTemplate="footer">
-                    <p-button icon="pi pi-check" (click)="displayBasic=false" label="Ok" styleClass="p-button-text"></p-button>
+                    <p-button icon="pi pi-check" (click)="displayBasic=false" label="Ok" styleClass="p-button-text">
+                    </p-button>
                 </ng-template>
             </p-dialog>
             <!-- <input   type="text" class="form-control" 
          placeholder="{{i.stackeholderName}}"   > -->
 
         </div>
-        
 
-   
-      
+
+
+
     </div>
-    
+
     <div class="row">
-        <div class="col"   >
+        <div class="col">
             <!-- <label style="color: #2674a8; font-size: 25px; font: bold;">mileStones</label> -->
-       
+
             <p-table [value]=" projectObj.listOfmilestones">
                 <ng-template pTemplate="header">
                     <tr>
                         <th style="color: #2674a8; font-size: 20px; font: bold;">Title Name</th>
-                        <th ></th>
+                        <th></th>
 
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-i>
                     <tr>
                         <td>{{i.title}}</td>
-            <button pButton pRipple icon="pi pi-trash" class="p-button-danger"  style="min-width: 5px;" (click)="delMile(i.id)"></button>
-                       
+                        <button pButton pRipple icon="pi pi-trash" class="p-button-danger" style="min-width: 5px;"
+                            (click)="delMile(i.id)"></button>
+
                     </tr>
                 </ng-template>
             </p-table>
             <p-button (click)="showmileDialog()" icon="pi pi-external-link" label="Add MileStones"></p-button>
-            <br/>
-            <br/>
-<p-dialog header="Add MileStones" [(visible)]="displayMile" [style]="{width: '50vw'}" [baseZIndex]="10000">
-    <div class="row">
-        <div class="col">
-            <div class="p-col-12 p-md-4">
-                <div class="p-inputgroup">
-                    <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-                    <input type="text" pInputText placeholder="Title" [(ngModel)]="milestonInLst.title">
-                </div>
-            </div>
-            <!-- <div class="p-col-12 p-md-4">
+            <br />
+            <br />
+            <p-dialog header="Add MileStones" [(visible)]="displayMile" [style]="{width: '50vw'}" [baseZIndex]="10000">
+                <div class="row">
+                    <div class="col">
+                        <div class="p-col-12 p-md-4">
+                            <div class="p-inputgroup">
+                                <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                                <input type="text" pInputText placeholder="Title" [(ngModel)]="milestonInLst.title">
+                            </div>
+                        </div>
+                        <!-- <div class="p-col-12 p-md-4">
                 <div class="p-inputgroup">
                     <span class="p-inputgroup-addon">00</span>
                     <input type="text" pInputText placeholder="Mobile" [(ngModel)]="milestonInLst.title">
@@ -262,298 +259,307 @@
                 </div>
             </div> -->
 
-            <div class="row p-col-12 p-md-4">
-                <div class="p-field col-md-6">
-                    <label for="StartDate" class="labelMarginRight">StartDate </label><br>
-                    <p-calendar [(ngModel)]="milestonInLst.startDate" dateFormat="dd.mm.yy"></p-calendar>
-                    <!-- <br> <small [hidden]="Name.valid || Name.untouched" id="helpId" class="text-muted">Must more than 3
+                        <div class="row p-col-12 p-md-4">
+                            <div class="p-field col-md-6">
+                                <label for="StartDate" class="labelMarginRight">StartDate </label><br>
+                                <p-calendar [(ngModel)]="milestonInLst.startDate" dateFormat="dd.mm.yy"></p-calendar>
+                                <!-- <br> <small [hidden]="Name.valid || Name.untouched" id="helpId" class="text-muted">Must more than 3
                         letters</small> -->
-                </div>
-                <div class="p-field col-md-6">
-                    <label for="End Date" class="labelMarginRight">End Date </label><br>
-                    <p-calendar [(ngModel)]="milestonInLst.endDate" dateFormat="dd.mm.yy"></p-calendar>
-                    <!-- <br> <small [hidden]="Name.valid || Name.untouched" id="helpId" class="text-muted">Must more than 3
+                            </div>
+                            <div class="p-field col-md-6">
+                                <label for="End Date" class="labelMarginRight">End Date </label><br>
+                                <p-calendar [(ngModel)]="milestonInLst.endDate" dateFormat="dd.mm.yy"></p-calendar>
+                                <!-- <br> <small [hidden]="Name.valid || Name.untouched" id="helpId" class="text-muted">Must more than 3
                         letters</small> -->
+                            </div>
+                        </div>
+
+                        <div class="p-col-12 p-md-4">
+                            <div>
+                                <textarea pInputTextarea placeholder="Description"
+                                    [(ngModel)]="milestonInLst.description" style="width: 100%;"
+                                    class="row p-col-12 p-md-4"></textarea>
+                            </div>
+                            <div>
+                                <button class="btn btn-info" style="margin-top: 20px;float: right;"
+                                    (click)="Savetolist_Milestones()">Save To List</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Title</th>
+                                    <th>Start Date</th>
+                                    <th>Start Date</th>
+                                    <th>description</th>
+
+                                    <!-- <th>Projectcost</th> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr *ngFor="let i of lstOfMilestones">
+                                    <td>
+                                        {{i.title}}
+                                    </td>
+                                    <td>
+                                        {{i.startDate | date:'yyyy:MM:dd'}}
+                                    </td>
+                                    <td>
+                                        {{i.endDate | date:'yyyy:MM:dd'}}
+                                    </td>
+                                    <td>
+                                        {{i.description}}
+                                    </td>
+                                </tr>
+                                <tr>
+
+                                </tr>
+                                <tr *ngIf="lstOfMilestones.length == 0">
+                                    <td colspan="4" style="color: rgb(102, 97, 23);">No Milestones found.</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                        <button class="btn btn-warning" [disabled]="lstOfMilestones.length == 0"
+                            (click)="SaveToDB_Milestones()">Add List</button>
+                    </div>
                 </div>
-            </div>
-
-            <div class="p-col-12 p-md-4">
-                <div>
-                    <textarea pInputTextarea placeholder="Description" [(ngModel)]="milestonInLst.description"
-                        style="width: 100%;" class="row p-col-12 p-md-4"></textarea>
-                </div>
-                <div>
-                    <button class="btn btn-info" style="margin-top: 20px;float: right;"
-                        (click)="Savetolist_Milestones()">Save To List</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Start Date</th>
-                        <th>Start Date</th>
-                        <th>description</th>
-
-                        <!-- <th>Projectcost</th> -->
-                    </tr>
-                </thead>
-                <tbody>
-
-                    <tr *ngFor="let i of lstOfMilestones">
-                        <td>
-                            {{i.title}}
-                        </td>
-                        <td>
-                            {{i.startDate | date:'yyyy:MM:dd'}}
-                        </td>
-                        <td>
-                            {{i.endDate | date:'yyyy:MM:dd'}}
-                        </td>
-                        <td>
-                            {{i.description}}
-                        </td>
-                    </tr>
-                    <tr>
-
-                    </tr>
-                    <tr *ngIf="lstOfMilestones.length == 0">
-                        <td colspan="4" style="color: rgb(102, 97, 23);">No Milestones found.</td>
-                    </tr>
-                </tbody>
-
-            </table>
-
-            <button class="btn btn-warning" [disabled]="lstOfMilestones.length == 0"
-                (click)="SaveToDB_Milestones()">Add List</button>
-        </div>
-    </div>
-    <ng-template pTemplate="footer">
-        <p-button icon="pi pi-check" (click)="displayMile=false" label="Ok" styleClass="p-button-text"></p-button>
-    </ng-template>
-</p-dialog>
+                <ng-template pTemplate="footer">
+                    <p-button icon="pi pi-check" (click)="displayMile=false" label="Ok" styleClass="p-button-text">
+                    </p-button>
+                </ng-template>
+            </p-dialog>
             <!-- <input type="text" class="form-control" placeholder="{{i.title}}" name="title"> -->
         </div>
     </div>
-   
-        <div class="row">
-            <div class="col"  >
-       
-                <p-table [value]=" projectObj.listofprojectteam">
-                    <ng-template pTemplate="header">
-                        <tr>
-                            <!-- <th style="color: #2674a8; font-size: 20px; font: bold;">Team Name</th> -->
-                            <th style="color: #2674a8; font-size: 20px; font: bold;">Employee Name</th>
-                            <th ></th>
-                          
-                        </tr>
-                    </ng-template>
-                    <ng-template pTemplate="body" let-i>
-                        <tr>
-                            <!-- <td>{{teamname}}</td> -->
-                            <td>{{i.employeeName}}</td>
-                <button pButton pRipple  icon="pi pi-trash" class="p-button-danger" style="min-width: 5px;" (click)="delteam(i.id)"></button>
-                           
-                        </tr>
-                    </ng-template>
-                </p-table>
-                <p-button (click)="showteamDialog()" icon="pi pi-external-link" label="Add Teams"></p-button>
-                <br/>
-                <br/>
-<p-dialog header="Add New Team" [(visible)]="displayteam" [style]="{width: '50vw'}" [baseZIndex]="10000">
+
     <div class="row">
-        <div class="p-col-12 p-md-4">
-            <div class="p-inputgroup">
-                <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-                <input type="text" pInputText placeholder="Team Name" [(ngModel)]="team.Name">
-                
-            
-            </div>
-        </div>
         <div class="col">
-            
-            <div class="col">
-                <label class="labelstyle">Select Position Name</label>
-                <select [(ngModel)]="ProjectTeam.projectPositionId" name="id" class="form-control">emp
-                    <option hidden [value]="" selected>select Position Name </option>
-                    <option *ngFor="let the of lstOfprojectPosition" value="{{the.id}}">{{the.positionName}}
-                    </option>
-                </select>
-            </div>
 
-            <div class="col">
-                <label class="labelstyle">Select Employee Name</label>
-                <select [(ngModel)]="ProjectTeam.employeeId" name="sel2" class="form-control"
-                    (change)="OnChangeEmpID($event)">
-                    <option *ngFor="let th of lstEmployees" value="{{th.id}}">{{th.employeeName}}</option>
-                </select>
-            </div>
-            
-            <div class="col">
-                <label class="labelstyle">Department Name</label>
-                <select [(ngModel)]="ProjectTeam.departmentId" name="sub" class="form-control">
-                    <option value="{{department.id}}">{{department.name}}</option>
-                </select>
-            </div>
-    
-            <div class="p-col-12 p-md-4">
-
-                <div>
-                    <button class="btn btn-info" style="margin-top: 20px;float: right;"
-                        (click)="Savetolist_Teams()">Save To List</button>
-                </div>
-            </div>
-        </div>
-
-        <div class="col">
-            <table class="table">
-                <thead>
-                    <tr>Team Name : {{teamname}}</tr>
+            <p-table [value]=" projectObj.listofprojectteam">
+                <ng-template pTemplate="header">
                     <tr>
-                        <th>Position Name</th>
-                        <th>Employee Name</th>
-                        <th>Department Name</th>
-                        <!-- <th>Projectcost</th> -->
+                        <!-- <th style="color: #2674a8; font-size: 20px; font: bold;">Team Name</th> -->
+                        <th style="color: #2674a8; font-size: 20px; font: bold;">Employee Name</th>
+                        <th></th>
+
                     </tr>
-                </thead>
-                <tbody>
+                </ng-template>
+                <ng-template pTemplate="body" let-i>
+                    <tr>
+                        <!-- <td>{{teamname}}</td> -->
+                        <td>{{i.employeeName}}</td>
+                        <button pButton pRipple icon="pi pi-trash" class="p-button-danger" style="min-width: 5px;"
+                            (click)="delteam(i.id)"></button>
 
-                    <tr *ngFor="let i of lstOfProjectTeams">
-                        <td>
-                            {{i.projectPositionName}}
-                        </td>
-                        <td>
-                            {{i.employeeName}}
-                        </td>
-                        <td>
-                            {{i.departmentName}}
-                        </td>
                     </tr>
+                </ng-template>
+            </p-table>
+            <p-button (click)="showteamDialog()" icon="pi pi-external-link" label="Add Teams"></p-button>
+            <br />
+            <br />
+            <p-dialog header="Add New Team" [(visible)]="displayteam" [style]="{width: '50vw'}" [baseZIndex]="10000">
+                <div class="row">
+                    <div class="p-col-12 p-md-4">
+                        <div class="p-inputgroup">
+                            <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                            <input type="text" pInputText placeholder="Team Name" [(ngModel)]="team.Name">
 
-                    <tr *ngIf="lstOfProjectTeams.length == 0">
-                        <td colspan="4" style="color: rgb(102, 97, 23);">No ProjectTeams found.</td>
-                    </tr>
-                </tbody>
 
-            </table>
-
-            <button class="btn btn-warning" [disabled]="lstOfProjectTeams.length == 0"
-                (click)="SaveToDB_ProjectTeams()">Add List</button>
-        </div>
-    </div>
-    <ng-template pTemplate="footer">
-        <p-button icon="pi pi-check" (click)="displayteam=false" label="Ok" styleClass="p-button-text"></p-button>
-    </ng-template>
-</p-dialog>
-                <!-- <input type="text"  class="form-control" placeholder="{{i.teamName}}" name="teamName" > -->
-            </div>
-        </div>
-      
-        <div class="row">
-            <div class="col" >
-                <p-table [value]="  projectObj.listOfdocuments">
-                    <ng-template pTemplate="header">
-                        <tr>
-                            <th style="color: #2674a8; font-size: 20px; font: bold;">Document Name</th>
-                            <th style="color: #2674a8; font-size: 20px; font: bold;">Document File</th>
-                           <th ></th>
-                        </tr>
-                    </ng-template>
-                    <ng-template pTemplate="body" let-i>
-                        <tr>
-                            <td>{{i.documentName}}</td>
-                           <td (click)="downloadFile(i.documentFile)" style="color: blue; cursor: pointer; text-decoration: blue  underline;">{{i.documentFile}}</td>
-           
-                           <button pButton pRipple icon="pi pi-trash" style="min-width: 5px;"  class="p-button-danger" (click)="delDocument(i.id)"></button>
-                    
-                        </tr>
-                    </ng-template>
-                </p-table>
-                <p-button (click)="showdocDialog()" icon="pi pi-external-link" label="Add Document"></p-button>
-                <br/>
-                <br/>
-                <p-dialog header="Add Document" [(visible)]="displaydoc" [style]="{width: '50vw'}" [baseZIndex]="10000">
-                   
-                    <div class="row">
-                        <div class="col">
-                            <div class="p-col-12 p-md-4">
-                                <div class="p-inputgroup">
-                                    <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-                                    <input type="text" pInputText placeholder="Document Name"
-                                    [(ngModel)]="docproject.documentName">
-                                </div>
-                            </div>
-                          
-                           
-                            <div class="p-col-12 p-md-4">
-                                <div>
-                                    <textarea pInputTextarea placeholder="Description" style="width: 100%;"
-                                    [(ngModel)]="docproject.Description" class="row p-col-12 p-md-4"></textarea>
-                                </div>
-                                <br/>
-                                <br/>
-                                <div class="p-field col-md-3" style="margin-bottom:15px;">
-                                    <div class="col-md-3">
-                                        <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)"
-                                            style="display:none;">
-                                        <button type="button" class="btn btn-success" (click)="file.click()">Upload File</button>
-                                    </div>
-                                    <div class="col-md-4">
-                                      
-                                        <span class="upload" *ngIf="message">
-                
-                                            {{message}}
-                                        </span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <button class="btn btn-info" style="margin-top: 20px;float: right;"
-                                        (click)="Savedoctolist()">Save To List</button>
-                                </div>
-                            </div>
-                        </div>
-        
-                        <div class="col">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Document Name</th>
-                                <th >Document Description</th>
-                                <th >File Name</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-        
-                                    <tr *ngFor="let i of lstoddocproj">
-        
-                                        <td>{{i.documentName}}</td>
-                                        <td>{{i.Description}}</td>
-                                        <td>{{i.documentFile}}</td>
-                                    </tr>
-                                    <tr>
-        
-                                    </tr>
-                                    <tr *ngIf="lstoddocproj.length == 0">
-                                        <td colspan="4" style="color: rgb(102, 97, 23);">No Documents found.</td>
-                                    </tr>
-                                </tbody>
-        
-                            </table>
-        
-                            <button class="btn btn-warning" [disabled]="lstoddocproj.length == 0"
-                                (click)="SaveDocuentToDB()">Add List</button>
                         </div>
                     </div>
-                    <ng-template pTemplate="footer">
-                        <p-button icon="pi pi-check" (click)="displaydoc=false" label="Ok" styleClass="p-button-text"></p-button>
-                    </ng-template>
-                </p-dialog>
+                    <div class="col">
+
+                        <div class="col">
+                            <label class="labelstyle">Select Position Name</label>
+                            <select [(ngModel)]="ProjectTeam.projectPositionId" name="id" class="form-control">emp
+                                <option hidden [value]="" selected>select Position Name </option>
+                                <option *ngFor="let the of lstOfprojectPosition" value="{{the.id}}">{{the.positionName}}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="col">
+                            <label class="labelstyle">Select Employee Name</label>
+                            <select [(ngModel)]="ProjectTeam.employeeId" name="sel2" class="form-control"
+                                (change)="OnChangeEmpID($event)">
+                                <option *ngFor="let th of lstEmployees" value="{{th.id}}">{{th.employeeName}}</option>
+                            </select>
+                        </div>
+
+                        <div class="col">
+                            <label class="labelstyle">Department Name</label>
+                            <select [(ngModel)]="ProjectTeam.departmentId" name="sub" class="form-control">
+                                <option value="{{department.id}}">{{department.name}}</option>
+                            </select>
+                        </div>
+
+                        <div class="p-col-12 p-md-4">
+
+                            <div>
+                                <button class="btn btn-info" style="margin-top: 20px;float: right;"
+                                    (click)="Savetolist_Teams()">Save To List</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <table class="table">
+                            <thead>
+                                <tr>Team Name : {{teamname}}</tr>
+                                <tr>
+                                    <th>Position Name</th>
+                                    <th>Employee Name</th>
+                                    <th>Department Name</th>
+                                    <!-- <th>Projectcost</th> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr *ngFor="let i of lstOfProjectTeams">
+                                    <td>
+                                        {{i.projectPositionName}}
+                                    </td>
+                                    <td>
+                                        {{i.employeeName}}
+                                    </td>
+                                    <td>
+                                        {{i.departmentName}}
+                                    </td>
+                                </tr>
+
+                                <tr *ngIf="lstOfProjectTeams.length == 0">
+                                    <td colspan="4" style="color: rgb(102, 97, 23);">No ProjectTeams found.</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                        <button class="btn btn-warning" [disabled]="lstOfProjectTeams.length == 0"
+                            (click)="SaveToDB_ProjectTeams()">Add List</button>
+                    </div>
+                </div>
+                <ng-template pTemplate="footer">
+                    <p-button icon="pi pi-check" (click)="displayteam=false" label="Ok" styleClass="p-button-text">
+                    </p-button>
+                </ng-template>
+            </p-dialog>
+            <!-- <input type="text"  class="form-control" placeholder="{{i.teamName}}" name="teamName" > -->
         </div>
     </div>
-  
+
+    <div class="row">
+        <div class="col">
+            <p-table [value]="  projectObj.listOfdocuments">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th style="color: #2674a8; font-size: 20px; font: bold;">Document Name</th>
+                        <th style="color: #2674a8; font-size: 20px; font: bold;">Document File</th>
+                        <th></th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-i>
+                    <tr>
+                        <td>{{i.documentName}}</td>
+                        <td (click)="downloadFile(i.documentFile)"
+                            style="color: blue; cursor: pointer; text-decoration: blue  underline;">{{i.documentFile}}
+                        </td>
+
+                        <button pButton pRipple icon="pi pi-trash" style="min-width: 5px;" class="p-button-danger"
+                            (click)="delDocument(i.id)"></button>
+
+                    </tr>
+                </ng-template>
+            </p-table>
+            <p-button (click)="showdocDialog()" icon="pi pi-external-link" label="Add Document"></p-button>
+            <br />
+            <br />
+            <p-dialog header="Add Document" [(visible)]="displaydoc" [style]="{width: '50vw'}" [baseZIndex]="10000">
+
+                <div class="row">
+                    <div class="col">
+                        <div class="p-col-12 p-md-4">
+                            <div class="p-inputgroup">
+                                <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                                <input type="text" pInputText placeholder="Document Name"
+                                    [(ngModel)]="docproject.documentName">
+                            </div>
+                        </div>
+
+
+                        <div class="p-col-12 p-md-4">
+                            <div>
+                                <textarea pInputTextarea placeholder="Description" style="width: 100%;"
+                                    [(ngModel)]="docproject.Description" class="row p-col-12 p-md-4"></textarea>
+                            </div>
+                            <br />
+                            <br />
+                            <div class="p-field col-md-3" style="margin-bottom:15px;">
+                                <div class="col-md-3">
+                                    <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)"
+                                        style="display:none;">
+                                    <button type="button" class="btn btn-success" (click)="file.click()">Upload
+                                        File</button>
+                                </div>
+                                <div class="col-md-4">
+
+                                    <span class="upload" *ngIf="message">
+
+                                        {{message}}
+                                    </span>
+                                </div>
+                            </div>
+                            <div>
+                                <button class="btn btn-info" style="margin-top: 20px;float: right;"
+                                    (click)="Savedoctolist()">Save To List</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Document Name</th>
+                                    <th>Document Description</th>
+                                    <th>File Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr *ngFor="let i of lstoddocproj">
+
+                                    <td>{{i.documentName}}</td>
+                                    <td>{{i.Description}}</td>
+                                    <td>{{i.documentFile}}</td>
+                                </tr>
+                                <tr>
+
+                                </tr>
+                                <tr *ngIf="lstoddocproj.length == 0">
+                                    <td colspan="4" style="color: rgb(102, 97, 23);">No Documents found.</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+
+                        <button class="btn btn-warning" [disabled]="lstoddocproj.length == 0"
+                            (click)="SaveDocuentToDB()">Add List</button>
+                    </div>
+                </div>
+                <ng-template pTemplate="footer">
+                    <p-button icon="pi pi-check" (click)="displaydoc=false" label="Ok" styleClass="p-button-text">
+                    </p-button>
+                </ng-template>
+            </p-dialog>
+        </div>
+    </div>
+
 
 
 </div>

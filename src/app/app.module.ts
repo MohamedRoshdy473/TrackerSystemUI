@@ -73,7 +73,7 @@ import {DynamicDialogModule} from 'primeng/dynamicdialog';
 import {MatTooltipModule} from '@angular/material/tooltip';
 // import { MaterialModule} from '@angular/material';
 import { MustMatchDirective } from './helpers/must-match.directive';
-import { HashLocationStrategy, LocationStrategy  } from '@angular/common';
+
 import { from } from 'rxjs';
 
 import 'zone.js/dist/zone';
@@ -118,6 +118,10 @@ import { AssignemployeeRequestComponent } from './Components/Request/assignemplo
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { ProfileComponent } from './Components/Profile/Profile/profile.component';
+import { PiechartComponent } from './Components/Pichart/piechart/piechart.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+// import { DashboardComponent } from './Dashboard/Dashboard/dashboard.component';
+// import { PiechartComponent } from './Components/Pichart/piechart/piechart.component';
 
 
 registerLocaleData(en);
@@ -164,11 +168,13 @@ registerLocaleData(en);
    AllClientsForProjectmanagerComponent,
    ProjectmangerRequestsComponent,
    AssignemployeeRequestComponent,
-   ProfileComponent
+   ProfileComponent,
+   PiechartComponent,
+  //  PiechartComponent,
   ],
   imports: [
     TranslateModule,
-  
+    NgApexchartsModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
@@ -243,8 +249,8 @@ registerLocaleData(en);
     RouterModule.forRoot([]),
 
   ],
-  providers: [MessageService,ConfirmationService,{provide : LocationStrategy , useClass: HashLocationStrategy}],
-  bootstrap: [AppComponent]
+  providers: [MessageService,ConfirmationService,],
+  bootstrap: [AppComponent,PiechartComponent]
 })
 export class AppModule { }
 export function HttpLoaderFactory(http: HttpClient) {

@@ -70,7 +70,7 @@ export class UpdateProjectComponent implements OnInit {
   lstProjectTypes: projectType[];
   lstOrganizations: organization[];
 
-  projectid:number
+  projectid: number
 
   constructor(private positionService: ProjectPositionService, private employeeService: EmployeeService, private departmentService: DepartmentService, private route: ActivatedRoute, private milestoneservice: MilestoneService, private projectService: ProjectService,
     private stackholderService: StackholdersService,
@@ -83,27 +83,13 @@ export class UpdateProjectComponent implements OnInit {
     private organizationService: OrganizationService,) { }
 
   ngOnInit(): void {
- this.projectid = this.activeRoute.snapshot.params['id'];
-console.log("id",this.projectid)
-    // this.id=this.Id;
+    this.lstOfprojectPosition = []
     this.lstOfStackholder = []
     this.lstOfMilestones = []
     this.lstoddocproj = []
     this.lstOfProjectTeams = []
-    this.projectTypeService.GetAllProjectTypes().subscribe(
-      data => { this.lstProjectTypes = data },
-      err => console.log(err)
-    )
-    this.employeeService.GetAllEmployees().subscribe(
-      res => {
-        this.lstEmployees = res
-        console.log("lstEmp", this.lstEmployees)
-      },
-      err => console.log(err))
-      this.organizationService.GetAllOrganizations().subscribe(
-        res => { this.lstOrganizations = res },
-        err => console.log(err)
-      )
+    this.projectid = this.activeRoute.snapshot.params['id'];
+
     this.docproject = {
       Description: '', documentName: '', documentFile: '', id: 0, projectId: 0
     }
@@ -129,20 +115,39 @@ console.log("id",this.projectid)
       employeeId: 0, employeeName: '',
       projectId: this.id, projectPositionId: 0, projectPositionName: ''
     }
-    this.lstOfprojectPosition = []
     this.docproject = {
       Description: '', documentName: '', documentFile: '', id: 0, projectId: 0
     }
-    this.projectPositionService.GetAllProjectPosition().subscribe(e => {
-      this.lstOfprojectPosition = e
-      console.log("lstof position", this.lstOfprojectPosition)
-    })
+    this.projectObj = {
+      actualEndDate: new Date(), listOfdocuments: [], listofprojectteam: [], id: 0, organizationId: 0, projectPeriod: 0, clientMobile: '', clientName: '', organizationName: '', projectTypeName: '',
+      planndedEndDate: new Date(), planndedStartDate: new Date(), projectCode: '', listOfStackholders: [], listOfmilestones: [], projectTypeId: 0,
+      projectName: '', actualStartDate: new Date(), clientId: 0, cost: 0, description: '', employeeId: 0
+    }
     this.id = this.route.snapshot.params['id'];
     this.stackholderInLst.projectId = Number(this.id)
     this.milestonInLst.projectId = Number(this.id)
     this.ProjectTeam.projectId = Number(this.id)
     this.docproject.projectId = Number(this.id)
-    //this.ProjectTeam.projectId=Number(this.id)
+    this.projectTypeService.GetAllProjectTypes().subscribe(
+      data => { this.lstProjectTypes = data },
+      err => console.log(err)
+    )
+    this.employeeService.GetAllEmployees().subscribe(
+      res => {
+        this.lstEmployees = res
+        console.log("lstEmp", this.lstEmployees)
+      },
+      err => console.log(err))
+    this.organizationService.GetAllOrganizations().subscribe(
+      res => { this.lstOrganizations = res },
+      err => console.log(err)
+    )
+  
+    this.projectPositionService.GetAllProjectPosition().subscribe(e => {
+      this.lstOfprojectPosition = e
+      console.log("lstof position", this.lstOfprojectPosition)
+    })
+  
     this.employeeService.GetAllEmployees().subscribe(
       res => {
         this.lstEmployees = res
@@ -150,15 +155,9 @@ console.log("id",this.projectid)
       },
       err => console.log(err)
     )
-    this.projectObj = {
-      actualEndDate: new Date(), listOfdocuments: [], listofprojectteam: [], id: 0, organizationId: 0, projectPeriod: 0, clientMobile: '', clientName: '', organizationName: '', projectTypeName: '',
-      planndedEndDate: new Date(), planndedStartDate: new Date(), projectCode: '', listOfStackholders: [], listOfmilestones: [], projectTypeId: 0,
-      projectName: '', actualStartDate: new Date(), clientId: 0, cost: 0, description: '', employeeId: 0
-    }
+
     this.projectService.getProjectById(this.id).subscribe(res => {
       this.projectObj = res;
-  
-      console.log("this.projectObj",this.projectObj)
       this.employeeService.getEmpByID(this.projectObj.employeeId).subscribe(res => {
         this.emploeeObj = res;
         console.log("employee", this.emploeeObj.employeeName)
@@ -167,17 +166,13 @@ console.log("id",this.projectid)
     })
 
     this.stackholderService.GetAllStackholdersByProjectID(this.id).subscribe(e => {
-      this.stackholders = e
+      // this.stackholders = e
       this.projectObj.listOfStackholders = e
-
     })
     //milestone
     this.milestoneservice.GetAllMileStonesByProjectID(this.id).subscribe(m => {
       this.mileStones = m;
-
       this.projectObj.listOfmilestones = m
-
-      //console.log("milestones",this.mileStones)
     }), err => console.log(err)
 
     this.projectteamservice.GetAllTeamsByProjectID(this.id).subscribe(t => {
@@ -191,15 +186,15 @@ console.log("id",this.projectid)
       this.documents = d;
       this.project1.listOfdocuments = this.documents;
       this.projectObj.listOfdocuments = d;
-      console.log("doc",d)
+      console.log("doc", d)
     }), err => console.log(err)
-    
+
 
   }
   Savetolist_Stackholders() {
+    this.stackholderInLst.projectId = Number(this.stackholderInLst.projectId)
     this.lstOfStackholder.push(this.stackholderInLst);
     console.log(this.stackholderInLst)
-
     this.stackholderInLst = {
       description: '', id: 0, mobile: '', projectId: this.id, rank: '', stackeholderName: ''
     }
@@ -208,18 +203,15 @@ console.log("id",this.projectid)
 
   SaveToDB_Stackholders() {
     this.stackholderService.insertListOfStackholders(this.lstOfStackholder).subscribe(e => {
-
-      console.log(e)
-      this.ngOnInit();
-
-
-
+      this.lstOfStackholder = []
+      this.stackholderService.GetAllStackholdersByProjectID(this.id).subscribe(e => {
+        this.stackholders = e
+        this.projectObj.listOfStackholders = e
+      })
     })
-
   }
   Savetolist_Milestones() {
-    // this.milestonInLst.projectId = this.id;
-
+    this.milestonInLst.projectId = Number(this.stackholderInLst.projectId)
     this.lstOfMilestones.push(this.milestonInLst);
     this.milestonInLst = {
       description: '', id: 0, endDate: new Date(), projectId: this.id, startDate: new Date(), title: ''
@@ -227,22 +219,22 @@ console.log("id",this.projectid)
   }
   SaveToDB_Milestones() {
     this.milestoneservice.insertListOfMilestoness(this.lstOfMilestones).subscribe(e => {
-           console.log(e)
-           this.ngOnInit();
-
-
+      this.lstOfMilestones = []
+      this.milestoneservice.GetAllMileStonesByProjectID(this.id).subscribe(m => {
+        this.projectObj.listOfmilestones = m
+      }), err => console.log(err)
     })
   }
   edit() {
-    
-   // console.log("id",this.projectid)
+
+    // console.log("id",this.projectid)
     this.projectService.updateProject(this.projectid, this.projectObj).subscribe(res => {
 
       //console.log("update project", res)
       alert('Updated Successfully.');
 
     }), err => console.log(err)
-    
+
     // this.stackholderService.updatestakeholdersbyprojectid(this.projectObj.listOfStackholders).subscribe(res => {
     //   console.log(res)
     // })
@@ -250,20 +242,31 @@ console.log("id",this.projectid)
   }
   delStakeHolders(id: number) {
     this.stackholderService.deletestakeholder(id).subscribe(res => {
-      console.log(res)
-      this.ngOnInit()
+      this.stackholderService.GetAllStackholdersByProjectID(this.id).subscribe(e => {
+        this.stackholders = e
+        this.projectObj.listOfStackholders = e
+      })
     })
-    console.log("id", id)
   }
   delMile(id: number) {
     this.milestoneservice.deletemilestone(id).subscribe(res => {
-      this.ngOnInit()
+      // this.ngOnInit()
+      this.milestoneservice.GetAllMileStonesByProjectID(this.id).subscribe(m => {
+        this.projectObj.listOfmilestones = m
+      }), err => console.log(err)
     })
   }
   delteam(id: number) {
 
     this.projectteamservice.deleteteam(id).subscribe(res => {
-      this.ngOnInit()
+
+      this.projectteamservice.GetAllTeamsByProjectID(this.id).subscribe(t => {
+        this.teams = t;
+        this.project1.listofprojectteam = this.teams;
+        this.projectObj.listofprojectteam = t
+        console.log(this.projectObj.listofprojectteam)
+      }), err => console.log(err)
+
     })
   }
   delDocument(id: number) {
@@ -303,8 +306,6 @@ console.log("id",this.projectid)
     this.ProjectTeam.departmentName = this.department.name
 
     this.employeeService.getEmpByID(this.ProjectTeam.employeeId).subscribe(e => {
-
-
       this.ProjectTeam.employeeName = e.employeeName
       this.positionService.getPositionByID(this.ProjectTeam.projectPositionId).subscribe(e => {
         this.ProjectTeam.projectPositionName = e.positionName
@@ -318,13 +319,8 @@ console.log("id",this.projectid)
           departmentId: 0, id: 0, departmentName: '', employeeName: '', projectPositionId: 0, projectPositionName: '', employeeId: 0
           , projectId: this.id, projectName: ''
         }
-
-
       })
     })
-
-    // console.log("projteam before show", this.ProjectTeam)
-    // console.log("lst of teams", this.lstOfProjectTeams)
   }
   Idteam: any
   tasneem: number;
@@ -391,12 +387,12 @@ console.log("id",this.projectid)
   downloadFile(fileName) {
     var filePath = `${environment.Domain}wwwroot/documentFiles/${fileName}`;
 
-  
+
     window.open(filePath);
-      // this.projectdocumentsservice.downloadInFile(fileName).subscribe(file => {
-      //   var dwnldFile = filePath  + fileName;
-      //   if (fileName != "" || fileName != null)
-      //     window.open(dwnldFile);
-      // })
+    // this.projectdocumentsservice.downloadInFile(fileName).subscribe(file => {
+    //   var dwnldFile = filePath  + fileName;
+    //   if (fileName != "" || fileName != null)
+    //     window.open(dwnldFile);
+    // })
   }
 }
