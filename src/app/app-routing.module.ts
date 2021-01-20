@@ -42,6 +42,9 @@ import { ProjectmangerRequestsComponent } from './Components/Request/All-project
 import { AssignemployeeRequestComponent } from './Components/Request/assignemployee-request/assignemployee-request.component';
 import { EditClientComponent } from './Components/ClientComponents/edit-client/edit-client.component';
 import { ProfileComponent } from './Components/Profile/Profile/profile.component';
+// import { PiechartComponent } from './Components/Pichart/piechart/piechart.component';
+import { PiechartComponent } from "./Components/Pichart/piechart/piechart.component";
+// import { PiechartComponent } from './Components/Pichart/piechart/piechart.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'login', component: SignupComponent },
@@ -50,6 +53,8 @@ const routes: Routes = [
       { path: 'tabs', component: AllProjectsComponent },
       { path: 'Category', component: CategoryComponent },
       { path: 'client', component: ClientsComponent },
+      { path: 'piechart', component: PiechartComponent },
+      { path: 'editClient/:id', component: EditClientComponent },
       { path: 'editClient/:id', component: EditClientComponent },
       { path: 'department', component: DepartmentComponent },
       { path: 'changePassword', component: ChangePaswwordComponent },

@@ -118,6 +118,10 @@ import { AssignemployeeRequestComponent } from './Components/Request/assignemplo
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { ProfileComponent } from './Components/Profile/Profile/profile.component';
+import { PiechartComponent } from './Components/Pichart/piechart/piechart.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+// import { DashboardComponent } from './Dashboard/Dashboard/dashboard.component';
+// import { PiechartComponent } from './Components/Pichart/piechart/piechart.component';
 
 
 registerLocaleData(en);
@@ -164,11 +168,13 @@ registerLocaleData(en);
    AllClientsForProjectmanagerComponent,
    ProjectmangerRequestsComponent,
    AssignemployeeRequestComponent,
-   ProfileComponent
+   ProfileComponent,
+   PiechartComponent,
+  //  PiechartComponent,
   ],
   imports: [
     TranslateModule,
-  
+    NgApexchartsModule,
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
@@ -244,7 +250,7 @@ registerLocaleData(en);
 
   ],
   providers: [MessageService,ConfirmationService,],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,PiechartComponent]
 })
 export class AppModule { }
 export function HttpLoaderFactory(http: HttpClient) {

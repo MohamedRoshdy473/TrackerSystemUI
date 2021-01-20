@@ -41,7 +41,7 @@ export class SignupComponent implements OnInit {
           this.role= localStorage.getItem("roles")
           console.log(localStorage.getItem("email"))
           if (this.role == 'SuperAdmin'||this.role == 'PMO') {
-            this.routee.navigate(['/home/tabs'])
+            this.routee.navigate(['/home/piechart'])
             console.log(this.role)
           }
           if(this.role =='PM'){
