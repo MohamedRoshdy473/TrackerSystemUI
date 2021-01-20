@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { employee } from 'src/Shared/Models/employee';
+import { ClientService } from 'src/Shared/Services/client.service';
 import { EmployeeService } from 'src/Shared/Services/employee.service';
 
 @Component({
@@ -12,19 +13,33 @@ export class ProfileComponent implements OnInit {
   empId:number
   imgName:string
   employee:any
+  client:any
+  role: string;
+  clientId: number;
+  clientImage: any;
   constructor(
-    private empService:EmployeeService,private router:Router
+    private empService:EmployeeService,private router:Router,private clientService:ClientService
   ) { }
 
   ngOnInit(): void {
+    this.role= localStorage.getItem("roles")
     this.employee = {
       address:'',departmentId:0,departmentName:'',employeeName:'',id:0,dateOfBirth:new Date
     }
+    this.client={id:0,clientName:"",clientCode:"",organizationId:0,organizationName:"",gender:"",address:"",phone:"",email:""}
     this.empId=Number(localStorage.getItem('id'))
 
     this.empService.getEmpByID(this.empId).subscribe(w=>{
       this.employee = w
       this.imgName=w.photo
+    })
+
+    this.clientId=Number(localStorage.getItem("clientId"))
+    console.log("this.clientId",this.clientId)
+    this.clientService.GetclientByID(this.clientId).subscribe(w=>{
+      this.client=w
+      console.log(w["photo"])
+      this.clientImage=w["photo"]
     })
   }
   navigateToChangePassword(employee){
