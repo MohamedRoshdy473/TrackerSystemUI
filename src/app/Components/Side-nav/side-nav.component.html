@@ -6,15 +6,20 @@
     </div>
 
     <ul class="list-unstyled components">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+      aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
       <li *ngIf="role=='SuperAdmin'">
         <a class="active" class="pi pi-globe" routerLink='organizations'> {{ 'Tracker.Display Organizations' | translate
           }} </a><br>
       </li>
-
+<!-- 
       <li *ngIf="role=='SuperAdmin'">
         <a class="active" class="pi pi-globe" routerLink='organization'> {{ 'Tracker.Add Organization' | translate
           }}</a><br>
-      </li>
+      </li> -->
       <li *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM'">
         <a class="active" class="pi pi-briefcase" routerLink='ProjectTypes'> {{ 'Tracker.Project Type' | translate
           }}</a><br>

@@ -1,4 +1,12 @@
 <div class="container">
+  <div class="row">
+ <div class="col-md-10"></div>
+  <div class="col-md-2">
+    <button id="addEmpBtn" routerLink="/home/organization" class="btn btn-outline-primary btn-md btn-block">
+        <span class="pi pi-plus" [translate]="'Tracker.Add'">Add</span> </button>
+</div> 
+  
+</div>
   <agm-map [latitude]="lat" [longitude]="lng" [zoom]="15" style="height: 600px;">
     <agm-marker *ngFor="let m of lstOrganizationMarkers;let i = index; " [latitude]="m.lat" [longitude]="m.lng"
       (mapClick)="placeMarker(m)">
