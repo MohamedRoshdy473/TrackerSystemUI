@@ -21,6 +21,8 @@
 <div class="container card">
     <div class="row">
         <div class="col-9" style="margin-left: 20px;">
+            <h1 [translate]="'Tracker.All Project'" style="margin-bottom: 20px; font-size: 2em;color: #2674a8;"></h1>
+
         </div>
         <div *ngIf="role=='SuperAdmin'|| role=='PMO'" class="col-2" style="margin-left: 6%;">
             <p-button icon="pi pi-external-link" [label]="'Tracker.Add' | translate" routerLink="/home/createProject"
@@ -31,7 +33,7 @@
     </div>
     <!-- Basic Data -->
     <ng-template pTemplate="header">
-        <h3 style="text-align: center;" [translate]="'Tracker.All Project'"></h3>
+        <h1 [translate]="'Tracker.All Project'" style="margin-bottom: 20px; font-size: 2em;color: #2674a8;"></h1>
 
         <i class="pi pi-fw pi-home"></i>
         <span style="margin-left: 10px;" [translate]="'Tracker.Basic Data'"></span>

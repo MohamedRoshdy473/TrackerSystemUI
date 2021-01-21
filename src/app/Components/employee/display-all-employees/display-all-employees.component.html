@@ -28,7 +28,8 @@
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
     [globalFilterFields]="['employeeName','position ','departmentName','phone','Email']">
     <ng-template pTemplate="caption">
-        <h2 style="text-align: center;" [translate]="'Tracker.All Employees'"></h2>
+        <!-- <h2 style="text-align: center;" [translate]="'Tracker.All Employees'"></h2> -->
+        <h1 [translate]="'Tracker.All Employees'" style="margin-bottom: 20px; font-size: 2em;color: #2674a8;"></h1>
 
         <div class="row">
             <div class="table-header col-md-10">

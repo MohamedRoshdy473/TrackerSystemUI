@@ -8,7 +8,11 @@
 
     <ul class="list-unstyled components">
       <li *ngIf="role=='SuperAdmin'">
-        <a class="active" class="pi pi-globe" routerLink='organizations'> {{ 'Tracker.Display Organizations' |
+        <a class="active" class="pi pi-bars" routerLink='piechart'> {{ 'Tracker.DashBoard' |
+          translate}} </a><br>
+      </li>
+      <li *ngIf="role=='SuperAdmin'">
+        <a class="active" class="pi pi-globe" routerLink='organizations'> {{ 'Tracker.Organizations' |
           translate}} </a><br>
       </li>
       <li *ngIf="role=='SuperAdmin'">
@@ -16,7 +20,7 @@
           {{ 'Tracker.Projects' | translate }}</a><br>
       </li>
       <li *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'">
-        <a class="active" class="pi pi-ticket" routerLink='AllManagersReq'> {{ 'Tracker.Client Requests' | translate}}
+        <a class="active" class="pi pi-ticket" routerLink='AllManagersReq'> {{ 'Tracker.Clients Requests' | translate}}
         </a><br>
       </li>
       <!-- 
@@ -25,7 +29,7 @@
           }}</a><br>
       </li> -->
       <li *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM'">
-        <a class="active" class="pi pi-briefcase" routerLink='ProjectTypes'> {{ 'Tracker.Project Type' | translate
+        <a class="active" class="pi pi-briefcase" routerLink='ProjectTypes'> {{ 'Tracker.All Project Types' | translate
           }}</a><br>
       </li>
       <li *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM'">
@@ -33,19 +37,19 @@
           translate }}</a><br>
       </li>
       <li *ngIf="role =='PM'">
-        <a class="active" class="pi pi-user" routerLink='allclientsforprojectmanager'>{{ 'Tracker.Client' | translate
-          }}</a><br>
+        <a class="active" class="pi pi-users" routerLink='allclientsforprojectmanager'> {{ 'Tracker.Client' |
+          translate }}</a><br>
       </li>
 
       <li *ngIf="role=='SuperAdmin'">
-        <a class="active" class="pi pi-table" routerLink='DisplayDepartments'> {{ 'Tracker.Department' | translate
+        <a class="active" class="pi pi-table" routerLink='DisplayDepartments'> {{ 'Tracker.All Departments' | translate
           }}</a><br>
       </li>
       <li *ngIf="role=='Client'">
         <a class="active" class="pi pi-user" routerLink='allClientReqts'> {{ 'Tracker.ClientRequests' | translate
           }}</a><br>
       </li>
-      <li class="active">
+      <li class="active" *ngIf="role=='SuperAdmin'||role == 'Admin'">
         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle pi pi-cog"> {{
           'Tracker.Settings' | translate}}</a>
         <!-- <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle pi pi-cog">Settings</a> -->
@@ -74,35 +78,35 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
           <a class="navbar-brand" href="#">
-            <img src="../../assets/images/mostakbal.png" class="rounded-circle" style="width: 70px;position: initial;"
+            <img src="../../assets/images/mostakbal.png"  style="width: 70px;position: initial;"
               alt="RIS Image">
           </a>
 
           <ul class="navbar-nav">
 
-            <li style="margin-left: 20px; font-size: 20px; color: rgb(12, 105, 212);" *ngIf="role =='PM'">
+            <li style="margin-left: 20px; font-size: 20px; color: #2674a8;" *ngIf="role =='PM'">
               <a class="active" routerLink='projectsForProjectManager'>
                 {{ 'Tracker.Projects' | translate }} </a><br>
             </li>
-            <li style="margin-left: 20px; font-size: 20px; color: rgb(12, 105, 212);" *ngIf="role=='SuperAdmin'">
+            <li style="margin-left: 20px; font-size: 20px; color:#2674a8;" *ngIf="role=='SuperAdmin'">
               <a class="active" routerLink='tabs'>
                 {{ 'Tracker.Projects' | translate }}</a><br>
             </li>
             <li>
               <a class="active" routerLink='allTeamLeaderReqts'
-                style="margin-left: 20px; font-size: 20px; color: rgb(12, 105, 212);"
-                *ngIf="role=='TL'">{{'Tracker.Client Requests' | translate}}</a><br>
+                style="margin-left: 20px; font-size: 20px; color: #2674a8;"
+                *ngIf="role=='TL'">{{'Tracker.Clients Requests' | translate}}</a><br>
             </li>
 
-            <li style="margin-left: 20px; font-size: 20px;color: rgb(12, 105, 212);"
+            <li style="margin-left: 20px; font-size: 20px;color: #2674a8;"
               *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'">
-              <a class="active" routerLink='AllManagersReq'>{{ 'Tracker.Client Requests' | translate }}</a><br>
+              <a class="active" routerLink='AllManagersReq'>{{ 'Tracker.Clients Requests' | translate }}</a><br>
             </li>
-            <li style="margin-left: 20px; font-size: 20px;color: rgb(12, 105, 212);" *ngIf="role =='PM'">
-              <a class="active" routerLink='projectmanagerRequests'> {{ 'Tracker.Client Requests' | translate }}</a><br>
+            <li style="margin-left: 20px; font-size: 20px;color:#2674a8;" *ngIf="role =='PM'">
+              <a class="active" routerLink='projectmanagerRequests'> {{ 'Tracker.Clients Requests' | translate }}</a><br>
             </li>
-            <li style="margin-left: 20px; font-size: 20px;color: rgb(12, 105, 212);" *ngIf="role=='SuperAdmin'">
-              <a class="active" routerLink='organizations'> {{ 'Tracker.Display Organizations' | translate }} </a><br>
+            <li style="margin-left: 20px; font-size: 20px;color:#2674a8;" *ngIf="role=='SuperAdmin'">
+              <a class="active" routerLink='organizations'> {{ 'Tracker.Organizations' | translate }} </a><br>
             </li>
           </ul>
 

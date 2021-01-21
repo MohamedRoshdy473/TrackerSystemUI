@@ -8,11 +8,11 @@ import {TranslateService} from '@ngx-translate/core';
 
 export class AppComponent {
   constructor(public translate: TranslateService) {
-    translate.addLangs(['en', 'ar']);
-    translate.setDefaultLang('en');
+    translate.addLangs(['English', 'العربية']);
+    translate.setDefaultLang('English');
 
     const browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/en|ar/) ? browserLang : 'en');
+    translate.use(browserLang.match(/English|العربية/) ? browserLang : 'English');
   }
   title = 'trackerSystem';
 }

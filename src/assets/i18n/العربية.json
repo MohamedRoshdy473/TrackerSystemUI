@@ -1,7 +1,7 @@
 {
   "Tracker": {
     "TRACKER SYSTEM": "نظام التتبع",
-    "All Users": "كل المستخدمين",
+    "All Users": "مستخدمي النظام",
     "Request Category ": " تصنيف فئه الطلب ",
     "Client": "العملاء",
     "Department": "القسم",
@@ -20,10 +20,10 @@
     "No clients found.": "لا يوجد عملاء",
     "Controls": "العمليات",
     "name": "الاسم ",
-    "ClientRequests": "طلبات العميل",
-    "All Employees": "كل الموظفين",
+    "ClientRequests": "طلبات العملاء",
+    "All Employees": "الموظفين",
     "Lst organizations": "المنظمات",
-    "Projects": "كل المشاريع",
+    "Projects": "المشاريع",
     "Managers Requests": "طلبات المدير",
     "Requests": "كل الطلبات",
     "Logout": "تسجيل خروج",
@@ -52,7 +52,7 @@
     "Upload": "تحميل",
     "All Project Types": "أنواع المشاريع",
     "Project Type Name": "اسم نوع المشروع",
-    "All Project": "كل المشاريع",
+    "All Project": "قائمة المشاريع",
     "Basic Data": "البيانات الأساسية",
     "Project Name": "إسم المشروع",
     "Project Type": "نوع المشروع",
@@ -93,10 +93,10 @@
     "Project Type ": "نوع المشروع",
     "ResponsiblePerson": "الشخص المسؤل",
     "Latitude": "خط الطول",
-    "System Users": "مستخدمو النظام",
+    "System Users": "مستخدمي النظام",
     "UserName": "اسم المستخدم",
     "Role": "صلاحيات",
-    "Client Requests": "طلبات العميل",
+    "Clients Requests": "طلبات العملاء",
     "Request Name": "اسم الطلب",
     "project Name": "اسم المشروع",
     "request Time": "وقت الطلب",
@@ -169,8 +169,10 @@
     "Employee":"الموظف",
     "Client Requests Category":"تصنيفات طلبات العميل",
     "Add Organization":"إضافة منظمة",
-    "Display Organizations":"المنظمات",
-    "Settings":"الظبط"
+    "Organizations":"المنظمات",
+    "Settings":"الظبط",
+    "DashBoard":"لوحة القيادة"
+
 
   }
 }
