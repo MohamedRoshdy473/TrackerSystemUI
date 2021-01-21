@@ -53,7 +53,8 @@
 
             <th> 
                 <input pInputText style="width: 100%;" type="text"
-                    (input)="dt.filter($event.target.value, 'name', 'startsWith')" placeholder='Name'
+                    (input)="dt.filter($event.target.value, 'name', 'startsWith')" [placeholder]="'Tracker.name' | translate"
+
                     class="p-column-filter">
             </th>
             <th></th>
