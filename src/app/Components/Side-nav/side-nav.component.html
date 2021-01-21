@@ -13,7 +13,7 @@
         <a class="pi pi-times"  class="active" class="pi pi-users" routerLink='AllUsers'> {{ 'Tracker.All Users' | translate }}</a><br>
       </li>
       <li *ngIf="role=='SuperAdmin'||role == 'Admin'">
-        <a class="active" routerLink='employee'>{{ 'Tracker.All Employees' | translate }}</a><br>
+        <a class="active" class="pi pi-user" routerLink='employee'>{{ 'Tracker.All Employees' | translate }}</a><br>
       </li>
       <!-- <li *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM'">
         <a class="active" routerLink='tabs'>All
