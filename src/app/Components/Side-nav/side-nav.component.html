@@ -7,16 +7,19 @@
     <div></div>
 
     <ul class="list-unstyled components">
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
-      aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
       <li *ngIf="role=='SuperAdmin'">
-        <a class="active" class="pi pi-globe" routerLink='organizations'> {{ 'Tracker.Display Organizations' | translate
-          }} </a><br>
+        <a class="active" class="pi pi-globe" routerLink='organizations'> {{ 'Tracker.Display Organizations' |
+          translate}} </a><br>
       </li>
-<!-- 
+      <li *ngIf="role=='SuperAdmin'">
+        <a class="active pi pi-sitemap" routerLink='tabs'>
+          {{ 'Tracker.Projects' | translate }}</a><br>
+      </li>
+      <li *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'">
+        <a class="active" class="pi pi-ticket" routerLink='AllManagersReq'> {{ 'Tracker.Client Requests' | translate}}
+        </a><br>
+      </li>
+      <!-- 
       <li *ngIf="role=='SuperAdmin'">
         <a class="active" class="pi pi-globe" routerLink='organization'> {{ 'Tracker.Add Organization' | translate
           }}</a><br>
@@ -42,15 +45,22 @@
         <a class="active" class="pi pi-user" routerLink='allClientReqts'> {{ 'Tracker.ClientRequests' | translate
           }}</a><br>
       </li>
-      <li *ngIf="role=='SuperAdmin'||role == 'Admin'">
-        <a class="active" class="pi pi-user" routerLink='employee'> {{ 'Tracker.All Employees' | translate }}</a><br>
-      </li>
-      <li *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'">
-        <a class="active" class="pi pi-user" routerLink='DisplayAllClients'> {{ 'Tracker.Client' | translate }}</a><br>
-      </li>
-      <li *ngIf="role=='SuperAdmin'||role == 'Admin'">
-        <a class="pi pi-times" class="active" class="pi pi-users" routerLink='AllUsers'> {{ 'Tracker.All Users' |
-          translate }}</a><br>
+      <li class="active">
+        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle pi pi-cog"> {{
+          'Tracker.Settings' | translate}}</a>
+        <!-- <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle pi pi-cog">Settings</a> -->
+        <ul class="collapse list-unstyled" id="homeSubmenu">
+          <li *ngIf="role=='SuperAdmin'||role == 'Admin'">
+            <a class="active" class="pi pi-user" routerLink='employee'> {{ 'Tracker.All Employees' | translate }}</a>
+          </li>
+          <li *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'">
+            <a class="active" class="pi pi-user" routerLink='DisplayAllClients'> {{ 'Tracker.Client' | translate }}</a>
+          </li>
+          <li *ngIf="role=='SuperAdmin'||role == 'Admin'">
+            <a class="pi pi-times" class="active" class="pi pi-users" routerLink='AllUsers'> {{ 'Tracker.All Users' |
+              translate }}</a>
+          </li>
+        </ul>
       </li>
     </ul>
   </nav>
