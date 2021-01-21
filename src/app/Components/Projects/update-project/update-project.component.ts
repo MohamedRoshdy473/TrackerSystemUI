@@ -333,7 +333,6 @@ export class UpdateProjectComponent implements OnInit {
     this.projectService.addTeam(addTeamObj).subscribe(e => {
       this.Idteam = e;
       this.tasneem = this.Idteam;
-      this.ngOnInit();
     })
 
 
