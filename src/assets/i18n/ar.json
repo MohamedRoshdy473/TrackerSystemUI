@@ -167,7 +167,9 @@
     "PM":"مدير المشروع",
     "TL":"مشرف المشروع",
     "Employee":"الموظف",
-    "Client Requests Category":"تصنيفات طلبات العميل"
+    "Client Requests Category":"تصنيفات طلبات العميل",
+    "Add Organization":"إضافة منظمة",
+    "Display Organizations":"المنظمات"
 
   }
 }
