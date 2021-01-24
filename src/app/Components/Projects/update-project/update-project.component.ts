@@ -128,6 +128,15 @@ export class UpdateProjectComponent implements OnInit {
     this.milestonInLst.projectId = Number(this.id)
     this.ProjectTeam.projectId = Number(this.id)
     this.docproject.projectId = Number(this.id)
+
+    this.projectService.getProjectById(this.id).subscribe(res => {
+      this.projectObj = res;
+      this.employeeService.getEmpByID(this.projectObj.employeeId).subscribe(res => {
+        this.emploeeObj = res;
+        console.log("employee", this.emploeeObj.employeeName)
+
+      })
+    })
     this.projectTypeService.GetAllProjectTypes().subscribe(
       data => { this.lstProjectTypes = data },
       err => console.log(err)
@@ -156,14 +165,7 @@ export class UpdateProjectComponent implements OnInit {
       err => console.log(err)
     )
 
-    this.projectService.getProjectById(this.id).subscribe(res => {
-      this.projectObj = res;
-      this.employeeService.getEmpByID(this.projectObj.employeeId).subscribe(res => {
-        this.emploeeObj = res;
-        console.log("employee", this.emploeeObj.employeeName)
-
-      })
-    })
+   
 
     this.stackholderService.GetAllStackholdersByProjectID(this.id).subscribe(e => {
       // this.stackholders = e
@@ -256,10 +258,9 @@ export class UpdateProjectComponent implements OnInit {
       }), err => console.log(err)
     })
   }
+
   delteam(id: number) {
-
     this.projectteamservice.deleteteam(id).subscribe(res => {
-
       this.projectteamservice.GetAllTeamsByProjectID(this.id).subscribe(t => {
         this.teams = t;
         this.project1.listofprojectteam = this.teams;
@@ -302,9 +303,7 @@ export class UpdateProjectComponent implements OnInit {
     this.ProjectTeam.departmentId = Number(this.ProjectTeam.departmentId)
     this.ProjectTeam.employeeId = Number(this.ProjectTeam.employeeId)
     this.ProjectTeam.projectPositionId = Number(this.ProjectTeam.projectPositionId)
-    //this.ProjectTeam.TeamId=Number(localStorage.getItem(this.Idteam));
     this.ProjectTeam.departmentName = this.department.name
-
     this.employeeService.getEmpByID(this.ProjectTeam.employeeId).subscribe(e => {
       this.ProjectTeam.employeeName = e.employeeName
       this.positionService.getPositionByID(this.ProjectTeam.projectPositionId).subscribe(e => {
@@ -378,9 +377,11 @@ export class UpdateProjectComponent implements OnInit {
   SaveDocuentToDB() {
 
     this.projectdocumentsservice.postProjectDocumentByProjectID(this.lstoddocproj).subscribe(e => {
-      console.log(e)
-      this.ngOnInit();
-
+      this.projectdocumentsservice.GetAllDocumentsByProjectID(this.id).subscribe(d => {
+        this.documents = d;
+        this.project1.listOfdocuments = this.documents;
+        this.projectObj.listOfdocuments = d;
+      }), err => console.log(err)
     })
   }
   downloadFile(fileName) {
