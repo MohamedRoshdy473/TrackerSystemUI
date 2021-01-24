@@ -18,18 +18,18 @@ export class SideNavComponent implements OnInit {
   direction = 'ltr';
   role: string
   loggedInUserName: string
-  empId:number
-  imgName:string
-  clientImage:string
-  clientId:number
-  getimage:any
+  empId: number
+  imgName: string
+  clientImage: string
+  clientId: number
+  getimage: any
   constructor(private AuthService: AuthService,
-     public translate: TranslateService, 
-     public dir: Directionality,
-     private empService:EmployeeService,
-     private route:Router,
-     private clientService:ClientService
-     ) {
+    public translate: TranslateService,
+    public dir: Directionality,
+    private empService: EmployeeService,
+    private route: Router,
+    private clientService: ClientService
+  ) {
 
     this.show = true;
     translate.addLangs(['English', 'العربية']);
@@ -38,28 +38,33 @@ export class SideNavComponent implements OnInit {
     const browserLang = translate.getBrowserLang();
     translate.use(browserLang.match(/English|العربية/) ? browserLang : 'English');
   }
- 
+
   userName = localStorage.getItem("userName")
   ngOnInit(): void {
-    this.getimage= environment.Domain
-    this.empId=Number(localStorage.getItem('id'))
+    this.getimage = environment.Domain
 
-    //console.log(localStorage.getItem('id'))
 
-    this.empService.getEmpByID(this.empId).subscribe(w=>{
-      console.log(w)
-      this.imgName=w.photo
-    })
-    this.clientId=Number(localStorage.getItem("clientId"))
-    console.log("this.clientId",this.clientId)
-    this.clientService.GetclientByID(this.clientId).subscribe(w=>{
-      console.log(w["photo"])
-      this.clientImage=w["photo"]
-    })
-    
+
     this.role = localStorage.getItem('roles')
     this.loggedInUserName = localStorage.getItem('userName')
     console.log(this.role)
+    if (this.role == "Client") {
+      this.clientId = Number(localStorage.getItem("clientId"))
+      console.log("this.clientId", this.clientId)
+      this.clientService.GetclientByID(this.clientId).subscribe(w => {
+        console.log(w["photo"])
+        this.clientImage = w["photo"]
+      })
+    }
+    if (this.role != "Client") {
+      this.empId = Number(localStorage.getItem('id'))
+      //console.log(localStorage.getItem('id')) 
+      this.empService.getEmpByID(this.empId).subscribe(w => {
+        console.log(w)
+        this.imgName = w.photo
+      })
+
+    }
   }
   logout() {
     this.AuthService.logout();
@@ -73,9 +78,9 @@ export class SideNavComponent implements OnInit {
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
   }
-  goToProfile(){
+  goToProfile() {
     this.route.navigate(['home/profile']);
-    
+
   }
   //   changeDir($event) {
   //     //debugger;

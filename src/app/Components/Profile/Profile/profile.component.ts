@@ -23,24 +23,30 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.role = localStorage.getItem("roles")
+    if (this.role == "Client") {
+      this.clientId = Number(localStorage.getItem("clientId"))
+      console.log("this.clientId", this.clientId)
+      this.clientService.GetclientByID(this.clientId).subscribe(w => {
+        this.client = w
+        console.log(w["photo"])
+        this.clientImage = w["photo"]
+      })
+    }
+    if(this.role != "Client")
+    {
+      this.empId = Number(localStorage.getItem('id'))
+      this.empService.getEmpByID(this.empId).subscribe(w => {
+        this.employee = w
+        this.imgName = w.photo
+      })
+    }
     this.employee = {
       address: '', departmentId: 0, departmentName: '', employeeName: '', id: 0, dateOfBirth: new Date
     }
     this.client = { id: 0, clientName: "", clientCode: "", organizationId: 0, organizationName: "", gender: "", address: "", phone: "", email: "" }
-    this.empId = Number(localStorage.getItem('id'))
 
-    this.empService.getEmpByID(this.empId).subscribe(w => {
-      this.employee = w
-      this.imgName = w.photo
-    })
 
-    this.clientId = Number(localStorage.getItem("clientId"))
-    console.log("this.clientId", this.clientId)
-    this.clientService.GetclientByID(this.clientId).subscribe(w => {
-      this.client = w
-      console.log(w["photo"])
-      this.clientImage = w["photo"]
-    })
+
   }
   navigateToChangePassword(employee) {
     console.log(employee)
@@ -48,7 +54,7 @@ export class ProfileComponent implements OnInit {
 
   }
   navigateToChangePasswordClient(client) {
-    console.log("client",client)
+    console.log("client", client)
     this.router.navigate(['home/changePassword']);
   }
 }

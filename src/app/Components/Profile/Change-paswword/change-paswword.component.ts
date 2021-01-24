@@ -41,18 +41,25 @@ export class ChangePaswwordComponent implements OnInit {
     // Validators.pattern(/^(?=.*[A-Z])(?=.*[!@#\$%\^&\*])(?=.{9,})/)
     this.passwordPattern = "^[a-z0-9_-]{8,15}$";
     this.employeeEmail = ''
-    this.empId = Number(localStorage.getItem('id'))
-    this.empService.getEmpByID(this.empId).subscribe(w => {
-      this.employeeEmail = w.email
-      console.log(this.employeeEmail)
-
-    })
     this.clientEmail = ''
-    this.clientId = Number(localStorage.getItem("clientId"))
-    this.clientService.GetclientByID(this.clientId).subscribe(w => {
-      this.clientEmail = w["email"]
-      console.log("Client email", this.clientEmail)
-    })
+    if (this.role == "Client") {
+      this.clientId = Number(localStorage.getItem("clientId"))
+      this.clientService.GetclientByID(this.clientId).subscribe(w => {
+        this.clientEmail = w["email"]
+        console.log("Client email", this.clientEmail)
+      })
+    }
+    if (this.role != "Client") {
+      this.empId = Number(localStorage.getItem('id'))
+      this.empService.getEmpByID(this.empId).subscribe(w => {
+        this.employeeEmail = w.email
+        console.log(this.employeeEmail)
+
+      })
+    }
+
+    
+
 
 
     //   this.registerForm = this.formBuilder.group({
