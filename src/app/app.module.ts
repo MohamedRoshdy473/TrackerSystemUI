@@ -120,9 +120,13 @@ import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { ProfileComponent } from './Components/Profile/Profile/profile.component';
 import { PiechartComponent } from './Components/Pichart/piechart/piechart.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { DisplayAssetsComponent } from './Components/Assets/display-assets/display-assets.component';
+import { AddAssetsComponent } from './Components/Assets/add-assets/add-assets.component';
+import { UpdateAssetsComponent } from './Components/Assets/update-assets/update-assets.component';
 // import { DashboardComponent } from './Dashboard/Dashboard/dashboard.component';
 // import { PiechartComponent } from './Components/Pichart/piechart/piechart.component';
 
+import {BidiModule} from '@angular/cdk/bidi';
 
 registerLocaleData(en);
 
@@ -170,6 +174,9 @@ registerLocaleData(en);
    AssignemployeeRequestComponent,
    ProfileComponent,
    PiechartComponent,
+   DisplayAssetsComponent,
+   AddAssetsComponent,
+   UpdateAssetsComponent
   //  PiechartComponent,
   ],
   imports: [
@@ -183,6 +190,7 @@ registerLocaleData(en);
     TabMenuModule,
     BrowserAnimationsModule,
     TreeModule,
+    BidiModule,
     InputTextareaModule,
     MatTooltipModule,
     InputTextModule,

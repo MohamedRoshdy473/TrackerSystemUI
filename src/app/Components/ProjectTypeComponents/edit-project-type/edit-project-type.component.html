@@ -7,6 +7,7 @@
 <p-toast position="bottom-center" key="c" (onClose)="onReject()" [baseZIndex]="5000">
     <ng-template let-message pTemplate="message">
         <div class="p-flex p-flex-column" style="flex: 1">
+
             <div class="p-text-center">
                 <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
                 <h4>{{message.summary}}</h4>
@@ -25,6 +26,7 @@
 </p-toast>
 <div class="container">
     <form #frm="ngForm" (ngSubmit)="update()">
+        <h1 [translate]="'Tracker.Edit Project Type'" style="margin-bottom: 20px; font-size: 2em;color: #2674a8;"></h1><br>
         <div class="form-row">
             <div class="col-md-6">
                 <label for="name" [translate]="'Tracker.Project Type Name'"></label>

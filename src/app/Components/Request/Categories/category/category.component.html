@@ -1,11 +1,10 @@
+<div class="container">
+<h1 [translate]="'Tracker.Add Sub Category'" style="margin-bottom: 20px; font-size: 2em;color: #2674a8;"></h1><br>
+
 <div class="row">
-
     <div class="col">
-
-
         <div class="row">
             <div class="col">
-
                 <div class="p-col-12 p-md-4">
                     <div class="p-inputgroup">
                         <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
@@ -34,20 +33,21 @@
         <div class="p-col-12 p-md-2"><button class="btn btn-warning" (click)="displayMaximizable=true">
             {{'Tracker.ADD CATEGORY'|translate}}    </button></div>
         <div class="col">
-            <p-dialog id="PopupWindow" header="Show Project Data" [(visible)]="displayMaximizable" [modal]="true"
+            <p-dialog id="PopupWindow" [header]="'Tracker.Add Category' |translate" header="Show Project Data" [(visible)]="displayMaximizable" [modal]="true"
                 [style]="{width: '50vw'}"[baseZIndex]="10000">
                 <form>
                     <div class="row">
                         <div class="col">
+                            <label class="labelstyle" >{{'Tracker.Category Name'|translate}}</label>
                             <div class="p-inputgroup">
                                 <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-                                <input type="text" name="categoryName" pInputText placeholder="Category Name"
+                                <input type="text" name="categoryName" pInputText [placeholder]="'Tracker.Category Name' | translate"
                                     [(ngModel)]="category.categoryName">
                             </div>
                         </div>
 
                         <div class="col">
-                            <label class="labelstyle">Select Department Name</label>
+                            <label class="labelstyle">{{'Tracker.Department Name'|translate}}</label>
                             <select [(ngModel)]="category.departmentId" name="id" class="form-control">emp
                                 <option *ngFor="let the of departments" value="{{the.id}}">{{the.name}}
                                 </option>
@@ -56,7 +56,7 @@
                     </div>
                 </form>
                 <ng-template pTemplate="footer">
-                    <p-button icon="pi pi-check" (click)="SaveCatToDB()" label="Ok"
+                    <p-button icon="pi pi-check" (click)="SaveCatToDB()" [label]="'Tracker.Ok'|translate"
                         styleClass="p-button-text"></p-button>
                 </ng-template>
             </p-dialog>
@@ -65,4 +65,4 @@
 
     </div>
 
-</div>
+</div></div>

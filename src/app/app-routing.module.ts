@@ -44,6 +44,9 @@ import { EditClientComponent } from './Components/ClientComponents/edit-client/e
 import { ProfileComponent } from './Components/Profile/Profile/profile.component';
 // import { PiechartComponent } from './Components/Pichart/piechart/piechart.component';
 import { PiechartComponent } from "./Components/Pichart/piechart/piechart.component";
+import { DisplayAssetsComponent } from './Components/Assets/display-assets/display-assets.component';
+import { AddAssetsComponent } from './Components/Assets/add-assets/add-assets.component';
+import { UpdateAssetsComponent } from './Components/Assets/update-assets/update-assets.component';
 // import { PiechartComponent } from './Components/Pichart/piechart/piechart.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -88,6 +91,10 @@ const routes: Routes = [
       { path: 'allclientsforprojectmanager', component: AllClientsForProjectmanagerComponent },
       { path: 'projectmanagerRequests', component: ProjectmangerRequestsComponent },
       { path: 'assignemployeerequest/:id', component: AssignemployeeRequestComponent },
+      {path:'DisplayAssets',component:DisplayAssetsComponent},
+      {path:'AddAsset',component:AddAssetsComponent},
+      {path:'UpdateAsset/:id',component:UpdateAssetsComponent}
+
 
 
 

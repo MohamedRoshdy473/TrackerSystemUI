@@ -28,9 +28,9 @@ export class SideNavComponent implements OnInit {
     public dir: Directionality,
     private empService: EmployeeService,
     private route: Router,
-    private clientService: ClientService
+    private clientService: ClientService,
   ) {
-
+ 
     this.show = true;
     translate.addLangs(['English', 'العربية']);
     translate.setDefaultLang('English');
@@ -82,6 +82,9 @@ export class SideNavComponent implements OnInit {
     this.route.navigate(['home/profile']);
 
   }
+  // changeDirection(){
+  //   this.direction =!this.direction
+  // }
   //   changeDir($event) {
   //     //debugger;
   //     //console.log($event.target.value);

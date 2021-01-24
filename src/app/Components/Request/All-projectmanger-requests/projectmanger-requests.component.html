@@ -1,3 +1,5 @@
+<h1 [translate]="'Tracker.Clients Requests'" style="margin-bottom: 20px;margin-left:20px; font-size: 2em;color: #2674a8;"></h1>
+
     <div class="table-header col-md-12">
         <!-- List of Employees -->
 
@@ -194,6 +196,7 @@
 
 <p-dialog [(visible)]="NewclientDialogbool" [style]="{width: '50vw'}" [baseZIndex]="10000">
     <div class="row">
+        <h1 [translate]="'Tracker.Documents'" style="margin-bottom: 20px; font-size: 2em;color: #2674a8;"></h1>
         <p-table [value]="reqImages">
             <ng-template pTemplate="header">
                 <tr>
@@ -218,11 +221,11 @@
 
 </p-dialog>
 <p-dialog [(visible)]="NewdecDialogForCloseRequest" [style]="{width: '50vw'}" [baseZIndex]="10000">
+    <h1 [translate]="'Tracker.Close Request'" style="margin-bottom: 20px; font-size: 2em;color: #2674a8;"></h1>
     <div class="row">
-        <h2>Reason For Close</h2>
+        <h2>{{'Tracker.Reason For Close'|translate}}</h2>
         <form #frm="ngForm" (ngSubmit)="CloseRequest()">
             <div class="col">
-                <h4 for="description">{{'Tracker.Description'|translate}}</h4>
                 <textarea id="description" required [(ngModel)]="reqDescriptionObj.description" pInputTextarea required rows="5"
                     cols="85"></textarea>
                 <br>
@@ -235,6 +238,7 @@
 
 <p-dialog [(visible)]="NewdecDialogbool" [style]="{width: '50vw'}" [baseZIndex]="10000">
     <div class="row">
+        <h1 [translate]="'Tracker.Descriptions'" style="margin-bottom: 20px; font-size: 2em;color: #2674a8;"></h1>
         <p-table [value]="lstRequestDesc">
             <ng-template pTemplate="header">
 
