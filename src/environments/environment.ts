@@ -63,6 +63,9 @@ export const environment = {
   GetProblemByEmployeeIdAndRequestId:'http://localhost:50653/api/RequestProblems/GetProblemByEmployeeIdAndRequestId/',
   GetAllDescByRequestID:'http://localhost:50653/api/RequestDescription/GetAllDescriptionsByRequestId/',
   getImageByName:'http://localhost:50653/api/Employees/getImage/',
+  GetEmployeeByDepartmentId:'http://localhost:50653/api/Employees/GetEmployeeByDepartmentId/',
+  GetAllProjectsByProjectTypeId:'http://localhost:50653/api/Project/GetAllProjectsByProjectTypeId/',
+  GetAllRequestByRequestStatus:'http://localhost:50653/api/Request/GetAllRequestByRequestStatus/',
   production: false
 };
 

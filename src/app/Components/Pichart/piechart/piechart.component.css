@@ -74,7 +74,7 @@
     box-shadow: 1px 2px 8px 0px #f1f1f1;
     background-color: white;
     border-radius: 8px;
-    height: 125px;
+    height: 400px;
   }
 
   .rideone img {
@@ -103,7 +103,7 @@
     padding-top: 25px;
     border-radius: 8px 0px 0px 8px;
     text-align: center;
-    height: 125px;
+    height: 150px;
     margin-left: 15px;
   }
 
@@ -165,7 +165,7 @@
     color: #6E6E6E;
     font-size: 25px;
     margin-top: 20px;
-    text-align: right;
+    text-align: left;
     margin-right: 30px;
   }
 
@@ -388,5 +388,19 @@
     background: #262625;
     height: 18vh;
   } */
+.chart{
+  height: 50px;
+}
 
+  }
+  .circle {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    padding: 4px;
+    background: #fff;
+    border: 3px solid rgb(26, 24, 24);
+    color: #000;
+    text-align: center;
+    font: 32px Arial, sans-serif;
   }

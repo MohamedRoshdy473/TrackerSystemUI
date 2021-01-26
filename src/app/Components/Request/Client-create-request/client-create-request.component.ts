@@ -151,8 +151,26 @@ export class ClientCreateRequestComponent implements OnInit {
       this.reqObj.requestPeriorityId==0 && 
       this.reqObj.requestSubCategoryId==0
       //this.lstProjectTeams==null
+      
       )
     {
+      this.reqObj.requestStatusId = 1  //open
+      this.reqObj.projectId = Number(this.reqObj.projectId)
+      this.reqObj.clientId = Number(this.reqObj.clientId)
+      console.log(this.reqObj)
+      // this.reqObj.clientId = this.ClientId
+      this.reqObj.requestModeId = 5 //meaning it refer to 'By the Client Option'
+      this.reqService.inserRequest(this.reqObj).subscribe(e => {
+        console.log(e)
+        this.reqId = e;
+        this.reqImage.requestId = this.reqId;
+      })
+      alert("Request added successfuly")
+        if (window.confirm('Do you want add images')) {      
+        }
+        else {
+         this.route.navigate(['/home/allClientReqts'])
+        }
       alert("plz enter complete data")
       console.log("reqObj",this.projectId)
     }
@@ -161,23 +179,7 @@ export class ClientCreateRequestComponent implements OnInit {
       alert("hello")
     }
     // else{
-    //   this.reqObj.requestStatusId = 1  //open
-    //   this.reqObj.projectId = Number(this.reqObj.projectId)
-    //   this.reqObj.clientId = Number(this.reqObj.clientId)
-    //   console.log(this.reqObj)
-    //   // this.reqObj.clientId = this.ClientId
-    //   this.reqObj.requestModeId = 5 //meaning it refer to 'By the Client Option'
-    //   this.reqService.inserRequest(this.reqObj).subscribe(e => {
-    //     console.log(e)
-    //     this.reqId = e;
-    //     this.reqImage.requestId = this.reqId;
-    //   })
-    //   alert("Request added successfuly")
-    //     if (window.confirm('Do you want add images')) {      
-    //     }
-    //     else {
-    //      this.route.navigate(['/home/allClientReqts'])
-    //     }
+    
     // }
    
 
