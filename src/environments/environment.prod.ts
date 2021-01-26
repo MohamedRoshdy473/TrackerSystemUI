@@ -63,5 +63,8 @@ export const environment = {
   GetProblemByEmployeeIdAndRequestId:'http://10.10.0.129/TrackerAPI/api/RequestProblems/GetProblemByEmployeeIdAndRequestId/',
   GetAllDescByRequestID:'http://10.10.0.129/TrackerAPI/api/RequestDescription/GetAllDescriptionsByRequestId/',
   getImageByName:'http://10.10.0.129/TrackerAPI/api/Employees/getImage/',
+  GetEmployeeByDepartmentId:'http://10.10.0.129/TrackerAPI/api/Employees/GetEmployeeByDepartmentId/',
+  GetAllProjectsByProjectTypeId:'http://10.10.0.129/TrackerAPI/api/Project/GetAllProjectsByProjectTypeId/',
+  GetAllRequestByRequestStatus:'http://10.10.0.129/TrackerAPI/api/Request/GetAllRequestByRequestStatus/',
   production: true
 };

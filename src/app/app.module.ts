@@ -125,6 +125,7 @@ import { AddAssetsComponent } from './Components/Assets/add-assets/add-assets.co
 import { UpdateAssetsComponent } from './Components/Assets/update-assets/update-assets.component';
 // import { DashboardComponent } from './Dashboard/Dashboard/dashboard.component';
 // import { PiechartComponent } from './Components/Pichart/piechart/piechart.component';
+import { HashLocationStrategy, LocationStrategy  } from '@angular/common';
 
 import {BidiModule} from '@angular/cdk/bidi';
 
@@ -257,7 +258,7 @@ registerLocaleData(en);
     RouterModule.forRoot([]),
 
   ],
-  providers: [MessageService,ConfirmationService,],
+  providers: [MessageService,ConfirmationService,{provide : LocationStrategy , useClass: HashLocationStrategy}],
   bootstrap: [AppComponent,PiechartComponent]
 })
 export class AppModule { }
