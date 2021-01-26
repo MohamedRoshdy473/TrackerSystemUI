@@ -58,4 +58,7 @@ export class RequestService {
   GetProblemByEmployeeIdAndRequestId(empID: number,reqId:number): Observable<any> {
     return this.httpClient.get<RequestProblems[]>(`${environment.GetProblemByEmployeeIdAndRequestId}${empID}/${reqId}`, this.httpHeader);
   }
+  GetAllRequestByRequestStatus(requestStatusID:number): Observable<any> {
+    return this.httpClient.get<any>(`${environment.GetAllRequestByRequestStatus}${requestStatusID}`, this.httpHeader);
+  }
 }

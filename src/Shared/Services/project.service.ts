@@ -45,7 +45,9 @@ export class ProjectService {
     return this.httpClient.post<CreateTeamVM>(`${environment.addteams}`,team,this.httpHeader);
   }
 
-
+  GetAllProjectsByProjectTypeId(projecttTypeId:number):Observable<any>{
+    return this.httpClient.get<any>(`${environment.GetAllProjectsByProjectTypeId}${projecttTypeId}`,this.httpHeader);
+  }
 
   getTeamByTeamId(id:number):Observable<any>{
     return this.httpClient.get<any>(`${environment.getTeambyId}${id}`,this.httpHeader);

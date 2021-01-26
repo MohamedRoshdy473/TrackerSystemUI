@@ -58,54 +58,95 @@
 <div class="dashboaed" style="color: #E84A5F;font-size: 25px;text-align: center;font-weight: bold;">DASHBOARD</div>
 
 <div class="content-wrapper">
-    <div class="container-fluid">
+  <div class="container-fluid">
 
-        <div class="row">
-          
+    <div class="row">
+
+      
+
+      <div class="col-lg-4 col-md-3 col-sm-6 col-12 mb-2 mt-4">
+        <div class="inforide">
+          <div class="row">
+            <!-- <div class="col-lg-3 col-md-4 col-sm-4 col-4 ridetwo">
+                            <img
+                                src="https://vignette.wikia.nocookie.net/nationstates/images/2/29/WS_Logo.png/revision/latest?cb=20080507063620">
+                        </div> -->
+            <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
+              <!-- <h4>Projects   <span class="circle">{{projectNumbers}}</span></h4> -->
+              <h4>Projects                       
+                <span class="circle">{{projectNumbers}}</span></h4>
+              
+              <!-- <h2>{{clientLength}}</h2> -->
+            </div>
+            <div id="chart">
+              <apx-chart
+              [series]="chartOptionPieProject.series"
+              [chart]="chartOptionPieProject.chart"
+              [labels]="chartOptionPieProject.labels"
+              [fill]="chartOptionPieProject.fill"
+              [dataLabels]="chartOptionPieProject.dataLabels"
+              [responsive]="chartOptionPieProject.responsive"
+            ></apx-chart>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-3 col-sm-6 col-12 mb-6 mt-4">
+        <div class="inforide">
+          <div class="row">
+            <!-- <div class="col-lg-3 col-md-4 col-sm-4 col-4">
+                            <img
+                                src="https://vignette.wikia.nocookie.net/nationstates/images/2/29/WS_Logo.png/revision/latest?cb=20080507063620">
+                        </div> -->
+            <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
+              <h4>Requests                       
+                <span class="circle">{{requestsLength}}</span></h4>
+            </div>
+            <div>
+              <apx-chart
+              [series]="chartOptionRequest.series"
+              [chart]="chartOptionRequest.chart"
+              [dataLabels]="chartOptionRequest.dataLabels"
+              [plotOptions]="chartOptionRequest.plotOptions"
+              [yaxis]="chartOptionRequest.yaxis"
+              [legend]="chartOptionRequest.legend"
+              [fill]="chartOptionRequest.fill"
+              [stroke]="chartOptionRequest.stroke"
+              [tooltip]="chartOptionRequest.tooltip"
+              [xaxis]="chartOptionRequest.xaxis"
+            ></apx-chart>
+            </div>
+          </div>
+        </div>
+      </div>
             <div class="col-lg-4 col-md-3 col-sm-6 col-12 mb-2 mt-4">
                 <div class="inforide">
                     <div class="row">
-                        <div class="col-lg-3 col-md-4 col-sm-4 col-4 rideone">
+                        <!-- <div class="col-lg-3 col-md-4 col-sm-4 col-4 ridethree">
                             <img
                                 src="https://vignette.wikia.nocookie.net/nationstates/images/2/29/WS_Logo.png/revision/latest?cb=20080507063620">
-                        </div>
+                        </div> -->
                         <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
-                            <h4>Projects</h4>
-                            <h2>{{projectLength}}</h2>
+                            <h4>Employees                       
+                              <span class="circle">{{employeeNumber}}</span></h4>
+                            
                         </div>
+                        <div id="chart">
+                          <apx-chart
+                            [series]="chartOptionPie.series"
+                            [chart]="chartOptionPie.chart"
+                            [labels]="chartOptionPie.labels"
+                            [fill]="chartOptionPie.fill"
+                            [dataLabels]="chartOptionPie.dataLabels"
+                            [responsive]="chartOptionPie.responsive"
+                          ></apx-chart>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
-
-            <div class="col-lg-4 col-md-3 col-sm-6 col-12 mb-2 mt-4">
-                <div class="inforide">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-4 col-sm-4 col-4 ridetwo">
-                            <img
-                                src="https://vignette.wikia.nocookie.net/nationstates/images/2/29/WS_Logo.png/revision/latest?cb=20080507063620">
-                        </div>
-                        <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
-                            <h4>Clients</h4>
-                            <h2>{{clientLength}}</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-3 col-sm-6 col-12 mb-2 mt-4">
-                <div class="inforide">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-4 col-sm-4 col-4 ridethree">
-                            <img
-                                src="https://vignette.wikia.nocookie.net/nationstates/images/2/29/WS_Logo.png/revision/latest?cb=20080507063620">
-                        </div>
-                        <div class="col-lg-9 col-md-8 col-sm-8 col-8 fontsty">
-                            <h4>Employees</h4>
-                            <h2>{{empLength}}</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- 
             <div class="col-lg-4 col-md-3 col-sm-6 col-12 mb-2 mt-4">
                 <div class="inforide">
                     <div class="row">
@@ -147,16 +188,24 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
-        </div>
     </div>
+  </div>
 
-    <div id="chart">
-        <apx-chart 
-            [labels]="chartOptions.labels" 
-            [series]="chartOptions.series" 
-            [chart]="chartOptions.chart"
-            [responsive]="chartOptions.responsive"></apx-chart>
-    </div>
+  <!-- <div id="chart">
+      <apx-chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [dataLabels]="chartOptions.dataLabels"
+        [plotOptions]="chartOptions.plotOptions"
+        [xaxis]="chartOptions.xaxis"
+        [stroke]="chartOptions.stroke"
+        [fill]="chartOptions.fill"
+        [yaxis]="chartOptions.yaxis"
+        [title]="chartOptions.title"
+        [tooltip]="chartOptions.tooltip"
+        [legend]="chartOptions.legend"
+      ></apx-chart>
+    </div> -->
 </div>

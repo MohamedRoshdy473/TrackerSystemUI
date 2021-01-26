@@ -20,15 +20,15 @@ export class EmployeeService {
   GetAllEmployees(): Observable<employee[]> {
     return this.httpClient.get<employee[]>(`${environment.employees}`, this.httpHeader);
   }
-
   getEmpByID(id: number): Observable<employee> {
     return this.httpClient.get<employee>(`${environment.employees}${id}`, this.httpHeader);
   }
   GetImageByName(imageName: string): Observable<any> {
     return this.httpClient.get<any>(`${environment.getImageByName}${imageName}`, this.httpHeader);
   }
-
-
+  GetEmployeeByDepartmentId(deprtmentId): Observable<any> {
+    return this.httpClient.get<any>(`${environment.GetEmployeeByDepartmentId}${deprtmentId}`, this.httpHeader);
+  }
   AddEmployee(emp: employee) {
     //console.log(emp);
     const httpHeader = {
