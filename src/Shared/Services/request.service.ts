@@ -61,4 +61,7 @@ export class RequestService {
   GetAllRequestByRequestStatus(requestStatusID:number): Observable<any> {
     return this.httpClient.get<any>(`${environment.GetAllRequestByRequestStatus}${requestStatusID}`, this.httpHeader);
   }
+  GetRequestByRequestStatusAndProjectTeamId(requestStatusID:number,projectTeamId:number): Observable<any> {
+    return this.httpClient.get<any>(`${environment.GetAllRequestByRequestStatusAndProjectTeamId}${requestStatusID}/${projectTeamId}`, this.httpHeader);
+  }
 }

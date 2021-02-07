@@ -102,7 +102,7 @@ export class ClientCreateRequestComponent implements OnInit {
       assetCode: '', assetName: '', id: 0
     }
     this.requestMode = {
-      Mode: '', id: 0
+      mode: '', id: 0
     }
     this.projectService.GetAllProjects().subscribe(e => {
       this.lstProjects = e

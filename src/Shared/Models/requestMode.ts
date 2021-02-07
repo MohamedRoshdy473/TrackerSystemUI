@@ -1,4 +1,4 @@
 export class requestMode {
     id:number
-    Mode:string
+    mode:string
 }

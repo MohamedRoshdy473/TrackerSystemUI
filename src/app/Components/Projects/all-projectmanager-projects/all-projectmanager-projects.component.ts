@@ -51,7 +51,7 @@ export class AllProjectmanagerProjectsComponent implements OnInit {
       console.log(this.projects)
     })
 
-    this.project1 = {IsDeleted:false,
+    this.project1 = {IsDeleted:false,RequestOpenedLength:0,RequestInProgressLength:0,RequestClosedLength:0,
       actualEndDate: new Date(), listOfdocuments: [], listofprojectteam: [], id: 0, organizationId: 0, projectPeriod: 0, clientMobile: '', clientName: '', organizationName: '', projectTypeName: '',
       planndedEndDate: new Date(), planndedStartDate: new Date(), projectCode: '', listOfStackholders: [], listOfmilestones: [], projectTypeId: 0,
       projectName: '', actualStartDate: new Date(), clientId: 0, cost: 0, description: '', employeeId: 0

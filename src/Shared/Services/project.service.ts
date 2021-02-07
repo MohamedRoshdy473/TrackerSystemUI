@@ -55,4 +55,18 @@ export class ProjectService {
   GetAllProjectsByEmployeeId(id:number):Observable<any>{
     return this.httpClient.get<project[]>(`${environment.GetAllProjectsByEmployeeId}${id}`,this.httpHeader);
   }
+  CountProjects(projectId:number):Observable<any>{
+    return this.httpClient.get<any>(`${environment.CountProject}${projectId}`,this.httpHeader);
+  }
+  CountOpenProjects(projectId:number):Observable<any>{
+    return this.httpClient.get<any>(`${environment.CountOpenProjects}${projectId}`,this.httpHeader);
+  }
+  CountInProgressProjects(projectId:number):Observable<any>{
+    return this.httpClient.get<any>(`${environment.CountInProgressProjects}${projectId}`,this.httpHeader);
+  }
+  CountClosedProjects(projectId:number):Observable<any>{
+    return this.httpClient.get<any>(`${environment.CountClosedProjects}${projectId}`,this.httpHeader);
+  }
+
+  
 }

@@ -43,7 +43,9 @@ import { AssignemployeeRequestComponent } from './Components/Request/assignemplo
 import { EditClientComponent } from './Components/ClientComponents/edit-client/edit-client.component';
 import { ProfileComponent } from './Components/Profile/Profile/profile.component';
 // import { PiechartComponent } from './Components/Pichart/piechart/piechart.component';
-import { PiechartComponent } from "./Components/Pichart/piechart/piechart.component";
+import { PiechartComponent } from "./Components/Dashboard/SuperAdminpiechart/piechart.component";
+import { ProjectmanagerDashboardComponent } from './Components/Dashboard/projectmanager-dashboard/projectmanager-dashboard.component';
+import { TeamleaderDashboardComponent } from './Components/Dashboard/teamleader-dashboard/teamleader-dashboard.component';
 // import { PiechartComponent } from './Components/Pichart/piechart/piechart.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -75,6 +77,8 @@ const routes: Routes = [
       { path: 'employee', component: DisplayAllEmployeesComponent },
       { path: 'addemployee', component: AddEmployeeComponent },
       { path: 'profile', component: ProfileComponent },
+      { path: 'projectManagerDashboard', component: ProjectmanagerDashboardComponent },
+      { path: 'teamLeaderDashboard', component: TeamleaderDashboardComponent },
       { path: 'allClientReqts', component: AllClientRequestsComponent },
       { path: 'organization', component: AddOrganizationComponent },
       { path: 'organizations', component: ListOrganizationsComponent },

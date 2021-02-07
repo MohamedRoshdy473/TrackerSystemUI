@@ -114,14 +114,14 @@ import { AllProjectmanagerProjectsComponent } from './Components/Projects/all-pr
 import { AllClientsForProjectmanagerComponent } from './Components/ClientComponents/all-clients-for-projectmanager/all-clients-for-projectmanager.component';
 import { ProjectmangerRequestsComponent } from './Components/Request/All-projectmanger-requests/projectmanger-requests.component';
 import { AssignemployeeRequestComponent } from './Components/Request/assignemployee-request/assignemployee-request.component';
-
 import {TranslateModule, TranslateLoader} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 import { ProfileComponent } from './Components/Profile/Profile/profile.component';
-import { PiechartComponent } from './Components/Pichart/piechart/piechart.component';
+import { PiechartComponent } from './Components/Dashboard/SuperAdminpiechart/piechart.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
 // import { DashboardComponent } from './Dashboard/Dashboard/dashboard.component';
-// import { PiechartComponent } from './Components/Pichart/piechart/piechart.component';
+import { ProjectmanagerDashboardComponent } from './Components/Dashboard/projectmanager-dashboard/projectmanager-dashboard.component';
+import { TeamleaderDashboardComponent } from './Components/Dashboard/teamleader-dashboard/teamleader-dashboard.component';
 
 
 registerLocaleData(en);
@@ -149,6 +149,7 @@ registerLocaleData(en);
    EditEmployeeComponent,
    DisplayAllEmployeesComponent,
    AllUsersComponent,
+  //  ProjectmanagerDashboardComponent,
    AllClientRequestsComponent,
    AddOrganizationComponent,
    ListOrganizationsComponent,
@@ -170,6 +171,8 @@ registerLocaleData(en);
    AssignemployeeRequestComponent,
    ProfileComponent,
    PiechartComponent,
+   ProjectmanagerDashboardComponent,
+   TeamleaderDashboardComponent
   //  PiechartComponent,
   ],
   imports: [
@@ -245,7 +248,8 @@ registerLocaleData(en);
     // ConfirmationService,
     AgmCoreModule.forRoot({
       libraries: ["places", "geometry"],
-      apiKey:'AIzaSyCxvNEG1CRZ0pzoriAujg07y101MbOkFrQ'}),
+      apiKey:'AIzaSyCxvNEG1CRZ0pzoriAujg07y101MbOkFrQ'
+    }),
     RouterModule.forRoot([]),
 
   ],

@@ -28,6 +28,10 @@
         <a class="active" class="pi pi-globe" routerLink='organization'> {{ 'Tracker.Add Organization' | translate
           }}</a><br>
       </li> -->
+      <li *ngIf="role =='PM'">
+        <a class="active" class="pi pi-users" routerLink='projectManagerDashboard'> {{ 'Tracker.DashBoard' |
+          translate }}</a><br>
+      </li>
       <li *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM'">
         <a class="active" class="pi pi-briefcase" routerLink='ProjectTypes'> {{ 'Tracker.All Project Types' | translate
           }}</a><br>
@@ -40,6 +44,7 @@
         <a class="active" class="pi pi-users" routerLink='allclientsforprojectmanager'> {{ 'Tracker.Client' |
           translate }}</a><br>
       </li>
+      
 
       <li *ngIf="role=='SuperAdmin'">
         <a class="active" class="pi pi-table" routerLink='DisplayDepartments'> {{ 'Tracker.All Departments' | translate
@@ -91,6 +96,11 @@
             <li style="margin-left: 20px; font-size: 20px; color:#2674a8;" *ngIf="role=='SuperAdmin'">
               <a class="active" routerLink='tabs'>
                 {{ 'Tracker.Projects' | translate }}</a><br>
+            </li>
+            <li>
+              <a class="active" routerLink='teamLeaderDashboard'
+                style="margin-left: 20px; font-size: 20px; color: #2674a8;"
+                *ngIf="role=='TL'">{{'Tracker.DashBoard' | translate}}</a><br>
             </li>
             <li>
               <a class="active" routerLink='allTeamLeaderReqts'

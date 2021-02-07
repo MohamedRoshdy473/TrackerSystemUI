@@ -66,6 +66,11 @@ export const environment = {
   GetEmployeeByDepartmentId:'http://localhost:50653/api/Employees/GetEmployeeByDepartmentId/',
   GetAllProjectsByProjectTypeId:'http://localhost:50653/api/Project/GetAllProjectsByProjectTypeId/',
   GetAllRequestByRequestStatus:'http://localhost:50653/api/Request/GetAllRequestByRequestStatus/',
+  CountProject:'http://localhost:50653/api/Request/CountProjects/',
+  CountInProgressProjects:'http://localhost:50653/api/Request/CountInProgressProjects/',
+  CountOpenProjects:'http://localhost:50653/api/Request/CountOpenProjects/',
+  CountClosedProjects:'http://localhost:50653/api/Request/CountClosedProjects/',
+  GetAllRequestByRequestStatusAndProjectTeamId:'http://localhost:50653/api/Request/GetAllRequestByRequestStatusAndProjectTeamId/',
   production: false
 };
 

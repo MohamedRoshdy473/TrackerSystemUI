@@ -65,9 +65,13 @@
         <div class="p-field col-md-3">
             <label for="Project Type" class="labelMarginRight">{{'Tracker.Request Mode'|translate}} </label><br>
            
-            <p-dropdown [options]="lstRequestMode" [(ngModel)]="reqObj.requestModeId" [placeholder]="'Tracker.Select Request Mode'|translate"
+            <!-- <p-dropdown [options]="lstRequestMode" [(ngModel)]="reqObj.requestModeId" [placeholder]="'Tracker.Select Request Asset'|translate"
                 optionLabel="mode" optionValue="id">
-            </p-dropdown>
+            </p-dropdown> -->
+
+            <p-dropdown [options]="lstRequestMode" [(ngModel)]="reqObj.requestModeId"   [placeholder]="'Tracker.Select Request Asset'|translate"
+            optionLabel="mode" optionValue="id">
+        </p-dropdown>
         </div>
         <div class="p-field col-md-3">
             <label for="Project Type" class="labelMarginRight">{{'Tracker.Request Asset'|translate}} </label><br>

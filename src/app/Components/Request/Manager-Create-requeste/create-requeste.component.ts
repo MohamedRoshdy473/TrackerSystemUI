@@ -49,6 +49,7 @@ export class CreateRequesteComponent implements OnInit {
   reqImage: RequestImage
    ProjId:number
    lstRequestMode: Array<{id: number, mode: string}> = [
+     {id:0,mode:'select'},
     {id: 1, mode: 'Phone'},
     {id: 2, mode: 'Chat'},
     {id: 3, mode: 'Mail'},
@@ -99,7 +100,7 @@ export class CreateRequesteComponent implements OnInit {
       assetCode: '', assetName: '', id: 0
     }
     this.requestMode = {
-      Mode: '', id: 0
+      mode: '', id: 0
     }
     this.projectService.GetAllProjects().subscribe(e => {
       this.lstProjects = e
@@ -133,6 +134,7 @@ export class CreateRequesteComponent implements OnInit {
   GetProjectTeamId(TeamId){
     this.projectTeamService.GetProjectTeamByProjectIdAndTeamIdAndProjectPositionId(this.projectId,TeamId.value)
     .subscribe(e=>{
+      console.log("projteamid",e)
        this.ProjId= e.id
       console.log("projectTeamId",e.id)
       this.reqObj.projectTeamId = this.ProjId
@@ -142,6 +144,8 @@ export class CreateRequesteComponent implements OnInit {
   reqId: any
   AddRequest() {
     this.reqObj.requestStatusId = 1  //open
+    this.reqObj.projectTeamId = this.ProjId
+
     this.reqObj.projectId = Number(this.reqObj.projectId)
     this.reqObj.clientId = Number(this.reqObj.clientId)
     console.log(this.reqObj)
