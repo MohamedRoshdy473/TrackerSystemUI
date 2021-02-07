@@ -11,7 +11,8 @@ import { NavigationExtras, Router } from '@angular/router';
 export class ListOrganizationsComponent implements OnInit {
 
   public lstOrganizationMarkers: organization[];
-
+  displayMaximizable: boolean;
+  loading: boolean = true;
   lat: number = 30.0638771000;
   lng: number = 31.3510361000;
 
@@ -23,7 +24,15 @@ export class ListOrganizationsComponent implements OnInit {
       this.lstOrganizationMarkers = result;
     })
   }
-
+  showMaximizableDialog()
+  {
+    this.organizationService.GetAllOrganizations().subscribe(
+      res=>{this.lstOrganizationMarkers=res},
+      err=>console.log(err)
+    )
+    this.displayMaximizable = true;
+    this.loading = false;
+  }
 
   placeMarker(position: organization) {
     const lat = position.lat;

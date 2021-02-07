@@ -1,9 +1,12 @@
 <!-- Show all   Requests that belongs to specific client -->
+<div class="container-fluid">
 <p-table [value]="lstRequests">
     <ng-template pTemplate="caption">
         <div class="row">
         <div class="p-d-flex p-ai-center p-jc-between col-md-10">
-           <span class="h3Header">  {{ 'Tracker.Clients Requests' | translate }}</span>
+            <h1 [translate]="'Tracker.Clients Requests'" style="margin-bottom: 20px;margin-left:20px; font-size: 2em;color: #2674a8;"></h1>
+
+           <!-- <span class="h3Header">  {{ 'Tracker.Clients Requests' | translate }}</span> -->
         </div>
         <div class="col-md-2" >
             <button id="addEmpBtn" routerLink="/home/AllClientsReq" class="btn btn-outline-primary btn-md btn-block">
@@ -66,3 +69,4 @@
     </ng-template>
     
 </p-table>
+</div>

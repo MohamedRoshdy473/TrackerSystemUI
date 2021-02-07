@@ -28,7 +28,9 @@
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [filterDelay]="0"
     [globalFilterFields]="['assetName']">
     <ng-template pTemplate="caption">
-<h2 style="text-align: center;"> {{'Tracker.All Assets'|translate}}  </h2>
+        <h1 [translate]="'Tracker.All Assets'" style="margin-bottom: 20px; font-size: 2em;color: #2674a8;"></h1>
+
+<!-- <h2 style="text-align: center;"> {{'Tracker.All Assets'|translate}}  </h2> -->
 
         <div class="row">
             <div class="table-header col-md-10">
@@ -39,7 +41,7 @@
                 </span>
             </div>
             <div class="col-md-2">
-                <button id="addDepBtn" routerLink="/home/addAssets" class="btn btn-outline-primary btn-md btn-block">
+                <button id="addDepBtn" routerLink="/home/AddAsset" class="btn btn-outline-primary btn-md btn-block">
                     <span class="pi pi-plus">{{'Tracker.Add'|translate}} </span> </button>
             </div>
         </div>
@@ -73,7 +75,7 @@
                 <span class="pi pi-compass" aria-hidden="true" (click)="showBasicDialog(asset.id)"></span>
                 &nbsp;
                 <span class="p-button-icon pi pi-pencil" aria-hidden="true"
-                    [routerLink]="['/home/updateAsset',asset.id]"></span>&nbsp;
+                    [routerLink]="['/home/UpdateAsset',asset.id]"></span>&nbsp;
                 <!-- (click)="DisplayToEditProject(project.id)" -->
                 <span class="p-button-icon pi pi-times" (click)="confirm(asset.id)" aria-hidden="true"></span>
             </td>
@@ -86,6 +88,7 @@
     </ng-template>
 </p-table>
 <p-dialog  [(visible)]="displayBasic" [style]="{width: '70vw'}" [baseZIndex]="10000">
+    <h1 [translate]="'Tracker.Asset'" style="margin-bottom: 20px; font-size: 2em;color: #2674a8;"></h1>
     <div class="row">
         <div class="col-md-6 form-control"><span class="bold">{{'Tracker.Asset Name'|translate}} : </span>&nbsp;{{assetObj.assetName}}
         </div>
@@ -95,6 +98,7 @@
         </div>
     </div>
     <ng-template pTemplate="footer">
-        <p-button icon="pi pi-times" (click)="displayBasic=false" label="Ok"></p-button>
+        <p-button icon="pi pi-times" (click)="displayBasic=false" [label]="'Tracker.Ok' | translate"
+        ></p-button>
     </ng-template>
 </p-dialog>
