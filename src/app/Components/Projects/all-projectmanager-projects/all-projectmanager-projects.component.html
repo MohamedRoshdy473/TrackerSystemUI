@@ -22,7 +22,6 @@
     <div class="row">
         <div class="col-9" style="margin-left: 20px;">
             <h1 [translate]="'Tracker.All Project'" style="margin-bottom: 20px; font-size: 2em;color: #2674a8;"></h1>
-
         </div>
         <div *ngIf="role=='SuperAdmin'|| role=='PMO'" class="col-2" style="margin-left: 6%;">
             <p-button icon="pi pi-external-link" [label]="'Tracker.Add' | translate" routerLink="/home/createProject"
@@ -148,12 +147,12 @@
                     <td>
                         <span class="p-column-title"></span>
                         <span [class]="'customer-badge type-' + project.actualStartDate">{{project.actualStartDate |
-                            date:'yyyy:MM:dd'}}</span>
+                            date:'dd/MM/yyyy'}}</span>
                     </td>
                     <td>
                         <span class="p-column-title"></span>
                         <span [class]="'customer-badge type-' + project.actualEndDate">{{project.actualEndDate |
-                            date:'yyyy:MM:dd'}}</span>
+                            date:'dd/MM/yyyy'}}</span>
                     </td>
 
                     <td>

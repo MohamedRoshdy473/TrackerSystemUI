@@ -115,7 +115,7 @@
     "Choose file": "Choose file",
     "Upload": "Upload",
     "All Project Types": "Projects Types",
-    "Project Type Name": "Project Type Name",
+    "Project Type Name": "Project Type",
     "All Project": "List Of Projects",
     "Basic Data": "Basic Data",
     "Project Type": "Project Type",
@@ -169,7 +169,13 @@
     "Organizations":"Organizations",
     "Settings":"Settings",
     "DashBoard":"Dashboard",
-    "Select":"Select"
+    "Select":"Select",
+    "Add Project":"Add Project",
+    "ResponsiblePerson":"Responsible Person",
+    "Add MileStones":"Add MileStones",
+    "Add Teams":"Add Teams",
+    "Document File":"Document File",
+    "Add Document":"Add Document"
    
 
 

@@ -1,3 +1,4 @@
+
 <div class="container">
   <div class="row">
     <div class="col-md-10">
@@ -34,9 +35,33 @@
 
 
 
-  <p-dialog id="PopupWindow" [(visible)]="displayMaximizable" [modal]="true" [style]="{width: '50vw'}"
+  <p-dialog id="PopupWindow" [(visible)]="displayMaximizable" [modal]="true" [style]="{width: '70vw'}"
     [maximizable]="true" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
-
+    <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+    <p-toast></p-toast>
+    <p-toast position="top-left" key="tl"></p-toast>
+    <p-toast position="top-center" key="tc"></p-toast>
+    <p-toast position="bottom-center" key="bc"></p-toast>
+    
+    <p-toast position="bottom-center" key="c" (onClose)="onReject()" [baseZIndex]="5000">
+        <ng-template let-message pTemplate="message">
+            <div class="p-flex p-flex-column" style="flex: 1">
+                <div class="p-text-center">
+                    <i class="pi pi-exclamation-triangle" style="font-size: 3rem"></i>
+                    <h4>{{message.summary}}</h4>
+                    <p>{{message.detail}}</p>
+                </div>
+                <div class="p-grid p-fluid">
+                    <div class="p-col-6">
+                        <button type="button" pButton (click)="onConfirm()" label="Yes" class="p-button-success"></button>
+                    </div>
+                    <div class="p-col-6">
+                        <button type="button" pButton (click)="onReject()" label="No" class="p-button-secondary"></button>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </p-toast>
     <form>
       <div>
         <h1 [translate]="'Tracker.Organizations'" style="margin-bottom: 20px; font-size: 2em;color: #2674a8;"></h1>
@@ -70,6 +95,7 @@
             <th [translate]="'Tracker.Mobile'"></th>
             <th [translate]="'Tracker.Phone'"></th>
             <th [translate]="'Tracker.ResponsiblePerson'"></th>
+            <th [translate]="'Tracker.Controls'"></th>
           </tr>
         </ng-template>
         <ng-template pTemplate="body" let-org>
@@ -88,6 +114,9 @@
             </td>
             <td>
               {{org.responsiblePerson}}
+            </td>
+            <td>
+              <span class="p-button-icon pi pi-times" style="cursor: pointer;" (click)="confirm(org.id)" aria-hidden="true"></span>
             </td>
           </tr>
         </ng-template>

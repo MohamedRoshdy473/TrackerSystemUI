@@ -22,7 +22,7 @@ export class AddOrganizationComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.organizationObj = {lat:30.0634890000,lng:31.2524870000,address:'',id:0,
+    this.organizationObj = {lat:30.0634890000,lng:31.2524870000,address:'',id:0,isDeleted:false,
     organizationName:'',
     phone:'',location:'',mobile:'',organizationCode:'',responsiblePerson:''};
  

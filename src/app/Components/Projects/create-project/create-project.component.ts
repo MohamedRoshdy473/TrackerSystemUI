@@ -187,6 +187,7 @@ export class CreateProjectComponent implements OnInit {
     this.messageService.clear('c');
   }
   Savetolist_Stackholders() {
+    this.stackholderInLst.mobile=String(this.stackholderInLst.mobile);
     this.lstOfStackholder.push(this.stackholderInLst);
     this.stackholderInLst = {
       description: '', id: 0, mobile: '', projectId: this.projectID, rank: '', stackeholderName: ''
@@ -195,11 +196,14 @@ export class CreateProjectComponent implements OnInit {
 
   SaveToDB_Stackholders() {
     this.stackholderService.insertListOfStackholders(this.lstOfStackholder).subscribe(e => {
+      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Partener Added' });
     })
   }
 
   SaveToDB_Milestones() {
     this.milestoneService.insertListOfMilestoness(this.lstOfMilestones).subscribe(e => {
+      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Milestone Added' });
+
     })
   }
   Savetolist_Milestones() {
@@ -235,6 +239,7 @@ addTeamObj.projectTeams =  this.lstOfProjectTeams;
   this.projectService.addTeam(addTeamObj).subscribe(e=>{
     this.Idteam=e;
     this.tasneem=this.Idteam;
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Team Added' });
 
     })
  
@@ -300,7 +305,8 @@ addTeamObj.projectTeams =  this.lstOfProjectTeams;
     this.httpClient.post(environment.uploadFile, formData)
       .subscribe(res => {
      console.log(res)
-     alert('Uploaded Successfully.');
+     this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Uploaded Successfully' });
+    //  alert('Uploaded Successfully.');
 
   
       
@@ -309,6 +315,7 @@ addTeamObj.projectTeams =  this.lstOfProjectTeams;
   SaveDocuentToDB() {
 
     this.projectdocumentService.postProjectDocumentByProjectID(this.lstoddocproj).subscribe(e => {
+      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Document Added' });
       console.log(e)
     })
   }

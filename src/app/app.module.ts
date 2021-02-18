@@ -62,7 +62,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import{SideNavComponent} from './Components/Side-nav/side-nav.component'
 import { CommonModule, registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-
+import { HashLocationStrategy, LocationStrategy  } from '@angular/common';
 import {VirtualScrollerModule} from 'primeng/virtualscroller';
 
 import {PanelMenuModule} from 'primeng/panelmenu';
@@ -253,7 +253,7 @@ registerLocaleData(en);
     RouterModule.forRoot([]),
 
   ],
-  providers: [MessageService,ConfirmationService,],
+  providers: [MessageService,ConfirmationService,{provide : LocationStrategy , useClass: HashLocationStrategy}],
   bootstrap: [AppComponent,PiechartComponent]
 })
 export class AppModule { }

@@ -9,6 +9,7 @@ export class organization {
       location :string;
       lat:number;
       lng:number;
+      isDeleted:boolean
 
 }
 

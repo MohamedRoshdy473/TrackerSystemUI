@@ -46,9 +46,7 @@
                     <label for="Project Cost" class="labelMarginRight" [translate]="'Tracker.Project Cost'">
                     </label><br>
                     <input type="number" autofocus [(ngModel)]="projectObj.cost" pInputText id="Cost" #Procost="ngModel"
-                        name="ProjectCost" [class.is-invalid]="Procost.invalid && Procost.touched"
-                        [placeholder]="'Tracker.Project Cost' | translate" [class.is-valid]="Procost.valid" required
-                        minlength="3" />
+                        name="ProjectCost" [placeholder]="'Tracker.Project Cost' | translate" />
                     <br> <small [hidden]="Procost.valid || Procost.untouched" id="helpId" class="text-muted"
                         [translate]="'Tracker.messegeNumber'"></small>
                 </div>
@@ -59,23 +57,12 @@
             </div><br>
             <div class="row">
 
-                <div class="p-field col-md-3">
-                    <label for="Project Period" class="labelMarginRight" [translate]="'Tracker.Project Period'">
-                    </label><br>
-                    <input type="number" #ProPeriod="ngModel" name="ProPeriod" autofocus
-                        [placeholder]="'Tracker.Project Period' | translate"
-                        [class.is-invalid]="ProPeriod.invalid && ProPeriod.touched" [class.is-valid]="ProPeriod.valid"
-                        required minlength="3" [(ngModel)]="projectObj.projectPeriod" pInputText id="Period" required />
-                    <br> <small [hidden]="ProPeriod.valid || ProPeriod.untouched" id="helpId" class="text-muted"
-                        [translate]="'Tracker.messegeNumber'"></small>
-                </div>
+
                 <div class="p-field col-md-3">
                     <label for="Plannded Start Date" class="labelMarginRight"
                         [translate]="'Tracker.Plannded Start Date'"></label><br>
                     <p-calendar [(ngModel)]="projectObj.planndedStartDate" dateFormat="dd/mm/yy"
-                        #ProplanndedStartDate="ngModel" name="planndedStartDate"
-                        [class.is-invalid]="ProplanndedStartDate.invalid && ProplanndedStartDate.touched"
-                        [class.is-valid]="ProplanndedStartDate.valid" required minlength="3"></p-calendar>
+                        #ProplanndedStartDate="ngModel" name="planndedStartDate"></p-calendar>
                     <br> <small [hidden]="ProplanndedStartDate.valid || ProplanndedStartDate.untouched" id="helpId"
                         class="text-muted" [translate]="'Tracker.messegeDate'"></small>
                 </div>
@@ -83,9 +70,7 @@
                     <label for="Actual Start Date" class="labelMarginRight"
                         [translate]="'Tracker.Actual Start Date'"></label><br>
                     <p-calendar [(ngModel)]="projectObj.actualStartDate" dateFormat="dd/mm/yy"
-                        #ProActualStartDate="ngModel" name="ProActualStartDate"
-                        [class.is-invalid]="ProActualStartDate.invalid && ProActualStartDate.touched"
-                        [class.is-valid]="ProActualStartDate.valid" required minlength="3"></p-calendar>
+                        #ProActualStartDate="ngModel" name="ProActualStartDate"></p-calendar>
                     <br> <small [hidden]="ProActualStartDate.valid || ProActualStartDate.untouched" id="helpId"
                         class="text-muted" [translate]="'Tracker.messegeDate'"></small>
 
@@ -94,25 +79,30 @@
                     <label for="Plannded End Date" class="labelMarginRight"
                         [translate]="'Tracker.Plannded End Date'"></label><br>
                     <p-calendar [(ngModel)]="projectObj.planndedEndDate" dateFormat="dd/mm/yy"
-                        #ProplanndedEndDate="ngModel" name="ProplanndedEndDate"
-                        [class.is-invalid]="ProplanndedEndDate.invalid && ProplanndedEndDate.touched"
-                        [class.is-valid]="ProplanndedEndDate.valid" required minlength="3"></p-calendar>
+                        #ProplanndedEndDate="ngModel" name="ProplanndedEndDate"></p-calendar>
                     <br> <small [hidden]="ProplanndedEndDate.valid || ProplanndedEndDate.untouched" id="helpId"
+                        class="text-muted" [translate]="'Tracker.messegeDate'"></small>
+
+                </div>
+                <div class="p-field col-md-3">
+                    <label for="Actual End Date" class="labelMarginRight"
+                        [translate]="'Tracker.Actual End Date'"></label><br>
+                    <p-calendar [(ngModel)]="projectObj.actualEndDate" dateFormat="dd/mm/yy" #ProactualEndDate="ngModel"
+                        name="ProactualEndDate"></p-calendar>
+                    <br> <small [hidden]="ProactualEndDate.valid || ProactualEndDate.untouched" id="helpId"
                         class="text-muted" [translate]="'Tracker.messegeDate'"></small>
 
                 </div>
             </div> <br>
             <div class="row">
                 <div class="p-field col-md-3">
-                    <label for="Actual End Date" class="labelMarginRight"
-                        [translate]="'Tracker.Actual End Date'"></label><br>
-                    <p-calendar [(ngModel)]="projectObj.actualEndDate" dateFormat="dd/mm/yy" #ProactualEndDate="ngModel"
-                        name="ProactualEndDate"
-                        [class.is-invalid]="ProactualEndDate.invalid && ProactualEndDate.touched"
-                        [class.is-valid]="ProactualEndDate.valid" required minlength="3"></p-calendar>
-                    <br> <small [hidden]="ProactualEndDate.valid || ProactualEndDate.untouched" id="helpId"
-                        class="text-muted" [translate]="'Tracker.messegeDate'"></small>
-
+                    <label for="Project Period" class="labelMarginRight" [translate]="'Tracker.Project Period'">
+                    </label><br>
+                    <input type="number" #ProPeriod="ngModel" name="ProPeriod" autofocus
+                        [placeholder]="'Tracker.Project Period' | translate"
+                       [(ngModel)]="projectObj.projectPeriod" pInputText id="Period"  />
+                    <br> <small [hidden]="ProPeriod.valid || ProPeriod.untouched" id="helpId" class="text-muted"
+                        [translate]="'Tracker.messegeNumber'"></small>
                 </div>
                 <div class="p-field col-md-3">
                     <label for="organization Name" class="labelMarginRight"
@@ -214,7 +204,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th [translate]="'Tracker.Project Name'"></th>
+                                <th [translate]="'Tracker.Partener Name'"></th>
                                 <th [translate]="'Tracker.Mobile'"></th>
                                 <!-- <th>Projectcost</th> -->
                             </tr>
@@ -479,7 +469,7 @@
                         <br />
                         <div class="p-field col-md-3" style="margin-bottom:15px;">
                             <div class="col-md-3">
-                                <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)"
+                                <input type="file" #file [placeholder]="'Tracker.Choose file'|translate" (change)="uploadFile(file.files)"
                                     style="display:none;">
                                 <button type="button" class="btn btn-success" (click)="file.click()"
                                     [translate]="'Tracker.Upload'">

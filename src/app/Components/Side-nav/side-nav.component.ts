@@ -33,10 +33,10 @@ export class SideNavComponent implements OnInit {
  
     this.show = true;
     translate.addLangs(['English', 'العربية']);
-    translate.setDefaultLang('English');
+    translate.setDefaultLang('العربية');
 
     const browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/English|العربية/) ? browserLang : 'English');
+    translate.use(browserLang.match(/English|العربية/) ? browserLang : 'العربية');
   }
 
   userName = localStorage.getItem("userName")

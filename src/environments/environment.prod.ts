@@ -63,7 +63,13 @@ export const environment = {
   GetProblemByEmployeeIdAndRequestId:'http://10.10.0.129/TrackerAPI/api/RequestProblems/GetProblemByEmployeeIdAndRequestId/',
   GetAllDescByRequestID:'http://10.10.0.129/TrackerAPI/api/RequestDescription/GetAllDescriptionsByRequestId/',
   getImageByName:'http://10.10.0.129/TrackerAPI/api/Employees/getImage/',
+  GetEmployeeByDepartmentId:'http://10.10.0.129/TrackerAPI/api/Employees/GetEmployeeByDepartmentId/',
+  GetAllProjectsByProjectTypeId:'http://10.10.0.129/TrackerAPI/api/Project/GetAllProjectsByProjectTypeId/',
+  GetAllRequestByRequestStatus:'http://10.10.0.129/TrackerAPI/api/Request/GetAllRequestByRequestStatus/',
+  CountProject:'http://10.10.0.129/TrackerAPI/api/Request/CountProjects/',
+  CountInProgressProjects:'http://10.10.0.129/TrackerAPI/api/Request/CountInProgressProjects/',
+  CountOpenProjects:'http://10.10.0.129/TrackerAPI/api/Request/CountOpenProjects/',
+  CountClosedProjects:'http://10.10.0.129/TrackerAPI/api/Request/CountClosedProjects/',
   GetAllRequestByRequestStatusAndProjectTeamId:'http://10.10.0.129/TrackerAPI/api/Request/GetAllRequestByRequestStatusAndProjectTeamId/',
-
   production: true
 };

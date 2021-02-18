@@ -10,6 +10,7 @@ import { employee } from 'src/Shared/Models/employee';
 import { EmployeeService } from 'src/Shared/Services/employee.service'
 import { AuthService } from 'src/Shared/Services/auth.service';
 import { environment } from 'src/environments/environment';
+import { ProjectTeamService } from 'src/Shared/Services/project-team.service';
 
 @Component({
     selector: 'app-display-all-employees',
@@ -32,7 +33,7 @@ role:any;
     getimage: string;
 
     constructor(private EmployeeService: EmployeeService, private router: Router,private authservice:AuthService,
-        private confirmationService: ConfirmationService, private messageService: MessageService) {
+        private confirmationService: ConfirmationService, private messageService: MessageService,private projectteamservice: ProjectTeamService) {
         this.Employee = {
             Address: '', Email: '', position: ''
             , MaritalStatus: 'Marital Status', Name: '',
@@ -113,6 +114,9 @@ role:any;
         this.confirmationService.confirm({
             message: 'Are you sure that you want to perform this action?',
             accept: () => {
+                this.projectteamservice.deleteteam(id).subscribe(
+
+                )
                 this.EmployeeService.delete(id).subscribe(
                     data => {
                         this.ngOnInit(),

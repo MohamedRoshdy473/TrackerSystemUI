@@ -27,6 +27,8 @@ import { ProjectTypeService } from 'src/Shared/Services/project-type.service';
 import { organization } from 'src/Shared/Models/organization';
 import { OrganizationService } from 'src/Shared/Services/organization.service';
 import { pipe } from 'rxjs';
+import { client } from 'src/Shared/Models/client';
+import { ClientService } from 'src/Shared/Services/client.service';
 
 @Component({
   selector: 'app-update-project',
@@ -69,6 +71,7 @@ export class UpdateProjectComponent implements OnInit {
   emploeeObj: employee
   lstProjectTypes: projectType[];
   lstOrganizations: organization[];
+  lstClients: client[];
 
   projectid: number
 
@@ -80,7 +83,9 @@ export class UpdateProjectComponent implements OnInit {
     private projectdocumentsservice: ProjectDocumentService,
     private projectTypeService: ProjectTypeService,
     private activeRoute: ActivatedRoute,
-    private organizationService: OrganizationService,) { }
+    private organizationService: OrganizationService,
+    private messageService: MessageService,
+    private clientService: ClientService) { }
 
   ngOnInit(): void {
     this.lstOfprojectPosition = []
@@ -88,8 +93,12 @@ export class UpdateProjectComponent implements OnInit {
     this.lstOfMilestones = []
     this.lstoddocproj = []
     this.lstOfProjectTeams = []
+    
     this.projectid = this.activeRoute.snapshot.params['id'];
-
+    this.clientService.GetAllClients().subscribe(
+      res => { this.lstClients = res },
+      err => console.log(err)
+    )
     this.docproject = {
       Description: '', documentName: '', documentFile: '', id: 0, projectId: 0
     }
@@ -233,7 +242,8 @@ export class UpdateProjectComponent implements OnInit {
     this.projectService.updateProject(this.projectid, this.projectObj).subscribe(res => {
 
       //console.log("update project", res)
-      alert('Updated Successfully.');
+      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Updated Successfully' });
+      //alert('Updated Successfully.');
 
     }), err => console.log(err)
 
@@ -368,7 +378,9 @@ export class UpdateProjectComponent implements OnInit {
     this.httpClient.post(environment.uploadFile, formData)
       .subscribe(res => {
         console.log(res)
-        alert('Uploaded Successfully.');
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Uploaded Successfully' });
+
+        // alert('Uploaded Successfully.');
 
 
 

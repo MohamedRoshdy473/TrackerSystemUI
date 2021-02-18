@@ -51,7 +51,7 @@
     "Choose file": "إختر ملف",
     "Upload": "تحميل",
     "All Project Types": "أنواع المشاريع",
-    "Project Type Name": "اسم نوع المشروع",
+    "Project Type Name": "نوع المشروع",
     "All Project": "قائمة المشاريع",
     "Basic Data": "البيانات الأساسية",
     "Project Name": "إسم المشروع",
@@ -190,7 +190,11 @@
     "Add Asset":"إضافة أداة",
     "Edit Asset":"تعديل أداة",
     "Asset":"الأداة",
-    "Location":"الموقع"
+    "Location":"الموقع",
+    "Add MileStones":"إضافة خطوات",
+    "Add Teams":"إضافة فرق عمل",
+    "Document File":"الملف",
+    "Add Document":"إضافة ملف"
 
   }
 }

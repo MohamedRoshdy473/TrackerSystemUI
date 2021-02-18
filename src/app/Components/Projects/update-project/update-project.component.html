@@ -1,4 +1,10 @@
+<p-toast></p-toast>
+<p-toast position="top-left" key="tl"></p-toast>
+<p-toast position="top-center" key="tc"></p-toast>
+<p-toast position="bottom-center" key="bc"></p-toast>
 <div class="col">
+    <div class="container card">
+        <br>
     <div>
         <h1 [translate]="'Tracker.Edit Project Data'" style="margin-bottom: 20px; font-size: 2em;color: #2674a8;"></h1>
         <!-- <h3 [translate]="'Tracker.Edit Project Data'"></h3> -->
@@ -10,7 +16,7 @@
             </label><br>
             <input minlength="3" #ProjectName="ngModel" autofocus [placeholder]="'Tracker.Project Name' | translate"
                 [class.is-invalid]="ProjectName.invalid && ProjectName.touched" [class.is-valid]="ProjectName.valid"
-                required minlength="3" type="text" [(ngModel)]="projectObj.projectName" pInputText id="name" required />
+                  type="text" [(ngModel)]="projectObj.projectName" pInputText id="name" required />
             <br> <small [hidden]="ProjectName.valid || ProjectName.untouched" id="helpId" class="text-muted"
                 [translate]="'Tracker.messege'"></small>
         </div>
@@ -21,6 +27,13 @@
                 minlength="3" [(ngModel)]="projectObj.projectCode" pInputText id="Code" required />
             <br> <small [hidden]="ProCode.valid || ProCode.untouched" id="helpId" class="text-muted"
                 [translate]="'Tracker.messege'"></small>
+        </div>
+        <div class="p-field col-md-3">
+
+            <label for="Project Type" [translate]="'Tracker.Project Type Name'"></label><br>
+            <p-dropdown [options]="lstProjectTypes" [(ngModel)]="projectObj.projectTypeId"
+                [placeholder]="'Tracker.Project Type Name' | translate" optionLabel="typeName" optionValue="id">
+            </p-dropdown>
         </div>
         <div class="p-field col-md-3">
             <label for="Project Cost" class="labelMarginRight" [translate]="'Tracker.Project Cost'">
@@ -36,28 +49,68 @@
             <label [translate]="'Tracker.Client Mobile'"></label>
             <input type="text" class="form-control" [(ngModel)]="projectObj.clientMobile" name="clientMobile">
         </div> -->
-        <div class="p-field col-md-3">
+    </div>
 
-            <label for="Project Type" [translate]="'Tracker.Project Type Name'"></label><br>
-            <p-dropdown [options]="lstProjectTypes" [(ngModel)]="projectObj.projectTypeId"
-                [placeholder]="'Tracker.Project Type Name' | translate" optionLabel="typeName" optionValue="id">
-            </p-dropdown>
+    <div class="row">
+
+        <div class="p-field col-md-3">
+            <label for="Plannded Start Date" class="labelMarginRight"
+                [translate]="'Tracker.Plannded Start Date'"></label><br>
+            <p-calendar [(ngModel)]="projectObj.planndedStartDate" dateFormat="dd/mm/yy"
+                #ProplanndedStartDate="ngModel" name="planndedStartDate"
+                [class.is-invalid]="ProplanndedStartDate.invalid && ProplanndedStartDate.touched"
+                [class.is-valid]="ProplanndedStartDate.valid" required minlength="3"></p-calendar>
+            <br> <small [hidden]="ProplanndedStartDate.valid || ProplanndedStartDate.untouched" id="helpId"
+                class="text-muted" [translate]="'Tracker.messegeDate'"></small>
+        </div>
+        <div class="p-field col-md-3">
+            <label for="Actual Start Date" class="labelMarginRight"
+                [translate]="'Tracker.Actual Start Date'"></label><br>
+            <p-calendar [(ngModel)]="projectObj.actualStartDate" dateFormat="dd/mm/yy"
+                #ProActualStartDate="ngModel" name="ProActualStartDate"
+                [class.is-invalid]="ProActualStartDate.invalid && ProActualStartDate.touched"
+                [class.is-valid]="ProActualStartDate.valid" required minlength="3"></p-calendar>
+            <br> <small [hidden]="ProActualStartDate.valid || ProActualStartDate.untouched" id="helpId"
+                class="text-muted" [translate]="'Tracker.messegeDate'"></small>
+
+        </div>
+        <div class="p-field col-md-3">
+            <label for="Plannded End Date" class="labelMarginRight"
+                [translate]="'Tracker.Plannded End Date'"></label><br>
+            <p-calendar [(ngModel)]="projectObj.planndedEndDate" dateFormat="dd/mm/yy"
+                #ProplanndedEndDate="ngModel" name="ProplanndedEndDate"
+                [class.is-invalid]="ProplanndedEndDate.invalid && ProplanndedEndDate.touched"
+                [class.is-valid]="ProplanndedEndDate.valid" required minlength="3"></p-calendar>
+            <br> <small [hidden]="ProplanndedEndDate.valid || ProplanndedEndDate.untouched" id="helpId"
+                class="text-muted" [translate]="'Tracker.messegeDate'"></small>
+        </div>
+        <div class="p-field col-md-3">
+            <label for="Actual End Date" class="labelMarginRight"
+                [translate]="'Tracker.Actual End Date'"></label><br>
+            <p-calendar [(ngModel)]="projectObj.actualEndDate" dateFormat="dd/mm/yy" #ProactualEndDate="ngModel"
+                name="ProactualEndDate"
+                [class.is-invalid]="ProactualEndDate.invalid && ProactualEndDate.touched"
+                [class.is-valid]="ProactualEndDate.valid" required minlength="3"></p-calendar>
+            <br> <small [hidden]="ProactualEndDate.valid || ProactualEndDate.untouched" id="helpId"
+                class="text-muted" [translate]="'Tracker.messegeDate'"></small>
         </div>
     </div>
 
     <div class="row">
         <!-- <div class="col">
-            <label [translate]="'Tracker.Project Type Name'"></label>
-            <input type="text" class="form-control"   [(ngModel)]="projectObj.projectTypeName" name="projectTypeName" >
+            <label [translate]="'Tracker.Employee Name'"></label>
+            <input type="text" class="form-control"  [(ngModel)]="emploeeObj.employeeName" >
         </div> -->
-
-
-
-        <!-- 
         <div class="p-field col-md-3">
-            <label [translate]="'Tracker.Organization Name'"></label>
-            <input type="text" class="form-control" [(ngModel)]="projectObj.organizationName" name="organizationName" >
-        </div> -->
+            <label for="Project Period" class="labelMarginRight" [translate]="'Tracker.Project Period'">
+            </label><br>
+            <input type="number" #ProPeriod="ngModel" name="ProPeriod" autofocus
+                [placeholder]="'Tracker.Project Period' | translate"
+                [class.is-invalid]="ProPeriod.invalid && ProPeriod.touched" [class.is-valid]="ProPeriod.valid"
+                required minlength="3" [(ngModel)]="projectObj.projectPeriod" pInputText id="Period" required />
+            <br> <small [hidden]="ProPeriod.valid || ProPeriod.untouched" id="helpId" class="text-muted"
+                [translate]="'Tracker.messegeNumber'"></small>
+        </div>
 
         <div class="p-field col-md-3">
             <label for="organization Name" class="labelMarginRight"
@@ -67,47 +120,36 @@
             </p-dropdown>
         </div>
         <div class="p-field col-md-3">
-            <label [translate]="'Tracker.Project Period'"></label>
-            <input type="text" class="form-control" [(ngModel)]="projectObj.projectPeriod" name="projectPeriod">
-        </div>
-        <div class="p-field col-md-3">
-            <label [translate]="'Tracker.Description'"></label>
-            <input type="text" class="form-control" [(ngModel)]="projectObj.description" name="description">
-        </div>
-        <div class="p-field col-md-3">
             <label for="Project Manager" class="labelMarginRight" [translate]="'Tracker.Project Manager'">
             </label><br>
             <p-dropdown [options]="lstEmployees" [(ngModel)]="projectObj.employeeId"
                 [placeholder]="'Tracker.Project Manager' | translate" optionLabel="employeeName" optionValue="id">
             </p-dropdown>
         </div>
+        <div class="p-field col-md-3">
+            <label for="Client Name" class="labelMarginRight" [translate]="'Tracker.Client Name'"></label><br>
+            <p-dropdown [options]="lstClients" [(ngModel)]="projectObj.clientId"
+                [placeholder]="'Tracker.Client Name' | translate" optionLabel="clientName" optionValue="id">
+            </p-dropdown>
+        </div>
     </div>
-
     <div class="row">
-        <!-- <div class="col">
-            <label [translate]="'Tracker.Employee Name'"></label>
-            <input type="text" class="form-control"  [(ngModel)]="emploeeObj.employeeName" >
-        </div> -->
-
-
-
-        <div class="p-field col-md-3">
-            <label [translate]="'Tracker.Actual Start Date'"></label>
-            <input type="text" class="form-control" [ngModel]="projectObj.actualStartDate| date: 'MM/dd/yy'"
-                name="actualStartDate">
+        <div class="p-field col-md-6">
+            <label for="description" [translate]="'Tracker.Description'"></label><br>
+            <textarea id="description" [(ngModel)]="projectObj.description" pInputTextarea required rows="3"
+                cols="63"></textarea>
         </div>
-
-        <div class="p-field col-md-3">
-            <label [translate]="'Tracker.Actual End Date'"></label>
-            <input type="text" class="form-control" [ngModel]="projectObj.actualEndDate| date: 'MM/dd/yy'"
-                name="actualEndDate">
-        </div>
+        <div class="col-md-2" style="margin-top: 7%;margin-left: 28%;"> <button pButton type="button"
+            (click)="edit()" icon="pi pi-check" [label]="'Tracker.Submit' | translate"
+            class="p-button-warning"></button>
     </div>
+  <!-- <button pButton type="button" [label]="'Tracker.Update' | translate" style="margin: 20px;" (click)="edit()"
+        class="p-button-warning"></button> -->
+    </div>
+    <br>
+</div>
     <br />
-    <button pButton type="button" [label]="'Tracker.Update' | translate" style="margin: 20px;" (click)="edit()"
-        class="p-button-warning"></button>
-    <br />
-    <br />
+    
     <div class="row">
         <div class="col">
             <p-table [value]="projectObj.listOfStackholders">
@@ -132,39 +174,39 @@
             <br />
             <br />
             <!-- Dialog Add Partener -->
-            <p-dialog header="Add Partener" [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
+            <p-dialog [header]="'Tracker.Add Partener' | translate" [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
                 <div class="row">
                     <div class="col">
                         <div class="p-col-12 p-md-4">
                             <div class="p-inputgroup">
                                 <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-                                <input type="text" pInputText placeholder="Partener Name"
+                                <input type="text" pInputText [placeholder]="'Tracker.Partener Name' | translate"
                                     [(ngModel)]="stackholderInLst.stackeholderName">
                             </div>
                         </div>
                         <div class="p-col-12 p-md-4">
                             <div class="p-inputgroup">
-                                <span class="p-inputgroup-addon">00</span>
-                                <input type="text" pInputText placeholder="Mobile"
+                                <span class="p-inputgroup-addon"></span>
+                                <input type="text" pInputText [placeholder]="'Tracker.Mobile' | translate"
                                     [(ngModel)]="stackholderInLst.mobile">
-                                <span class="p-inputgroup-addon">.00</span>
+                                <span class="p-inputgroup-addon"></span>
                             </div>
                         </div>
                         <div class="p-col-12 p-md-4">
                             <div class="p-inputgroup">
-                                <span class="p-inputgroup-addon">00</span>
-                                <input type="text" pInputText placeholder="Rank" [(ngModel)]="stackholderInLst.rank">
-                                <span class="p-inputgroup-addon">.00</span>
+                                <span class="p-inputgroup-addon"></span>
+                                <input type="text" pInputText [placeholder]="'Tracker.Rank' | translate" [(ngModel)]="stackholderInLst.rank">
+                                <span class="p-inputgroup-addon"></span>
                             </div>
                         </div>
                         <div class="p-col-12 p-md-4">
                             <div>
-                                <textarea pInputTextarea placeholder="Description" style="width: 100%;"
+                                <textarea pInputTextarea [placeholder]="'Tracker.Description' | translate" style="width: 100%;"
                                     [(ngModel)]="stackholderInLst.description" class="row p-col-12 p-md-4"></textarea>
                             </div>
                             <div>
                                 <button class="btn btn-info" style="margin-top: 20px;float: right;"
-                                    (click)="Savetolist_Stackholders()">Save To List</button>
+                                    (click)="Savetolist_Stackholders()" [translate]="'Tracker.Save To List'"></button>
                             </div>
                         </div>
                     </div>
@@ -173,8 +215,8 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>ProjectName</th>
-                                    <th>mobile</th>
+                                    <th [translate]="'Tracker.Partener Name'"></th>
+                                    <th [translate]="'Tracker.Mobile'"></th>
                                     <!-- <th>Projectcost</th> -->
                                 </tr>
                             </thead>
@@ -192,20 +234,20 @@
 
                                 </tr>
                                 <tr *ngIf="lstOfStackholder.length == 0">
-                                    <td colspan="4" style="color: rgb(102, 97, 23);">No Parteners found.</td>
+                                    <td colspan="4" style="color: rgb(102, 97, 23);" [translate]="'Tracker.No data found'"></td>
                                 </tr>
                             </tbody>
 
                         </table>
 
                         <button class="btn btn-warning" [disabled]="lstOfStackholder.length == 0"
-                            (click)="SaveToDB_Stackholders()">Add List</button>
+                            (click)="SaveToDB_Stackholders()" [translate]="'Tracker.Add'"></button>
                     </div>
                 </div>
 
 
                 <ng-template pTemplate="footer">
-                    <p-button icon="pi pi-check" (click)="displayBasic=false" label="Ok" styleClass="p-button-text">
+                    <p-button icon="pi pi-check" (click)="displayBasic=false" [label]="'Tracker.Ok' | translate" styleClass="p-button-text">
                     </p-button>
                 </ng-template>
             </p-dialog>
@@ -226,7 +268,7 @@
             <p-table [value]=" projectObj.listOfmilestones">
                 <ng-template pTemplate="header">
                     <tr>
-                        <th style="color: #2674a8; font-size: 20px; font: bold;">Title Name</th>
+                        <th style="color: #2674a8; font-size: 20px; font: bold;" [translate]="'Tracker.Title'"></th>
                         <th></th>
 
                     </tr>
@@ -240,15 +282,15 @@
                     </tr>
                 </ng-template>
             </p-table>
-            <p-button (click)="showmileDialog()" icon="pi pi-external-link" label="Add MileStones"></p-button>
+            <p-button (click)="showmileDialog()" icon="pi pi-external-link" [label]="'Tracker.Add MileStones'| translate"></p-button>
             <br />
             <br />
-            <p-dialog header="Add MileStones" [(visible)]="displayMile" [style]="{width: '50vw'}" [baseZIndex]="10000">
+            <p-dialog [header]="'Tracker.Add MileStones'| translate" [(visible)]="displayMile" [style]="{width: '60vw'}" [baseZIndex]="10000">
                 <div class="row">
                     <div class="col">
                         <div class="p-col-12 p-md-4">
                             <div class="p-inputgroup">
-                                <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+                                <span class="p-inputgroup-addon"></span>
                                 <input type="text" pInputText placeholder="Title" [(ngModel)]="milestonInLst.title">
                             </div>
                         </div>
@@ -262,14 +304,17 @@
 
                         <div class="row p-col-12 p-md-4">
                             <div class="p-field col-md-6">
-                                <label for="StartDate" class="labelMarginRight">StartDate </label><br>
-                                <p-calendar [(ngModel)]="milestonInLst.startDate" dateFormat="dd.mm.yy"></p-calendar>
+                                <label for="StartDate" class="labelMarginRight" [translate]="'Tracker.Start Date'">
+                                </label><br>
+                                <p-calendar [(ngModel)]="milestonInLst.startDate" dateFormat="dd/mm/yy"></p-calendar>
+        
                                 <!-- <br> <small [hidden]="Name.valid || Name.untouched" id="helpId" class="text-muted">Must more than 3
                         letters</small> -->
                             </div>
                             <div class="p-field col-md-6">
-                                <label for="End Date" class="labelMarginRight">End Date </label><br>
-                                <p-calendar [(ngModel)]="milestonInLst.endDate" dateFormat="dd.mm.yy"></p-calendar>
+                                <label for="End Date" class="labelMarginRight" [translate]="'Tracker.End Date'">
+                                </label><br>
+                                <p-calendar [(ngModel)]="milestonInLst.endDate" dateFormat="dd/mm/yy"></p-calendar>
                                 <!-- <br> <small [hidden]="Name.valid || Name.untouched" id="helpId" class="text-muted">Must more than 3
                         letters</small> -->
                             </div>
@@ -277,13 +322,13 @@
 
                         <div class="p-col-12 p-md-4">
                             <div>
-                                <textarea pInputTextarea placeholder="Description"
+                                <textarea pInputTextarea [placeholder]="'Tracker.Description' | translate"
                                     [(ngModel)]="milestonInLst.description" style="width: 100%;"
                                     class="row p-col-12 p-md-4"></textarea>
                             </div>
                             <div>
                                 <button class="btn btn-info" style="margin-top: 20px;float: right;"
-                                    (click)="Savetolist_Milestones()">Save To List</button>
+                                    (click)="Savetolist_Milestones()" [translate]="'Tracker.Save To List'"></button>
                             </div>
                         </div>
                     </div>
@@ -292,11 +337,10 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Title</th>
-                                    <th>Start Date</th>
-                                    <th>Start Date</th>
-                                    <th>description</th>
-
+                                    <th [translate]="'Tracker.Title'"></th>
+                                    <th [translate]="'Tracker.Start Date'"></th>
+                                    <th [translate]="'Tracker.End Date'"></th>
+                                    <th [translate]="'Tracker.Description'"></th>
                                     <!-- <th>Projectcost</th> -->
                                 </tr>
                             </thead>
@@ -307,10 +351,10 @@
                                         {{i.title}}
                                     </td>
                                     <td>
-                                        {{i.startDate | date:'yyyy:MM:dd'}}
+                                        {{i.startDate | date:'dd/MM/yyyy'}}
                                     </td>
                                     <td>
-                                        {{i.endDate | date:'yyyy:MM:dd'}}
+                                        {{i.endDate | date:'dd/MM/yyyy'}}
                                     </td>
                                     <td>
                                         {{i.description}}
@@ -320,18 +364,18 @@
 
                                 </tr>
                                 <tr *ngIf="lstOfMilestones.length == 0">
-                                    <td colspan="4" style="color: rgb(102, 97, 23);">No Milestones found.</td>
+                                    <td colspan="4" style="color: rgb(102, 97, 23);" [translate]="'Tracker.No data found'"></td>
                                 </tr>
                             </tbody>
 
                         </table>
 
                         <button class="btn btn-warning" [disabled]="lstOfMilestones.length == 0"
-                            (click)="SaveToDB_Milestones()">Add List</button>
+                            (click)="SaveToDB_Milestones()" [translate]="'Tracker.Add'"></button>
                     </div>
                 </div>
                 <ng-template pTemplate="footer">
-                    <p-button icon="pi pi-check" (click)="displayMile=false" label="Ok" styleClass="p-button-text">
+                    <p-button icon="pi pi-check" (click)="displayMile=false" [label]="'Tracker.Ok'|translate" styleClass="p-button-text">
                     </p-button>
                 </ng-template>
             </p-dialog>
@@ -346,7 +390,7 @@
                 <ng-template pTemplate="header">
                     <tr>
                         <!-- <th style="color: #2674a8; font-size: 20px; font: bold;">Team Name</th> -->
-                        <th style="color: #2674a8; font-size: 20px; font: bold;">Employee Name</th>
+                        <th style="color: #2674a8; font-size: 20px; font: bold;" [translate]="'Tracker.Employee Name'"></th>
                         <th></th>
 
                     </tr>
@@ -361,7 +405,7 @@
                     </tr>
                 </ng-template>
             </p-table>
-            <p-button (click)="showteamDialog()" icon="pi pi-external-link" label="Add Teams"></p-button>
+            <p-button (click)="showteamDialog()" icon="pi pi-external-link" [label]="'Tracker.Add Teams'|translate"></p-button>
             <br />
             <br />
             <p-dialog header="Add New Team" [(visible)]="displayteam" [style]="{width: '50vw'}" [baseZIndex]="10000">
@@ -369,7 +413,7 @@
                     <div class="p-col-12 p-md-4">
                         <div class="p-inputgroup">
                             <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-                            <input type="text" pInputText placeholder="Team Name" [(ngModel)]="team.Name">
+                            <input type="text" pInputText [placeholder]="'Tracker.Team Name' | translate" [(ngModel)]="team.Name">
 
 
                         </div>
@@ -377,7 +421,7 @@
                     <div class="col">
 
                         <div class="col">
-                            <label class="labelstyle">Select Position Name</label>
+                            <label class="labelstyle" [translate]="'Tracker.Position Name'"></label>
                             <select [(ngModel)]="ProjectTeam.projectPositionId" name="id" class="form-control">emp
                                 <option hidden [value]="" selected>select Position Name </option>
                                 <option *ngFor="let the of lstOfprojectPosition" value="{{the.id}}">{{the.positionName}}
@@ -386,7 +430,7 @@
                         </div>
 
                         <div class="col">
-                            <label class="labelstyle">Select Employee Name</label>
+                            <label class="labelstyle" [translate]="'Tracker.Employee Name'"></label>
                             <select [(ngModel)]="ProjectTeam.employeeId" name="sel2" class="form-control"
                                 (change)="OnChangeEmpID($event)">
                                 <option *ngFor="let th of lstEmployees" value="{{th.id}}">{{th.employeeName}}</option>
@@ -394,7 +438,7 @@
                         </div>
 
                         <div class="col">
-                            <label class="labelstyle">Department Name</label>
+                            <label class="labelstyle" [translate]="'Tracker.Department Name'"></label>
                             <select [(ngModel)]="ProjectTeam.departmentId" name="sub" class="form-control">
                                 <option value="{{department.id}}">{{department.name}}</option>
                             </select>
@@ -404,7 +448,7 @@
 
                             <div>
                                 <button class="btn btn-info" style="margin-top: 20px;float: right;"
-                                    (click)="Savetolist_Teams()">Save To List</button>
+                                    (click)="Savetolist_Teams()" [translate]="'Tracker.Save To List'"></button>
                             </div>
                         </div>
                     </div>
@@ -412,11 +456,11 @@
                     <div class="col">
                         <table class="table">
                             <thead>
-                                <tr>Team Name : {{teamname}}</tr>
+                                <tr>{{ 'Tracker.Team Name' | translate }} : {{teamname}}</tr>
                                 <tr>
-                                    <th>Position Name</th>
-                                    <th>Employee Name</th>
-                                    <th>Department Name</th>
+                                    <th [translate]="'Tracker.Position Name'"></th>
+                                    <th [translate]="'Tracker.Employee Name'"></th>
+                                    <th [translate]="'Tracker.Department Name'"></th>
                                     <!-- <th>Projectcost</th> -->
                                 </tr>
                             </thead>
@@ -435,18 +479,18 @@
                                 </tr>
 
                                 <tr *ngIf="lstOfProjectTeams.length == 0">
-                                    <td colspan="4" style="color: rgb(102, 97, 23);">No ProjectTeams found.</td>
+                                    <td colspan="4" style="color: rgb(102, 97, 23);" [translate]="'Tracker.No data found'"></td>
                                 </tr>
                             </tbody>
 
                         </table>
 
                         <button class="btn btn-warning" [disabled]="lstOfProjectTeams.length == 0"
-                            (click)="SaveToDB_ProjectTeams()">Add List</button>
+                            (click)="SaveToDB_ProjectTeams()" [translate]="'Tracker.Add'"></button>
                     </div>
                 </div>
                 <ng-template pTemplate="footer">
-                    <p-button icon="pi pi-check" (click)="displayteam=false" label="Ok" styleClass="p-button-text">
+                    <p-button icon="pi pi-check" (click)="displayteam=false" [label]="'Tracker.Ok'|translate" styleClass="p-button-text">
                     </p-button>
                 </ng-template>
             </p-dialog>
@@ -459,8 +503,8 @@
             <p-table [value]="  projectObj.listOfdocuments">
                 <ng-template pTemplate="header">
                     <tr>
-                        <th style="color: #2674a8; font-size: 20px; font: bold;">Document Name</th>
-                        <th style="color: #2674a8; font-size: 20px; font: bold;">Document File</th>
+                        <th style="color: #2674a8; font-size: 20px; font: bold;" [translate]="'Tracker.Document Name'"></th>
+                        <th style="color: #2674a8; font-size: 20px; font: bold;" [translate]="'Tracker.Document File'"></th>
                         <th></th>
                     </tr>
                 </ng-template>
@@ -477,7 +521,7 @@
                     </tr>
                 </ng-template>
             </p-table>
-            <p-button (click)="showdocDialog()" icon="pi pi-external-link" label="Add Document"></p-button>
+            <p-button (click)="showdocDialog()" icon="pi pi-external-link" [label]="'Tracker.Add Document'|translate"></p-button>
             <br />
             <br />
             <p-dialog header="Add Document" [(visible)]="displaydoc" [style]="{width: '50vw'}" [baseZIndex]="10000">
@@ -487,7 +531,7 @@
                         <div class="p-col-12 p-md-4">
                             <div class="p-inputgroup">
                                 <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
-                                <input type="text" pInputText placeholder="Document Name"
+                                <input type="text" pInputText [placeholder]="'Tracker.Document Name' | translate"
                                     [(ngModel)]="docproject.documentName">
                             </div>
                         </div>
@@ -495,17 +539,16 @@
 
                         <div class="p-col-12 p-md-4">
                             <div>
-                                <textarea pInputTextarea placeholder="Description" style="width: 100%;"
+                                <textarea pInputTextarea [placeholder]="'Tracker.Description' | translate" style="width: 100%;"
                                     [(ngModel)]="docproject.Description" class="row p-col-12 p-md-4"></textarea>
                             </div>
                             <br />
                             <br />
                             <div class="p-field col-md-3" style="margin-bottom:15px;">
                                 <div class="col-md-3">
-                                    <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)"
+                                    <input type="file" #file [placeholder]="'Tracker.Choose file'|translate" (change)="uploadFile(file.files)"
                                         style="display:none;">
-                                    <button type="button" class="btn btn-success" (click)="file.click()">Upload
-                                        File</button>
+                                    <button type="button" class="btn btn-success" (click)="file.click()"  [translate]="'Tracker.Upload'"></button>
                                 </div>
                                 <div class="col-md-4">
 
@@ -517,7 +560,7 @@
                             </div>
                             <div>
                                 <button class="btn btn-info" style="margin-top: 20px;float: right;"
-                                    (click)="Savedoctolist()">Save To List</button>
+                                    (click)="Savedoctolist()" [translate]="'Tracker.Save To List'"></button>
                             </div>
                         </div>
                     </div>
@@ -526,9 +569,9 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Document Name</th>
-                                    <th>Document Description</th>
-                                    <th>File Name</th>
+                                    <th [translate]="'Tracker.Document Name'"></th>
+                                    <th [translate]="'Tracker.Description'"></th>
+                                    <th [translate]="'Tracker.File Name'"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -543,14 +586,14 @@
 
                                 </tr>
                                 <tr *ngIf="lstoddocproj.length == 0">
-                                    <td colspan="4" style="color: rgb(102, 97, 23);">No Documents found.</td>
+                                    <td colspan="4" style="color: rgb(102, 97, 23);" [translate]="'Tracker.No data found'"></td>
                                 </tr>
                             </tbody>
 
                         </table>
 
                         <button class="btn btn-warning" [disabled]="lstoddocproj.length == 0"
-                            (click)="SaveDocuentToDB()">Add List</button>
+                            (click)="SaveDocuentToDB()" [translate]="'Tracker.Add'"></button>
                     </div>
                 </div>
                 <ng-template pTemplate="footer">

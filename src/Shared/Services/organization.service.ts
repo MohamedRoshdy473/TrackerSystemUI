@@ -25,4 +25,10 @@ export class OrganizationService {
   UpdateOrganization(id:Number,orgObj:organization):Observable<organization>{
     return this.httpClient.put<organization>(`${environment.organizations}`+ id,orgObj,this.httpHeader);
   }
+  delete(id) {
+    return this.httpClient.delete(`${environment.organizations}` + id, this.httpHeader);
+  }
+  DeleteOrg(id:number,org:organization):Observable<organization> {
+    return this.httpClient.put<organization>(`${environment.organizations}SoftDelete/${id}`, org,this.httpHeader);
+  }
 }
