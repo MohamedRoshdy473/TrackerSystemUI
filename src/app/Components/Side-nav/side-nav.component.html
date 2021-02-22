@@ -20,6 +20,7 @@
           {{ 'Tracker.Projects' | translate }}</a><br>
       </li>
       <li *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'">
+        <!--  -->
         <a class="active" class="pi pi-ticket" routerLink='AllManagersReq'> {{ 'Tracker.Clients Requests' | translate}}
         </a><br>
       </li>
@@ -41,6 +42,7 @@
           }}</a><br>
       </li>
       <li *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM'">
+        <!--  -->
         <a class="active" class="pi pi-book" routerLink='DisplayCategories'> {{ 'Tracker.Client Requests Category' |
           translate }}</a><br>
       </li>
@@ -55,6 +57,7 @@
           }}</a><br>
       </li>
       <li *ngIf="role=='Client'">
+        <!--  -->
         <a class="active" class="pi pi-user" routerLink='allClientReqts'> {{ 'Tracker.ClientRequests' | translate
           }}</a><br>
       </li>
@@ -92,11 +95,11 @@
 
           <ul class="navbar-nav">
 
-            <li style="margin-left: 20px; font-size: 20px; color: #2674a8;" *ngIf="role =='PM'">
+            <li style="margin-left: 20px; font-size: 20px; color: #2674a8;" *ngIf="role =='PM'||role== 'PMO'">
               <a class="active" routerLink='projectsForProjectManager'>
                 {{ 'Tracker.Projects' | translate }} </a><br>
             </li>
-            <li style="margin-left: 20px; font-size: 20px; color:#2674a8;" *ngIf="role=='SuperAdmin'">
+            <li style="margin-left: 20px; font-size: 20px; color:#2674a8;" *ngIf="role=='SuperAdmin'||role== 'PMO'">
               <a class="active" routerLink='tabs'>
                 {{ 'Tracker.Projects' | translate }}</a><br>
             </li>
@@ -106,6 +109,7 @@
                 *ngIf="role=='TL'">{{'Tracker.DashBoard' | translate}}</a><br>
             </li>
             <li>
+              <!--  -->
               <a class="active" routerLink='allTeamLeaderReqts'
                 style="margin-left: 20px; font-size: 20px; color: #2674a8;" *ngIf="role=='TL'">{{'Tracker.Clients
                 Requests' | translate}}</a><br>
@@ -113,9 +117,11 @@
 
             <li style="margin-left: 20px; font-size: 20px;color: #2674a8;"
               *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'">
+              <!--  -->
               <a class="active" routerLink='AllManagersReq'>{{ 'Tracker.Clients Requests' | translate }}</a><br>
             </li>
             <li style="margin-left: 20px; font-size: 20px;color:#2674a8;" *ngIf="role =='PM'">
+              <!--  -->
               <a class="active" routerLink='projectmanagerRequests'> {{ 'Tracker.Clients Requests' | translate
                 }}</a><br>
             </li>

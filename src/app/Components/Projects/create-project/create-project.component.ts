@@ -84,8 +84,8 @@ export class CreateProjectComponent implements OnInit {
       Description:'',documentName:'',documentFile:'',id:0,projectId:0
     }
     this.projectObj = {
-      id: 0, projectName: "", projectCode: "", projectTypeName: "", projectTypeId: 0, cost: 0, projectPeriod: 0, planndedStartDate: new Date()
-      , actualStartDate: new Date(), planndedEndDate: new Date(), actualEndDate: new Date(), description: "", organizationId: 0, employeeId: 0, clientId: 0
+      id: 0, projectName: "", projectCode: "", projectTypeName: "", projectTypeId: 0, cost: 0, projectPeriod: 0, planndedStartDate:null
+      , actualStartDate: null, planndedEndDate: null, actualEndDate: null, description: "", organizationId: 0, employeeId: 0, clientId: 0
     }
     this.stackholderInLst = {
       description: '', id: 0, mobile: '', projectId: 0, rank: '', stackeholderName: ''

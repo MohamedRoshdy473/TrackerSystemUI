@@ -61,7 +61,8 @@
                 <div class="p-field col-md-3">
                     <label for="Plannded Start Date" class="labelMarginRight"
                         [translate]="'Tracker.Plannded Start Date'"></label><br>
-                    <p-calendar [(ngModel)]="projectObj.planndedStartDate" dateFormat="dd/mm/yy"
+                    <p-calendar [(ngModel)]="projectObj.planndedStartDate" dateFormat="dd/mm/yy" 
+                    [placeholder]="'Tracker.Plannded Start Date' | translate"
                         #ProplanndedStartDate="ngModel" name="planndedStartDate"></p-calendar>
                     <br> <small [hidden]="ProplanndedStartDate.valid || ProplanndedStartDate.untouched" id="helpId"
                         class="text-muted" [translate]="'Tracker.messegeDate'"></small>
@@ -70,6 +71,7 @@
                     <label for="Actual Start Date" class="labelMarginRight"
                         [translate]="'Tracker.Actual Start Date'"></label><br>
                     <p-calendar [(ngModel)]="projectObj.actualStartDate" dateFormat="dd/mm/yy"
+                    [placeholder]="'Tracker.Actual Start Date' | translate"
                         #ProActualStartDate="ngModel" name="ProActualStartDate"></p-calendar>
                     <br> <small [hidden]="ProActualStartDate.valid || ProActualStartDate.untouched" id="helpId"
                         class="text-muted" [translate]="'Tracker.messegeDate'"></small>
@@ -79,6 +81,7 @@
                     <label for="Plannded End Date" class="labelMarginRight"
                         [translate]="'Tracker.Plannded End Date'"></label><br>
                     <p-calendar [(ngModel)]="projectObj.planndedEndDate" dateFormat="dd/mm/yy"
+                    [placeholder]="'Tracker.Plannded End Date' | translate"
                         #ProplanndedEndDate="ngModel" name="ProplanndedEndDate"></p-calendar>
                     <br> <small [hidden]="ProplanndedEndDate.valid || ProplanndedEndDate.untouched" id="helpId"
                         class="text-muted" [translate]="'Tracker.messegeDate'"></small>
@@ -88,7 +91,7 @@
                     <label for="Actual End Date" class="labelMarginRight"
                         [translate]="'Tracker.Actual End Date'"></label><br>
                     <p-calendar [(ngModel)]="projectObj.actualEndDate" dateFormat="dd/mm/yy" #ProactualEndDate="ngModel"
-                        name="ProactualEndDate"></p-calendar>
+                    [placeholder]="'Tracker.Actual End Date' | translate" name="ProactualEndDate"></p-calendar>
                     <br> <small [hidden]="ProactualEndDate.valid || ProactualEndDate.untouched" id="helpId"
                         class="text-muted" [translate]="'Tracker.messegeDate'"></small>
 

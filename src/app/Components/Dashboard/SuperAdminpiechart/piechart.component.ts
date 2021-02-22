@@ -179,6 +179,7 @@ export class PiechartComponent implements OnInit {
       this.departments.forEach(element => {
         this.deprtmentNames.push(element.name)
         this.empService.GetEmployeeByDepartmentId(element.id).subscribe(res => {
+          console.log("GetEmployeeByDepartmentId",res)
           this.empLength.push(res.length)
           this.chartOptionPie = {
             series: this.empLength,
