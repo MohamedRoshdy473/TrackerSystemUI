@@ -2,6 +2,8 @@ import { Component, NgZone, OnInit } from '@angular/core';
 import { organization } from 'src/Shared/Models/organization';
 import { OrganizationService } from '../../../../Shared/Services/organization.service';
 import {  MouseEvent } from '@agm/core';
+import { MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-organization',
@@ -18,7 +20,7 @@ export class AddOrganizationComponent implements OnInit {
    address: string;
  
  
-  constructor(private organizationService:OrganizationService, private ngZone: NgZone) { }
+  constructor(private router: Router,private organizationService:OrganizationService, private ngZone: NgZone,private messageService: MessageService) { }
 
   ngOnInit(): void {
 
@@ -36,6 +38,9 @@ onSubmit()
     this.organizationObj.lng =Number(this.organizationObj.lng);
     this.organizationService.AddOrganization(this.organizationObj).subscribe((item)=>{
     });
+        this.router.navigate(['home/organizations']);
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Organization Added' });
+
 }
 
 mapClicked($event: MouseEvent) {

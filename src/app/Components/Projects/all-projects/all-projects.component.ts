@@ -93,6 +93,14 @@ export class AllProjectsComponent implements OnInit {
 
       this.projectteamservice.GetAllTeamsByProjectID(Projectid).subscribe(t => {
         this.teams = t;
+        console.log(" this.teams", this.teams)
+        this.teams = t.reduce((unique, o) => {
+          if (!unique.some(obj => obj.teamId == o.teamId)) {
+            unique.push(o);
+          }
+          return unique;
+        }, []);
+        console.log(" this.teams", this.teams)
         this.project1.listofprojectteam = this.teams;
       }), err => console.log(err)
 
@@ -143,6 +151,14 @@ export class AllProjectsComponent implements OnInit {
 
       this.projectteamservice.GetAllTeamsByProjectID(Projectid).subscribe(t => {
         this.teams = t;
+        console.log(" this.teams", this.teams)
+        this.teams = t.reduce((unique, o) => {
+          if (!unique.some(obj => obj.teamId == o.teamId)) {
+            unique.push(o);
+          }
+          return unique;
+        }, []);
+      
         this.project1.listofprojectteam = this.teams;
         this.projectObj.listofprojectteam = t
         console.log(this.projectObj.listofprojectteam)
@@ -178,59 +194,59 @@ export class AllProjectsComponent implements OnInit {
   }
   showSuccess() {
     this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Message Content' });
-}
+  }
 
-showInfo() {
+  showInfo() {
     this.messageService.add({ severity: 'info', summary: 'Info', detail: 'Message Content' });
-}
+  }
 
-showWarn() {
+  showWarn() {
     this.messageService.add({ severity: 'warn', summary: 'Warn', detail: 'Message Content' });
-}
+  }
 
-showError() {
+  showError() {
     this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Message Content' });
-}
+  }
 
-showTopLeft() {
+  showTopLeft() {
     this.messageService.add({ key: 'tl', severity: 'info', summary: 'Info', detail: 'Message Content' });
-}
+  }
 
-showTopCenter() {
+  showTopCenter() {
     this.messageService.add({ key: 'tc', severity: 'info', summary: 'Info', detail: 'Message Content' });
-}
+  }
 
-showBottomCenter() {
+  showBottomCenter() {
     this.messageService.add({ key: 'bc', severity: 'info', summary: 'Info', detail: 'Message Content' });
-}
+  }
 
-showConfirm() {
+  showConfirm() {
     this.messageService.clear();
     this.messageService.add({ key: 'c', sticky: true, severity: 'warn', summary: 'Are you sure?', detail: 'Confirm to proceed' });
-}
+  }
 
-showMultiple() {
+  showMultiple() {
     this.messageService.addAll([
-        { severity: 'info', summary: 'Message 1', detail: 'Message Content' },
-        { severity: 'info', summary: 'Message 2', detail: 'Message Content' },
-        { severity: 'info', summary: 'Message 3', detail: 'Message Content' }
+      { severity: 'info', summary: 'Message 1', detail: 'Message Content' },
+      { severity: 'info', summary: 'Message 2', detail: 'Message Content' },
+      { severity: 'info', summary: 'Message 3', detail: 'Message Content' }
     ]);
-}
+  }
 
-showSticky() {
+  showSticky() {
     this.messageService.add({ severity: 'info', summary: 'Sticky', detail: 'Message Content', sticky: true });
-}
+  }
 
-onConfirm() {
+  onConfirm() {
     this.messageService.clear('c');
-}
+  }
 
-onReject() {
+  onReject() {
     this.messageService.clear('c');
-}
+  }
 
-clear() {
+  clear() {
     this.messageService.clear();
-}
+  }
 
 }

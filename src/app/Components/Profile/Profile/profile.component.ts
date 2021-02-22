@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 import { employee } from 'src/Shared/Models/employee';
 import { ClientService } from 'src/Shared/Services/client.service';
 import { EmployeeService } from 'src/Shared/Services/employee.service';
@@ -17,12 +18,15 @@ export class ProfileComponent implements OnInit {
   role: string;
   clientId: number;
   clientImage: any;
+  getimage: string;
   constructor(
     private empService: EmployeeService, private router: Router, private clientService: ClientService
   ) { }
 
   ngOnInit(): void {
     this.role = localStorage.getItem("roles")
+    this.getimage = environment.Domain
+
     if (this.role == "Client") {
       this.clientId = Number(localStorage.getItem("clientId"))
       console.log("this.clientId", this.clientId)

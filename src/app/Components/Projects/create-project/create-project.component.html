@@ -31,9 +31,9 @@
                     <input type="text" #ProCode="ngModel" name="ProjectCode"
                         [placeholder]="'Tracker.Project Code' | translate"
                         [class.is-invalid]="ProCode.invalid && ProCode.touched" [class.is-valid]="ProCode.valid"
-                        required minlength="3" [(ngModel)]="projectObj.projectCode" pInputText id="Code" required />
+                        required minlength="2" [(ngModel)]="projectObj.projectCode" pInputText id="Code" required />
                     <br> <small [hidden]="ProCode.valid || ProCode.untouched" id="helpId" class="text-muted"
-                        [translate]="'Tracker.messege'"></small>
+                        [translate]="'Tracker.messegecode'"></small>
                 </div>
                 <div class="p-field col-md-3">
                     <label for="Project Type" class="labelMarginRight"

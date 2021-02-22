@@ -31,6 +31,7 @@
     "Add": "إضافة",
     "Update": "تعديل",
     "messege": "يجب أن تكون أكثر من ثلاثة حروف",
+    "messegecode": "يجب أن تكون أكثر من حرفين",
     "Confirmation": "تأكيد",
     "No data found": "لا يوجد بيانات",
     "No": "إلغاء",
@@ -194,7 +195,8 @@
     "Add MileStones":"إضافة خطوات",
     "Add Teams":"إضافة فرق عمل",
     "Document File":"الملف",
-    "Add Document":"إضافة ملف"
+    "Add Document":"إضافة ملف",
+    "Select":"إختيار"
 
   }
 }

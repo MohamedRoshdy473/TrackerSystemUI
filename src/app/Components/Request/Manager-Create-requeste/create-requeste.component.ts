@@ -22,6 +22,7 @@ import { RequestImage } from 'src/Shared/Models/RequestImages';
 import { ProjectTeamService } from 'src/Shared/Services/project-team.service';
 import { projectTeam } from 'src/Shared/Models/projectTeam';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-create-requeste',
@@ -67,7 +68,7 @@ export class CreateRequesteComponent implements OnInit {
     private ReqModeService: RequestModeService,
     private projectService: ProjectService,
     private ReqSubCatService: RequestSubCategoryService,
-    private router:Router
+    private router:Router,private messageService: MessageService
   ) { }
 
   ngOnInit(): void {
@@ -152,15 +153,19 @@ export class CreateRequesteComponent implements OnInit {
     this.reqService.inserRequest(this.reqObj).subscribe(e => {
       this.reqId = e;
       this.reqImage.requestId = this.reqId;
-      
-     ;
-
+      this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Request Added Successfully' });
     })
   }
   onChange(event) {
     this.projectId = event.value
     this.projectTeamService.GetProjectTeamsByProjectId(this.projectId).subscribe(e=>{
       this.lstProjectTeams = e
+      this.lstProjectTeams = e.reduce((unique, o) => {
+        if (!unique.some(obj => obj.teamId == o.teamId)) {
+          unique.push(o);
+        }
+        return unique;
+      }, []);
       console.log("lstproTeams",this.lstProjectTeams)
     })
     this.projectService.GetProjectsByClientId(this.projectId).subscribe(e => {
@@ -184,7 +189,9 @@ export class CreateRequesteComponent implements OnInit {
     this.httpClient.post(environment.uploadImage, formData)
       .subscribe(res => {
         console.log(res)
-        alert('Uploaded Successfully.');
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Uploaded Successfully' });
+
+       // alert('Uploaded Successfully.');
 
       });
     this.lstRequestImages.push(this.reqImage);

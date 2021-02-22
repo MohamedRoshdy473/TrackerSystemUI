@@ -122,6 +122,9 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 // import { DashboardComponent } from './Dashboard/Dashboard/dashboard.component';
 import { ProjectmanagerDashboardComponent } from './Components/Dashboard/projectmanager-dashboard/projectmanager-dashboard.component';
 import { TeamleaderDashboardComponent } from './Components/Dashboard/teamleader-dashboard/teamleader-dashboard.component';
+import { DisplayAssetsComponent } from './Components/Assets/display-assets/display-assets.component';
+import { AddAssetsComponent } from './Components/Assets/add-assets/add-assets.component';
+import { UpdateAssetsComponent } from './Components/Assets/update-assets/update-assets.component';
 
 
 registerLocaleData(en);
@@ -172,7 +175,10 @@ registerLocaleData(en);
    ProfileComponent,
    PiechartComponent,
    ProjectmanagerDashboardComponent,
-   TeamleaderDashboardComponent
+   TeamleaderDashboardComponent,
+   DisplayAssetsComponent,
+   AddAssetsComponent,
+   UpdateAssetsComponent
   //  PiechartComponent,
   ],
   imports: [

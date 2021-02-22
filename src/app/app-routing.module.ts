@@ -46,6 +46,9 @@ import { ProfileComponent } from './Components/Profile/Profile/profile.component
 import { PiechartComponent } from "./Components/Dashboard/SuperAdminpiechart/piechart.component";
 import { ProjectmanagerDashboardComponent } from './Components/Dashboard/projectmanager-dashboard/projectmanager-dashboard.component';
 import { TeamleaderDashboardComponent } from './Components/Dashboard/teamleader-dashboard/teamleader-dashboard.component';
+import { DisplayAssetsComponent } from './Components/Assets/display-assets/display-assets.component';
+import { AddAssetsComponent } from './Components/Assets/add-assets/add-assets.component';
+import { UpdateAssetsComponent } from './Components/Assets/update-assets/update-assets.component';
 // import { PiechartComponent } from './Components/Pichart/piechart/piechart.component';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -92,6 +95,10 @@ const routes: Routes = [
       { path: 'allclientsforprojectmanager', component: AllClientsForProjectmanagerComponent },
       { path: 'projectmanagerRequests', component: ProjectmangerRequestsComponent },
       { path: 'assignemployeerequest/:id', component: AssignemployeeRequestComponent },
+      { path: 'DisplayAssets', component: DisplayAssetsComponent },
+      { path: 'AddAsset', component: AddAssetsComponent },
+      { path: 'UpdateAsset/:id', component: UpdateAssetsComponent },
+
 
 
 

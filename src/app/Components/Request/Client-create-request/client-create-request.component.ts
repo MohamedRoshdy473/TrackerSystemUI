@@ -25,6 +25,7 @@ import { ProjectTeamService } from 'src/Shared/Services/project-team.service';
 import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from 'constants';
 import { Route } from '@angular/compiler/src/core';
 import { Router } from '@angular/router';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-client-create-request',
@@ -34,7 +35,7 @@ import { Router } from '@angular/router';
 export class ClientCreateRequestComponent implements OnInit {
   lstReqests: request[]
   requestObj: request
-  reqObj: request
+  reqObj: any
   ClientId: number
   projectId: number
   lstReqAssets: asset[]
@@ -67,8 +68,9 @@ export class ClientCreateRequestComponent implements OnInit {
     private ReqModeService: RequestModeService,
     private projectService: ProjectService,
     private ReqSubCatService: RequestSubCategoryService,
-    private route:Router
-  ) { }
+    private confirmationService: ConfirmationService,
+    private route:Router,private messageService: MessageService,
+     ) { }
 
   ngOnInit(): void {
     this.ClientId = Number(localStorage.getItem('clientId'))
@@ -85,11 +87,11 @@ export class ClientCreateRequestComponent implements OnInit {
       id: 0, imageName: '', requestId: 0
     }
     this.reqObj = {
-      id: 0, projectId: 0, projectName: '', requestCode: '', clientName: '', teamId: 0, teamName: '', IsAssigned: false,
-      requestName: '', requestPeriority: '', requestPeriorityId: 0, IsSolved: false, projectTeamId: 0,
+      id: 0, projectId: 0, projectName: '', requestCode: '',
+      requestName: '', requestPeriority: '', requestPeriorityId: 0,
       requestStatus: '', requestStatusId: 0, requestTime: new Date().getHours() + ':' + new Date().getMinutes(), requestDate: new Date(),
       requestSubCategoryId: 0, requestSubCategoryName: '', assetId: 0, clientId: this.ClientId,
-      requestTypeName: '', description: '', requestModeId: 0, RequestProblemObj: { requestId: 0, id: 0, employeeId: 0, problemId: 0, problemName: '', requestName: '' }
+      requestTypeId: 0, requestTypeName: '', description: '', requestModeId: 0
     }
     this.requestObj = {
       IsAssigned: false, IsSolved: false, RequestProblemObj: { requestId: 0, employeeId: 0, id: 0, problemId: 0, problemName: '', requestName: '' },
@@ -143,49 +145,37 @@ export class ClientCreateRequestComponent implements OnInit {
       })
   }
   reqId: any
+  redirect :string ="this.route.navigate(['/home/allClientReqts'])"
   AddRequest() {
-    if( 
-      this.projectId==undefined && 
-      this.reqObj.teamId==0 && 
-      this.reqObj.assetId==0 &&
-      this.reqObj.requestPeriorityId==0 && 
-      this.reqObj.requestSubCategoryId==0
-      //this.lstProjectTeams==null
-      
-      )
-    {
       this.reqObj.requestStatusId = 1  //open
-      this.reqObj.projectId = Number(this.reqObj.projectId)
+      this.reqObj.projectId =  this.projectId
       this.reqObj.clientId = Number(this.reqObj.clientId)
-      console.log(this.reqObj)
-      // this.reqObj.clientId = this.ClientId
       this.reqObj.requestModeId = 5 //meaning it refer to 'By the Client Option'
+      console.log("this.reqObj Before add",this.reqObj)
       this.reqService.inserRequest(this.reqObj).subscribe(e => {
         console.log(e)
         this.reqId = e;
         this.reqImage.requestId = this.reqId;
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Record Added' });
       })
-      alert("Request added successfuly")
-        if (window.confirm('Do you want add images')) {      
+        // this.confirmationService.confirm({
+        //     message: 'Are you sure that you want to perform this action?',
+        //     accept: () => {
+        //       console.log("Done")
+        //       this.route.navigate(['/home/allClientReqts'])
+        //     }
+        // });
+      if (window.confirm('Do you want add images')) {      
         }
         else {
          this.route.navigate(['/home/allClientReqts'])
         }
-      alert("plz enter complete data")
-      console.log("reqObj",this.projectId)
-    }
-    else{
-     // console.log(this.reqObj.teamId)
-      alert("hello")
-    }
-    // else{
+    //  console.log("reqObj",this.projectId)
     
-    // }
-   
-
   }
   onChange(event) {
     this.projectId = event.value
+    console.log(" this.projectId", this.projectId)
     this.projectTeamService.GetProjectTeamsByProjectId(this.projectId).subscribe(e => {
       this.lstProjectTeams = e
       this.lstProjectTeams = e.reduce((unique, o) => {
@@ -217,7 +207,8 @@ export class ClientCreateRequestComponent implements OnInit {
     this.httpClient.post(environment.uploadImage, formData)
       .subscribe(res => {
         console.log(res)
-        alert('Uploaded Successfully.');
+        this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Uploaded Successfully' });
+       // alert('Uploaded Successfully.');
 
       });
     this.lstRequestImages.push(this.reqImage);
@@ -237,5 +228,60 @@ export class ClientCreateRequestComponent implements OnInit {
     })
 
   }
+  showSuccess() {
+    this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Message Content' });
+}
 
+showInfo() {
+    this.messageService.add({ severity: 'info', summary: 'Info', detail: 'Message Content' });
+}
+
+showWarn() {
+    this.messageService.add({ severity: 'warn', summary: 'Warn', detail: 'Message Content' });
+}
+
+showError() {
+    this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Message Content' });
+}
+
+showTopLeft() {
+    this.messageService.add({ key: 'tl', severity: 'info', summary: 'Info', detail: 'Message Content' });
+}
+
+showTopCenter() {
+    this.messageService.add({ key: 'tc', severity: 'info', summary: 'Info', detail: 'Message Content' });
+}
+
+showBottomCenter() {
+    this.messageService.add({ key: 'bc', severity: 'info', summary: 'Info', detail: 'Message Content' });
+}
+
+showConfirm() {
+    this.messageService.clear();
+    this.messageService.add({ key: 'c', sticky: true, severity: 'warn', summary: 'Are you sure?', detail: 'Confirm to proceed' });
+}
+
+showMultiple() {
+    this.messageService.addAll([
+        { severity: 'info', summary: 'Message 1', detail: 'Message Content' },
+        { severity: 'info', summary: 'Message 2', detail: 'Message Content' },
+        { severity: 'info', summary: 'Message 3', detail: 'Message Content' }
+    ]);
+}
+
+showSticky() {
+    this.messageService.add({ severity: 'info', summary: 'Sticky', detail: 'Message Content', sticky: true });
+}
+
+onConfirm() {
+    this.messageService.clear('c');
+}
+
+onReject() {
+    this.messageService.clear('c');
+}
+
+clear() {
+    this.messageService.clear();
+}
 }

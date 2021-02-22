@@ -5,6 +5,7 @@
     "Add": "Add",
     "Update": "Update",
     "messege": "Must more than 3 letters",
+    "messegecode": "Must more than 3 letters",
     "Confirmation": "Confirmation",
     "No data found": "No data found",
     "No": "No",
@@ -175,18 +176,36 @@
     "Add MileStones":"Add MileStones",
     "Add Teams":"Add Teams",
     "Document File":"Document File",
-    "Add Document":"Add Document"
-   
+    "Add Document":"Add Document",
+    "Reason For Close":"Reason For Close",
+    "Add Project Type":"Add Project Type",
+    "Edit Project Type":"Edit Project Type",
+    "Add Sub Category":"Add Sub Category",
+    "Add Category":"Add Category",
+    "Category Name":"Category Name",
+    "Add Department":"Add Department",
+    "Edit Department":"Edit Department",
+    "Edit Client":"Edit Client",
+    "Add Employee as a User":"Add Employee as a User",
+    "Add Client as a User":"Add Client as a User",
+    "Add Asset":"Add Asset",
+    "Edit Asset":"Edit Asset",
+    "Asset":"Asset",
+    "Location":"Location",
+    "Problems":"Problems",
+    "Edit Organization":"Organization Edit",
+    "Close Request":"Request Close",
+    "Latitude": "Latitude",
+    "Edit Employee": "Employee Edit"
+    
+    
 
 
- 
-  
-  
-
-   
 
 
- 
-  
+
+
+
+
   }
 }
