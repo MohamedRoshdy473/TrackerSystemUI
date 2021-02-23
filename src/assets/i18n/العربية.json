@@ -145,7 +145,7 @@
     "SubCategory Name": "اسم التصنيف الفرعي",
     "ADD CATEGORY": "اضافة تصنيف",
     "Enter Request Name": "ادخل اسم الطلب",
-    "Select Client Name": "اختار اسم العمليل",
+    "Select Client Name": "اختار اسم العميل",
     "Select Request Mode": "اختار طريقه استلام الطلب",
     "Categories": "تصنيفات",
     "CategoryName": "اسم التصنيف",
@@ -196,7 +196,10 @@
     "Add Teams":"إضافة فرق عمل",
     "Document File":"الملف",
     "Add Document":"إضافة ملف",
-    "Select":"إختيار"
+    "Select":"إختيار",
+    "Select Mode":"إختر وسيلة التواصل",
+    "Do you Want To Upload Decuments ?":"هل تريد إضافة بعض الملفات ؟ ",
+    "Yes":"نعم"
 
   }
 }

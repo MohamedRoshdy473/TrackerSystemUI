@@ -105,7 +105,7 @@
             <p-calendar [(ngModel)]="reqObj.requestTime" [timeOnly]="true" inputId="timeonly"></p-calendar>
         </div>
     </div>
-    <button id="Add" type="submit"  (click)="AddRequest()" class="btn btn-primary"
+    <button id="Add" type="submit" [disabled]="disabledButton==true" (click)="AddRequest()" class="btn btn-primary"
     [translate]="'Tracker.Submit'"></button>
 
 </div>
@@ -117,7 +117,7 @@
 
 <div class="p-field col-md-9">
     <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
-    <button type="button" class="btn btn-success" (click)="file.click()">{{ 'Tracker.Upload Request Images' | translate }}</button>
+    <button type="button" class="btn btn-success" [disabled]="disabledButton==false" (click)="file.click()">{{ 'Tracker.Upload Request Images' | translate }}</button>
 
 </div>
 
@@ -156,12 +156,12 @@
 </div>
 
 
-<!-- <p-dialog header="Header" [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-        Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<p-dialog [header]="'Tracker.Confirmation'|translate" [(visible)]="displayBasic" [style]="{width: '50vw'}" [baseZIndex]="10000">
+    <p>{{"Tracker.Do you Want To Upload Decuments ?"|translate}}</p>
     <ng-template pTemplate="footer">
-        <p-button icon="pi pi-check" (click)="displayBasic=false" label="Ok" styleClass="p-button-text"></p-button>
+        <p-button icon="pi pi-check" (click)="displayBasic=false" (click)="file.click()" [label]="'Tracker.Yes' | translate"
+       styleClass="p-button-text"></p-button>
+        <p-button icon="pi pi-times" (click)="Redirect()" [label]="'Tracker.No' | translate"
+        ></p-button>
     </ng-template>
-</p-dialog> -->
+</p-dialog> 

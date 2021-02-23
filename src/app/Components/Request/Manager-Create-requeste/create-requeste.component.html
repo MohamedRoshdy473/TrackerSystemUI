@@ -75,7 +75,7 @@
                 optionLabel="mode" optionValue="id">
             </p-dropdown> -->
 
-            <p-dropdown [options]="lstRequestMode" [(ngModel)]="reqObj.requestModeId"   [placeholder]="'Tracker.Select Request Asset'|translate"
+            <p-dropdown [options]="lstRequestMode" [(ngModel)]="reqObj.requestModeId"   [placeholder]="'Tracker.Select Mode'|translate"
             optionLabel="mode" optionValue="id">
         </p-dropdown>
         </div>
@@ -107,7 +107,7 @@
                     cols="63"></textarea>
             </div>
             <button class="col-md-3" pButton type="button" style="height: 40px; margin-top: 50px;margin-left: 20px; "
-                (click)="AddRequest()" icon="pi pi-check" label="Submit" class="p-button-raised "></button>
+            [disabled]="disabledButton==true" (click)="AddRequest()" icon="pi pi-check" label="Submit" class="p-button-raised "></button>
         </div>
 
     </div>
@@ -119,7 +119,7 @@
 
 <div class="p-field col-md-9">
     <input type="file" #file placeholder="Choose file" (change)="uploadFile(file.files)" style="display:none;">
-    <button type="button" class="btn btn-success" (click)="file.click()">{{'Tracker.Upload Request Images'|translate}}</button>
+    <button type="button" class="btn btn-success" [disabled]="disabledButton==false" (click)="file.click()">{{'Tracker.Upload Request Images'|translate}}</button>
 
 </div>
 <!-- 

@@ -23,6 +23,7 @@ import { ProjectTeamService } from 'src/Shared/Services/project-team.service';
 import { projectTeam } from 'src/Shared/Models/projectTeam';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-create-requeste',
@@ -49,8 +50,12 @@ export class CreateRequesteComponent implements OnInit {
   lstRequestImages: RequestImage[]
   reqImage: RequestImage
    ProjId:number
+   disabledButton:boolean
+   foo:any = this.translate.get('Tracker.Select Mode');
+
+   modetarnsalte =this.translate.get('Select Mode');
    lstRequestMode: Array<{id: number, mode: string}> = [
-     {id:0,mode:'select'},
+    {id:0,  mode: 'Mode'},
     {id: 1, mode: 'Phone'},
     {id: 2, mode: 'Chat'},
     {id: 3, mode: 'Mail'},
@@ -58,7 +63,7 @@ export class CreateRequesteComponent implements OnInit {
 ];;
 
 
-  constructor(private reqService: RequestService,
+  constructor(private reqService: RequestService,private translate: TranslateService,
     private httpClient: HttpClient,
     private projectTeamService:ProjectTeamService,
     private reqPeriorityService: RequestPeriorityService,
@@ -72,6 +77,7 @@ export class CreateRequesteComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.disabledButton=false
     this.lstReqests = []
     this.lstProjects = []
     this.lstReqPeriorities = []
@@ -155,6 +161,8 @@ export class CreateRequesteComponent implements OnInit {
       this.reqImage.requestId = this.reqId;
       this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Request Added Successfully' });
     })
+    this.disabledButton=true
+
   }
   onChange(event) {
     this.projectId = event.value

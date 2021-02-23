@@ -56,6 +56,8 @@ export class ClientCreateRequestComponent implements OnInit {
   reqImage: RequestImage
   ProjId: number
   TestValue:number=0
+  displayBasic: boolean;
+  disabledButton:boolean;
 
 
   constructor(private reqService: RequestService,
@@ -73,6 +75,7 @@ export class ClientCreateRequestComponent implements OnInit {
      ) { }
 
   ngOnInit(): void {
+    this.disabledButton=false;
     this.ClientId = Number(localStorage.getItem('clientId'))
     this.lstReqests = []
     this.lstProjects = []
@@ -135,6 +138,9 @@ export class ClientCreateRequestComponent implements OnInit {
     // })
 
   }
+  showBasicDialog() {
+    this.displayBasic = true;
+}
   GetProjectTeamId(TeamId) {
     this.projectTeamService.GetProjectTeamByProjectIdAndTeamIdAndProjectPositionId(this.projectId, TeamId.value)
       .subscribe(e => {
@@ -158,20 +164,19 @@ export class ClientCreateRequestComponent implements OnInit {
         this.reqImage.requestId = this.reqId;
         this.messageService.add({ severity: 'success', summary: 'Success', detail: 'Record Added' });
       })
-        // this.confirmationService.confirm({
-        //     message: 'Are you sure that you want to perform this action?',
-        //     accept: () => {
-        //       console.log("Done")
-        //       this.route.navigate(['/home/allClientReqts'])
-        //     }
-        // });
-      if (window.confirm('Do you want add images')) {      
-        }
-        else {
-         this.route.navigate(['/home/allClientReqts'])
-        }
+      this.displayBasic = true;
+      this.disabledButton=true
+      // if (window.confirm('Do you want add images')) {      
+      //   }
+      //   else {
+      //    this.route.navigate(['/home/allClientReqts'])
+      //   }
     //  console.log("reqObj",this.projectId)
     
+  }
+  Redirect()
+  {
+    this.route.navigate(['/home/allClientReqts'])
   }
   onChange(event) {
     this.projectId = event.value
