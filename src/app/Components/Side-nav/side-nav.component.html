@@ -1,17 +1,17 @@
-<div class="wrapper">
+<div class="wrapper" dir="{{textDir}}" >
   <!-- Page Content Side Bar -->
-  <nav id="sidebar" *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM'">
+  <nav id="sidebar" *ngIf="role=='SuperAdmin'||role == 'Admin' ||role== 'PMO'||role =='PM'" [ngStyle]="{'text-align': selectedlang === 'English' ? 'left': 'right'}">
     <div class="sidebar-header">
       <h3 style="font-size: 25px;">{{ 'Tracker.TRACKER SYSTEM' | translate }} </h3>
     </div>
     <div></div>
 
-    <ul class="list-unstyled components">
-      <li *ngIf="role=='SuperAdmin'">
+    <ul class="list-unstyled components"  >
+      <li *ngIf="role=='SuperAdmin'" >
         <a class="active" class="pi pi-bars" routerLink='piechart'> {{ 'Tracker.DashBoard' |
           translate}} </a><br>
       </li>
-      <li *ngIf="role=='SuperAdmin'">
+      <li *ngIf="role=='SuperAdmin'" >
         <a class="active" class="pi pi-globe" routerLink='organizations'> {{ 'Tracker.Organizations' |
           translate}} </a><br>
       </li>
@@ -61,7 +61,7 @@
         <a class="active" class="pi pi-user" routerLink='allClientReqts'> {{ 'Tracker.ClientRequests' | translate
           }}</a><br>
       </li>
-      <li class="active" *ngIf="role=='SuperAdmin'||role == 'Admin'">
+      <li class="active" *ngIf="role=='SuperAdmin'||role == 'Admin'" >
         <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle pi pi-cog"> {{
           'Tracker.Settings' | translate}}</a>
         <!-- <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle pi pi-cog">Settings</a> -->
@@ -82,7 +82,7 @@
   </nav>
 
   <!-- Page Content Nav Bar -->
-  <div id="content">
+  <div id="content" [ngStyle]="{'text-align': selectedlang === 'English' ? 'left': 'right'}">
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
@@ -164,15 +164,28 @@
         </div>
         <div *ngIf="role!='Client'">
           <label>
-            <select #langSelect (change)="translate.use(langSelect.value)" class="btn btn-success dropdown-toggle">
+            <select class="form-control" #selectedLang (change)="switchLang(selectedLang.value)">
               <option *ngFor="let lang of translate.getLangs()" [value]="lang"
-                [selected]="lang === translate.currentLang">{{ lang }}</option>
-            </select>
+                 [selected]="lang === translate.currentLang">
+                 {{ lang }}
+              </option>
+           </select>
           </label>
+
+          <!-- <label>
+            <select class="form-control" #selectedLang (change)="translate.use(selectedLang.value)">
+              <option *ngFor="let lang of translate.getLangs()" [value]="lang"
+                 [selected]="lang === translate.currentLang">
+                 {{ lang }}
+              </option>
+           </select>
+          </label> -->
         </div>
       </div>
     </nav>
-    <router-outlet></router-outlet>
+    <div [ngStyle]="{'text-align': selectedlang === 'English' ? 'left': 'right'}">
+      <router-outlet></router-outlet>
+   </div>
 
 
   </div>

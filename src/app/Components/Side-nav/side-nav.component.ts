@@ -15,7 +15,11 @@ export class SideNavComponent implements OnInit {
   IsAdmin: any;
   IsUser: any;
   show: boolean;
-  direction = 'ltr';
+  //direction = 'ltr';
+
+  textDir: string = "ltr";
+  selectedlang: string = '';
+
   role: string
   loggedInUserName: string
   empId: number
@@ -31,19 +35,25 @@ export class SideNavComponent implements OnInit {
     private clientService: ClientService,
   ) {
  
+    localStorage.removeItem("lang");
     this.show = true;
     translate.addLangs(['English', 'العربية']);
-    translate.setDefaultLang('English');
+    this.selectedlang = 'English';
+    this.textDir = "ltr"; 
+      translate.use(this.selectedlang);
+  //  localStorage.setItem("lang", "English");
+  //  translate.setDefaultLang('English');
+ 
+    console.log("selectedlang",this.selectedlang);
+  //  console.log("langlang",localStorage.getItem("lang"));
 
-    const browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/English|العربية/) ? browserLang : 'English');
+   // const browserLang = translate.getBrowserLang();
+   // translate.use(browserLang.match(/English|العربية/) ? browserLang : 'English');
   }
 
   userName = localStorage.getItem("userName")
   ngOnInit(): void {
     this.getimage = environment.Domain
-
-
 
     this.role = localStorage.getItem('roles')
     this.loggedInUserName = localStorage.getItem('userName')
@@ -66,6 +76,29 @@ export class SideNavComponent implements OnInit {
 
     }
   }
+  switchLang(lang: string) {
+    this.textDir = "";
+    this.selectedlang =lang;
+    console.log("lang", lang)
+
+    if (lang == "English") {
+      this.textDir = "ltr";
+      this.selectedlang =lang;
+  //    localStorage.setItem("lang", lang);
+    }
+    else if (lang == "العربية") {
+      this.textDir = "rtl";
+      this.selectedlang =lang;
+  //    localStorage.setItem("lang", lang);
+    }
+    this.translate.use(lang)
+   // localStorage.setItem("lang", lang);
+
+   // this.selectedlang = lang;
+    this.translate.setDefaultLang(lang);
+
+    console.log("textDir", this.textDir);
+  }
   logout() {
     this.AuthService.logout();
   }
@@ -82,23 +115,4 @@ export class SideNavComponent implements OnInit {
     this.route.navigate(['home/profile']);
 
   }
-  // changeDirection(){
-  //   this.direction =!this.direction
-  // }
-  //   changeDir($event) {
-  //     //debugger;
-  //     //console.log($event.target.value);
-  //     // this.translate.use($event.target.value);
-  //     sessionStorage.setItem("lang", $event.target.value);
-
-
-  //     if ($event.target.value === 'English') {
-  //       localStorage.setItem('dir', 'ltr');
-  //     }
-  //     if ($event.target.value === 'العربية') {
-  //       localStorage.setItem('dir', 'rtl');
-  //     }
-
-  // console.log("test",this.dir)
-  //   }
 }
