@@ -24,11 +24,13 @@
     </ng-template>
 </p-toast>
 <div class="container card">
+    <br>
     <div class="row">
-        <div class="col-9" style="margin-left: 20px;">
+        <div class="col-7">
             <h1 [translate]="'Tracker.All Project'" style="margin-bottom: 20px; font-size: 2em;color: #2674a8;"></h1>
         </div>
-        <div class="col-2" style="margin-left: 6%;">
+        <div class="col-3"></div>
+        <div class="col-2">
             <p-button icon="pi pi-external-link" [label]="'Tracker.Add' | translate" routerLink="/home/createProject"
                 class="create">
             </p-button>
@@ -45,36 +47,36 @@
         <p-table #dt1 [value]="projects" dataKey="id" [rows]="5" [paginator]="true" stateStorage="session"
             stateKey="statedemo-session">
             <ng-template pTemplate="header">
-                <tr>
+                <tr style="text-align: inherit;">
                     <!-- <th pSortableColumn="code" >Project Code  <p-sortIcon field="code"></p-sortIcon></th> -->
-                    <th pSortableColumn="projectName" style="font-size: 12px;">{{ 'Tracker.Project Name' | translate }}
+                    <th pSortableColumn="projectName" style="font-size: 12px;text-align: inherit;">{{ 'Tracker.Project Name' | translate }}
                         <p-sortIcon field="projectName"></p-sortIcon>
                     </th>
-                    <th pSortableColumn="type" style="font-size: 12px;"> {{ 'Tracker.Project Type Name' | translate }}
+                    <th pSortableColumn="type" style="font-size: 12px;text-align: inherit;"> {{ 'Tracker.Project Type Name' | translate }}
                         <p-sortIcon field="type">
                         </p-sortIcon>
                     </th>
-                    <th pSortableColumn="organizationName" style="font-size: 12px;"> {{ 'Tracker.Organization' |
+                    <th pSortableColumn="organizationName" style="font-size: 12px;text-align: inherit;"> {{ 'Tracker.Organization' |
                         translate }}<p-sortIcon field="organizationName"></p-sortIcon>
                     </th>
-                    <th pSortableColumn="projectCode" style="font-size: 12px;"> {{ 'Tracker.Project Code' | translate }}
+                    <th pSortableColumn="projectCode" style="font-size: 12px;text-align: inherit;"> {{ 'Tracker.Project Code' | translate }}
                         <p-sortIcon field="projectCode"></p-sortIcon>
                     </th>
 
-                    <th pSortableColumn="startDate" style="font-size: 12px;"> {{ 'Tracker.Start Date' | translate }}
+                    <th pSortableColumn="startDate" style="font-size: 12px;text-align: inherit;"> {{ 'Tracker.Start Date' | translate }}
                         <p-sortIcon field="startDate">
                         </p-sortIcon>
                     </th>
-                    <th pSortableColumn="endtDate" style="font-size: 12px;"> {{ 'Tracker.End Date' | translate }}
+                    <th pSortableColumn="endtDate" style="font-size: 12px;text-align: inherit;"> {{ 'Tracker.End Date' | translate }}
                         <p-sortIcon field="endtDate">
                         </p-sortIcon>
                     </th>
-                    <th>{{ 'Tracker.Controls' | translate }}</th>
+                    <th style="text-align: inherit;">{{ 'Tracker.Controls' | translate }}</th>
 
 
 
                 </tr>
-                <tr>
+                <tr  style="text-align: inherit;">
                     <!-- <th>
                             <input pInputText type="text" (input)="dt1.filter($event.target.value, 'code', 'contains')" [value]="dt1.filters['code']?.value" placeholder="Search by Code" class="p-column-filter">
                         </th> -->
@@ -119,7 +121,7 @@
             </ng-template>
             <ng-template pTemplate="body" let-project>
                 <tr [pSelectableRow]="project">
-                    <td>
+                    <td style="text-align: inherit;">
                         <span class="p-column-title"></span>
                         {{project.projectName}}
                     </td>
@@ -127,16 +129,16 @@
                             <span class="p-column-title"></span>
                             <span class="image-text">{{project.projectCode}}</span>
                         </td> -->
-                    <td>
+                    <td style="text-align: inherit;">
                         <span class="p-column-title"></span>
                         <!-- <img [alt]="customer.representative.name" src="assets/showcase/images/demo/avatar/{{customer.representative.image}}" width="32" style="vertical-align: middle" /> -->
                         <span class="image-text">{{project.projectTypeName}}</span>
                     </td>
-                    <td>
+                    <td style="text-align: inherit;">
                         <span class="p-column-title"></span>
                         <span [class]="'customer-badge type-' + project.type">{{project.organizationName }}</span>
                     </td>
-                    <td>
+                    <td style="text-align: inherit;">
                         <span class="p-column-title"></span>
                         <span [class]="'customer-badge type-' + project.projectCode">{{project.projectCode}}</span>
                     </td>
@@ -144,25 +146,25 @@
                             <span class="p-column-title"></span>
                             <span [class]="'customer-badge type-' + project.cost">{{project.cost}}</span>
                         </td> -->
-                    <td>
+                    <td style="text-align: inherit;">
                         <span class="p-column-title"></span>
                         <span [class]="'customer-badge type-' + project.actualStartDate">{{project.actualStartDate |
                             date:'dd/MM/yyyy'}}</span>
                     </td>
-                    <td>
+                    <td style="text-align: inherit;">
                         <span class="p-column-title"></span>
                         <span [class]="'customer-badge type-' + project.actualEndDate">{{project.actualEndDate |
                             date:'dd/MM/yyyy'}}</span>
                     </td>
 
-                    <td>
+                    <td style="text-align: inherit;">
                         <span class="pi pi-compass" aria-hidden="true"
                             (click)="showMaximizableDialog(project.id)"></span>
                         &nbsp; &nbsp;
                         <span class="p-button-icon pi pi-pencil" aria-hidden="true"
                             [routerLink]="['/home/updateproject',project.id]"></span>
                         <!-- (click)="DisplayToEditProject(project.id)" -->
-                        <span class="p-button-icon pi pi-times" (click)="confirm(project.id)" aria-hidden="true"></span>
+                        &nbsp; &nbsp; <span class="p-button-icon pi pi-times" (click)="confirm(project.id)" aria-hidden="true"></span>
                     </td>
 
 

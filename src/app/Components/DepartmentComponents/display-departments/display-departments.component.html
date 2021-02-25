@@ -45,8 +45,8 @@
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
-            <th>{{'Tracker.Department Name'|translate}} </th>
-            <th>{{'Tracker.Controls'|translate}} </th>
+            <th style="text-align: inherit;">{{'Tracker.Department Name'|translate}} </th>
+            <th >{{'Tracker.Controls'|translate}} </th>
         </tr>
         <tr>
 
@@ -61,7 +61,7 @@
     </ng-template>
     <ng-template pTemplate="body" let-department>
         <tr>
-            <td>
+            <td style="text-align: inherit;">
                 {{department.name}}
             </td>
             <td>

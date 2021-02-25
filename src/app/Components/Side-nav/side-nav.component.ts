@@ -38,8 +38,8 @@ export class SideNavComponent implements OnInit {
     localStorage.removeItem("lang");
     this.show = true;
     translate.addLangs(['English', 'العربية']);
-    this.selectedlang = 'English';
-    this.textDir = "ltr"; 
+    this.selectedlang = 'العربية';
+    this.textDir = "rtl"; 
       translate.use(this.selectedlang);
   //  localStorage.setItem("lang", "English");
   //  translate.setDefaultLang('English');

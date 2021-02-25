@@ -48,8 +48,8 @@
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
-            <th>{{'Tracker.Asset Name'|translate}} </th>
-            <th>{{'Tracker.Code'|translate}} </th>
+            <th style="text-align: inherit;">{{'Tracker.Asset Name'|translate}} </th>
+            <th style="text-align: inherit;">{{'Tracker.Code'|translate}} </th>
             <th>{{'Tracker.Controls'|translate}} </th>
         </tr>
         <tr>
@@ -59,16 +59,20 @@
                     (input)="dt.filter($event.target.value, 'assetName', 'startsWith')" [placeholder]="'Tracker.Name'|translate"
                     class="p-column-filter">
             </th>
-            <th></th>
+            <th>
+                <input pInputText style="width: 100%;" type="text"
+                (input)="dt.filter($event.target.value, 'code', 'startsWith')" [placeholder]="'Tracker.Code'|translate"
+                class="p-column-filter">
+            </th>
             <th></th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-asset>
         <tr>
-            <td>
+            <td style="text-align: inherit;">
                 {{asset.assetName}}
             </td>
-            <td>
+            <td style="text-align: inherit;">
                 {{asset.assetCode}}
             </td>
             <td>

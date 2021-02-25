@@ -47,8 +47,8 @@
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
-            <th [translate]="'Tracker.Project Type Name'"></th>
-            <th [translate]="'Tracker.Controls'"></th>
+            <th [translate]="'Tracker.Project Type Name'" style="text-align: inherit;"></th>
+            <th [translate]="'Tracker.Controls'" ></th>
         </tr>
         <tr>
 
@@ -62,7 +62,7 @@
     </ng-template>
     <ng-template pTemplate="body" let-ProjectType>
         <tr>
-            <td>
+            <td style="text-align: inherit;">
                 {{ProjectType.typeName}}
             </td>
             <td>

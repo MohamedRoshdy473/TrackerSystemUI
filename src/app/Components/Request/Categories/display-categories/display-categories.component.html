@@ -42,18 +42,18 @@
             </div>
             <div class="col-md-2">
                 <button id="addCatBtn" routerLink="/home/Category" class="btn btn-outline-primary btn-md btn-block">
-                    Add<span class="pi pi-plus"></span> </button>
+                   {{"Tracker.Add"|translate}}<span class="pi pi-plus"></span> </button>
             </div>
         </div>
     </ng-template>
     <ng-template pTemplate="header">
         <tr>
-            <th>
+            <th style="text-align: inherit;">
                 <input pInputText type="text"
                     (input)="dt.filter($event.target.value, 'requestCategoryName', 'startsWith')"
                     [placeholder]="'Tracker.CategoryName'|translate" class="p-column-filter">
             </th>
-            <th>
+            <th style="text-align: inherit;">
                 <input pInputText type="text" (input)="dt.filter($event.target.value, 'subCategoryName', 'startsWith')"
                 [placeholder]="'Tracker.SubCategoryName'|translate"  class="p-column-filter">
             </th>
@@ -62,10 +62,10 @@
     </ng-template>
     <ng-template pTemplate="body" let-subCategory>
         <tr>
-            <td>
+            <td style="text-align: inherit;">
                 {{subCategory.requestCategoryName}}
             </td>
-            <td>
+            <td style="text-align: inherit;">
                 {{subCategory.subCategoryName}}
             </td>
             <td>
